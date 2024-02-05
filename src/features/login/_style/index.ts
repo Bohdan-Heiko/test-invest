@@ -8,7 +8,7 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
   },
   loginContainer: {
-    flex: 1,
+    // flex: 1,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: colors.blue,
@@ -20,11 +20,5 @@ export const style = StyleSheet.create({
     marginBottom: 16,
     lineHeight: 42,
   },
-  input: {
-    flexGrow: 1,
-    flexShrink: 1,
-    // fontFamily: ManropeSemiBold,
-    fontSize: 16,
-    color: colors.alto,
-  },
+
 });

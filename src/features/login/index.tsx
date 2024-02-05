@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { style } from "./_style";
-import { Button, Title } from "@/shared/ui";
-import { colors } from "@/constants/colors";
+import { Button, Input, Title } from "@/shared/ui";
 
 export const LoginScreen = () => {
   return (
@@ -10,10 +9,10 @@ export const LoginScreen = () => {
         <Title aria-label="qwe" style={style.title}>
           Вхід в аккаунт
         </Title>
-
-
-        <Button variant="primary" title="primary" />
-        <Button variant="secondary" title="secondary" />
+        <Input placeHolder="Email" />
+        <Input placeHolder="Пароль" iconName="HideEye" />
+        <Button variant="primary" title="Далі" />
+        <Button variant="secondary" title="Увійти через Дію" />
       </View>
     </View>
   );
