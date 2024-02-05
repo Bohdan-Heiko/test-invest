@@ -13,5 +13,18 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.blue,
     paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
+  title: {
+    color: colors.tundora,
+    marginBottom: 16,
+    lineHeight: 42,
+  },
+  input: {
+    flexGrow: 1,
+    flexShrink: 1,
+    // fontFamily: ManropeSemiBold,
+    fontSize: 16,
+    color: colors.alto,
   },
 });
