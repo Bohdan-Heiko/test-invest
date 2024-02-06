@@ -3,7 +3,7 @@ import { style } from "./_style";
 import { Button, CheckBox, Input, LinkRedirect, Paragraph, TextInfo, Title } from "@/shared/ui";
 import { useState } from "react";
 
-export const LoginScreen = () => {
+export const RegistrationScreen = () => {
   const [checked, setChecked] = useState<boolean>(false);
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
