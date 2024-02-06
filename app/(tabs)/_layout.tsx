@@ -22,15 +22,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Login",
+          title: "Логін",
           tabBarIcon: ({ color }) => <TabBarIcon name="pagelines" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="registration"
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Реєстрація",
+          tabBarIcon: ({ color }) => <TabBarIcon name="rebel" color={color} />,
         }}
       />
     </Tabs>

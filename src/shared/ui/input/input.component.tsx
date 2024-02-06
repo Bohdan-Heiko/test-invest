@@ -1,13 +1,15 @@
-import React, { useMemo } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import { colors } from "@/constants/colors";
 import { SVGIcon } from "../svgIcon/svgIcon.component";
 import { SVGIconNames } from "@/types";
 
+type ViewStyle = View["props"]["style"];
 interface IProps {
   placeHolder: string;
-  styles?: Record<string, unknown>;
+  styles?: ViewStyle;
   iconName?: SVGIconNames | undefined;
+  children?: ReactElement;
   // variant?: "primary" | "secondary";
   // title?: string;
   // disabled?: boolean;
@@ -15,7 +17,7 @@ interface IProps {
 }
 // type TextProps = View["props"];
 
-export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName }) => {
+export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName, children }) => {
   // const backgroundColor = {
   //   primary: colors.blue,
   //   secondary: colors.white,
@@ -28,20 +30,21 @@ export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName }) => {
   // }, [variant, disabled]);
 
   return (
-    <View style={{ ...style.inputContainer, ...styles }}>
+    <View style={[style.inputContainer, styles]}>
       <TextInput
         style={{
           ...style.input,
           // color: !errors.name ? styles.input.color : colors.primary,
         }}
         placeholder={placeHolder}
-        // placeholderTextColor={colors.deep_gray}
+        placeholderTextColor={colors.silver}
         // value={value}
         // onBlur={onBlur}
         // onChangeText={onChange}
       />
       {iconName && <SVGIcon name={iconName as SVGIconNames} />}
       <View style={style.inputDot} />
+      {children}
     </View>
   );
 };
@@ -63,9 +66,9 @@ const style = StyleSheet.create({
   input: {
     flexGrow: 1,
     flexShrink: 1,
-    fontFamily: 'Inter400',
+    fontFamily: "Inter500",
     fontSize: 16,
-    lineHeight: 16,
+    lineHeight: 24,
     color: colors.tundora,
   },
 

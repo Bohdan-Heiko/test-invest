@@ -56,32 +56,4 @@ export const style = StyleSheet.create({
     lineHeight: 21,
     color: colors.silver,
   },
-  // Account section
-
-  // Organization section
-  organizationContainer: {
-    flex: 1,
-    paddingTop: 40,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-  },
-  mainTitle: {
-    fontFamily: "Inter500",
-    color: colors.tundora,
-    lineHeight: 31,
-    marginBottom: 30,
-  },
-  infoContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: 20
-  },
-  infoText: {
-    fontFamily: 'Inter500',
-    fontSize: 16,
-    lineHeight: 24,
-    color: colors.dove_graya
-  }
 });
