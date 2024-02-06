@@ -22,28 +22,6 @@ export const style = StyleSheet.create({
     marginBottom: 16,
     lineHeight: 42,
   },
-  checkBoxContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  checkBox: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  chekTitle: {
-    color: colors.tundora,
-    fontFamily: "Inter500",
-    lineHeight: 21,
-    fontSize: 14,
-  },
-  forgotPasswordText: {
-    fontSize: 14,
-    lineHeight: 21,
-    color: colors.blue,
-  },
   accountInfo: {
     display: "flex",
     flexDirection: "row",

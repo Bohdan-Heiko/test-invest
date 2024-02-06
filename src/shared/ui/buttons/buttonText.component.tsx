@@ -2,11 +2,13 @@ import React, { useMemo } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { colors } from "@/constants/colors";
 
+type ViewStyleProps = View["props"]["style"];
 interface IProps {
   variant?: "primary" | "secondary";
   title?: string;
   disabled?: boolean;
   onPress?: () => void;
+  style?: ViewStyleProps;
 }
 
 export const Button: React.FC<IProps> = ({
@@ -14,6 +16,7 @@ export const Button: React.FC<IProps> = ({
   title = "",
   disabled,
   onPress,
+  style,
 }) => {
   const titleColor = useMemo(() => {
     if (variant === "primary") return disabled ? colors.silver : colors.white;
@@ -39,7 +42,7 @@ export const Button: React.FC<IProps> = ({
   }, [variant, disabled]);
 
   return (
-    <View style={{ ...styles.container, backgroundColor, borderColor }}>
+    <View style={[styles.container, style, { backgroundColor, borderColor }]}>
       <TouchableOpacity onPress={onPress} disabled={disabled} style={styles.touchable}>
         <Text
           style={{
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     borderRadius: 50,
-    marginBottom: 20,
+    marginBottom: 10,
     overflow: "hidden",
     borderColor: colors.blue,
     borderWidth: 2,

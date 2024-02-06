@@ -36,10 +36,12 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/Inter-Light",
-            "./assets/fonts/Inter-Medium",
-            "./assets/fonts/Inter-Regular"
-          ]
+            "node_modules/@expo-google-fonts/Inter_300Light.ttf",
+            "node_modules/@expo-google-fonts/Inter_400Regular.ttf",
+            "node_modules/@expo-google-fonts/Inter_500Medium.ttf",
+            "node_modules/@expo-google-fonts/Kufam_400Regular.ttf",
+            "node_modules/@expo-google-fonts/Kufam_500Medium.ttf"
+        ]
         }
       ]
     ],
