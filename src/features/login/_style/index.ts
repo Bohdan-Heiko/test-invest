@@ -8,7 +8,6 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
   },
   loginContainer: {
-    // flex: 1,
     borderWidth: 2,
     borderRadius: 10,
     borderColor: colors.blue,
@@ -20,5 +19,25 @@ export const style = StyleSheet.create({
     marginBottom: 16,
     lineHeight: 42,
   },
-
+  checkBoxContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  checkBox: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  chekTitle: {
+    color: colors.tundora,
+    lineHeight: 21,
+    fontSize: 14,
+  },
+  forgotPasswordText: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.blue,
+  },
 });
