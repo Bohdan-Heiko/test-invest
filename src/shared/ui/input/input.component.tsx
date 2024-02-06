@@ -63,7 +63,7 @@ const style = StyleSheet.create({
   input: {
     flexGrow: 1,
     flexShrink: 1,
-    fontWeight: "500",
+    fontFamily: 'Inter400',
     fontSize: 16,
     lineHeight: 16,
     color: colors.tundora,

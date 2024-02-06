@@ -4,6 +4,8 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { Inter_300Light, Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
+import { Kufam_400Regular, Kufam_500Medium } from "@expo-google-fonts/kufam";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -22,7 +24,12 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Inter: require("../assets/fonts/Inter-Medium.ttf"),
+    Inter300: Inter_300Light,
+    Inter400: Inter_400Regular,
+    Inter500: Inter_500Medium,
+
+    Kufam400: Kufam_400Regular,
+    Kufam500: Kufam_500Medium,
     ...FontAwesome.font,
   });
 
@@ -49,7 +56,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-
   return (
     <ThemeProvider value={DefaultTheme}>
       <Stack>

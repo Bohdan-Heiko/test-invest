@@ -7,12 +7,15 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 20,
   },
+
+  // Account section
   loginContainer: {
     borderWidth: 2,
     borderRadius: 10,
     borderColor: colors.blue,
     paddingHorizontal: 10,
     paddingVertical: 20,
+    marginBottom: 20,
   },
   title: {
     color: colors.tundora,
@@ -32,6 +35,7 @@ export const style = StyleSheet.create({
   },
   chekTitle: {
     color: colors.tundora,
+    fontFamily: 'Inter500',
     lineHeight: 21,
     fontSize: 14,
   },
@@ -40,4 +44,31 @@ export const style = StyleSheet.create({
     lineHeight: 21,
     color: colors.blue,
   },
+  accountInfo: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  accountInfoText: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.silver
+  },
+  // Account section
+
+  // Organization section
+  organizationContainer: {
+    flex: 1,
+    paddingTop: 40,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  mainTitle: {
+    fontFamily: 'Inter500',
+    color: colors.tundora,
+    lineHeight: 31
+  }
 });

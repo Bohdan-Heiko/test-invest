@@ -12,7 +12,7 @@ export const Title = (props: TextProps) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 24,
-    fontWeight: "500",
+    fontFamily: "Inter500",
     lineHeight: 29,
     color: colors.white,
     textAlign: "center",
