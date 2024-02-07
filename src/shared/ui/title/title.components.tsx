@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: "Inter500",
     lineHeight: 29,
-    color: colors.white,
+    color: colors.dove_graya,
     textAlign: "center",
   },
 });
