@@ -84,4 +84,44 @@ export const style = StyleSheet.create({
     fontSize: 20,
     lineHeight: 30,
   },
+
+  // QUESTION FORM
+  questionFormContainer: {
+    height: 465,
+    borderRadius: 20,
+    marginBottom: 20,
+  },
+  backgroundImage: {
+    flex: 1,
+  },
+  backGroundDarkening: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Черный цвет с непрозрачностью 50%
+    borderRadius: 20,
+  },
+  contentContainer: {
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    flex: 1,
+    display: "flex",
+    alignItems: "flex-start",
+  },
+  contentTitle: {
+    color: colors.white,
+    fontSize: 28,
+    textAlign: "left",
+    lineHeight: 42,
+    marginBottom: 5,
+  },
+  contentText: {
+    maxWidth: "63%",
+    textAlign: "left",
+    color: colors.silver,
+    fontSize: 14,
+    lineHeight: 21,
+    marginBottom: 20,
+  },
+  contentFormContainer: {
+    width: "100%",
+  },
 });
