@@ -9,8 +9,8 @@ export const YourAccount = () => {
       <View style={style.yourAccountInfo}>
         <Title style={style.yourAccountInfoTitle}>Ваш рахунок</Title>
         <View style={style.yourAccountInfoData}>
-          <Paragraph style={style.yourAccountInfoDataProcent}>+14% з минулого кварталу</Paragraph>
           <View style={style.yourAccountInfoDataMoneyContainer}>
+            <Paragraph style={style.yourAccountInfoDataProcent}>+14% з минулого кварталу</Paragraph>
             <Paragraph style={style.yourAccountInfoDataMoney}>
               29,475.00 <Text style={{ fontSize: 24 }}>USDT</Text>
             </Paragraph>

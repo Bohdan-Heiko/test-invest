@@ -33,15 +33,14 @@ export const style = StyleSheet.create({
     alignItems: "flex-start",
     gap: 14,
   },
+  yourAccountInfoDataMoneyContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+  },
   yourAccountInfoDataProcent: {
     fontSize: 14,
     lineHeight: 27,
     color: colors.white,
-  },
-  yourAccountInfoDataMoneyContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
   },
   yourAccountInfoDataMoney: {
     fontSize: 40,
@@ -49,6 +48,77 @@ export const style = StyleSheet.create({
     color: colors.white,
   },
   //YOUR ACCOUNT
+
+  // PERSONAL INFO
+  personalInfoMainContainer: {
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    gap: 20,
+
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.1,
+    elevation: 1.8,
+  },
+  personalInfoTitle: {
+    fontFamily: "Inter600",
+    fontSize: 30,
+    lineHeight: 45,
+    textAlign: "left",
+    color: colors.mine_shaft,
+  },
+  personalInfoContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 15,
+  },
+  personalInfoContainerTitle: {
+    fontSize: 24,
+    lineHeight: 36,
+    color: colors.mine_shaft,
+  },
+  personalInfoText: {
+    fontSize: 20,
+    lineHeight: 30,
+    color: colors.dove_graya,
+  },
+
+  yourRieltorContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 15,
+  },
+  yourRieltorTitle: {
+    fontSize: 24,
+    lineHeight: 36,
+    color: colors.mine_shaft,
+  },
+  yourRieltorInfo: {
+    fontSize: 20,
+    lineHeight: 30,
+    textAlign: "left",
+    color: colors.tundora,
+  },
+
+  functionsContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 15,
+  },
+  functionsTitle: {
+    fontSize: 24,
+    lineHeight: 36,
+    color: colors.mine_shaft,
+  },
+  functionsLinks: {
+    fontSize: 20,
+    lineHeight: 30,
+  },
+  // PERSONAL INFO
 
   //ACCRUAL
   accrualContainer: {
@@ -100,5 +170,24 @@ export const style = StyleSheet.create({
   accuralItemNamePayment: {
     fontSize: 14,
     lineHeight: 21,
+  },
+  //ACCRUAL
+
+  // MY PROJECTS
+  myProjectsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 20,
+  },
+  myProjectTitle: {
+    fontSize: 24,
+    lineHeight: 42,
+    color: colors.mine_shaft,
+  },
+  projectsContainer: {
+    gap: 20,
+    display: "flex",
+    flexDirection: "row",
   },
 });
