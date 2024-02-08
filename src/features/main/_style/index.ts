@@ -39,50 +39,10 @@ export const style = StyleSheet.create({
     flexDirection: "row",
   },
 
-  ourProjectItemContainer: {
-    gap: 20,
-    maxWidth: 280,
-    display: "flex",
-    flexDirection: "column",
-  },
   ourProjectTitle: {
     fontSize: 24,
     lineHeight: 42,
     color: colors.mine_shaft,
-  },
-  ourProjectItem: {
-    width: 280,
-    height: 220,
-  },
-  ourProjectItemImage: {
-    width: "100%",
-    height: undefined,
-    aspectRatio: 280 / 220,
-    resizeMode: "stretch",
-    borderRadius: 20,
-  },
-
-  ourProjectItemInfoContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: 8,
-  },
-
-  ourProjectItemInfoTitle: {
-    fontSize: 24,
-    lineHeight: 36,
-    color: colors.tundora,
-  },
-  ourProjectItemInfoText: {
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "left",
-    color: colors.dove_graya,
-  },
-  ourProjectItemInfoLink: {
-    fontSize: 20,
-    lineHeight: 30,
   },
 
   // QUESTION FORM

@@ -1,10 +1,9 @@
 import { Button, Input, Paragraph, Title } from "@/shared/ui";
 import { ImageBackground, ScrollView, View } from "react-native";
 import { style } from "./_style";
-import { ProjectItem } from "./_components/projectItem";
 import { MainProjectBanner } from "./_components/mainProjectBanner";
 import FormBackgroundImage from "#/images/other/form-question-background.jpeg";
-import { OrganizationInfo } from "@/shared/components";
+import { OrganizationInfo, ProjectItem } from "@/shared/components";
 
 const TEXT =
   "Житловий комплекс розташований в одному з найперспективніших районів міста, забезпечуючи легкий доступ до міської інфраструктури, освітніх установ, медичних центрів і парків.";
@@ -13,11 +12,15 @@ const TEXT1 =
 
 export const Main = () => {
   return (
-    <ScrollView overScrollMode='never' showsVerticalScrollIndicator={false} style={style.mainContainer}>
+    <ScrollView
+      overScrollMode="never"
+      showsVerticalScrollIndicator={false}
+      style={style.mainContainer}
+    >
       <MainProjectBanner text={TEXT1} />
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
-        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode="never" showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
             <ProjectItem text={TEXT} link="/(tabs)/" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
@@ -28,7 +31,7 @@ export const Main = () => {
 
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші забудовники</Title>
-        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode="never" showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
             <ProjectItem text={TEXT} link="/(tabs)/" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
