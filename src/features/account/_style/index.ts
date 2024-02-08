@@ -7,7 +7,10 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingVertical: 20,
+    gap: 20,
   },
+
+  //YOUR ACCOUNT
   yourAccountContainer: {
     width: "100%",
     borderRadius: 10,
@@ -44,5 +47,58 @@ export const style = StyleSheet.create({
     fontSize: 40,
     lineHeight: 60,
     color: colors.white,
+  },
+  //YOUR ACCOUNT
+
+  //ACCRUAL
+  accrualContainer: {
+    flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    gap: 30,
+    display: "flex",
+    alignItems: "flex-start",
+    borderRadius: 1,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.1,
+    elevation: 1.8,
+  },
+  accrualTitle: {
+    fontSize: 30,
+    lineHeight: 45,
+    color: colors.mine_shaft,
+  },
+  accuralItemsMainContainer: {
+    width: "100%",
+    gap: 20,
+  },
+  accuralItemContainer: {
+    flex: 1,
+    gap: 10,
+  },
+
+  accuralItemNameContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  accuralItemNameTitle: {
+    fontSize: 20,
+    lineHeight: 30,
+    color: colors.mine_shaft,
+  },
+  accuralItemNameText: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.silver,
+  },
+  accuralItemNamePayment: {
+    fontSize: 14,
+    lineHeight: 21,
   },
 });

@@ -13,11 +13,11 @@ const TEXT1 =
 
 export const Main = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={style.mainContainer}>
+    <ScrollView overScrollMode='never' showsVerticalScrollIndicator={false} style={style.mainContainer}>
       <MainProjectBanner text={TEXT1} />
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
             <ProjectItem text={TEXT} link="/(tabs)/" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
@@ -28,7 +28,7 @@ export const Main = () => {
 
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші забудовники</Title>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
             <ProjectItem text={TEXT} link="/(tabs)/" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
