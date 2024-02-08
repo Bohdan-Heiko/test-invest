@@ -1,30 +1,8 @@
 import React from "react";
-import { FontAwesome, Feather, Octicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 import Colors from "@/constants/colors";
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-function FeatherBarIcon(props: {
-  name: React.ComponentProps<typeof Feather>["name"];
-  color: string;
-}) {
-  return <Feather size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-function OcticonsBarIcon(props: {
-  name: React.ComponentProps<typeof Octicons>["name"];
-  color: string;
-}) {
-  return <Octicons size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import { FeatherBarIcon, FontAwesomeIcon, OcticonsBarIcon } from "@/shared/ui";
 
 export default function TabLayout() {
   return (
@@ -48,11 +26,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="payment"
+        options={{
+          title: "Оплата",
+          tabBarIcon: ({ color }) => <FeatherBarIcon name="activity" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="login"
         options={{
           title: "Логін",
-          href: null,
-          tabBarIcon: ({ color }) => <TabBarIcon name="pagelines" color={color} />,
+          // href: null,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon name="pagelines" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -60,7 +45,7 @@ export default function TabLayout() {
         options={{
           title: "Реєстрація",
           href: null,
-          tabBarIcon: ({ color }) => <TabBarIcon name="rebel" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesomeIcon name="rebel" color={color} />,
         }}
       />
     </Tabs>
