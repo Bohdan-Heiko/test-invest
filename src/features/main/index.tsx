@@ -1,10 +1,9 @@
 import { Button, Input, Paragraph, Title } from "@/shared/ui";
-import { Image, ImageBackground, ScrollView, View, StyleSheet } from "react-native";
+import { ImageBackground, ScrollView, View } from "react-native";
 import { style } from "./_style";
 import { ProjectItem } from "./_components/projectItem";
 import { MainProjectBanner } from "./_components/mainProjectBanner";
 import FormBackgroundImage from "#/images/other/form-question-background.jpeg";
-import { colors } from "@/constants/colors";
 import { OrganizationInfo } from "@/shared/components";
 
 const TEXT =
@@ -14,26 +13,26 @@ const TEXT1 =
 
 export const Main = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={style.mainContainer}>
+    <ScrollView overScrollMode='never' showsVerticalScrollIndicator={false} style={style.mainContainer}>
       <MainProjectBanner text={TEXT1} />
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
           </View>
         </ScrollView>
       </View>
 
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші забудовники</Title>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+        <ScrollView overScrollMode='never' showsHorizontalScrollIndicator={false} horizontal={true}>
           <View style={style.projectsContainer}>
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
-            <ProjectItem text={TEXT} link="/(tabs)/main" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
+            <ProjectItem text={TEXT} link="/(tabs)/" />
           </View>
         </ScrollView>
       </View>

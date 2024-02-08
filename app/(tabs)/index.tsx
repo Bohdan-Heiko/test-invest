@@ -1,5 +1,5 @@
-import { LoginScreen } from "@/features/login";
+import { Main } from "@/features/main";
 
-export default function TabOneScreen() {
-  return <LoginScreen />;
+export default function MainScreen() {
+  return <Main />;
 }
