@@ -96,7 +96,7 @@ export const style = StyleSheet.create({
   },
   backGroundDarkening: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Черный цвет с непрозрачностью 50%
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     borderRadius: 20,
   },
   contentContainer: {

@@ -8,7 +8,8 @@ type ViewStyleProps = View["props"]["style"];
 interface IProps {
   variant?: "primary" | "secondary";
   title?: string;
-  iconName: SVGIconNames
+  iconName: SVGIconNames;
+  iconColor?: string;
   disabled?: boolean;
   onPress?: () => void;
   style?: ViewStyleProps;
@@ -19,6 +20,7 @@ export const ButtonWithIcon: React.FC<IProps> = ({
   title = "",
   disabled,
   iconName,
+  iconColor,
   onPress,
   style,
 }) => {
@@ -56,7 +58,7 @@ export const ButtonWithIcon: React.FC<IProps> = ({
         >
           {title}
         </Text>
-        <SVGIcon name={iconName}  />
+        <SVGIcon name={iconName} color={iconColor} />
       </TouchableOpacity>
     </View>
   );
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 14,
-    gap: 10
+    gap: 10,
   },
   title: {
     fontSize: 18,
