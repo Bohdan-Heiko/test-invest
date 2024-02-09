@@ -43,12 +43,13 @@ const style = StyleSheet.create({
     borderRadius: 10,
     width: "110%",
     flexGrow: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.blue,
     shadowColor: "black",
     shadowOpacity: 1,
     shadowRadius: 20,
     elevation: 10,
     gap: 5,
+    zIndex: 100,
   },
 
   passwordRulesTitle: {

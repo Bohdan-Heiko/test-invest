@@ -34,8 +34,8 @@ export const Input: React.FC<IProps> = ({
         // onChangeText={onChange}
       />
       {iconName && <SVGIcon name={iconName as SVGIconNames} />}
-      {isDotNeed && <View style={style.inputDot} />}
       {children}
+      {isDotNeed && <View style={style.inputDot} />}
     </View>
   );
 };
@@ -43,6 +43,7 @@ export const Input: React.FC<IProps> = ({
 const style = StyleSheet.create({
   inputContainer: {
     height: 52,
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     flexGrow: 1,

@@ -40,6 +40,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="pagelines" color={color} />,
         }}
       />
+       <Tabs.Screen
+        name="(registration)/recover-password"
+        options={{
+          title: "Востановление пароля",
+          // href: null,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="pagelines" color={color} />,
+        }}
+      />
       <Tabs.Screen
         name="registration"
         options={{
