@@ -15,7 +15,11 @@ export const LoginScreen = () => {
         <Input placeHolder="Пароль" iconName="HideEye" styles={{ marginBottom: 10 }} />
         <View style={style.checkBoxContainer}>
           <View style={style.checkBox}>
-            <CheckBox value={checked} onPressHandler={() => setChecked((prev) => !prev)} />
+            <CheckBox
+              value={checked}
+              onPressHandler={() => setChecked((prev) => !prev)}
+              iconSize={{ height: 23, width: 23 }}
+            />
             <Text style={style.chekTitle}>Запам’ятати пароль</Text>
           </View>
           <LinkRedirect href="/(tabs)/registration">Забув пароль</LinkRedirect>

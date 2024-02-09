@@ -1,12 +1,22 @@
 import { ScrollView, View } from "react-native";
 import { style } from "./_style";
-import { ItemText, LinkRedirect, Paragraph, SVGIcon, Title } from "@/shared/ui";
+import {
+  Button,
+  CheckBox,
+  Input,
+  ItemText,
+  LinkRedirect,
+  Paragraph,
+  SVGIcon,
+  Title,
+} from "@/shared/ui";
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons";
 import { colors } from "@/constants/colors";
+import { OrganizationInfo } from "@/shared/components";
 
 export const Payment = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false}>
       <View style={style.mainContainer}>
         <View style={style.descriptionContainer}>
           <View style={style.descriptionTitleContainer}>
@@ -49,9 +59,32 @@ export const Payment = () => {
                 size={25}
                 color={colors.orange}
               />
+              <View style={style.investInfoDescription}>
+                <ItemText style={style.investInfoDescriptionText}>Ціна за 1 кв. м. - 589$</ItemText>
+                <ItemText
+                  style={style.investInfoDescriptionText}
+                >{`Завершення інвестування\n24.01.2025`}</ItemText>
+                <View style={style.investInfoDescriptionPaymentCard}>
+                  <ItemText>Оплата картами</ItemText>
+                  <SVGIcon name="Visa_Logo" width={25} height={16} />
+                  <SVGIcon name="Visa_Name" width={37} height={24} />
+                </View>
+              </View>
             </View>
+            <Input placeHolder="Введіть суму" isDotNeed={false} />
+
+            <View style={style.checkBoxCoantiner}>
+              <CheckBox
+                value={true}
+                onPressHandler={() => {}}
+                iconSize={{ height: 23, width: 23 }}
+              />
+              <ItemText style={style.politicCheck}>Ознайомлений з умовами використання</ItemText>
+            </View>
+            <Button title="Далі" />
           </View>
         </View>
+        <OrganizationInfo />
       </View>
     </ScrollView>
   );

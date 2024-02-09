@@ -97,4 +97,34 @@ export const style = StyleSheet.create({
     alignItems: "flex-start",
     gap: 13,
   },
+  investInfoDescription: {
+    gap: 10,
+  },
+  investInfoDescriptionText: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.dove_graya,
+    textAlign: "left",
+  },
+  investInfoDescriptionPaymentCard: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
+  },
+
+  checkBoxCoantiner: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 13,
+    // flex: 1 / 4,
+  },
+  politicCheck: {
+    textAlign: "left",
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.mine_shaft,
+    flex: 2 / 3,
+  },
 });
