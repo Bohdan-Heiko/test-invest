@@ -55,6 +55,7 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
     gap: 20,
+    backgroundColor: colors.white,
 
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -62,7 +63,7 @@ export const style = StyleSheet.create({
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.1,
-    elevation: 1.8,
+    elevation: 4,
   },
   personalInfoTitle: {
     fontFamily: "Inter600",
@@ -120,6 +121,60 @@ export const style = StyleSheet.create({
   },
   // PERSONAL INFO
 
+  //RIELTOR ACCOUNT
+  rieltorInfoMainContainer: {
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    gap: 15,
+    backgroundColor: colors.white,
+
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.1,
+    elevation: 4,
+  },
+  descriptionContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 5,
+  },
+  descriptionTitle: {
+    fontSize: 30,
+    lineHeight: 45,
+    color: colors.mine_shaft,
+  },
+  description: {
+    textAlign: "left",
+    fontSize: 18,
+    lineHeight: 27,
+    color: colors.mine_shaft,
+  },
+  infoContainer: {
+    gap: 15,
+  },
+  infoLinksContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 10,
+  },
+  infoLinksTitleContainer: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  infoLinksTitle: {
+    fontSize: 18,
+    lineHeight: 30,
+    color: colors.mine_shaft,
+  },
+  //RIELTOR ACCOUNT
+
   //ACCRUAL
   accrualContainer: {
     flex: 1,
@@ -128,14 +183,15 @@ export const style = StyleSheet.create({
     gap: 30,
     display: "flex",
     alignItems: "flex-start",
-    borderRadius: 1,
+    backgroundColor: colors.white,
+
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.1,
-    elevation: 1.8,
+    elevation: 4,
   },
   accrualTitle: {
     fontSize: 30,

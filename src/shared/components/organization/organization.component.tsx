@@ -1,33 +1,27 @@
-import { colors } from "@/constants/colors"
-import { Paragraph, TextInfo, Title } from "@/shared/ui"
-import { StyleSheet, View } from "react-native"
-
+import { colors } from "@/constants/colors";
+import { Paragraph, TextInfo, Title } from "@/shared/ui";
+import { StyleSheet, View } from "react-native";
 
 export const OrganizationInfo = () => {
-
   return (
     <View style={style.organizationContainer}>
-        <Title style={style.mainTitle}>Bober</Title>
-        <TextInfo
-          textOne="Адреса:"
-          textTwo="м. Буча, вул. Т. Шевченка, 43, офіс 1"
-          style={{ marginBottom: 20 }}
-        />
-        <TextInfo textOne="Телефон:" textTwo="+ 38 (097) 145 67 89" style={{ marginBottom: 20 }} />
-        <TextInfo
-          textOne="Пошта:"
-          textTwo="BuchaProInvest@gmail.com"
-          style={{ marginBottom: 20 }}
-        />
-        <TextInfo textOne="Години работи:" textTwo="8:00 - 18:00" style={{ marginBottom: 30 }} />
-        <View style={style.infoContainer}>
-          <Paragraph style={style.infoText}>© BuchaProInvest, 2023</Paragraph>
-          <Paragraph style={style.infoText}>Політика конфіденціальності</Paragraph>
-          <Paragraph style={style.infoText}>Договір оферти</Paragraph>
-        </View>
+      <Title style={style.mainTitle}>Bober</Title>
+      <TextInfo
+        textOne="Адреса:"
+        textTwo="м. Буча, вул. Т. Шевченка, 43, офіс 1"
+        style={{ marginBottom: 20 }}
+      />
+      <TextInfo textOne="Телефон:" textTwo="+ 38 (097) 145 67 89" style={{ marginBottom: 20 }} />
+      <TextInfo textOne="Пошта:" textTwo="BuchaProInvest@gmail.com" style={{ marginBottom: 20 }} />
+      <TextInfo textOne="Години работи:" textTwo="8:00 - 18:00" style={{ marginBottom: 30 }} />
+      <View style={style.infoContainer}>
+        <Paragraph style={style.infoText}>© BuchaProInvest, 2023</Paragraph>
+        <Paragraph style={style.infoText}>Політика конфіденціальності</Paragraph>
+        <Paragraph style={style.infoText}>Договір оферти</Paragraph>
       </View>
-  )
-}
+    </View>
+  );
+};
 
 const style = StyleSheet.create({
   organizationContainer: {
@@ -36,6 +30,8 @@ const style = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
+    zIndex: 90,
+    opacity: 1,
   },
   mainTitle: {
     fontFamily: "Inter500",
@@ -55,4 +51,4 @@ const style = StyleSheet.create({
     lineHeight: 24,
     color: colors.dove_graya,
   },
-})
+});

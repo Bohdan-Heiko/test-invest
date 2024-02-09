@@ -11,8 +11,4 @@ export * from "./dot/dot.component";
 export * from "./button-with-icon/buttonWithIocn.component";
 export * from "./text/text.components";
 export * from "./devider/devider.component";
-export * from "./icons/simpleBar.icon";
-export * from "./icons/octiconsBar.icon";
-export * from "./icons/featherBar.icon";
-export * from "./icons/fontAwesome.icon";
-
+export * from "./icons/vectorExpoIcons";

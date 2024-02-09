@@ -10,25 +10,16 @@ interface IProps {
   styles?: ViewStyle;
   iconName?: SVGIconNames | undefined;
   children?: ReactElement;
-  // variant?: "primary" | "secondary";
-  // title?: string;
-  // disabled?: boolean;
-  // onPress?: () => void;
+  isDotNeed?: boolean;
 }
-// type TextProps = View["props"];
 
-export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName, children }) => {
-  // const backgroundColor = {
-  //   primary: colors.blue,
-  //   secondary: colors.white,
-  // }[variant];
-
-  // const titleColor = useMemo(() => {
-  //   if (disabled) return colors.mine_shaft;
-  //   else if (variant === "primary") return colors.white;
-  //   else if (variant === "secondary") return colors.blue;
-  // }, [variant, disabled]);
-
+export const Input: React.FC<IProps> = ({
+  styles,
+  iconName,
+  children,
+  placeHolder,
+  isDotNeed = true,
+}) => {
   return (
     <View style={[style.inputContainer, styles]}>
       <TextInput
@@ -43,8 +34,8 @@ export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName, childre
         // onChangeText={onChange}
       />
       {iconName && <SVGIcon name={iconName as SVGIconNames} />}
-      <View style={style.inputDot} />
       {children}
+      {isDotNeed && <View style={style.inputDot} />}
     </View>
   );
 };
@@ -52,6 +43,7 @@ export const Input: React.FC<IProps> = ({ styles, placeHolder, iconName, childre
 const style = StyleSheet.create({
   inputContainer: {
     height: 52,
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     flexGrow: 1,

@@ -6,6 +6,7 @@ import { AccrualAccount } from "./_components/accrualAccount";
 import { OrganizationInfo } from "@/shared/components";
 import { PersonalInformation } from "./_components/personalInformation";
 import { MyProjects } from "./_components/myProjects";
+import { RieltorInformation } from "./_components/rieltorInformation";
 
 export const Account = () => {
   return (
@@ -17,6 +18,7 @@ export const Account = () => {
       <View style={style.mainContainer}>
         <YourAccount />
         <PersonalInformation />
+        <RieltorInformation />
         <AccrualAccount title="Нарахування" />
         <AccrualAccount title="Інвестиції" />
         <MyProjects />
