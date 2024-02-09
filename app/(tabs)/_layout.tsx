@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 
 import Colors from "@/constants/colors";
-import { FeatherBarIcon, FontAwesomeIcon, OcticonsBarIcon } from "@/shared/ui";
+import { VectorExpoIcons } from "@/shared/ui";
 
 export default function TabLayout() {
   return (
@@ -15,21 +15,21 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Головна",
-          tabBarIcon: ({ color }) => <OcticonsBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='Octicons' name="home" color={color} />,
         }}
       />
       <Tabs.Screen
         name="account"
         options={{
           title: "Аккаунт",
-          tabBarIcon: ({ color }) => <FeatherBarIcon name="user" color={color} />,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='Feather' name="user" color={color} />,
         }}
       />
       <Tabs.Screen
         name="payment"
         options={{
           title: "Оплата",
-          tabBarIcon: ({ color }) => <FeatherBarIcon name="activity" color={color} />,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='Feather' name="activity" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -37,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: "Логін",
           // href: null,
-          tabBarIcon: ({ color }) => <FontAwesomeIcon name="pagelines" color={color} />,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="pagelines" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -45,7 +45,7 @@ export default function TabLayout() {
         options={{
           title: "Реєстрація",
           href: null,
-          tabBarIcon: ({ color }) => <FontAwesomeIcon name="rebel" color={color} />,
+          tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="rebel" color={color} />,
         }}
       />
     </Tabs>

@@ -27,5 +27,6 @@ export const colors = {
   silver: "#CCCCCC",
   alto: "#E0E0E0",
   concrete: "#F3F3F3",
-  red: '#FF3C52'
+  red: "#FF3C52",
+  orange: "#FF9900",
 };
