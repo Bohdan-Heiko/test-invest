@@ -1,7 +1,9 @@
-import { ScrollView, View } from "react-native";
-import { style } from "./_style";
-import { OrganizationInfo, PasswordRules } from "@/shared/components";
-import { Button, Input, Title } from "@/shared/ui";
+import { ScrollView, View } from "react-native"
+
+import { OrganizationInfo, PasswordRules } from "@/shared/components"
+import { Button, Input, Title } from "@/shared/ui"
+
+import { style } from "./_style"
 
 export const RecoverPassword = () => {
   return (
@@ -10,10 +12,7 @@ export const RecoverPassword = () => {
         <View style={style.recoverPasswordContainer}>
           <Title style={style.recoverPasswordTitle}>Відновлення паролю</Title>
           <View style={style.recoverPasswordFormContainer}>
-            <Input
-              placeHolder="Пароль"
-              styles={{ marginBottom: 10, position: "relative", zIndex: 1000 }}
-            >
+            <Input placeHolder="Пароль" styles={{ marginBottom: 10, position: "relative", zIndex: 1000 }}>
               <PasswordRules />
             </Input>
             <Button title="Скинути пароль" />
@@ -22,5 +21,5 @@ export const RecoverPassword = () => {
         <OrganizationInfo />
       </View>
     </ScrollView>
-  );
-};
+  )
+}

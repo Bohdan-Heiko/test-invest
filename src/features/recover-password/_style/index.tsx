@@ -1,5 +1,6 @@
-import { colors } from "@/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
+
+import { colors } from "@/constants/colors"
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -7,7 +8,7 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    position: "relative",
+    position: "relative"
   },
   recoverPasswordContainer: {
     borderWidth: 2,
@@ -15,14 +16,14 @@ export const style = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 15,
     borderRadius: 10,
-    gap: 16,
+    gap: 16
   },
   recoverPasswordTitle: {
     fontSize: 28,
     lineHeight: 42,
-    color: colors.tundora,
+    color: colors.tundora
   },
   recoverPasswordFormContainer: {
-    gap: 10,
-  },
-});
+    gap: 10
+  }
+})

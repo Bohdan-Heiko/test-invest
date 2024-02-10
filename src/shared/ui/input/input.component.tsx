@@ -1,30 +1,26 @@
-import React, { ReactElement, useMemo } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
-import { colors } from "@/constants/colors";
-import { SVGIcon } from "../svgIcon/svgIcon.component";
-import { SVGIconNames } from "@/types";
+import React, { ReactElement } from "react"
+import { StyleSheet, TextInput, View } from "react-native"
 
-type ViewStyle = View["props"]["style"];
+import { colors } from "@/constants/colors"
+import { SVGIconNames } from "@/types"
+
+import { SVGIcon } from "../svgIcon/svgIcon.component"
+
+type ViewStyle = View["props"]["style"]
 interface IProps {
-  placeHolder: string;
-  styles?: ViewStyle;
-  iconName?: SVGIconNames | undefined;
-  children?: ReactElement;
-  isDotNeed?: boolean;
+  placeHolder: string
+  styles?: ViewStyle
+  iconName?: SVGIconNames | undefined
+  children?: ReactElement
+  isDotNeed?: boolean
 }
 
-export const Input: React.FC<IProps> = ({
-  styles,
-  iconName,
-  children,
-  placeHolder,
-  isDotNeed = true,
-}) => {
+export const Input: React.FC<IProps> = ({ styles, iconName, children, placeHolder, isDotNeed = true }) => {
   return (
     <View style={[style.inputContainer, styles]}>
       <TextInput
         style={{
-          ...style.input,
+          ...style.input
           // color: !errors.name ? styles.input.color : colors.primary,
         }}
         placeholder={placeHolder}
@@ -37,8 +33,8 @@ export const Input: React.FC<IProps> = ({
       {children}
       {isDotNeed && <View style={style.inputDot} />}
     </View>
-  );
-};
+  )
+}
 
 const style = StyleSheet.create({
   inputContainer: {
@@ -52,7 +48,7 @@ const style = StyleSheet.create({
     borderColor: colors.silver,
     borderWidth: 2,
     borderRadius: 50,
-    marginBottom: 10,
+    marginBottom: 10
   },
 
   input: {
@@ -61,7 +57,7 @@ const style = StyleSheet.create({
     fontFamily: "Inter500",
     fontSize: 16,
     lineHeight: 24,
-    color: colors.tundora,
+    color: colors.tundora
   },
 
   inputDot: {
@@ -69,6 +65,6 @@ const style = StyleSheet.create({
     height: 6,
     borderRadius: 3,
     backgroundColor: "red",
-    marginLeft: 10,
-  },
-});
+    marginLeft: 10
+  }
+})

@@ -1,5 +1,6 @@
-import { colors } from "@/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
+
+import { colors } from "@/constants/colors"
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -7,7 +8,7 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    gap: 20,
+    gap: 20
   },
 
   //YOUR ACCOUNT
@@ -16,36 +17,36 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 15,
     paddingVertical: 20,
-    backgroundColor: colors.blue,
+    backgroundColor: colors.blue
   },
   yourAccountInfo: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 30,
+    gap: 30
   },
   yourAccountInfoTitle: {
     color: colors.white,
     fontSize: 24,
-    lineHeight: 34,
+    lineHeight: 34
   },
   yourAccountInfoData: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 14,
+    gap: 14
   },
   yourAccountInfoDataMoneyContainer: {
     display: "flex",
-    alignItems: "flex-start",
+    alignItems: "flex-start"
   },
   yourAccountInfoDataProcent: {
     fontSize: 14,
     lineHeight: 27,
-    color: colors.white,
+    color: colors.white
   },
   yourAccountInfoDataMoney: {
     fontSize: 40,
     lineHeight: 60,
-    color: colors.white,
+    color: colors.white
   },
   //YOUR ACCOUNT
 
@@ -63,61 +64,61 @@ export const style = StyleSheet.create({
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.1,
-    elevation: 4,
+    elevation: 4
   },
   personalInfoTitle: {
     fontFamily: "Inter600",
     fontSize: 30,
     lineHeight: 45,
     textAlign: "left",
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   personalInfoContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15,
+    gap: 15
   },
   personalInfoContainerTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   personalInfoText: {
     fontSize: 20,
     lineHeight: 30,
-    color: colors.dove_graya,
+    color: colors.dove_graya
   },
 
   yourRieltorContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15,
+    gap: 15
   },
   yourRieltorTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   yourRieltorInfo: {
     fontSize: 20,
     lineHeight: 30,
     textAlign: "left",
-    color: colors.tundora,
+    color: colors.tundora
   },
 
   functionsContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15,
+    gap: 15
   },
   functionsTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   functionsLinks: {
     fontSize: 20,
-    lineHeight: 30,
+    lineHeight: 30
   },
   // PERSONAL INFO
 
@@ -135,43 +136,43 @@ export const style = StyleSheet.create({
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.1,
-    elevation: 4,
+    elevation: 4
   },
   descriptionContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 5,
+    gap: 5
   },
   descriptionTitle: {
     fontSize: 30,
     lineHeight: 45,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   description: {
     textAlign: "left",
     fontSize: 18,
     lineHeight: 27,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   infoContainer: {
-    gap: 15,
+    gap: 15
   },
   infoLinksContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 10,
+    gap: 10
   },
   infoLinksTitleContainer: {
     display: "flex",
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   infoLinksTitle: {
     fontSize: 18,
     lineHeight: 30,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   //RIELTOR ACCOUNT
 
@@ -191,41 +192,41 @@ export const style = StyleSheet.create({
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.1,
-    elevation: 4,
+    elevation: 4
   },
   accrualTitle: {
     fontSize: 30,
     lineHeight: 45,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   accuralItemsMainContainer: {
     width: "100%",
-    gap: 20,
+    gap: 20
   },
   accuralItemContainer: {
     flex: 1,
-    gap: 10,
+    gap: 10
   },
 
   accuralItemNameContainer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   accuralItemNameTitle: {
     fontSize: 20,
     lineHeight: 30,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   accuralItemNameText: {
     fontSize: 14,
     lineHeight: 21,
-    color: colors.silver,
+    color: colors.silver
   },
   accuralItemNamePayment: {
     fontSize: 14,
-    lineHeight: 21,
+    lineHeight: 21
   },
   //ACCRUAL
 
@@ -234,16 +235,16 @@ export const style = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    gap: 20,
+    gap: 20
   },
   myProjectTitle: {
     fontSize: 24,
     lineHeight: 42,
-    color: colors.mine_shaft,
+    color: colors.mine_shaft
   },
   projectsContainer: {
     gap: 20,
     display: "flex",
-    flexDirection: "row",
-  },
-});
+    flexDirection: "row"
+  }
+})

@@ -1,11 +1,12 @@
-import { colors } from "@/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
+
+import { colors } from "@/constants/colors"
 
 export const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
 
   // Account section
@@ -15,23 +16,23 @@ export const style = StyleSheet.create({
     borderColor: colors.blue,
     paddingHorizontal: 10,
     paddingVertical: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   title: {
     color: colors.tundora,
     marginBottom: 16,
-    lineHeight: 42,
+    lineHeight: 42
   },
   accountInfo: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+    gap: 10
   },
   accountInfoText: {
     fontSize: 14,
     lineHeight: 21,
-    color: colors.silver,
-  },
-});
+    color: colors.silver
+  }
+})

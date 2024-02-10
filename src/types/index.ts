@@ -1,1 +1,1 @@
-export { SVGIconNames } from "./icons";
+export { SVGIconNames } from "./icons"

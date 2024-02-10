@@ -1,5 +1,6 @@
-import { colors } from "@/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
+
+import { colors } from "@/constants/colors"
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -7,7 +8,7 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    gap: 20,
+    gap: 20
   },
 
   // DESCRIPTION
@@ -24,25 +25,25 @@ export const style = StyleSheet.create({
     shadowOpacity: 0.1,
     elevation: 4,
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   descriptionTitleContainer: {
     width: "100%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   descriptionTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.tundora,
+    color: colors.tundora
   },
   descriptionText: {
     fontSize: 14,
     lineHeight: 21,
     textAlign: "left",
-    color: colors.dove_graya,
+    color: colors.dove_graya
   },
 
   // PAYMENT
@@ -52,31 +53,31 @@ export const style = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 15,
     borderRadius: 10,
-    gap: 16,
+    gap: 16
   },
   titleContainer: {
-    gap: 8,
+    gap: 8
   },
   title: {
     fontSize: 28,
     lineHeight: 42,
-    color: colors.tundora,
+    color: colors.tundora
   },
   text: {
     fontSize: 20,
     lineHeight: 30,
-    color: colors.dove_graya,
+    color: colors.dove_graya
   },
 
   paymentContainer: {
-    gap: 16,
+    gap: 16
   },
   paymentMethodsContainer: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    gap: 10,
+    gap: 10
   },
   paymentMethod: {
     display: "flex",
@@ -88,36 +89,36 @@ export const style = StyleSheet.create({
     borderColor: colors.blue,
     paddingVertical: 17,
     paddingHorizontal: 24,
-    flex: 1 / 2,
+    flex: 1 / 2
   },
 
   investInfoContainer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-start",
-    gap: 13,
+    gap: 13
   },
   investInfoDescription: {
-    gap: 10,
+    gap: 10
   },
   investInfoDescriptionText: {
     fontSize: 14,
     lineHeight: 21,
     color: colors.dove_graya,
-    textAlign: "left",
+    textAlign: "left"
   },
   investInfoDescriptionPaymentCard: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 10,
+    gap: 10
   },
 
   checkBoxCoantiner: {
     display: "flex",
     flexDirection: "row",
-    gap: 13,
+    gap: 13
     // flex: 1 / 4,
   },
   politicCheck: {
@@ -125,6 +126,6 @@ export const style = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     color: colors.mine_shaft,
-    flex: 2 / 3,
-  },
-});
+    flex: 2 / 3
+  }
+})

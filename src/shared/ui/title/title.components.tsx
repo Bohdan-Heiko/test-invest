@@ -1,13 +1,14 @@
-import { Text, StyleSheet } from "react-native";
-import { colors } from "@/constants/colors";
+import { StyleSheet, Text } from "react-native"
 
-type TextProps = Text["props"];
+import { colors } from "@/constants/colors"
+
+type TextProps = Text["props"]
 
 export const Title = (props: TextProps) => {
-  const { style, ...otherProps } = props;
+  const { style, ...otherProps } = props
 
-  return <Text style={[styles.text, style]} {...otherProps} />;
-};
+  return <Text style={[styles.text, style]} {...otherProps} />
+}
 
 const styles = StyleSheet.create({
   text: {
@@ -15,6 +16,6 @@ const styles = StyleSheet.create({
     fontFamily: "Inter500",
     lineHeight: 29,
     color: colors.dove_graya,
-    textAlign: "center",
-  },
-});
+    textAlign: "center"
+  }
+})

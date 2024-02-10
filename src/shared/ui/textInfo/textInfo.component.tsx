@@ -1,13 +1,14 @@
-import { Text, StyleSheet, View } from "react-native";
-import { colors } from "@/constants/colors";
-import { FC } from "react";
+import { FC } from "react"
+import { StyleSheet, Text, View } from "react-native"
 
-type TextProps = View["props"]["style"];
+import { colors } from "@/constants/colors"
+
+type TextProps = View["props"]["style"]
 
 interface ItextInfoProps {
-  style?: TextProps;
-  textOne: string;
-  textTwo: string;
+  style?: TextProps
+  textOne: string
+  textTwo: string
 }
 
 export const TextInfo: FC<ItextInfoProps> = ({ textOne, textTwo, style }) => {
@@ -16,24 +17,24 @@ export const TextInfo: FC<ItextInfoProps> = ({ textOne, textTwo, style }) => {
       <Text style={styles.textOne}>{textOne}</Text>
       <Text style={styles.textTwo}>{textTwo}</Text>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column"
   },
   textOne: {
     fontFamily: "Inter500",
     fontSize: 18,
     lineHeight: 27,
     color: colors.blue,
-    marginBottom: 8,
+    marginBottom: 8
   },
   textTwo: {
     fontFamily: "Inter500",
     fontSize: 18,
-    lineHeight: 27,
-  },
-});
+    lineHeight: 27
+  }
+})

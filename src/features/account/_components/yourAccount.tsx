@@ -1,7 +1,9 @@
-import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui";
-import { Text, View } from "react-native";
-import { style } from "../_style";
-import { colors } from "@/constants/colors";
+import { Text, View } from "react-native"
+
+import { colors } from "@/constants/colors"
+import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui"
+
+import { style } from "../_style"
 
 export const YourAccount = () => {
   return (
@@ -26,5 +28,5 @@ export const YourAccount = () => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}

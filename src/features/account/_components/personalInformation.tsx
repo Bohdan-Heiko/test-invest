@@ -1,6 +1,8 @@
-import { View } from "react-native";
-import { style } from "../_style";
-import { ItemText, LinkRedirect, Title } from "@/shared/ui";
+import { View } from "react-native"
+
+import { ItemText, LinkRedirect, Title } from "@/shared/ui"
+
+import { style } from "../_style"
 
 export const PersonalInformation = () => {
   return (
@@ -30,5 +32,5 @@ export const PersonalInformation = () => {
         </LinkRedirect>
       </View>
     </View>
-  );
-};
+  )
+}

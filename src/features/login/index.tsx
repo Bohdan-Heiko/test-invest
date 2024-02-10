@@ -1,11 +1,13 @@
-import { ScrollView, Text, View } from "react-native";
-import { style } from "./_style";
-import { Button, CheckBox, Input, LinkRedirect, Paragraph, TextInfo, Title } from "@/shared/ui";
-import { useState } from "react";
-import { OrganizationInfo } from "@/shared/components";
+import { useState } from "react"
+import { ScrollView, Text, View } from "react-native"
+
+import { OrganizationInfo } from "@/shared/components"
+import { Button, CheckBox, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
+
+import { style } from "./_style"
 
 export const LoginScreen = () => {
-  const [checked, setChecked] = useState<boolean>(false);
+  const [checked, setChecked] = useState < boolean > false
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       {/* Account section */}
@@ -35,5 +37,5 @@ export const LoginScreen = () => {
 
       <OrganizationInfo />
     </ScrollView>
-  );
-};
+  )
+}

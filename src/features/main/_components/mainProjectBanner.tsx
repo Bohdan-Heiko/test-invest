@@ -1,11 +1,14 @@
-import { Image, View } from "react-native";
-import { style } from "../_style";
-import { ButtonWithIcon, Paragraph } from "@/shared/ui";
-import mainImg from "#/images/invests/main.jpeg";
-import { FC } from "react";
+import { FC } from "react"
+import { Image, View } from "react-native"
+
+import { ButtonWithIcon, Paragraph } from "@/shared/ui"
+
+import mainImg from "#/images/invests/main.jpeg"
+
+import { style } from "../_style"
 
 interface IMainProjectBannerProps {
-  text: string;
+  text: string
 }
 
 export const MainProjectBanner: FC<IMainProjectBannerProps> = ({ text }) => {
@@ -13,11 +16,11 @@ export const MainProjectBanner: FC<IMainProjectBannerProps> = ({ text }) => {
     <View style={style.projectContainer}>
       <Image style={style.projectImg} source={mainImg} />
       <Paragraph style={style.projectText}>
-        Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та
-        зручне місцерозташування задля створення прекрасного життєвого простору.
+        Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне
+        місцерозташування задля створення прекрасного життєвого простору.
         {text}
       </Paragraph>
       <ButtonWithIcon title="Інвестувати" iconName="Arrow_Up_Right" />
     </View>
-  );
-};
+  )
+}

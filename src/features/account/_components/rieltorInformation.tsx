@@ -1,29 +1,29 @@
-import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui";
-import { View } from "react-native";
-import { style } from "../_style";
-import { colors } from "@/constants/colors";
+import { View } from "react-native"
+
+import { colors } from "@/constants/colors"
+import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
+
+import { style } from "../_style"
 
 export const RieltorInformation = () => {
   return (
     <View style={style.rieltorInfoMainContainer}>
       <View style={style.descriptionContainer}>
         <Title style={style.descriptionTitle}>Посилання</Title>
-        <Paragraph style={style.description}>
-          Діліться посиланням, щоб ваші клієнти легко знайшли вас
-        </Paragraph>
+        <Paragraph style={style.description}>Діліться посиланням, щоб ваші клієнти легко знайшли вас</Paragraph>
       </View>
       <View style={style.infoContainer}>
         <View style={style.infoLinksContainer}>
           <View style={style.infoLinksTitleContainer}>
             <Title style={style.infoLinksTitle}>Реферальне посилання</Title>
-            <VectorExpoIcons type='Octicons' name="copy" color={colors.blue} size={18} />
+            <VectorExpoIcons type="Octicons" name="copy" color={colors.blue} size={18} />
           </View>
           <ItemText>https://buchaproinvest/uk</ItemText>
         </View>
         <View style={style.infoLinksContainer}>
           <View style={style.infoLinksTitleContainer}>
             <Title style={style.infoLinksTitle}>Код для пошуку</Title>
-            <VectorExpoIcons type='Octicons' name="copy" color={colors.blue} size={18} />
+            <VectorExpoIcons type="Octicons" name="copy" color={colors.blue} size={18} />
           </View>
           <ItemText>qwe345</ItemText>
         </View>
@@ -36,5 +36,5 @@ export const RieltorInformation = () => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}

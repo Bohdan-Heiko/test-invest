@@ -1,13 +1,14 @@
-import React from "react";
-import { View, TouchableOpacity } from "react-native";
-import { SVGIcon } from "../svgIcon/svgIcon.component";
-import { colors } from "@/constants/colors";
+import React from "react"
+import { TouchableOpacity, View } from "react-native"
 
+import { colors } from "@/constants/colors"
+
+import { SVGIcon } from "../svgIcon/svgIcon.component"
 
 interface IProps {
-  value: boolean;
-  iconSize: Record<"width" | "height", number>;
-  onPressHandler: (flag: boolean) => void;
+  value: boolean
+  iconSize: Record<"width" | "height", number>
+  onPressHandler: (flag: boolean) => void
 }
 
 export const CheckBox: React.FC<IProps> = ({ value, onPressHandler, iconSize }) => {
@@ -18,7 +19,7 @@ export const CheckBox: React.FC<IProps> = ({ value, onPressHandler, iconSize }) 
           height: 22,
           width: 22,
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <SVGIcon
@@ -29,5 +30,5 @@ export const CheckBox: React.FC<IProps> = ({ value, onPressHandler, iconSize }) 
         />
       </View>
     </TouchableOpacity>
-  );
-};
+  )
+}

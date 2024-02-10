@@ -1,10 +1,12 @@
-import { ProjectItem } from "@/shared/components";
-import { Title } from "@/shared/ui";
-import { ScrollView, View } from "react-native";
-import { style } from "../_style";
+import { ScrollView, View } from "react-native"
+
+import { ProjectItem } from "@/shared/components"
+import { Title } from "@/shared/ui"
+
+import { style } from "../_style"
 
 const TEXT =
-  "Житловий комплекс розташований в одному з найперспективніших районів міста, забезпечуючи легкий доступ до міської інфраструктури, освітніх установ, медичних центрів і парків.";
+  "Житловий комплекс розташований в одному з найперспективніших районів міста, забезпечуючи легкий доступ до міської інфраструктури, освітніх установ, медичних центрів і парків."
 
 export const MyProjects = () => {
   return (
@@ -18,5 +20,5 @@ export const MyProjects = () => {
         </View>
       </ScrollView>
     </View>
-  );
-};
+  )
+}

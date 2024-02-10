@@ -1,20 +1,17 @@
-import { ScrollView, View } from "react-native";
-import { style } from "./_style";
+import { ScrollView, View } from "react-native"
 
-import { YourAccount } from "./_components/yourAccount";
-import { AccrualAccount } from "./_components/accrualAccount";
-import { OrganizationInfo } from "@/shared/components";
-import { PersonalInformation } from "./_components/personalInformation";
-import { MyProjects } from "./_components/myProjects";
-import { RieltorInformation } from "./_components/rieltorInformation";
+import { OrganizationInfo } from "@/shared/components"
+
+import { AccrualAccount } from "./_components/accrualAccount"
+import { MyProjects } from "./_components/myProjects"
+import { PersonalInformation } from "./_components/personalInformation"
+import { RieltorInformation } from "./_components/rieltorInformation"
+import { YourAccount } from "./_components/yourAccount"
+import { style } from "./_style"
 
 export const Account = () => {
   return (
-    <ScrollView
-      overScrollMode="never"
-      nestedScrollEnabled={false}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView overScrollMode="never" nestedScrollEnabled={false} showsVerticalScrollIndicator={false}>
       <View style={style.mainContainer}>
         <YourAccount />
         <PersonalInformation />
@@ -25,5 +22,5 @@ export const Account = () => {
         <OrganizationInfo />
       </View>
     </ScrollView>
-  );
-};
+  )
+}
