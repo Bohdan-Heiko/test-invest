@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react"
+import { View } from "react-native"
+
 import {
   AntDesign,
   Entypo,
@@ -12,9 +14,8 @@ import {
   MaterialIcons,
   Octicons,
   SimpleLineIcons,
-  Zocial,
-} from "@expo/vector-icons";
-import { View } from "react-native";
+  Zocial
+} from "@expo/vector-icons"
 
 type IconType =
   | typeof AntDesign
@@ -29,7 +30,7 @@ type IconType =
   | typeof MaterialIcons
   | typeof Octicons
   | typeof SimpleLineIcons
-  | typeof Zocial;
+  | typeof Zocial
 
 const VECTOR_ICONS_TYPE: IconType = {
   AntDesign: AntDesign,
@@ -44,27 +45,25 @@ const VECTOR_ICONS_TYPE: IconType = {
   MaterialIcons: MaterialIcons,
   Octicons: Octicons,
   SimpleLineIcons: SimpleLineIcons,
-  Zocial: Zocial,
-};
+  Zocial: Zocial
+}
 
 interface BarIconProps<T extends keyof IconType> {
-  type: T;
-  name: IconType[T] extends React.ComponentType<infer P> ? keyof P : string;
-  color?: string;
-  size?: number;
-  style?: View["props"]["style"];
+  type: T
+  name: IconType[T] extends React.ComponentType<infer P> ? keyof P : string
+  color?: string
+  size?: number
+  style?: View["props"]["style"]
 }
 
 export function VectorExpoIcons<T extends keyof IconType>(props: BarIconProps<T>) {
-  const { type, name, color, size = 28, style: styleProps } = props;
-  const ChosenIcon = VECTOR_ICONS_TYPE[type];
+  const { type, name, color, size = 28, style: styleProps } = props
+  const ChosenIcon = VECTOR_ICONS_TYPE[type]
 
   if (!ChosenIcon) {
-    console.error(`Invalid icon type: ${type as IconType}`);
-    return null;
+    console.error(`Invalid icon type: ${type as IconType}`)
+    return null
   }
 
-  return (
-    <ChosenIcon name={name} size={size} color={color} style={[styleProps,{ marginBottom: -3, }]} />
-  );
+  return <ChosenIcon name={name} size={size} color={color} style={[styleProps, { marginBottom: -3 }]} />
 }

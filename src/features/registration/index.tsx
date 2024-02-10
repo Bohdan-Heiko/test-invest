@@ -1,7 +1,9 @@
-import { ScrollView, View } from "react-native";
-import { style } from "./_style";
-import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui";
-import { OrganizationInfo, PasswordRules } from "@/shared/components";
+import { ScrollView, View } from "react-native"
+
+import { OrganizationInfo, PasswordRules } from "@/shared/components"
+import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
+
+import { style } from "./_style"
 
 export const Registration = () => {
   return (
@@ -13,11 +15,7 @@ export const Registration = () => {
         <Input placeHolder="ІПН" />
         <Input placeHolder="Дата народження" />
         <Input placeHolder="Пошта" />
-        <Input
-          placeHolder="Пароль"
-          iconName="HideEye"
-          styles={{ marginBottom: 10, position: "relative", zIndex: 100 }}
-        >
+        <Input placeHolder="Пароль" iconName="HideEye" styles={{ marginBottom: 10, position: "relative", zIndex: 100 }}>
           <PasswordRules />
         </Input>
         <Input placeHolder="Повторіть пароль" />
@@ -33,5 +31,5 @@ export const Registration = () => {
 
       <OrganizationInfo />
     </ScrollView>
-  );
-};
+  )
+}

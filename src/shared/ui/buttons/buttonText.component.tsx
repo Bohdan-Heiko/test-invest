@@ -1,45 +1,40 @@
-import React, { useMemo } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { colors } from "@/constants/colors";
+import React, { useMemo } from "react"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-type ViewStyleProps = View["props"]["style"];
+import { colors } from "@/constants/colors"
+
+type ViewStyleProps = View["props"]["style"]
 interface IProps {
-  variant?: "primary" | "secondary";
-  title?: string;
-  disabled?: boolean;
-  onPress?: () => void;
-  style?: ViewStyleProps;
+  variant?: "primary" | "secondary"
+  title?: string
+  disabled?: boolean
+  onPress?: () => void
+  style?: ViewStyleProps
 }
 
-export const Button: React.FC<IProps> = ({
-  variant = "primary",
-  title = "",
-  disabled,
-  onPress,
-  style,
-}) => {
+export const Button: React.FC<IProps> = ({ variant = "primary", title = "", disabled, onPress, style }) => {
   const titleColor = useMemo(() => {
-    if (variant === "primary") return disabled ? colors.silver : colors.white;
-    else if (variant === "secondary") return disabled ? colors.silver : colors.blue;
-  }, [variant, disabled]);
+    if (variant === "primary") return disabled ? colors.silver : colors.white
+    else if (variant === "secondary") return disabled ? colors.silver : colors.blue
+  }, [variant, disabled])
 
   const backgroundColor = useMemo(() => {
     if (variant === "primary") {
-      return disabled ? colors.silver : colors.blue;
+      return disabled ? colors.silver : colors.blue
     }
     if (variant === "secondary") {
-      return colors.white;
+      return colors.white
     }
-  }, [variant, disabled]);
+  }, [variant, disabled])
 
   const borderColor = useMemo(() => {
     if (variant === "primary") {
-      return disabled ? colors.silver : colors.blue;
+      return disabled ? colors.silver : colors.blue
     }
     if (variant === "secondary") {
-      return disabled ? colors.silver : colors.blue;
+      return disabled ? colors.silver : colors.blue
     }
-  }, [variant, disabled]);
+  }, [variant, disabled])
 
   return (
     <View style={[styles.container, style, { backgroundColor, borderColor }]}>
@@ -47,15 +42,15 @@ export const Button: React.FC<IProps> = ({
         <Text
           style={{
             ...styles.title,
-            color: titleColor,
+            color: titleColor
           }}
         >
           {title}
         </Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -64,16 +59,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     overflow: "hidden",
     borderColor: colors.blue,
-    borderWidth: 2,
+    borderWidth: 2
   },
   touchable: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 14,
+    paddingVertical: 14
   },
   title: {
     fontSize: 18,
-    fontWeight: "500",
-  },
-});
+    fontWeight: "500"
+  }
+})

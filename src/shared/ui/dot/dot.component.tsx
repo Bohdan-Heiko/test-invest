@@ -1,17 +1,18 @@
-import { colors } from "@/constants/colors";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native"
 
-type ViewStyle = View["props"]["style"];
+import { colors } from "@/constants/colors"
+
+type ViewStyle = View["props"]["style"]
 
 export const Dot = (style?: ViewStyle) => {
-  return <View style={[styles.dotContainer, style]}></View>;
-};
+  return <View style={[styles.dotContainer, style]}></View>
+}
 
 const styles = StyleSheet.create({
   dotContainer: {
     width: 6,
     height: 6,
     backgroundColor: colors.red,
-    borderRadius: 3,
-  },
-});
+    borderRadius: 3
+  }
+})

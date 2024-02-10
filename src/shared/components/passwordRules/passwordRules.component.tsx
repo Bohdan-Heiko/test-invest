@@ -1,6 +1,7 @@
-import { colors } from "@/constants/colors";
-import { Dot, Paragraph, Title } from "@/shared/ui";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native"
+
+import { colors } from "@/constants/colors"
+import { Dot, Paragraph, Title } from "@/shared/ui"
 
 export const PasswordRules = () => {
   return (
@@ -27,8 +28,8 @@ export const PasswordRules = () => {
         <Paragraph style={style.rulesText}>від 1 букви з нижнім регістром</Paragraph>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const style = StyleSheet.create({
   passwordRulesContainer: {
@@ -49,24 +50,24 @@ const style = StyleSheet.create({
     shadowRadius: 20,
     elevation: 10,
     gap: 5,
-    zIndex: 100,
+    zIndex: 100
   },
 
   passwordRulesTitle: {
     color: colors.mine_shaft,
     fontSize: 18,
-    lineHeight: 27,
+    lineHeight: 27
   },
 
   passwordRules: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 7,
+    gap: 7
   },
 
   rulesText: {
     fontSize: 14,
-    lineHeight: 14,
-  },
-});
+    lineHeight: 14
+  }
+})

@@ -1,13 +1,15 @@
-import { Button, Devider, ItemText, Title } from "@/shared/ui";
-import { View } from "react-native";
-import { style } from "../_style";
-import { FC } from "react";
+import { FC } from "react"
+import { View } from "react-native"
+
+import { Button, Devider, ItemText, Title } from "@/shared/ui"
+
+import { style } from "../_style"
 
 interface IAccrualAccount {
   title: string
 }
 
-export const AccrualAccount: FC<IAccrualAccount> = ({title}) => {
+export const AccrualAccount: FC<IAccrualAccount> = ({ title }) => {
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
@@ -52,5 +54,5 @@ export const AccrualAccount: FC<IAccrualAccount> = ({title}) => {
       </View>
       <Button title="Дивитись всі" />
     </View>
-  );
-};
+  )
+}

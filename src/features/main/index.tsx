@@ -1,22 +1,21 @@
-import { Button, Input, Paragraph, Title } from "@/shared/ui";
-import { ImageBackground, ScrollView, View } from "react-native";
-import { style } from "./_style";
-import { MainProjectBanner } from "./_components/mainProjectBanner";
-import FormBackgroundImage from "#/images/other/form-question-background.jpeg";
-import { OrganizationInfo, ProjectItem } from "@/shared/components";
+import { ImageBackground, ScrollView, View } from "react-native"
+
+import { OrganizationInfo, ProjectItem } from "@/shared/components"
+import { Button, Input, Paragraph, Title } from "@/shared/ui"
+
+import FormBackgroundImage from "#/images/other/form-question-background.jpeg"
+
+import { MainProjectBanner } from "./_components/mainProjectBanner"
+import { style } from "./_style"
 
 const TEXT =
-  "Житловий комплекс розташований в одному з найперспективніших районів міста, забезпечуючи легкий доступ до міської інфраструктури, освітніх установ, медичних центрів і парків.";
+  "Житловий комплекс розташований в одному з найперспективніших районів міста, забезпечуючи легкий доступ до міської інфраструктури, освітніх установ, медичних центрів і парків."
 const TEXT1 =
-  "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору.";
+  "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору."
 
 export const Main = () => {
   return (
-    <ScrollView
-      overScrollMode="never"
-      showsVerticalScrollIndicator={false}
-      style={style.mainContainer}
-    >
+    <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} style={style.mainContainer}>
       <MainProjectBanner text={TEXT1} />
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
@@ -49,9 +48,7 @@ export const Main = () => {
         >
           <View style={style.backGroundDarkening} />
           <View style={style.contentContainer}>
-            <Title
-              style={style.contentTitle}
-            >{`Хочете стати інвестором,${"\n"}але є питання?`}</Title>
+            <Title style={style.contentTitle}>{`Хочете стати інвестором,${"\n"}але є питання?`}</Title>
             <Paragraph style={style.contentText}>
               Залиште заявку на безкоштовний дзвінок, ми зв’яжемося з вами протягом 20 хвилин
             </Paragraph>
@@ -66,5 +63,5 @@ export const Main = () => {
       </View>
       <OrganizationInfo />
     </ScrollView>
-  );
-};
+  )
+}
