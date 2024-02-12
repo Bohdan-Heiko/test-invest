@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react"
-import { StyleSheet, TextInput, View } from "react-native"
+import { KeyboardTypeOptions, StyleSheet, TextInput, View } from "react-native"
+import { FieldError, FieldValues } from "react-hook-form"
 
 import { colors } from "@/constants/colors"
 import { SVGIconNames } from "@/types"
@@ -13,25 +14,36 @@ interface IProps {
   iconName?: SVGIconNames | undefined
   children?: ReactElement
   isDotNeed?: boolean
+  fields?: FieldValues
+  error?: FieldError | undefined
+  keyboardType?: KeyboardTypeOptions | undefined
 }
 
-export const Input: React.FC<IProps> = ({ styles, iconName, children, placeHolder, isDotNeed = true }) => {
+export const Input: React.FC<IProps> = ({
+  error,
+  styles,
+  fields,
+  iconName,
+  children,
+  placeHolder,
+  isDotNeed = true,
+  keyboardType = "default"
+}) => {
   return (
-    <View style={[style.inputContainer, styles]}>
+    <View style={[style.inputContainer, styles, { borderColor: error ? colors.red : colors.silver }]}>
       <TextInput
         style={{
           ...style.input
-          // color: !errors.name ? styles.input.color : colors.primary,
         }}
+        {...fields}
         placeholder={placeHolder}
+        keyboardType={keyboardType}
         placeholderTextColor={colors.silver}
-        // value={value}
-        // onBlur={onBlur}
-        // onChangeText={onChange}
+        onChangeText={fields?.onChange}
       />
       {iconName && <SVGIcon name={iconName as SVGIconNames} />}
       {children}
-      {isDotNeed && <View style={style.inputDot} />}
+      {isDotNeed && <View style={[style.inputDot, { backgroundColor: error ? colors.red : colors.green }]} />}
     </View>
   )
 }
@@ -64,7 +76,7 @@ const style = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     marginLeft: 10
   }
 })

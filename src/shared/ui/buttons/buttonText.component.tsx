@@ -12,7 +12,13 @@ interface IProps {
   style?: ViewStyleProps
 }
 
-export const Button: React.FC<IProps> = ({ variant = "primary", title = "", disabled, onPress, style }) => {
+export const Button: React.FC<IProps> = ({
+  variant = "primary",
+  title = "",
+  disabled,
+  onPress,
+  style
+}) => {
   const titleColor = useMemo(() => {
     if (variant === "primary") return disabled ? colors.silver : colors.white
     else if (variant === "secondary") return disabled ? colors.silver : colors.blue

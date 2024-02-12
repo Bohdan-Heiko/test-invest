@@ -7,7 +7,11 @@ export const OrganizationInfo = () => {
   return (
     <View style={style.organizationContainer}>
       <Title style={style.mainTitle}>Bober</Title>
-      <TextInfo textOne="Адреса:" textTwo="м. Буча, вул. Т. Шевченка, 43, офіс 1" style={{ marginBottom: 20 }} />
+      <TextInfo
+        textOne="Адреса:"
+        textTwo="м. Буча, вул. Т. Шевченка, 43, офіс 1"
+        style={{ marginBottom: 20 }}
+      />
       <TextInfo textOne="Телефон:" textTwo="+ 38 (097) 145 67 89" style={{ marginBottom: 20 }} />
       <TextInfo textOne="Пошта:" textTwo="BuchaProInvest@gmail.com" style={{ marginBottom: 20 }} />
       <TextInfo textOne="Години работи:" textTwo="8:00 - 18:00" style={{ marginBottom: 30 }} />

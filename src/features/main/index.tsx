@@ -15,7 +15,11 @@ const TEXT1 =
 
 export const Main = () => {
   return (
-    <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} style={style.mainContainer}>
+    <ScrollView
+      overScrollMode="never"
+      showsVerticalScrollIndicator={false}
+      style={style.mainContainer}
+    >
       <MainProjectBanner text={TEXT1} />
       <View style={style.ourProjectsContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
@@ -48,7 +52,9 @@ export const Main = () => {
         >
           <View style={style.backGroundDarkening} />
           <View style={style.contentContainer}>
-            <Title style={style.contentTitle}>{`Хочете стати інвестором,${"\n"}але є питання?`}</Title>
+            <Title
+              style={style.contentTitle}
+            >{`Хочете стати інвестором,${"\n"}але є питання?`}</Title>
             <Paragraph style={style.contentText}>
               Залиште заявку на безкоштовний дзвінок, ми зв’яжемося з вами протягом 20 хвилин
             </Paragraph>

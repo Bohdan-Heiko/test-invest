@@ -28,5 +28,6 @@ export const colors = {
   alto: "#E0E0E0",
   concrete: "#F3F3F3",
   red: "#FF3C52",
-  orange: "#FF9900"
+  orange: "#FF9900",
+  green: "#6FF958"
 }
