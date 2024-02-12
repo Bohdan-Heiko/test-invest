@@ -10,7 +10,9 @@ export const RieltorInformation = () => {
     <View style={style.rieltorInfoMainContainer}>
       <View style={style.descriptionContainer}>
         <Title style={style.descriptionTitle}>Посилання</Title>
-        <Paragraph style={style.description}>Діліться посиланням, щоб ваші клієнти легко знайшли вас</Paragraph>
+        <Paragraph style={style.description}>
+          Діліться посиланням, щоб ваші клієнти легко знайшли вас
+        </Paragraph>
       </View>
       <View style={style.infoContainer}>
         <View style={style.infoLinksContainer}>

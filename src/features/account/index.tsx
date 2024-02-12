@@ -11,7 +11,11 @@ import { style } from "./_style"
 
 export const Account = () => {
   return (
-    <ScrollView overScrollMode="never" nestedScrollEnabled={false} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      overScrollMode="never"
+      nestedScrollEnabled={false}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={style.mainContainer}>
         <YourAccount />
         <PersonalInformation />

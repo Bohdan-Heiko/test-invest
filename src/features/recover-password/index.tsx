@@ -12,7 +12,10 @@ export const RecoverPassword = () => {
         <View style={style.recoverPasswordContainer}>
           <Title style={style.recoverPasswordTitle}>Відновлення паролю</Title>
           <View style={style.recoverPasswordFormContainer}>
-            <Input placeHolder="Пароль" styles={{ marginBottom: 10, position: "relative", zIndex: 1000 }}>
+            <Input
+              placeHolder="Пароль"
+              styles={{ marginBottom: 10, position: "relative", zIndex: 1000 }}
+            >
               <PasswordRules />
             </Input>
             <Button title="Скинути пароль" />

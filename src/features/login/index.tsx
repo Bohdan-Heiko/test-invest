@@ -7,7 +7,7 @@ import { Button, CheckBox, Input, LinkRedirect, Paragraph, Title } from "@/share
 import { style } from "./_style"
 
 export const LoginScreen = () => {
-  const [checked, setChecked] = useState < boolean > false
+  const [checked, setChecked] = useState<boolean>(false)
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       {/* Account section */}

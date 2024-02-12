@@ -34,9 +34,10 @@ export default function TabLayout() {
       />
       <Tabs.Screen
         name="login"
+        
         options={{
           title: "Логін",
-          // href: null,
+          href: null,
           tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="pagelines" color={color} />,
         }}
       />
@@ -44,7 +45,7 @@ export default function TabLayout() {
         name="(registration)/recover-password"
         options={{
           title: "Востановление пароля",
-          // href: null,
+          href: null,
           tabBarIcon: ({ color }) => <VectorExpoIcons type='FontAwesome' name="pagelines" color={color} />,
         }}
       />
