@@ -37,6 +37,7 @@
     "prettier/prettier": "error",
     "no-unused-vars": "warn", // Изменено на "warn"
     "no-trailing-spaces": "warn",
+    "no-useless-escape": "warn",
     "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
     // "no-console": "warn"
   },

@@ -2,7 +2,7 @@ import { FC } from "react"
 import { AllRoutes, Link } from "expo-router"
 import { Pressable, StyleSheet, Text } from "react-native"
 
-import { colors } from "@/constants/colors"
+import { colors } from "@/utils/constants/colors"
 
 type TextProps = Text["props"]
 

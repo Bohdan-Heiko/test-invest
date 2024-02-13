@@ -1,7 +1,7 @@
 import { View } from "react-native"
 
-import { colors } from "@/constants/colors"
 import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
 

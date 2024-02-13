@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native"
 
-import { colors } from "@/constants/colors"
+import { colors } from "@/utils/constants/colors"
 
 type ViewStyle = View["props"]["style"]
 
-export const Dot = (style?: ViewStyle) => {
+export const Dot = ({ style }: { style?: ViewStyle }) => {
   return <View style={[styles.dotContainer, style]}></View>
 }
 

@@ -1,8 +1,8 @@
 import React from "react"
 
-import { colors } from "@/constants/colors"
-import * as SVGIcons from "@/constants/icons"
 import { SVGIconNames } from "@/types/icons"
+import { colors } from "@/utils/constants/colors"
+import * as SVGIcons from "@/utils/constants/icons"
 
 interface IProps {
   name: SVGIconNames

@@ -66,6 +66,11 @@ export function VectorExpoIcons<T extends keyof IconType>(props: BarIconProps<T>
   }
 
   return (
-    <ChosenIcon name={name} size={size} color={color} style={[styleProps, { marginBottom: -3 }]} />
+    <ChosenIcon
+      name={name}
+      size={size}
+      color={color}
+      style={[styleProps, { marginBottom: -3 }]}
+    />
   )
 }
