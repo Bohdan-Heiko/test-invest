@@ -17,8 +17,6 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
 
-// const EMAIL_REG = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-
 const schema = yup.object({
   name: yup
     .string()
@@ -66,7 +64,6 @@ export const Registration = () => {
     mode: "onSubmit",
     resolver: yupResolver(schema)
   })
-  console.log(errors.password)
 
   // const onSubmit = (data: any) => {
   //   console.log(data)

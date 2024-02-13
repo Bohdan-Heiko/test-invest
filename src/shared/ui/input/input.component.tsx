@@ -38,15 +38,6 @@ export const Input: React.FC<IProps> = ({
   isDotNeed = true,
   inputProps
 }) => {
-  if (fields?.name === "birthdate") {
-    console.log(
-      error,
-      !isTouchField,
-      error && isTouchField,
-      isTouchField && !fields?.value
-    )
-  }
-
   return (
     <View
       style={[
