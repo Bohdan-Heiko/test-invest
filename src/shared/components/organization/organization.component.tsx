@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native"
 
-import { colors } from "@/constants/colors"
 import { Paragraph, TextInfo, Title } from "@/shared/ui"
+import { colors } from "@/utils/constants/colors"
 
 export const OrganizationInfo = () => {
   return (
@@ -12,9 +12,21 @@ export const OrganizationInfo = () => {
         textTwo="м. Буча, вул. Т. Шевченка, 43, офіс 1"
         style={{ marginBottom: 20 }}
       />
-      <TextInfo textOne="Телефон:" textTwo="+ 38 (097) 145 67 89" style={{ marginBottom: 20 }} />
-      <TextInfo textOne="Пошта:" textTwo="BuchaProInvest@gmail.com" style={{ marginBottom: 20 }} />
-      <TextInfo textOne="Години работи:" textTwo="8:00 - 18:00" style={{ marginBottom: 30 }} />
+      <TextInfo
+        textOne="Телефон:"
+        textTwo="+ 38 (097) 145 67 89"
+        style={{ marginBottom: 20 }}
+      />
+      <TextInfo
+        textOne="Пошта:"
+        textTwo="BuchaProInvest@gmail.com"
+        style={{ marginBottom: 20 }}
+      />
+      <TextInfo
+        textOne="Години работи:"
+        textTwo="8:00 - 18:00"
+        style={{ marginBottom: 30 }}
+      />
       <View style={style.infoContainer}>
         <Paragraph style={style.infoText}>© BuchaProInvest, 2023</Paragraph>
         <Paragraph style={style.infoText}>Політика конфіденціальності</Paragraph>

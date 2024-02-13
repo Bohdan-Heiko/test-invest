@@ -1,8 +1,8 @@
 import React, { useMemo } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-import { colors } from "@/constants/colors"
 import { SVGIconNames } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { SVGIcon } from "../svgIcon/svgIcon.component"
 

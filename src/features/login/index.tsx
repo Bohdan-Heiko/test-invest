@@ -27,7 +27,11 @@ export const LoginScreen = () => {
           <LinkRedirect href="/(tabs)/registration">Забув пароль</LinkRedirect>
         </View>
         <Button variant="primary" title="Далі" />
-        <Button variant="secondary" title="Увійти через Дію" style={{ marginBottom: 16 }} />
+        <Button
+          variant="secondary"
+          title="Увійти через Дію"
+          style={{ marginBottom: 16 }}
+        />
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>Не маєш аккаунту?</Paragraph>
           <LinkRedirect href="/(tabs)/registration">Зареєструйся</LinkRedirect>

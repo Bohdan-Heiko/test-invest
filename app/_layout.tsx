@@ -1,31 +1,35 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import FontAwesome from "@expo/vector-icons/FontAwesome"
+import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native"
+import { useFonts } from "expo-font"
+import { Stack } from "expo-router"
+import * as SplashScreen from "expo-splash-screen"
+import { useEffect } from "react"
 import {
   Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
-  Inter_600SemiBold,
-} from "@expo-google-fonts/inter";
-import { Kufam_400Regular, Kufam_500Medium } from "@expo-google-fonts/kufam";
+  Inter_600SemiBold
+} from "@expo-google-fonts/inter"
+import { Kufam_400Regular, Kufam_500Medium } from "@expo-google-fonts/kufam"
 
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context"
+import { Provider as ReduxProvider } from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
+
+import store, { persistor } from "@/store"
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
+  ErrorBoundary
+} from "expo-router"
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
-};
+  initialRouteName: "(tabs)"
+}
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -36,37 +40,41 @@ export default function RootLayout() {
 
     Kufam400: Kufam_400Regular,
     Kufam500: Kufam_500Medium,
-    ...FontAwesome.font,
-  });
+    ...FontAwesome.font
+  })
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    if (error) throw error
+  }, [error])
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync()
     }
-  }, [loaded]);
+  }, [loaded])
 
   if (!loaded) {
-    return null;
+    return null
   }
 
   return (
     <SafeAreaProvider>
       <RootLayoutNav />
     </SafeAreaProvider>
-  );
+  )
 }
 
 function RootLayoutNav() {
   return (
     <ThemeProvider value={DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <ReduxProvider store={store}>
+        <PersistGate persistor={persistor}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+        </PersistGate>
+      </ReduxProvider>
     </ThemeProvider>
-  );
+  )
 }

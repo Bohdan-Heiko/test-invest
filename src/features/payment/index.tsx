@@ -1,6 +1,5 @@
 import { ScrollView, View } from "react-native"
 
-import { colors } from "@/constants/colors"
 import { OrganizationInfo } from "@/shared/components"
 import {
   Button,
@@ -13,6 +12,7 @@ import {
   Title
 } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "./_style"
 
@@ -26,14 +26,16 @@ export const Payment = () => {
             <VectorExpoIcons type="SimpleLineIcons" name="arrow-down" size={16} />
           </View>
           <Paragraph style={style.descriptionText}>
-            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки,
-            то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні
-            компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти та ін.
+            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
+            фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати
+            гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди,
+            пенсійні фонди, консультанти та ін.
           </Paragraph>
           <Paragraph style={style.descriptionText}>
-            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки,
-            то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні
-            компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти та ін.
+            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
+            фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати
+            гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди,
+            пенсійні фонди, консультанти та ін.
           </Paragraph>
           <LinkRedirect href="/(tabs)">Кнопка</LinkRedirect>
         </View>
@@ -62,7 +64,9 @@ export const Payment = () => {
                 color={colors.orange}
               />
               <View style={style.investInfoDescription}>
-                <ItemText style={style.investInfoDescriptionText}>Ціна за 1 кв. м. - 589$</ItemText>
+                <ItemText style={style.investInfoDescriptionText}>
+                  Ціна за 1 кв. м. - 589$
+                </ItemText>
                 <ItemText
                   style={style.investInfoDescriptionText}
                 >{`Завершення інвестування\n24.01.2025`}</ItemText>
@@ -81,7 +85,9 @@ export const Payment = () => {
                 onPressHandler={() => {}}
                 iconSize={{ height: 23, width: 23 }}
               />
-              <ItemText style={style.politicCheck}>Ознайомлений з умовами використання</ItemText>
+              <ItemText style={style.politicCheck}>
+                Ознайомлений з умовами використання
+              </ItemText>
             </View>
             <Button title="Далі" />
           </View>

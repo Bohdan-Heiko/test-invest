@@ -2,8 +2,8 @@ import { FC } from "react"
 import { AllRoutes } from "expo-router"
 import { Image, StyleSheet, View } from "react-native"
 
-import { colors } from "@/constants/colors"
 import { LinkRedirect, Paragraph, Title } from "@/shared/ui"
+import { colors } from "@/utils/constants/colors"
 
 import mainImg from "#/images/invests/main.jpeg"
 

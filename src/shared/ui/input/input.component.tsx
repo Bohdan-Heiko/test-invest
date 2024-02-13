@@ -1,21 +1,30 @@
 import React, { ReactElement } from "react"
-import { KeyboardTypeOptions, StyleSheet, TextInput, View } from "react-native"
 import { FieldError, FieldValues } from "react-hook-form"
+import {
+  KeyboardTypeOptions,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  View
+} from "react-native"
 
-import { colors } from "@/constants/colors"
 import { SVGIconNames } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { SVGIcon } from "../svgIcon/svgIcon.component"
 
 type ViewStyle = View["props"]["style"]
+
 interface IProps {
-  placeHolder: string
+  placeHolder?: string
   styles?: ViewStyle
+  inputProps?: TextInputProps
   iconName?: SVGIconNames | undefined
-  children?: ReactElement
+  children?: ReactElement | null
   isDotNeed?: boolean
   fields?: FieldValues
   error?: FieldError | undefined
+  isTouchField?: boolean
   keyboardType?: KeyboardTypeOptions | undefined
 }
 
@@ -25,25 +34,44 @@ export const Input: React.FC<IProps> = ({
   fields,
   iconName,
   children,
-  placeHolder,
+  isTouchField,
   isDotNeed = true,
-  keyboardType = "default"
+  inputProps
 }) => {
   return (
-    <View style={[style.inputContainer, styles, { borderColor: error ? colors.red : colors.silver }]}>
+    <View
+      style={[
+        style.inputContainer,
+        styles,
+        { borderColor: error ? colors.red : colors.silver }
+      ]}
+    >
       <TextInput
         style={{
           ...style.input
         }}
-        {...fields}
-        placeholder={placeHolder}
-        keyboardType={keyboardType}
         placeholderTextColor={colors.silver}
-        onChangeText={fields?.onChange}
+        {...fields}
+        {...inputProps}
       />
       {iconName && <SVGIcon name={iconName as SVGIconNames} />}
       {children}
-      {isDotNeed && <View style={[style.inputDot, { backgroundColor: error ? colors.red : colors.green }]} />}
+      {isDotNeed && (
+        <View
+          style={[
+            style.inputDot,
+            {
+              backgroundColor:
+                error ||
+                !isTouchField ||
+                (error && isTouchField) ||
+                (isTouchField && !fields?.value)
+                  ? colors.red
+                  : colors.green
+            }
+          ]}
+        />
+      )}
     </View>
   )
 }
@@ -60,7 +88,8 @@ const style = StyleSheet.create({
     borderColor: colors.silver,
     borderWidth: 2,
     borderRadius: 50,
-    marginBottom: 10
+    marginBottom: 10,
+    position: "relative"
   },
 
   input: {
@@ -76,7 +105,7 @@ const style = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    // backgroundColor: "red",
+    // backgroundColor: "red"s
     marginLeft: 10
   }
 })

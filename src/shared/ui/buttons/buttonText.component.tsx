@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-import { colors } from "@/constants/colors"
+import { colors } from "@/utils/constants/colors"
 
 type ViewStyleProps = View["props"]["style"]
 interface IProps {
