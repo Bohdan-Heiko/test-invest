@@ -1,14 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE
-} from "redux-persist"
+import { persistReducer, persistStore } from "redux-persist"
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit"
@@ -36,9 +27,11 @@ const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
+      immutableCheck: false,
+      serializableCheck: false
+      // serializableCheck: {
+      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      // }
     }).concat(unauthenticatedMiddleware, mainApi.middleware)
 })
 

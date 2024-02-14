@@ -1,21 +1,22 @@
-import { Controller, useForm } from "react-hook-form"
-import { ScrollView, View } from "react-native"
+import { useRouter } from "expo-router"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { ScrollView, ToastAndroid, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 
 import useBoolean from "@/hooks/useBoolean"
+import { registrationSchema } from "@/schemas/registration/registration.schema"
 import { OrganizationInfo, PasswordRules } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
-
+import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
+import { RegistrationBody } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
-import { registrationSchema } from "@/schemas/registration/registration.schema"
-import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
-import { Redirect } from "expo-router"
 
 export const Registration = () => {
-  const [registration] = useRegistrationUserMutation()
+  const router = useRouter()
+  const [registrationUser] = useRegistrationUserMutation()
 
   const {
     value: dateModalValue,
@@ -33,22 +34,36 @@ export const Registration = () => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors, touchedFields }
+    formState: { errors, touchedFields, dirtyFields }
   } = useForm({
-    mode: "onSubmit",
+    mode: "all",
     resolver: yupResolver(registrationSchema)
   })
 
-  const onSubmit = async (data: any) => {
-    await registration(data)
+  const onSubmit: SubmitHandler<RegistrationBody> = async (data) => {
+    await registrationUser(data)
       .unwrap()
-      .then(() => <Redirect href="/(tabs)/login" />)
-      .catch(console.log)
+      .then(() => router.replace("/(tabs)/login"))
+      .catch(showToast)
+  }
+
+  const redirect = () => {
+    router.push("/(tabs)/login")
+  }
+
+  // TEMPORARY FUNCTION
+  const showToast = (data: unknown) => {
+    ToastAndroid.showWithGravityAndOffset(
+      JSON.stringify(data),
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    )
   }
 
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
-      {/* Account section */}
       <View style={style.loginContainer}>
         <Title style={style.title}>Реєстрація</Title>
         <Controller
@@ -58,7 +73,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.name}
-              isTouchField={!!touchedFields.name}
+              isTouchField={!!dirtyFields.name}
               inputProps={{
                 placeholder: "ПІБ",
                 keyboardType: "default",
@@ -75,7 +90,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.taxNumber}
-              isTouchField={!!touchedFields.taxNumber}
+              isTouchField={!!dirtyFields.taxNumber}
               inputProps={{
                 placeholder: "ІПН",
                 maxLength: 10,
@@ -125,7 +140,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.phone}
-              isTouchField={!!touchedFields.phone}
+              isTouchField={!!dirtyFields.phone}
               inputProps={{
                 placeholder: "Номер телефону",
                 onChangeText: field.onChange,
@@ -142,7 +157,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.email}
-              isTouchField={!!touchedFields.email}
+              isTouchField={!!dirtyFields.email}
               inputProps={{
                 placeholder: "Пошта",
                 onChangeText: field.onChange
@@ -158,9 +173,10 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.password}
-              isTouchField={!!touchedFields.password}
+              isTouchField={!!dirtyFields.password}
               inputProps={{
                 placeholder: "Пароль",
+                secureTextEntry: true,
                 onPressIn: showPasswordRules,
                 onFocus: showPasswordRules,
                 onBlur: hideShowPasswordRules,
@@ -179,9 +195,10 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.passwordConfirm}
-              isTouchField={!!touchedFields.password}
+              isTouchField={!!dirtyFields.passwordConfirm}
               inputProps={{
                 placeholder: "Повторіть пароль",
+                secureTextEntry: true,
                 onChangeText: field.onChange
               }}
             />
@@ -189,6 +206,7 @@ export const Registration = () => {
         />
 
         <Button variant="primary" title="Далі" onPress={handleSubmit(onSubmit)} />
+        <Button variant="primary" title="redirect" onPress={redirect} />
         {/* <Button
           variant="secondary"
           title="Увійти через Дію"
@@ -199,7 +217,6 @@ export const Registration = () => {
           <LinkRedirect href="/(tabs)">Увійти</LinkRedirect>
         </View>
       </View>
-      {/* Account section */}
 
       <OrganizationInfo />
     </ScrollView>

@@ -1,34 +1,34 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { LoginResponse } from "@/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialState = {
   isAuthenticated: false,
-  hasLoggedOut: false,
-  token: "",
-  role: "",
-};
+  token: ""
+  // role: ""
+}
 
-const name = "bover_auth";
+const name = "bober_auth"
 
 export const authSlice = createSlice({
   name,
   initialState,
   reducers: {
-    userRole: (state, { payload }) => {
-      state.role = payload;
-    },
-    loginUser: (state, { payload }: PayloadAction<string>) => {
-      state.isAuthenticated = true;
-      state.token = payload;
+    // userRole: (state, { payload }) => {
+    //   state.role = payload
+    // },
+    loginUser: (state, { payload }: PayloadAction<LoginResponse>) => {
+      state.isAuthenticated = true
+      state.token = payload.token
     },
     logoutUser: () => {
-      return { ...initialState, hasLoggedOut: true };
-    },
-    resetAuth: () => {
-      return initialState;
-    },
-  },
-});
+      return { ...initialState }
+    }
+    // resetAuth: () => {
+    //   return initialState
+    // }
+  }
+})
 
-export const { loginUser, logoutUser, resetAuth, userRole } = authSlice.actions;
+export const { loginUser, logoutUser } = authSlice.actions
 
-export default authSlice;
+export default authSlice

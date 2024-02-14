@@ -41,7 +41,7 @@ export default function TabLayout() {
         name="login"
         options={{
           title: "Логін",
-          href: null,
+          // href: null,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="FontAwesome" name="pagelines" color={color} />
           )

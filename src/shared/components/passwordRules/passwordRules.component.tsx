@@ -10,15 +10,18 @@ import {
 } from "@/utils/constants/regex"
 
 export const PasswordRules = ({ value }: { value: string | undefined }) => {
+  console.log(LATIN_CHARACTER_REGEX.test(value as string), "PASSworD")
+
   return (
     <View style={style.passwordRulesContainer}>
       <Title style={style.passwordRulesTitle}>Пароль повинен мати:</Title>
       <View style={style.passwordRules}>
         <Dot
           style={{
-            backgroundColor: LATIN_CHARACTER_REGEX.test(value as string)
-              ? colors.green
-              : colors.red
+            backgroundColor:
+              LATIN_CHARACTER_REGEX.test(value as string) && value?.length
+                ? colors.green
+                : colors.red
           }}
         />
         <Paragraph style={style.rulesText}>тільки латинські літери</Paragraph>
@@ -54,9 +57,10 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
       <View style={style.passwordRules}>
         <Dot
           style={{
-            backgroundColor: LOWER_CHARACTER_REGEX.test(value as string)
-              ? colors.green
-              : colors.red
+            backgroundColor:
+              LOWER_CHARACTER_REGEX.test(value as string) && value?.length
+                ? colors.green
+                : colors.red
           }}
         />
         <Paragraph style={style.rulesText}>від 1 букви з нижнім регістром</Paragraph>

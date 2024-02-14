@@ -61,13 +61,7 @@ export const Input: React.FC<IProps> = ({
           style={[
             style.inputDot,
             {
-              backgroundColor:
-                error ||
-                !isTouchField ||
-                (error && isTouchField) ||
-                (isTouchField && !fields?.value)
-                  ? colors.red
-                  : colors.green
+              backgroundColor: error || !isTouchField ? colors.red : colors.green
             }
           ]}
         />

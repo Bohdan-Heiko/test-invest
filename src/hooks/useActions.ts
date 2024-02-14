@@ -1,13 +1,12 @@
 import { useMemo } from "react"
 
-import { bindActionCreators } from "@reduxjs/toolkit"
-import { loginUser, logoutUser, resetAuth } from "@/store/slices/authSlice"
 import { useAppDispatch } from "@/store"
+import { loginUser, logoutUser } from "@/store/slices/authSlice"
+import { bindActionCreators } from "@reduxjs/toolkit"
 
 const rootActions = {
   loginUser,
-  logoutUser,
-  resetAuth
+  logoutUser
 }
 
 const useActions = () => {

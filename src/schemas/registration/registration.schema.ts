@@ -34,3 +34,5 @@ export const registrationSchema = yup.object({
     .oneOf([yup.ref("password")])
     .required()
 })
+
+export const loginSchema = registrationSchema.pick(["email", "password"])
