@@ -16,6 +16,7 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 
 import { unauthenticatedMiddleware } from "./middlewares/unauthenticated"
 import { mainApi } from "./services/mainApi"
+import authSlice from "./slices/authSlice"
 
 const persistConfig = {
   key: "bober-invest",
@@ -25,8 +26,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   [mainApi.reducerPath]: mainApi.reducer,
-  // [dataApi.reducerPath]: dataApi.reducer,
-  // [i18nSlice.name]: i18nSlice.reducer,
+  [authSlice.name]: authSlice.reducer
   // [remindersSlice.name]: remindersSlice.reducer,
 })
 
@@ -39,7 +39,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    }).concat(unauthenticatedMiddleware)
+    }).concat(unauthenticatedMiddleware, mainApi.middleware)
 })
 
 setupListeners(store.dispatch)

@@ -3,7 +3,7 @@ import { mainApi } from "./mainApi"
 
 export const authApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
-    signinUser: builder.mutation<RegistrationResponse, RegistrationBody>({
+    registrationUser: builder.mutation<RegistrationResponse, RegistrationBody>({
       query: (body) => ({
         url: "/api/users/registration",
         method: "post",
@@ -13,4 +13,4 @@ export const authApi = mainApi.injectEndpoints({
   })
 })
 
-export const { useSigninUserMutation } = authApi
+export const { useRegistrationUserMutation } = authApi

@@ -13,4 +13,6 @@ export type RegistrationResponse = RegistrationBody & {
   withdrawals: string
   balance: string
   totalBalance: string
+  isActive: boolean
+  isRealtor: boolean
 }

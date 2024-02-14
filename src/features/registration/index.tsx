@@ -10,20 +10,24 @@ import { datesHelpers } from "@/utils/helpers/dates/dates"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
-import { registrationSchema } from "@/schemas/registration/registration.schema" 
+import { registrationSchema } from "@/schemas/registration/registration.schema"
+import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
+import { Redirect } from "expo-router"
 
 export const Registration = () => {
+  const [registration] = useRegistrationUserMutation()
+
   const {
     value: dateModalValue,
     setTrue: openDateModal,
     setFalse: closeDateModal
-  } = useBoolean(false)
+  } = useBoolean(false) // OPEN DATEPICKER
 
   const {
     value: passwordRulesValue,
     setTrue: showPasswordRules,
     setFalse: hideShowPasswordRules
-  } = useBoolean(false)
+  } = useBoolean(false) // SHOW PASSWORD RULES
 
   const {
     control,
@@ -35,9 +39,12 @@ export const Registration = () => {
     resolver: yupResolver(registrationSchema)
   })
 
-  // const onSubmit = (data: any) => {
-  //   console.log(data)
-  // }
+  const onSubmit = async (data: any) => {
+    await registration(data)
+      .unwrap()
+      .then(() => <Redirect href="/(tabs)/login" />)
+      .catch(console.log)
+  }
 
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
@@ -181,14 +188,7 @@ export const Registration = () => {
           )}
         />
 
-        <Button
-          variant="primary"
-          title="Далі"
-          onPress={handleSubmit(
-            (data) => console.log(data, "DATA")
-            // (error) => console.log(error.password, "ERROR")
-          )}
-        />
+        <Button variant="primary" title="Далі" onPress={handleSubmit(onSubmit)} />
         {/* <Button
           variant="secondary"
           title="Увійти через Дію"
