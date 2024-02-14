@@ -1,5 +1,5 @@
-import { FC } from "react"
 import { Image, View } from "react-native"
+import { FC } from "react"
 
 import { ButtonWithIcon, Paragraph } from "@/shared/ui"
 

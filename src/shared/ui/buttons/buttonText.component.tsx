@@ -1,5 +1,5 @@
-import React, { useMemo } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { useMemo } from "react"
 
 import { colors } from "@/utils/constants/colors"
 

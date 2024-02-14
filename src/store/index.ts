@@ -11,14 +11,13 @@ import authSlice from "./slices/authSlice"
 
 const persistConfig = {
   key: "bober-invest",
-  storage: AsyncStorage
-  // whitelist: [i18nSlice.name, remindersSlice.name],
+  storage: AsyncStorage,
+  whitelist: [authSlice.name]
 }
 
 const reducers = combineReducers({
   [mainApi.reducerPath]: mainApi.reducer,
   [authSlice.name]: authSlice.reducer
-  // [remindersSlice.name]: remindersSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)

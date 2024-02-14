@@ -1,5 +1,3 @@
-import React, { ReactElement } from "react"
-import { FieldError, FieldValues } from "react-hook-form"
 import {
   KeyboardTypeOptions,
   StyleSheet,
@@ -7,6 +5,8 @@ import {
   TextInputProps,
   View
 } from "react-native"
+import React, { ReactElement } from "react"
+import { FieldError, FieldValues } from "react-hook-form"
 
 import { SVGIconNames } from "@/types"
 import { colors } from "@/utils/constants/colors"

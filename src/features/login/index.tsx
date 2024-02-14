@@ -1,5 +1,5 @@
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { ScrollView, ToastAndroid, View } from "react-native"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
@@ -17,7 +17,7 @@ export const LoginScreen = () => {
   const { loginUser, logoutUser } = useActions()
   const [signInUser] = useSignInUserMutation()
   const isAuthenticated = useAppSelector((state) => state.bober_auth)
-  console.log(isAuthenticated)
+  // console.log(isAuthenticated)
 
   const {
     control,

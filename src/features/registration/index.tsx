@@ -1,7 +1,7 @@
-import { useRouter } from "expo-router"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { ScrollView, ToastAndroid, View } from "react-native"
 import DatePicker from "react-native-date-picker"
+import { useRouter } from "expo-router"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import useBoolean from "@/hooks/useBoolean"
 import { registrationSchema } from "@/schemas/registration/registration.schema"

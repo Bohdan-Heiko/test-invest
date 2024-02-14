@@ -1,5 +1,5 @@
-import React from "react"
 import { TouchableOpacity, View } from "react-native"
+import React from "react"
 
 import { colors } from "@/utils/constants/colors"
 
