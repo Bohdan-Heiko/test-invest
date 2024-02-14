@@ -12,7 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
 
-export const LoginScreen = () => {
+export const Login = () => {
   // const [checked, setChecked] = useState<boolean>(false)
   const { loginUser, logoutUser } = useActions()
   const [signInUser] = useSignInUserMutation()

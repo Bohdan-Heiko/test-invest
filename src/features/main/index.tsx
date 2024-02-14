@@ -29,7 +29,7 @@ export const Main = () => {
           horizontal={true}
         >
           <View style={style.projectsContainer}>
-            <ProjectItem text={TEXT} link="/(tabs)/" />
+            <ProjectItem text={TEXT} link="/(auth)/registration" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
             <ProjectItem text={TEXT} link="/(tabs)/" />
           </View>

@@ -43,12 +43,8 @@ export const Registration = () => {
   const onSubmit: SubmitHandler<RegistrationBody> = async (data) => {
     await registrationUser(data)
       .unwrap()
-      .then(() => router.replace("/(tabs)/login"))
+      .then(() => router.replace("/(auth)/signin"))
       .catch(showToast)
-  }
-
-  const redirect = () => {
-    router.push("/(tabs)/login")
   }
 
   // TEMPORARY FUNCTION
@@ -206,7 +202,6 @@ export const Registration = () => {
         />
 
         <Button variant="primary" title="Далі" onPress={handleSubmit(onSubmit)} />
-        <Button variant="primary" title="redirect" onPress={redirect} />
         {/* <Button
           variant="secondary"
           title="Увійти через Дію"
@@ -214,7 +209,7 @@ export const Registration = () => {
         /> */}
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>Вже маєш аккаунт?</Paragraph>
-          <LinkRedirect href="/(tabs)">Увійти</LinkRedirect>
+          <LinkRedirect href="/(auth)/signin">Увійти</LinkRedirect>
         </View>
       </View>
 
