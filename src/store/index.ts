@@ -1,14 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE
-} from "redux-persist"
+import { persistReducer, persistStore } from "redux-persist"
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit"
@@ -16,18 +7,17 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 
 import { unauthenticatedMiddleware } from "./middlewares/unauthenticated"
 import { mainApi } from "./services/mainApi"
+import authSlice from "./slices/authSlice"
 
 const persistConfig = {
   key: "bober-invest",
-  storage: AsyncStorage
-  // whitelist: [i18nSlice.name, remindersSlice.name],
+  storage: AsyncStorage,
+  whitelist: [authSlice.name]
 }
 
 const reducers = combineReducers({
   [mainApi.reducerPath]: mainApi.reducer,
-  // [dataApi.reducerPath]: dataApi.reducer,
-  // [i18nSlice.name]: i18nSlice.reducer,
-  // [remindersSlice.name]: remindersSlice.reducer,
+  [authSlice.name]: authSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -36,10 +26,12 @@ const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    }).concat(unauthenticatedMiddleware)
+      immutableCheck: false,
+      serializableCheck: false
+      // serializableCheck: {
+      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      // }
+    }).concat(unauthenticatedMiddleware, mainApi.middleware)
 })
 
 setupListeners(store.dispatch)

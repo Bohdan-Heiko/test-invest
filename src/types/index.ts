@@ -1,2 +1,7 @@
 export { SVGIconNames } from "./icons"
-export {RegistrationBody, RegistrationResponse} from './registration'
+export {
+  LoginBody,
+  LoginResponse,
+  RegistrationBody,
+  RegistrationResponse
+} from "./registration"

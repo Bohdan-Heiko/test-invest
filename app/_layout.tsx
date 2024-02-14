@@ -17,6 +17,7 @@ import { Provider as ReduxProvider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 
 import store, { persistor } from "@/store"
+import { AuthProvider } from "@/context/auth.context"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -70,9 +71,16 @@ function RootLayoutNav() {
     <ThemeProvider value={DefaultTheme}>
       <ReduxProvider store={store}>
         <PersistGate persistor={persistor}>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          </Stack>
+          <AuthProvider>
+            <Stack>
+              <Stack.Screen
+                name="(tabs)"
+                options={{ headerShown: false, statusBarStyle: "dark" }}
+              />
+              <Stack.Screen name="(auth)/registration" options={{ headerShown: false }} />
+              <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
+            </Stack>
+          </AuthProvider>
         </PersistGate>
       </ReduxProvider>
     </ThemeProvider>

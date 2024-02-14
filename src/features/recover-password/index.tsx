@@ -16,7 +16,7 @@ export const RecoverPassword = () => {
               placeHolder="Пароль"
               styles={{ marginBottom: 10, position: "relative", zIndex: 1000 }}
             >
-              <PasswordRules />
+              {/* <PasswordRules /> */}
             </Input>
             <Button title="Скинути пароль" />
           </View>

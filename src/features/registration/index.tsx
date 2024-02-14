@@ -1,47 +1,65 @@
-import { Controller, useForm } from "react-hook-form"
-import { ScrollView, View } from "react-native"
+import { ScrollView, ToastAndroid, View } from "react-native"
 import DatePicker from "react-native-date-picker"
+import { useRouter } from "expo-router"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import useBoolean from "@/hooks/useBoolean"
+import { registrationSchema } from "@/schemas/registration/registration.schema"
 import { OrganizationInfo, PasswordRules } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
-
+import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
+import { RegistrationBody } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
-import { registrationSchema } from "@/schemas/registration/registration.schema" 
 
 export const Registration = () => {
+  const router = useRouter()
+  const [registrationUser] = useRegistrationUserMutation()
+
   const {
     value: dateModalValue,
     setTrue: openDateModal,
     setFalse: closeDateModal
-  } = useBoolean(false)
+  } = useBoolean(false) // OPEN DATEPICKER
 
   const {
     value: passwordRulesValue,
     setTrue: showPasswordRules,
     setFalse: hideShowPasswordRules
-  } = useBoolean(false)
+  } = useBoolean(false) // SHOW PASSWORD RULES
 
   const {
     control,
     handleSubmit,
     setValue,
-    formState: { errors, touchedFields }
+    formState: { errors, touchedFields, dirtyFields }
   } = useForm({
-    mode: "onSubmit",
+    mode: "all",
     resolver: yupResolver(registrationSchema)
   })
 
-  // const onSubmit = (data: any) => {
-  //   console.log(data)
-  // }
+  const onSubmit: SubmitHandler<RegistrationBody> = async (data) => {
+    await registrationUser(data)
+      .unwrap()
+      .then(() => router.replace("/(auth)/signin"))
+      .catch(showToast)
+  }
+
+  // TEMPORARY FUNCTION
+  const showToast = (data: unknown) => {
+    ToastAndroid.showWithGravityAndOffset(
+      JSON.stringify(data),
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    )
+  }
 
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
-      {/* Account section */}
       <View style={style.loginContainer}>
         <Title style={style.title}>Реєстрація</Title>
         <Controller
@@ -51,7 +69,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.name}
-              isTouchField={!!touchedFields.name}
+              isTouchField={!!dirtyFields.name}
               inputProps={{
                 placeholder: "ПІБ",
                 keyboardType: "default",
@@ -68,7 +86,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.taxNumber}
-              isTouchField={!!touchedFields.taxNumber}
+              isTouchField={!!dirtyFields.taxNumber}
               inputProps={{
                 placeholder: "ІПН",
                 maxLength: 10,
@@ -118,7 +136,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.phone}
-              isTouchField={!!touchedFields.phone}
+              isTouchField={!!dirtyFields.phone}
               inputProps={{
                 placeholder: "Номер телефону",
                 onChangeText: field.onChange,
@@ -135,7 +153,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.email}
-              isTouchField={!!touchedFields.email}
+              isTouchField={!!dirtyFields.email}
               inputProps={{
                 placeholder: "Пошта",
                 onChangeText: field.onChange
@@ -151,9 +169,10 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.password}
-              isTouchField={!!touchedFields.password}
+              isTouchField={!!dirtyFields.password}
               inputProps={{
                 placeholder: "Пароль",
+                secureTextEntry: true,
                 onPressIn: showPasswordRules,
                 onFocus: showPasswordRules,
                 onBlur: hideShowPasswordRules,
@@ -172,23 +191,17 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.passwordConfirm}
-              isTouchField={!!touchedFields.password}
+              isTouchField={!!dirtyFields.passwordConfirm}
               inputProps={{
                 placeholder: "Повторіть пароль",
+                secureTextEntry: true,
                 onChangeText: field.onChange
               }}
             />
           )}
         />
 
-        <Button
-          variant="primary"
-          title="Далі"
-          onPress={handleSubmit(
-            (data) => console.log(data, "DATA")
-            // (error) => console.log(error.password, "ERROR")
-          )}
-        />
+        <Button variant="primary" title="Далі" onPress={handleSubmit(onSubmit)} />
         {/* <Button
           variant="secondary"
           title="Увійти через Дію"
@@ -196,10 +209,9 @@ export const Registration = () => {
         /> */}
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>Вже маєш аккаунт?</Paragraph>
-          <LinkRedirect href="/(tabs)">Увійти</LinkRedirect>
+          <LinkRedirect href="/(auth)/signin">Увійти</LinkRedirect>
         </View>
       </View>
-      {/* Account section */}
 
       <OrganizationInfo />
     </ScrollView>

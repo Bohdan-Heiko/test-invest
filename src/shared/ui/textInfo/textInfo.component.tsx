@@ -1,5 +1,5 @@
-import { FC } from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { FC } from "react"
 
 import { colors } from "@/utils/constants/colors"
 

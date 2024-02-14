@@ -1,11 +1,20 @@
-import { RegistrationBody, RegistrationResponse } from "@/types"
+import { LoginBody, LoginResponse, RegistrationBody, RegistrationResponse } from "@/types"
+
 import { mainApi } from "./mainApi"
 
 export const authApi = mainApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
-    signinUser: builder.mutation<RegistrationResponse, RegistrationBody>({
+    registrationUser: builder.mutation<RegistrationResponse, RegistrationBody>({
       query: (body) => ({
         url: "/api/users/registration",
+        method: "post",
+        body
+      })
+    }),
+    signInUser: builder.mutation<LoginResponse, LoginBody>({
+      query: (body) => ({
+        url: "/api/login",
         method: "post",
         body
       })
@@ -13,4 +22,4 @@ export const authApi = mainApi.injectEndpoints({
   })
 })
 
-export const { useSigninUserMutation } = authApi
+export const { useRegistrationUserMutation, useSignInUserMutation } = authApi

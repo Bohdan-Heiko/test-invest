@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+
 import { RootState } from ".."
 
 export const mainApi = createApi({
@@ -9,9 +10,10 @@ export const mainApi = createApi({
     baseUrl: process.env.EXPO_PUBLIC_API_URL,
     prepareHeaders: async (headers, { getState }) => {
       const state: RootState = getState() as RootState
-      // const token = state.authentication.token;
 
-      // if (token) headers.set('Authorization', `Bearer ${token}`);
+      const token = state.bober_auth.token
+
+      if (token) headers.set("Authorization", `Bearer ${token}`)
 
       if (!headers.has("Ignore-Headers")) {
         if (!headers.has("Content-Type")) {
