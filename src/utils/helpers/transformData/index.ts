@@ -1,5 +1,5 @@
-const GET_PAGE_NUMBER_REGEX = /page=(\d+)/
 import { HydraData, TransformedData } from "@/types"
+import { GET_PAGE_NUMBER_REGEX } from "@/utils/constants/colors"
 
 const helpers = {
   getQueryParams(paramsString: string): Record<string, unknown> {

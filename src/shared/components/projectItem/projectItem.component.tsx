@@ -1,25 +1,33 @@
-import { Image, StyleSheet, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FC } from "react"
+import { Image } from "expo-image"
 import { AllRoutes } from "expo-router"
 
 import { LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
-
-import mainImg from "#/images/invests/main.jpeg"
-
 interface IProjectItemProps {
   text: string
+  title: string
+  imageUri?: string
   link?: AllRoutes
 }
 
-export const ProjectItem: FC<IProjectItemProps> = ({ text, link }) => {
+const blurhash = "L1E5,Vtn5Cb|yZfRj@a}0lWW^es-"
+
+export const ProjectItem: FC<IProjectItemProps> = ({ text, link, title, imageUri }) => {
   return (
     <View style={style.ourProjectItemContainer}>
       <View style={style.ourProjectItem}>
-        <Image style={style.ourProjectItemImage} source={mainImg} />
+        <Image
+          style={style.ourProjectItemImage}
+          source={imageUri}
+          placeholder={blurhash}
+          contentFit="cover"
+          transition={700}
+        />
       </View>
       <View style={style.ourProjectItemInfoContainer}>
-        <Title style={style.ourProjectItemInfoTitle}>ЖК Білий</Title>
+        <Title style={style.ourProjectItemInfoTitle}>{title}</Title>
         <Paragraph style={style.ourProjectItemInfoText}>{text}</Paragraph>
         {link && (
           <LinkRedirect href={link} style={style.ourProjectItemInfoLink}>

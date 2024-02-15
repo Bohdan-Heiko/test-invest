@@ -6,6 +6,10 @@ interface BuildingReport {
   percent: number
 }
 
+type Photos = {
+  contentUrl: string
+  file: string
+}
 export interface BuildingsResponse {
   id: number
   title: string
@@ -16,7 +20,7 @@ export interface BuildingsResponse {
   location: string
   infrastructure: string
   safety: string
-  photos: string[]
+  photos: Photos[]
   team: string[]
   createdAt: string // Assuming createdAt is a string representing a date
   updatedAt: string // Assuming updatedAt is a string representing a date
