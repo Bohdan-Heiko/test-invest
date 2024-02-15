@@ -38,7 +38,8 @@
     "no-unused-vars": "warn", // Изменено на "warn"
     "no-trailing-spaces": "warn",
     "no-useless-escape": "warn",
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
+    "@typescript-eslint/ban-ts-comment": "warn"
     // "no-console": "warn"
   },
   "overrides": [

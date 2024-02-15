@@ -5,7 +5,7 @@ import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
 import { OrganizationInfo } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
-import { useAppSelector } from "@/store"
+// import { useAppSelector } from "@/store"
 import { useSignInUserMutation } from "@/store/services/authInjectApi"
 import { LoginBody } from "@/types/registration"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -16,7 +16,7 @@ export const Login = () => {
   // const [checked, setChecked] = useState<boolean>(false)
   const { loginUser, logoutUser } = useActions()
   const [signInUser] = useSignInUserMutation()
-  const isAuthenticated = useAppSelector((state) => state.bober_auth)
+  // const isAuthenticated = useAppSelector((state) => state.bober_auth)
   // console.log(isAuthenticated)
 
   const {
@@ -33,8 +33,8 @@ export const Login = () => {
   }
 
   // TEMPORARY FUNCTION
-  const showToast = (data: unknown) => {
-    ToastAndroid.show(JSON.stringify(data), ToastAndroid.SHORT)
+  const showToast = () => {
+    ToastAndroid.show("Something wrong. Try again", ToastAndroid.SHORT)
   }
 
   return (
@@ -102,7 +102,7 @@ export const Login = () => {
         /> */}
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>Не маєш аккаунту?</Paragraph>
-          <LinkRedirect href="/(tabs)/registration">Зареєструйся</LinkRedirect>
+          <LinkRedirect href="/(auth)/registration">Зареєструйся</LinkRedirect>
         </View>
       </View>
       {/* Account section */}

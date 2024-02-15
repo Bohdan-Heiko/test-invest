@@ -1,5 +1,5 @@
-import { useSegments } from "expo-router";
-import { ReactNode, createContext, useContext } from "react"
+import { createContext, ReactNode, useContext } from "react"
+import { useSegments } from "expo-router"
 
 export interface AuthContextValue {
   // signIn: (e: string, p: string) => Promise<SignInResponse>;
@@ -20,9 +20,8 @@ interface ProviderProps {
 }
 
 export const AuthProvider = (props: ProviderProps) => {
-  const segments = useSegments();
-  console.log(segments, 'SEG');
-  
+  const segments = useSegments()
+  console.log(segments, "SEG")
 
   return (
     <AuthContext.Provider
