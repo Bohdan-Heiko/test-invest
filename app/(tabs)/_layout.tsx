@@ -6,11 +6,11 @@ import { VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 
 export default function TabLayout() {
-  const {isAuthenticated} = useAppSelector((stat) => stat.bober_auth)
+  const { isAuthenticated } = useAppSelector((stat) => stat.bober_auth)
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors["light"].tint,
+        tabBarActiveTintColor: Colors["light"].tint
       }}
     >
       <Tabs.Screen
@@ -27,7 +27,7 @@ export default function TabLayout() {
         name="account"
         options={{
           title: "Аккаунт",
-          href: isAuthenticated ? '/account' : null,
+          href: isAuthenticated ? "/account" : null,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Feather" name="user" color={color} />
           )
@@ -37,9 +37,9 @@ export default function TabLayout() {
         name="payment"
         options={{
           title: "Оплата",
-          href: null,
+          href: isAuthenticated ? "/payment" : null,
           tabBarIcon: ({ color }) => (
-            <VectorExpoIcons type="Feather" name="activity" color={color} />
+            <VectorExpoIcons type="MaterialIcons" name="payment" color={color} />
           )
         }}
       />

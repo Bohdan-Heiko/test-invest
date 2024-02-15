@@ -6,12 +6,15 @@ import { Title } from "@/shared/ui"
 import { BuidersResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
+import { useAuthContext } from "@/context/auth.context"
 
 interface IProps {
   data: TransformedData<BuidersResponse> | undefined
 }
 
 export const Builders: FC<IProps> = ({ data }) => {
+  const { handleReplaceRoute } = useAuthContext()
+
   return (
     <View style={style.ourProjectsContainer}>
       <Title style={style.ourProjectTitle}>Наші забудовники</Title>
@@ -24,14 +27,12 @@ export const Builders: FC<IProps> = ({ data }) => {
           {data?.data?.map(({ id, description, title, photos }) => (
             <ProjectItem
               key={id}
-              text={description}
               title={title}
+              text={description}
               imageUri={photos.file ?? photos.contentUrl}
-              link="/(tabs)/"
+              link={handleReplaceRoute("/(tabs)/payment")}
             />
           ))}
-          {/* <ProjectItem text={TEXT} link="/(tabs)/" />
-          <ProjectItem text={TEXT} link="/(tabs)/" /> */}
         </View>
       </ScrollView>
     </View>

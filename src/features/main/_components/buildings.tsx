@@ -1,6 +1,7 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
 
+import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
@@ -12,6 +13,7 @@ interface IProps {
 }
 
 export const Buildings: FC<IProps> = ({ data }) => {
+  const { handleReplaceRoute } = useAuthContext()
   return (
     <View style={style.ourProjectsContainer}>
       <Title style={style.ourProjectTitle}>Наші проекти</Title>
@@ -27,11 +29,9 @@ export const Buildings: FC<IProps> = ({ data }) => {
               title={project.title}
               text={project.description}
               imageUri={project.photos[0].file}
-              link="/(auth)/registration"
+              link={handleReplaceRoute("/(tabs)/payment")}
             />
           ))}
-          {/* <ProjectItem text={TEXT} link="/(tabs)/" />
-          <ProjectItem text={TEXT} link="/(tabs)/" /> */}
         </View>
       </ScrollView>
     </View>

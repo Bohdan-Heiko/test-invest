@@ -50,7 +50,7 @@ export const Registration = () => {
   // TEMPORARY FUNCTION
   const showToast = (data: unknown) => {
     ToastAndroid.showWithGravityAndOffset(
-      JSON.stringify(data),
+      "Something wrong. Try again",
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM,
       25,

@@ -8,8 +8,11 @@ import { PersonalInformation } from "./_components/personalInformation"
 import { RieltorInformation } from "./_components/rieltorInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
+import { Button } from "@/shared/ui"
+import useActions from "@/hooks/useActions"
 
 export const Account = () => {
+  const { logoutUser } = useActions()
   return (
     <ScrollView
       overScrollMode="never"
@@ -23,6 +26,7 @@ export const Account = () => {
         <AccrualAccount title="Нарахування" />
         <AccrualAccount title="Інвестиції" />
         <MyProjects />
+        <Button onPress={logoutUser} title="Выход" />
         <OrganizationInfo />
       </View>
     </ScrollView>

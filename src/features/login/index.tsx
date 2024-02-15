@@ -1,11 +1,11 @@
 import { ScrollView, ToastAndroid, View } from "react-native"
+import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
 import { OrganizationInfo } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
-// import { useAppSelector } from "@/store"
 import { useSignInUserMutation } from "@/store/services/authInjectApi"
 import { LoginBody } from "@/types/registration"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -13,11 +13,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { style } from "./_style"
 
 export const Login = () => {
-  // const [checked, setChecked] = useState<boolean>(false)
+  const router = useRouter()
   const { loginUser, logoutUser } = useActions()
   const [signInUser] = useSignInUserMutation()
-  // const isAuthenticated = useAppSelector((state) => state.bober_auth)
-  // console.log(isAuthenticated)
 
   const {
     control,
@@ -29,7 +27,16 @@ export const Login = () => {
   })
 
   const handleLoginUser: SubmitHandler<LoginBody> = async (data) => {
-    await signInUser(data).unwrap().then(loginUser).catch(showToast)
+    await signInUser(data)
+      .unwrap()
+      .then(loginUser)
+      .then(() => router.replace("/(tabs)"))
+      .catch(showToast)
+  }
+
+  const handleLogoutUser = () => {
+    logoutUser()
+    router.navigate("/(tabs)/")
   }
 
   // TEMPORARY FUNCTION
@@ -70,6 +77,7 @@ export const Login = () => {
               iconName="HideEye"
               styles={{ marginBottom: 10 }}
               inputProps={{
+                secureTextEntry: true,
                 placeholder: "Пароль",
                 keyboardType: "default",
                 onChangeText: field.onChange
@@ -93,7 +101,7 @@ export const Login = () => {
         </View> */}
 
         <Button variant="primary" title="Далі" onPress={handleSubmit(handleLoginUser)} />
-        <Button variant="primary" title="Test logout" onPress={logoutUser} />
+        <Button variant="primary" title="Test logout" onPress={handleLogoutUser} />
 
         {/* <Button
           variant="secondary"
