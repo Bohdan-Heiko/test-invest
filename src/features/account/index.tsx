@@ -10,6 +10,7 @@ import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
 import { Button } from "@/shared/ui"
 import useActions from "@/hooks/useActions"
+import { colors } from "@/utils/constants/colors"
 
 export const Account = () => {
   const { logoutUser } = useActions()
@@ -18,6 +19,7 @@ export const Account = () => {
       overScrollMode="never"
       nestedScrollEnabled={false}
       showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: colors.white }}
     >
       <View style={style.mainContainer}>
         <YourAccount />

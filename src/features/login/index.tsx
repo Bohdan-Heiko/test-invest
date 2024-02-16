@@ -34,10 +34,10 @@ export const Login = () => {
       .catch(showToast)
   }
 
-  const handleLogoutUser = () => {
-    logoutUser()
-    router.navigate("/(tabs)/")
-  }
+  // const handleLogoutUser = () => {
+  //   logoutUser()
+  //   router.navigate("/(tabs)/")
+  // }
 
   // TEMPORARY FUNCTION
   const showToast = () => {
@@ -101,7 +101,7 @@ export const Login = () => {
         </View> */}
 
         <Button variant="primary" title="Далі" onPress={handleSubmit(handleLoginUser)} />
-        <Button variant="primary" title="Test logout" onPress={handleLogoutUser} />
+        {/* <Button variant="primary" title="Test logout" onPress={handleLogoutUser} /> */}
 
         {/* <Button
           variant="secondary"

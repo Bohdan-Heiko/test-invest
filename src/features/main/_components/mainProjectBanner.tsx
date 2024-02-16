@@ -6,12 +6,15 @@ import { ButtonWithIcon, Paragraph } from "@/shared/ui"
 import mainImg from "#/images/invests/main.jpeg"
 
 import { style } from "../_style"
+import { useAuthContext } from "@/context/auth.context"
 
 interface IMainProjectBannerProps {
   text: string
 }
 
 export const MainProjectBanner: FC<IMainProjectBannerProps> = ({ text }) => {
+  const { handlePushRoute } = useAuthContext()
+
   return (
     <View style={style.projectContainer}>
       <Image style={style.projectImg} source={mainImg} />
@@ -21,7 +24,11 @@ export const MainProjectBanner: FC<IMainProjectBannerProps> = ({ text }) => {
         простору.
         {text}
       </Paragraph>
-      <ButtonWithIcon title="Інвестувати" iconName="Arrow_Up_Right" />
+      <ButtonWithIcon
+        onPress={() => handlePushRoute("/(tabs)/payment")}
+        title="Інвестувати"
+        iconName="Arrow_Up_Right"
+      />
     </View>
   )
 }
