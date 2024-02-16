@@ -1,12 +1,12 @@
 import { Image, View } from "react-native"
 import { FC } from "react"
 
+import { useAuthContext } from "@/context/auth.context"
 import { ButtonWithIcon, Paragraph } from "@/shared/ui"
 
 import mainImg from "#/images/invests/main.jpeg"
 
 import { style } from "../_style"
-import { useAuthContext } from "@/context/auth.context"
 
 interface IMainProjectBannerProps {
   text: string

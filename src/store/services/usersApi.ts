@@ -1,7 +1,7 @@
 import { BuildingsResponse, HydraData, TransformedData, UserDataResponse } from "@/types"
+import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 import { mainApi } from "./mainApi"
-import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 export const usersApi = mainApi.injectEndpoints({
   overrideExisting: true,
@@ -11,6 +11,7 @@ export const usersApi = mainApi.injectEndpoints({
         url: "/api/users/me"
       }),
       providesTags: ["GetMeData"]
+      // extraOptions
     }),
 
     sumAccuralsProceents: builder.query<number | undefined, void | string>({

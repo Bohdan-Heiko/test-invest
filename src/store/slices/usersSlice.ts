@@ -1,5 +1,6 @@
 import { UserDataResponse } from "@/types"
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
 import authSlice from "./authSlice"
 
 const initialState = {} as UserDataResponse

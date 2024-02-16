@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useContext, useEffect } from "react"
-import { AllRoutes, usePathname, useRouter, useSegments } from "expo-router"
+import { AllRoutes, useRouter, useSegments } from "expo-router"
 
+import useActions from "@/hooks/useActions"
 import { useAppSelector } from "@/store"
 import { useGetMeQuery } from "@/store/services/usersApi"
-import useActions from "@/hooks/useActions"
 
 export interface AuthContextValue {
   handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
@@ -18,7 +18,6 @@ interface ProviderProps {
 
 export const AuthProvider = (props: ProviderProps) => {
   const router = useRouter()
-  const pathName = usePathname()
   const segments = useSegments()
   const { setUserData } = useActions()
 

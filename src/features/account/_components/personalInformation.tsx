@@ -1,11 +1,11 @@
 import { View } from "react-native"
+import { FC } from "react"
 
 import { ItemText, LinkRedirect, Title } from "@/shared/ui"
+import { UserDataResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { UserDataResponse } from "@/types"
-import { FC } from "react"
-import { colors } from "@/utils/constants/colors"
 
 interface IProps {
   data: UserDataResponse | undefined
@@ -21,9 +21,7 @@ export const PersonalInformation: FC<IProps> = ({ data }) => {
         <ItemText style={style.personalInfoText}>{data?.email ?? ""}</ItemText>
         <ItemText style={style.personalInfoText}>{data?.phone ?? ""}</ItemText>
         <ItemText style={style.personalInfoText}>{data?.taxNumber ?? ""}</ItemText>
-        <ItemText style={style.personalInfoText}>
-          {data?.birthdate ?? ""}
-        </ItemText>
+        <ItemText style={style.personalInfoText}>{data?.birthdate ?? ""}</ItemText>
       </View>
 
       <View style={style.yourRieltorContainer}>

@@ -2,10 +2,10 @@ import { View } from "react-native"
 import { FC } from "react"
 
 import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
+import { TransformedData, UserInvestmentsDataResponse } from "@/types"
+import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { BuildingsResponse, TransformedData, UserInvestmentsDataResponse } from "@/types"
-import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 interface InvestmentAccount {
   title: string

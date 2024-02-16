@@ -22,12 +22,12 @@ export const authSlice = createSlice({
     },
     logoutUser: () => {
       return { ...initialState }
-    },
-    
+    }
+
     // resetAuth: () => {
     //   return initialState
     // }
-  },
+  }
 })
 
 export const { loginUser, logoutUser } = authSlice.actions

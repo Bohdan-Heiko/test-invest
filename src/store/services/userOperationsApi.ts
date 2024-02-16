@@ -4,9 +4,9 @@ import {
   UserAccrualsDataResponse,
   UserInvestmentsDataResponse
 } from "@/types"
+import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 import { mainApi } from "./mainApi"
-import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 export const usersOperationsApi = mainApi.injectEndpoints({
   overrideExisting: true,
@@ -27,8 +27,8 @@ export const usersOperationsApi = mainApi.injectEndpoints({
         return transformDataHelpers.transformJsonLdToJson<UserAccrualsDataResponse>(
           baseQueryReturnValue
         )
-      }
-      // providesTags: ["UserBuildings"]
+      },
+      providesTags: ["UserAccruals"]
     }),
 
     getUserInvestments: builder.query<
@@ -47,8 +47,8 @@ export const usersOperationsApi = mainApi.injectEndpoints({
         return transformDataHelpers.transformJsonLdToJson<UserInvestmentsDataResponse>(
           baseQueryReturnValue
         )
-      }
-      // providesTags: ["UserBuildings"]
+      },
+      providesTags: ["UserInvestments"]
     })
   })
 })

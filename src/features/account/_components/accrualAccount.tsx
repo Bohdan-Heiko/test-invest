@@ -2,10 +2,10 @@ import { View } from "react-native"
 import { FC } from "react"
 
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
-
-import { style } from "../_style"
 import { TransformedData, UserAccrualsDataResponse } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
+
+import { style } from "../_style"
 
 interface IAccrualAccount {
   title: string

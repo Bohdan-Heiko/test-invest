@@ -1,19 +1,19 @@
 import { Text, View } from "react-native"
+import { FC } from "react"
 
 import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui"
+import { useSumAccuralsProceentsQuery } from "@/store/services/usersApi"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { FC } from "react"
-import { useSumAccuralsProceentsQuery } from "@/store/services/usersApi"
 
 interface IProps {
   investments: string | undefined
 }
 
 export const YourAccount: FC<IProps> = ({ investments }) => {
-  const {data: sumAccrualData} = useSumAccuralsProceentsQuery()
-  
+  const { data: sumAccrualData } = useSumAccuralsProceentsQuery()
+
   return (
     <View style={style.yourAccountContainer}>
       <View style={style.yourAccountInfo}>

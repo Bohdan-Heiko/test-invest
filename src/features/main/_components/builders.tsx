@@ -1,12 +1,12 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
 
+import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuidersResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
-import { useAuthContext } from "@/context/auth.context"
 
 interface IProps {
   data: TransformedData<BuidersResponse> | undefined
