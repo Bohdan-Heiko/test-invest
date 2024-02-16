@@ -4,8 +4,13 @@ import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
+import { FC } from "react"
 
-export const YourAccount = () => {
+interface IProps {
+  investments: string | undefined
+}
+
+export const YourAccount: FC<IProps> = ({ investments }) => {
   return (
     <View style={style.yourAccountContainer}>
       <View style={style.yourAccountInfo}>
@@ -16,7 +21,7 @@ export const YourAccount = () => {
               +14% з минулого кварталу
             </Paragraph>
             <Paragraph style={style.yourAccountInfoDataMoney}>
-              29,475.00 <Text style={{ fontSize: 24 }}>USDT</Text>
+              {investments ?? 0} <Text style={{ fontSize: 24 }}>USDT</Text>
             </Paragraph>
           </View>
 

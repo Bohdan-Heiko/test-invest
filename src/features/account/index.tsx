@@ -11,9 +11,12 @@ import { style } from "./_style"
 import { Button } from "@/shared/ui"
 import useActions from "@/hooks/useActions"
 import { colors } from "@/utils/constants/colors"
+import { useAppSelector } from "@/store"
 
 export const Account = () => {
   const { logoutUser } = useActions()
+  const { investments } = useAppSelector((state) => state.user_data)
+
   return (
     <ScrollView
       overScrollMode="never"
@@ -22,7 +25,7 @@ export const Account = () => {
       style={{ backgroundColor: colors.white }}
     >
       <View style={style.mainContainer}>
-        <YourAccount />
+        <YourAccount investments={investments} />
         <PersonalInformation />
         <RieltorInformation />
         <AccrualAccount title="Нарахування" />

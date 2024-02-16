@@ -14,7 +14,7 @@ import { style } from "./_style"
 
 export const Login = () => {
   const router = useRouter()
-  const { loginUser, logoutUser } = useActions()
+  const { loginUser } = useActions()
   const [signInUser] = useSignInUserMutation()
 
   const {
@@ -23,6 +23,10 @@ export const Login = () => {
     formState: { errors, touchedFields }
   } = useForm({
     mode: "all",
+    defaultValues: {
+      email: 'ogg@gmail.com',
+      password: 'Qwerty1234'
+    },
     resolver: yupResolver(loginSchema)
   })
 

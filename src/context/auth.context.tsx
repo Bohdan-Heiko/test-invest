@@ -1,7 +1,9 @@
-import { createContext, ReactNode, useContext } from "react"
-import { AllRoutes, useRouter, useSegments } from "expo-router"
+import { createContext, ReactNode, useContext, useEffect } from "react"
+import { AllRoutes, usePathname, useRouter, useSegments } from "expo-router"
 
 import { useAppSelector } from "@/store"
+import { useGetMeQuery } from "@/store/services/usersApi"
+import useActions from "@/hooks/useActions"
 
 export interface AuthContextValue {
   handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
@@ -16,8 +18,13 @@ interface ProviderProps {
 
 export const AuthProvider = (props: ProviderProps) => {
   const router = useRouter()
+  const pathName = usePathname()
   const segments = useSegments()
+  const { setUserData } = useActions()
+
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
+
+  const { data: getMeData, isFetching: isGetMeFetching } = useGetMeQuery()
 
   const handleReplaceRoute = (route: AllRoutes): AllRoutes | undefined => {
     if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
@@ -32,6 +39,19 @@ export const AuthProvider = (props: ProviderProps) => {
     }
     return router.push(route)
   }
+
+  useEffect(() => {
+    if (getMeData) {
+      setUserData(getMeData)
+    }
+  }, [getMeData, isGetMeFetching])
+
+  // IF NEED MAKE REREQUEST
+  // useEffect(() => {
+  //   if (pathName && isAuthenticated) {
+  //     refetchGetMeData()
+  //   }
+  // }, [pathName, isAuthenticated])
 
   return (
     <AuthContext.Provider

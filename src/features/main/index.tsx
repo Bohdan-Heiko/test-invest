@@ -18,18 +18,12 @@ SplashScreen.preventAutoHideAsync()
 
 export const Main = () => {
   const path = usePathname()
-  const { data: buildingsData, isLoading: isBuildingsDataLoading } =
-    useGetAllPublicBuildingsQuery()
-  const { data: buildersData, isLoading: isBuildersDataLoading } =
-    useGetAllPublicBuidersQuery("", {
-      skip: path !== "/"
-    })
-
-  // useEffect(() => {
-  //   if (!isBuildingsDataLoading && !isBuildersDataLoading) {
-  //     SplashScreen.hideAsync()
-  //   }
-  // }, [isBuildingsDataLoading, isBuildersDataLoading])
+  const { data: buildingsData } = useGetAllPublicBuildingsQuery("", {
+    skip: path !== "/"
+  })
+  const { data: buildersData } = useGetAllPublicBuidersQuery("", {
+    skip: path !== "/"
+  })
 
   return (
     <ScrollView
