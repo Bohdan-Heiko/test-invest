@@ -12,7 +12,7 @@ interface IProjectItemProps {
   link?: AllRoutes
 }
 
-const blurhash = "L1E5,Vtn5Cb|yZfRj@a}0lWW^es-"
+const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 
 export const ProjectItem: FC<IProjectItemProps> = ({ text, link, title, imageUri }) => {
   return (

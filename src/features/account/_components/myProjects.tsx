@@ -18,9 +18,9 @@ export const MyProjects = () => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
+          {/* <ProjectItem text={TEXT} />
           <ProjectItem text={TEXT} />
-          <ProjectItem text={TEXT} />
-          <ProjectItem text={TEXT} />
+          <ProjectItem text={TEXT} /> */}
         </View>
       </ScrollView>
     </View>

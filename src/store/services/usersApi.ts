@@ -1,6 +1,7 @@
-import { UserDataResponse } from "@/types"
+import { BuildingsResponse, HydraData, TransformedData, UserDataResponse } from "@/types"
 
 import { mainApi } from "./mainApi"
+import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 export const usersApi = mainApi.injectEndpoints({
   overrideExisting: true,
@@ -10,24 +11,35 @@ export const usersApi = mainApi.injectEndpoints({
         url: "/api/users/me"
       }),
       providesTags: ["GetMeData"]
-    })
-    // getAllPublicBuiders: builder.query<TransformedData<BuidersResponse>, void | string>({
-    //   query: () => ({
-    //     url: "/api/public/builders",
-    //     headers: {
-    //       Accept: "application/ld+json"
-    //     }
-    //   }),
+    }),
 
-    //   transformResponse: (
-    //     baseQueryReturnValue: HydraData<BuidersResponse>
-    //   ): TransformedData<BuidersResponse> => {
-    //     return transformDataHelpers.transformJsonLdToJson<BuidersResponse>(
-    //       baseQueryReturnValue
-    //     )
-    //   }
-    // })
+    sumAccuralsProceents: builder.query<number | undefined, void | string>({
+      query: () => ({
+        url: "/api/user/sum_accruals_last_quarter",
+        headers: {
+          Accept: "application/ld+json"
+        }
+      })
+    }),
+
+    getUserBuildings: builder.query<TransformedData<BuildingsResponse>, void | string>({
+      query: () => ({
+        url: "/api/user/buildings",
+        headers: {
+          Accept: "application/ld+json"
+        }
+      }),
+      transformResponse: (
+        baseQueryReturnValue: HydraData<BuildingsResponse>
+      ): TransformedData<BuildingsResponse> => {
+        return transformDataHelpers.transformJsonLdToJson<BuildingsResponse>(
+          baseQueryReturnValue
+        )
+      },
+      providesTags: ["UserBuildings"]
+    })
   })
 })
 
-export const { useGetMeQuery } = usersApi
+export const { useGetMeQuery, useSumAccuralsProceentsQuery, useGetUserBuildingsQuery } =
+  usersApi

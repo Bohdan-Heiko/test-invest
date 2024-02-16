@@ -12,10 +12,22 @@ import { Button } from "@/shared/ui"
 import useActions from "@/hooks/useActions"
 import { colors } from "@/utils/constants/colors"
 import { useAppSelector } from "@/store"
+import { useGetUserBuildingsQuery } from "@/store/services/usersApi"
+import {
+  useGetUserAccrualsQuery,
+  useGetUserInvestmentsQuery
+} from "@/store/services/userOperationsApi"
+import { InvestmentAccount } from "./_components/investmentsAccount"
 
 export const Account = () => {
   const { logoutUser } = useActions()
-  const { investments } = useAppSelector((state) => state.user_data)
+  const userData = useAppSelector((state) => state.user_data)
+
+  // const { data: userBuildings } = useGetUserBuildingsQuery()
+
+  const { data: userAccrualsData } = useGetUserAccrualsQuery()
+  const { data: userInvestmentsData } = useGetUserInvestmentsQuery()
+  // console.log(userAccrualsData, "userAccrualsData")
 
   return (
     <ScrollView
@@ -25,12 +37,12 @@ export const Account = () => {
       style={{ backgroundColor: colors.white }}
     >
       <View style={style.mainContainer}>
-        <YourAccount investments={investments} />
-        <PersonalInformation />
-        <RieltorInformation />
-        <AccrualAccount title="Нарахування" />
-        <AccrualAccount title="Інвестиції" />
-        <MyProjects />
+        <YourAccount investments={userData.investments} />
+        <PersonalInformation data={userData} />
+        {/* <RieltorInformation /> */}
+        <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
+        <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
+        {/* <MyProjects /> */}
         <Button onPress={logoutUser} title="Выход" />
         <OrganizationInfo />
       </View>

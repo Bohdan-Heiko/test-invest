@@ -1,5 +1,5 @@
 import { HydraData, TransformedData } from "@/types"
-import { GET_PAGE_NUMBER_REGEX } from "@/utils/constants/colors"
+import { GET_PAGE_NUMBER_REGEX } from "@/utils/constants/constants"
 
 const helpers = {
   getQueryParams(paramsString: string): Record<string, unknown> {

@@ -8,4 +8,4 @@ export {
   RegistrationResponse
 } from "./registration"
 export { HydraData, TransformedData } from "./transformData"
-export {UserDataResponse} from './users'
+export {UserDataResponse, UserAccrualsDataResponse, UserInvestmentsDataResponse} from './users'

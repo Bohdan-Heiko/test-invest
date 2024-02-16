@@ -28,7 +28,7 @@ export const Buildings: FC<IProps> = ({ data }) => {
               key={project.id}
               title={project.title}
               text={project.description}
-              imageUri={project.photos[0].file}
+              imageUri={project?.photos && project?.photos[0]?.file}
               link={handleReplaceRoute("/(tabs)/payment")}
             />
           ))}

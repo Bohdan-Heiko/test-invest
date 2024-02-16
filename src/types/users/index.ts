@@ -17,3 +17,40 @@ export interface UserDataResponse {
   uuid: string
   withdrawals: string
 }
+
+/////////////
+interface User {
+  id: number
+  name: string
+}
+
+interface Building {
+  id: number
+  title: string
+}
+
+export interface UserAccrualsDataResponse {
+  id: number
+  user: User
+  building: Building
+  amount: string
+  comment: string
+  createdAt: string
+  updatedAt: string
+  percent: number
+  investment: UserAccrualsDataResponse
+  status: string
+}
+
+////////
+
+export interface UserInvestmentsDataResponse {
+  id: number
+  user: User
+  building: Building
+  amount: string
+  comment: string
+  createdAt: string
+  updatedAt: string
+  status: string
+}

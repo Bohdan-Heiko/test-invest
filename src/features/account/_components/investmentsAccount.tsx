@@ -1,34 +1,34 @@
 import { View } from "react-native"
 import { FC } from "react"
 
-import { Button, Devider, ItemText, Title } from "@/shared/ui"
+import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
 
 import { style } from "../_style"
-import { TransformedData, UserAccrualsDataResponse } from "@/types"
+import { BuildingsResponse, TransformedData, UserInvestmentsDataResponse } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
-interface IAccrualAccount {
+interface InvestmentAccount {
   title: string
-  accrualData?: TransformedData<UserAccrualsDataResponse>
+  investmentsData?: TransformedData<UserInvestmentsDataResponse>
 }
 
-export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
+export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsData }) => {
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
-      {accrualData?.data.map((accrual) => (
-        <View key={accrual.id} style={style.accuralItemsMainContainer}>
+      {investmentsData?.data.map((building) => (
+        <View key={building.id} style={style.accuralItemsMainContainer}>
           <View style={style.accuralItemContainer}>
             <View style={style.accuralItemNameContainer}>
-              <Title style={style.accuralItemNameTitle}>{accrual.building.title}</Title>
-              <ItemText style={style.accuralItemNameText}>+{accrual.percent}%</ItemText>
+              <Title style={style.accuralItemNameTitle}>{building.building.title}</Title>
+              <VectorExpoIcons type={"Feather"} name="x" />
             </View>
             <View style={[style.accuralItemNameContainer, { marginBottom: 10 }]}>
               <Title style={style.accuralItemNameText}>
-                {datesHelpers.dateFormated(accrual.createdAt, "DD.MM.YYYY")}
+                {datesHelpers.dateFormated(building.createdAt, "DD.MM.YYYY")}
               </Title>
               <ItemText style={style.accuralItemNamePayment}>
-                {accrual.amount} USD
+                {building.amount} USD
               </ItemText>
             </View>
           </View>

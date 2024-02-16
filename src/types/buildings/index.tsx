@@ -20,7 +20,7 @@ export interface BuildingsResponse {
   location: string
   infrastructure: string
   safety: string
-  photos: Photos[]
+  photos?: Photos[]
   team: string[]
   createdAt: string // Assuming createdAt is a string representing a date
   updatedAt: string // Assuming updatedAt is a string representing a date
