@@ -8,7 +8,7 @@ interface IProps {
   variant?: "primary" | "secondary"
   title?: string
   disabled?: boolean
-  onPress?: () => void
+  onPress?: () => void 
   style?: ViewStyleProps
 }
 

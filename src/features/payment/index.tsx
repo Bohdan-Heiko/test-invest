@@ -18,7 +18,11 @@ import { style } from "./_style"
 
 export const Payment = () => {
   return (
-    <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false}>
+    <ScrollView
+      overScrollMode="never"
+      showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: colors.white }}
+    >
       <View style={style.mainContainer}>
         <View style={style.descriptionContainer}>
           <View style={style.descriptionTitleContainer}>

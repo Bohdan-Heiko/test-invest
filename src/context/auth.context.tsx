@@ -1,16 +1,11 @@
-import { useSegments } from "expo-router";
-import { ReactNode, createContext, useContext } from "react"
+import { createContext, ReactNode, useContext } from "react"
+import { AllRoutes, useRouter, useSegments } from "expo-router"
+
+import { useAppSelector } from "@/store"
 
 export interface AuthContextValue {
-  // signIn: (e: string, p: string) => Promise<SignInResponse>;
-  // signUp: (e: string, p: string, n: string) => Promise<SignInResponse>;
-  // signOut: () => Promise<SignOutResponse>;
-  // setUserAuthCredential: (
-  //   credential: AppleAuthCredential | GoogleAuthCredential | null
-  // ) => void;
-  // isCredentialChecked: boolean;
-  // authCredential: IAuthCredential;
-  // user: any;
+  handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
+  handlePushRoute: (route: AllRoutes) => AllRoutes | undefined
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined)
@@ -20,21 +15,30 @@ interface ProviderProps {
 }
 
 export const AuthProvider = (props: ProviderProps) => {
-  const segments = useSegments();
-  console.log(segments, 'SEG');
-  
+  const router = useRouter()
+  const segments = useSegments()
+  const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
+
+  const handleReplaceRoute = (route: AllRoutes): AllRoutes | undefined => {
+    if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
+      return "/(auth)/signin"
+    }
+    return route
+  }
+
+  const handlePushRoute = (route: AllRoutes) => {
+    if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
+      return router.replace("/(auth)/signin")
+    }
+    return router.push(route)
+  }
 
   return (
     <AuthContext.Provider
       value={
         {
-          // signIn: login,
-          // signOut: logout,
-          // signUp: createAcount,
-          // setUserAuthCredential,
-          // authCredential,
-          // isCredentialChecked,
-          // user,
+          handleReplaceRoute,
+          handlePushRoute
         } as AuthContextValue
       }
     >

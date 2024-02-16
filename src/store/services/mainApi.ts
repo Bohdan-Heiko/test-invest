@@ -1,3 +1,4 @@
+import { API_URL } from "@/utils/constants/constants"
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 import { RootState } from ".."
@@ -7,7 +8,7 @@ export const mainApi = createApi({
   keepUnusedDataFor: 0,
   refetchOnMountOrArgChange: true,
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.EXPO_PUBLIC_API_URL,
+    baseUrl: API_URL,
     prepareHeaders: async (headers, { getState }) => {
       const state: RootState = getState() as RootState
 

@@ -1,6 +1,6 @@
 import { ScrollView, View } from "react-native"
 
-import { OrganizationInfo, PasswordRules } from "@/shared/components"
+import { OrganizationInfo } from "@/shared/components"
 import { Button, Input, Title } from "@/shared/ui"
 
 import { style } from "./_style"
