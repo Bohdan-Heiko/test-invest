@@ -20,11 +20,8 @@ export const Account = () => {
   const { logoutUser } = useActions()
   const userData = useAppSelector((state) => state.user_data)
 
-  // const { data: userBuildings } = useGetUserBuildingsQuery()
-
   const { data: userAccrualsData } = useGetUserAccrualsQuery()
   const { data: userInvestmentsData } = useGetUserInvestmentsQuery()
-  // console.log(userAccrualsData, "userAccrualsData")
 
   return (
     <ScrollView

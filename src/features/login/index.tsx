@@ -24,8 +24,8 @@ export const Login = () => {
   } = useForm({
     mode: "all",
     defaultValues: {
-      email: "ogg@gmail.com",
-      password: "Qwerty1234"
+      email: "",
+      password: ""
     },
     resolver: yupResolver(loginSchema)
   })
