@@ -14,6 +14,7 @@ interface IProps {
 
 export const Buildings: FC<IProps> = ({ data }) => {
   const { handleReplaceRoute } = useAuthContext()
+
   return (
     <View style={style.ourProjectsContainer}>
       <Title style={style.ourProjectTitle}>Наші проекти</Title>
@@ -28,7 +29,7 @@ export const Buildings: FC<IProps> = ({ data }) => {
               key={project.id}
               title={project.title}
               text={project.description}
-              imageUri={project?.photos && project?.photos[0]?.file}
+              imageUri={project?.photos && project?.photos[0]?.contentUrl}
               link={handleReplaceRoute("/(tabs)/payment")}
             />
           ))}
