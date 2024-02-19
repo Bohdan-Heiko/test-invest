@@ -8,10 +8,12 @@ import {
   useGetUserAccrualsQuery,
   useGetUserInvestmentsQuery
 } from "@/store/services/userOperationsApi"
+import { useGetUserBuildingsQuery } from "@/store/services/usersApi"
 import { colors } from "@/utils/constants/colors"
 
 import { AccrualAccount } from "./_components/accrualAccount"
 import { InvestmentAccount } from "./_components/investmentsAccount"
+import { MyProjects } from "./_components/myProjects"
 import { PersonalInformation } from "./_components/personalInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
@@ -22,6 +24,7 @@ export const Account = () => {
 
   const { data: userAccrualsData } = useGetUserAccrualsQuery()
   const { data: userInvestmentsData } = useGetUserInvestmentsQuery()
+  const { data: userBuildingsData } = useGetUserBuildingsQuery()
 
   return (
     <ScrollView
@@ -36,7 +39,7 @@ export const Account = () => {
         {/* <RieltorInformation /> */}
         <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
         <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
-        {/* <MyProjects /> */}
+        <MyProjects projectsData={userBuildingsData} />
         <Button onPress={logoutUser} title="Выход" />
         <OrganizationInfo />
       </View>

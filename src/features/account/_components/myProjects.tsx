@@ -1,22 +1,34 @@
 import { ScrollView, View } from "react-native"
+import { FC } from "react"
 
+import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
+import { BuildingsResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
 
-export const MyProjects = () => {
+interface IProps {
+  projectsData?: TransformedData<BuildingsResponse> | undefined
+}
+
+export const MyProjects: FC<IProps> = ({ projectsData }) => {
   return (
     <View style={style.myProjectsContainer}>
-      <Title style={style.myProjectTitle}>Наші проекти</Title>
+      <Title style={style.myProjectTitle}>Проекти, в які ви інвестуєте</Title>
       <ScrollView
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {/* <ProjectItem text={TEXT} />
-          <ProjectItem text={TEXT} />
-          <ProjectItem text={TEXT} /> */}
+          {projectsData?.data.map((project) => (
+            <ProjectItem
+              key={project.id}
+              text={project.description}
+              title={project.title}
+              imageUri={project.photos && project.photos[0].contentUrl}
+            />
+          ))}
         </View>
       </ScrollView>
     </View>

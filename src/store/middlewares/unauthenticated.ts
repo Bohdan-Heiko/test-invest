@@ -1,14 +1,14 @@
-import { Middleware, isRejectedWithValue } from "@reduxjs/toolkit"
+import { isRejectedWithValue, Middleware } from "@reduxjs/toolkit"
+
 import { logoutUser } from "../slices/authSlice"
 
-export const unauthenticatedMiddleware: Middleware<{}, any> =
+/* eslint-disable */
+export const unauthenticatedMiddleware: Middleware<Record<string, unknown>, any> =
   ({ dispatch }) =>
   (next) =>
+
   (action: any) => {
-    if (
-      isRejectedWithValue(action) &&
-      action.payload.status === 401
-    ) {
+    if (isRejectedWithValue(action) && action.payload.status === 401) {
       dispatch(logoutUser())
     }
     return next(action)

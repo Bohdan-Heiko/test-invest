@@ -54,8 +54,7 @@ export const AuthProvider = (props: ProviderProps) => {
   useEffect(() => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
-    } 
-    else if(pathName !== '/signin' && !isAuthenticated) {
+    } else if (pathName !== "/signin" && !isAuthenticated) {
       router.replace("/(tabs)/")
     }
   }, [pathName, isAuthenticated])

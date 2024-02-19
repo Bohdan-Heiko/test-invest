@@ -5,6 +5,7 @@ import { AllRoutes } from "expo-router"
 
 import { LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
+import { API_URL } from "@/utils/constants/constants"
 interface IProjectItemProps {
   text: string
   title: string
@@ -20,7 +21,7 @@ export const ProjectItem: FC<IProjectItemProps> = ({ text, link, title, imageUri
       <View style={style.ourProjectItem}>
         <Image
           style={style.ourProjectItemImage}
-          source={imageUri}
+          source={imageUri ? `${API_URL}${imageUri}` : undefined}
           placeholder={blurhash}
           contentFit="cover"
           transition={700}
