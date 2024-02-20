@@ -1,5 +1,6 @@
 import {
   KeyboardTypeOptions,
+  Platform,
   StyleSheet,
   TextInput,
   TextInputProps,
@@ -91,7 +92,7 @@ const style = StyleSheet.create({
     flexShrink: 1,
     fontFamily: "Inter500",
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: Platform.OS === "android" ? 24 : 0,
     color: colors.tundora
   },
 
@@ -99,7 +100,6 @@ const style = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    // backgroundColor: "red"s
     marginLeft: 10
   }
 })
