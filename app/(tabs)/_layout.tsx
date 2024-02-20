@@ -1,9 +1,10 @@
 import React from "react"
-import { Tabs } from "expo-router"
+import { Tabs, useRouter } from "expo-router"
 
-import Colors from "@/utils/constants/colors"
-import { VectorExpoIcons } from "@/shared/ui"
+import Colors, { colors } from "@/utils/constants/colors"
+import { Button, ItemText, LoginNavbarButton, VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
+import { Pressable, View } from "react-native"
 
 export default function TabLayout() {
   const { isAuthenticated } = useAppSelector((stat) => stat.bober_auth)
@@ -18,6 +19,8 @@ export default function TabLayout() {
         options={{
           title: "Головна",
           // href: null,
+          headerRightContainerStyle: { paddingHorizontal: 20 },
+          headerRight: () => !isAuthenticated && <LoginNavbarButton />,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Octicons" name="home" color={color} />
           )
