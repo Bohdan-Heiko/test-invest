@@ -30,6 +30,12 @@ export const mainApi = createApi({
       return headers
     }
   }),
-  tagTypes: [],
+  tagTypes: [
+    "LoginUser",
+    "GetMeData",
+    "UserBuildings",
+    "UserAccruals",
+    "UserInvestments"
+  ],
   endpoints: () => ({})
 })

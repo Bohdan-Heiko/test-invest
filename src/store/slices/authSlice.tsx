@@ -13,9 +13,6 @@ export const authSlice = createSlice({
   name,
   initialState,
   reducers: {
-    // userRole: (state, { payload }) => {
-    //   state.role = payload
-    // },
     loginUser: (state, { payload }: PayloadAction<LoginResponse>) => {
       state.isAuthenticated = true
       state.token = payload.token
@@ -23,9 +20,6 @@ export const authSlice = createSlice({
     logoutUser: () => {
       return { ...initialState }
     }
-    // resetAuth: () => {
-    //   return initialState
-    // }
   }
 })
 

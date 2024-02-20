@@ -9,9 +9,15 @@ interface IProps {
   value: boolean
   iconSize: Record<"width" | "height", number>
   onPressHandler: (flag: boolean) => void
+  error?: boolean
 }
 
-export const CheckBox: React.FC<IProps> = ({ value, onPressHandler, iconSize }) => {
+export const CheckBox: React.FC<IProps> = ({
+  value,
+  onPressHandler,
+  iconSize,
+  error
+}) => {
   return (
     <TouchableOpacity onPress={() => onPressHandler(!value)}>
       <View
@@ -26,7 +32,7 @@ export const CheckBox: React.FC<IProps> = ({ value, onPressHandler, iconSize }) 
           name={value ? "CheckBox_Check" : "CheckBox_Uncheck"}
           width={iconSize.width}
           height={iconSize.height}
-          color={colors.dove_graya}
+          color={error ? colors.red : colors.dove_graya}
         />
       </View>
     </TouchableOpacity>

@@ -1,11 +1,19 @@
 import { Text, View } from "react-native"
+import { FC } from "react"
 
 import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui"
+import { useSumAccuralsProceentsQuery } from "@/store/services/usersApi"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
 
-export const YourAccount = () => {
+interface IProps {
+  investments: string | undefined
+}
+
+export const YourAccount: FC<IProps> = ({ investments }) => {
+  const { data: sumAccrualData } = useSumAccuralsProceentsQuery()
+
   return (
     <View style={style.yourAccountContainer}>
       <View style={style.yourAccountInfo}>
@@ -13,10 +21,10 @@ export const YourAccount = () => {
         <View style={style.yourAccountInfoData}>
           <View style={style.yourAccountInfoDataMoneyContainer}>
             <Paragraph style={style.yourAccountInfoDataProcent}>
-              +14% з минулого кварталу
+              +{sumAccrualData ?? 0}% з минулого кварталу
             </Paragraph>
             <Paragraph style={style.yourAccountInfoDataMoney}>
-              29,475.00 <Text style={{ fontSize: 24 }}>USDT</Text>
+              {investments ?? 0} <Text style={{ fontSize: 24 }}>USDT</Text>
             </Paragraph>
           </View>
 

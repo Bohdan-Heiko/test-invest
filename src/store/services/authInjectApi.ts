@@ -17,7 +17,8 @@ export const authApi = mainApi.injectEndpoints({
         url: "/api/login",
         method: "post",
         body
-      })
+      }),
+      invalidatesTags: ["GetMeData"]
     })
   })
 })

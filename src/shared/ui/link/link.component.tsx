@@ -13,7 +13,7 @@ interface LinkRedirectProps extends TextProps {
 export const LinkRedirect: FC<LinkRedirectProps> = ({ href, style, ...otherProps }) => {
   return (
     <Link href={href} asChild>
-      <Pressable>
+      <Pressable disabled>
         <Text style={[styles.text, style]} {...otherProps} />
       </Pressable>
     </Link>

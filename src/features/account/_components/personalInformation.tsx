@@ -1,33 +1,46 @@
 import { View } from "react-native"
+import { FC } from "react"
 
 import { ItemText, LinkRedirect, Title } from "@/shared/ui"
+import { UserDataResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
 
-export const PersonalInformation = () => {
+interface IProps {
+  data: UserDataResponse | undefined
+}
+
+export const PersonalInformation: FC<IProps> = ({ data }) => {
   return (
     <View style={style.personalInfoMainContainer}>
-      <Title style={style.personalInfoTitle}>Клопотенко Іван Сергійович</Title>
+      <Title style={style.personalInfoTitle}>{data?.name ?? ""}</Title>
 
       <View style={style.personalInfoContainer}>
         <Title style={style.personalInfoContainerTitle}>Персональна інформація</Title>
-        <ItemText style={style.personalInfoText}>mark.zchuk@gmail.com</ItemText>
-        <ItemText style={style.personalInfoText}>+38 097 485 01 63</ItemText>
-        <ItemText style={style.personalInfoText}>3021524697</ItemText>
-        <ItemText style={style.personalInfoText}>12.10.2001</ItemText>
+        <ItemText style={style.personalInfoText}>{data?.email ?? ""}</ItemText>
+        <ItemText style={style.personalInfoText}>{data?.phone ?? ""}</ItemText>
+        <ItemText style={style.personalInfoText}>{data?.taxNumber ?? ""}</ItemText>
+        <ItemText style={style.personalInfoText}>{data?.birthdate ?? ""}</ItemText>
       </View>
 
       <View style={style.yourRieltorContainer}>
         <Title style={style.yourRieltorTitle}>Ваш рієлтор</Title>
-        <ItemText style={style.yourRieltorInfo}>Петренко Григорій Александрович</ItemText>
+        {/* <ItemText style={style.yourRieltorInfo}>Петренко Григорій Александрович</ItemText> */}
       </View>
 
       <View style={style.functionsContainer}>
         <Title style={style.functionsTitle}>Функції</Title>
-        <LinkRedirect href="/(tabs)/account" style={style.functionsLinks}>
+        <LinkRedirect
+          href="/(tabs)/account"
+          style={{ ...style.functionsLinks, color: colors.silver }}
+        >
           Змінити пароль
         </LinkRedirect>
-        <LinkRedirect href="/(tabs)/account" style={style.functionsLinks}>
+        <LinkRedirect
+          href="/(tabs)/account"
+          style={{ ...style.functionsLinks, color: colors.silver }}
+        >
           Вивести кошти
         </LinkRedirect>
       </View>
