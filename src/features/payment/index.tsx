@@ -3,9 +3,9 @@ import { ScrollView, View } from "react-native"
 import { OrganizationInfo } from "@/shared/components"
 import { colors } from "@/utils/constants/colors"
 
-import { style } from "./_style"
 import { Descriptions } from "./_components/description"
 import { PaymentForm } from "./_components/payment.form"
+import { style } from "./_style"
 
 export const Payment = () => {
   return (

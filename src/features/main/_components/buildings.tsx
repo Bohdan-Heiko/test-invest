@@ -31,8 +31,10 @@ export const Buildings: FC<IProps> = ({ data }) => {
               imageUri={project?.photos && project?.photos[0]?.contentUrl}
               handlePress={() =>
                 handlePushRoute("/(tabs)/payment", {
+                  id: project.id,
                   title: project.title,
-                  id: project.id
+                  price: project.price,
+                  duration: project.duration
                 })
               }
             />

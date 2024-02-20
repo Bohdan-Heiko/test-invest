@@ -1,7 +1,9 @@
 import { Pressable, View } from "react-native"
-import { style } from "../_style"
-import { Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 import { useState } from "react"
+
+import { Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
+
+import { style } from "../_style"
 
 export const Descriptions = () => {
   const [showDescription, setShowDescription] = useState<boolean>(true)

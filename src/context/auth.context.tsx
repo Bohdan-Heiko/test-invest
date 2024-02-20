@@ -9,7 +9,7 @@ export interface AuthContextValue {
   handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
   handlePushRoute: (
     route: AllRoutes | never,
-    data: Record<string, unknown>
+    data?: Record<string, unknown>
   ) => AllRoutes | undefined
 }
 
@@ -62,7 +62,7 @@ export const AuthProvider = (props: ProviderProps) => {
   useEffect(() => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
-    } else if (pathName !== "/signin" && !isAuthenticated) {
+    } else if (segments[0] !== "(auth)" && !isAuthenticated) {
       router.replace("/(tabs)/")
     }
   }, [pathName, isAuthenticated])
