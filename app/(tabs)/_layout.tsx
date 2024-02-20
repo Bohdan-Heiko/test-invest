@@ -1,10 +1,9 @@
 import React from "react"
-import { Tabs, useRouter } from "expo-router"
+import { Tabs } from "expo-router"
 
-import Colors, { colors } from "@/utils/constants/colors"
-import { Button, ItemText, LoginNavbarButton, VectorExpoIcons } from "@/shared/ui"
+import Colors from "@/utils/constants/colors"
+import { LoginNavbarButton, VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
-import { Pressable, View } from "react-native"
 
 export default function TabLayout() {
   const { isAuthenticated } = useAppSelector((stat) => stat.bober_auth)

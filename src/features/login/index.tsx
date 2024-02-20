@@ -1,4 +1,5 @@
 import { ScrollView, ToastAndroid, View } from "react-native"
+import { useState } from "react"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
@@ -15,6 +16,7 @@ import { style } from "./_style"
 export const Login = () => {
   const router = useRouter()
   const { loginUser } = useActions()
+  const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(true)
   const [signInUser] = useSignInUserMutation()
 
   const {
@@ -50,7 +52,6 @@ export const Login = () => {
 
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
-      {/* Account section */}
       <View style={style.loginContainer}>
         <Title style={style.title}>Вхід в аккаунт</Title>
         <Controller
@@ -78,10 +79,16 @@ export const Login = () => {
               fields={{ ...field }}
               error={errors.password}
               isTouchField={!!touchedFields.password}
-              iconName="HideEye"
+              iconProps={{
+                type: "Octicons",
+                name: isSecureTextEntry ? "eye-closed" : "eye",
+                size: 25,
+                style: { opacity: 0.5 }
+              }}
               styles={{ marginBottom: 10 }}
+              onPressIcon={() => setIsSecureTextEntry(!isSecureTextEntry)}
               inputProps={{
-                secureTextEntry: true,
+                secureTextEntry: isSecureTextEntry,
                 placeholder: "Пароль",
                 keyboardType: "default",
                 onChangeText: field.onChange
@@ -117,7 +124,6 @@ export const Login = () => {
           <LinkRedirect href="/(auth)/registration">Зареєструйся</LinkRedirect>
         </View>
       </View>
-      {/* Account section */}
 
       <OrganizationInfo />
     </ScrollView>

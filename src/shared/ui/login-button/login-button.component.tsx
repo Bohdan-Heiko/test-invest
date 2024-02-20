@@ -1,7 +1,9 @@
-import { useRouter } from "expo-router"
 import { Pressable, StyleSheet, View } from "react-native"
-import { ItemText } from "../text/text.components"
+import { useRouter } from "expo-router"
+
 import { colors } from "@/utils/constants/colors"
+
+import { ItemText } from "../text/text.components"
 
 export const LoginNavbarButton = () => {
   const router = useRouter()
