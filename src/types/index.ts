@@ -1,6 +1,7 @@
 export { BuidersResponse } from "./buiders"
 export { BuildingsResponse } from "./buildings"
 export { SVGIconNames } from "./icons"
+export { TransactionBody, TransactionResponse } from "./investments"
 export {
   LoginBody,
   LoginResponse,

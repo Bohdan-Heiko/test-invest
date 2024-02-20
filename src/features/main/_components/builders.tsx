@@ -13,7 +13,7 @@ interface IProps {
 }
 
 export const Builders: FC<IProps> = ({ data }) => {
-  const { handleReplaceRoute } = useAuthContext()
+  const { handlePushRoute } = useAuthContext()
 
   return (
     <View style={style.ourProjectsContainer}>
@@ -29,8 +29,8 @@ export const Builders: FC<IProps> = ({ data }) => {
               key={id}
               title={title}
               text={description}
-              imageUri={photos.file ?? photos.contentUrl}
-              link={handleReplaceRoute("/(tabs)/payment")}
+              imageUri={photos.contentUrl}
+              handlePress={() => handlePushRoute("/(tabs)/payment")}
             />
           ))}
         </View>

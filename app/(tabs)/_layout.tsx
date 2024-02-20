@@ -37,7 +37,7 @@ export default function TabLayout() {
         name="payment"
         options={{
           title: "Оплата",
-          href: isAuthenticated ? "/payment" : null,
+          href: null,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="MaterialIcons" name="payment" color={color} />
           )

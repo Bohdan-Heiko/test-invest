@@ -4,6 +4,7 @@ import {
   UserAccrualsDataResponse,
   UserInvestmentsDataResponse
 } from "@/types"
+import { TransactionBody, TransactionResponse } from "@/types/investments"
 import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 import { mainApi } from "./mainApi"
@@ -49,8 +50,21 @@ export const usersOperationsApi = mainApi.injectEndpoints({
         )
       },
       providesTags: ["UserInvestments"]
+    }),
+
+    createInvestments: builder.mutation<TransactionResponse, TransactionBody>({
+      query: (body) => ({
+        url: "/api/user/investments",
+        method: "POST",
+        body
+      }),
+      invalidatesTags: ["GetMeData", "UserInvestments"]
     })
   })
 })
 
-export const { useGetUserAccrualsQuery, useGetUserInvestmentsQuery } = usersOperationsApi
+export const {
+  useGetUserAccrualsQuery,
+  useGetUserInvestmentsQuery,
+  useCreateInvestmentsMutation
+} = usersOperationsApi

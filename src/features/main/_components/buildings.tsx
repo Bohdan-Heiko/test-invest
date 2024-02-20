@@ -13,7 +13,7 @@ interface IProps {
 }
 
 export const Buildings: FC<IProps> = ({ data }) => {
-  const { handleReplaceRoute } = useAuthContext()
+  const { handlePushRoute } = useAuthContext()
   return (
     <View style={style.ourProjectsContainer}>
       <Title style={style.ourProjectTitle}>Наші проекти</Title>
@@ -28,8 +28,13 @@ export const Buildings: FC<IProps> = ({ data }) => {
               key={project.id}
               title={project.title}
               text={project.description}
-              imageUri={project?.photos && project?.photos[0]?.file}
-              link={handleReplaceRoute("/(tabs)/payment")}
+              imageUri={project?.photos && project?.photos[0]?.contentUrl}
+              handlePress={() =>
+                handlePushRoute("/(tabs)/payment", {
+                  title: project.title,
+                  id: project.id
+                })
+              }
             />
           ))}
         </View>

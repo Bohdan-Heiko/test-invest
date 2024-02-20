@@ -7,7 +7,10 @@ import { useGetMeQuery } from "@/store/services/usersApi"
 
 export interface AuthContextValue {
   handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
-  handlePushRoute: (route: AllRoutes) => AllRoutes | undefined
+  handlePushRoute: (
+    route: AllRoutes | never,
+    data: Record<string, unknown>
+  ) => AllRoutes | undefined
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined)
@@ -28,20 +31,25 @@ export const AuthProvider = (props: ProviderProps) => {
     data: getMeData,
     refetch: refetchGetMeData,
     isFetching: isGetMeFetching
-  } = useGetMeQuery()
+  } = useGetMeQuery("", {
+    skip: !isAuthenticated
+  })
 
-  const handleReplaceRoute = (route: AllRoutes): AllRoutes | undefined => {
-    if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
-      return "/(auth)/signin"
-    }
-    return route
-  }
+  // const handleReplaceRoute = (route: AllRoutes): AllRoutes | undefined => {
+  //   if (route !== "/(tabs)/" && segments[0] === "(tabs)" && !isAuthenticated) {
+  //     return "/(auth)/signin"
+  //   }
+  //   return route
+  // }
 
-  const handlePushRoute = (route: AllRoutes) => {
+  const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
     if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
       return router.replace("/(auth)/signin")
     }
-    return router.push(route)
+    return router.push({
+      pathname: route as AllRoutes,
+      params: data
+    })
   }
 
   useEffect(() => {
@@ -63,7 +71,6 @@ export const AuthProvider = (props: ProviderProps) => {
     <AuthContext.Provider
       value={
         {
-          handleReplaceRoute,
           handlePushRoute
         } as AuthContextValue
       }
