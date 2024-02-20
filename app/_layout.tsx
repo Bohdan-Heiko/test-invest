@@ -73,10 +73,7 @@ function RootLayoutNav() {
         <PersistGate persistor={persistor}>
           <AuthProvider>
             <Stack>
-              <Stack.Screen
-                name="(tabs)"
-                options={{ headerShown: false, statusBarStyle: "dark" }}
-              />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)/registration" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
             </Stack>
