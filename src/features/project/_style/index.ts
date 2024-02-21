@@ -6,9 +6,18 @@ export const style = StyleSheet.create({
   mainContainer: {
     flex: 1,
     gap: 20,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
 
+  title: {
+    fontSize: 20,
+    lineHeight: 30,
+    color: colors.mine_shaft,
+    textAlign: "left"
+  },
+
+  //PROJECT CARDS
   projectsContainer: {
     gap: 20,
     display: "flex",
@@ -48,6 +57,7 @@ export const style = StyleSheet.create({
     color: colors.white
   },
 
+  // PROJECT INFO
   infoContainer: {
     gap: 10,
     display: "flex",
@@ -73,5 +83,48 @@ export const style = StyleSheet.create({
   infoDetailsContainerText: {
     fontSize: 16,
     lineHeight: 24
+  },
+
+  // TEAMS
+  teamsContainer: {
+    gap: 20
+  },
+
+  teamsMainTitle: {
+    textAlign: "left"
+  },
+  memberContainer: {
+    gap: 10
+  },
+
+  socialMainContainer: {
+    display: "flex",
+    position: "absolute",
+    top: 7,
+    left: 7,
+    zIndex: 100,
+    gap: 10
+  },
+
+  socialContainer: {
+    backgroundColor: colors.blue,
+    width: 32,
+    height: 32,
+    borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
+  memberJobTitle: {
+    fontSize: 18,
+    lineHeight: 27,
+    textAlign: "left",
+    color: colors.tundora
+  },
+  memberJobDescription: {
+    fontSize: 14,
+    lineHeight: 21,
+    textAlign: "left",
+    color: colors.dove_graya
   }
 })
