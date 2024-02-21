@@ -126,5 +126,45 @@ export const style = StyleSheet.create({
     lineHeight: 21,
     textAlign: "left",
     color: colors.dove_graya
+  },
+
+  // REPORTS
+  reportsMainContainer: {
+    flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    gap: 30,
+    display: "flex",
+    alignItems: "flex-start",
+    backgroundColor: colors.white,
+
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.1,
+    elevation: 4
+  },
+
+  reportMainTitle: {
+    fontSize: 30,
+    lineHeight: 45,
+    color: colors.mine_shaft
+  },
+  reports: {
+    gap: 20,
+    width: "100%"
+  },
+  reportContainer: {
+    gap: 10,
+    display: "flex",
+    alignItems: "flex-start"
+  },
+  reportDate: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.silver
   }
+
 })

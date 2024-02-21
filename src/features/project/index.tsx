@@ -3,15 +3,13 @@ import { ScrollView, View } from "react-native"
 import { style } from "./_style"
 import { ProjectInformation } from "./_components/projectInformation"
 import { ProjectCards } from "./_components/projectCards"
-import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
-import { Image } from "expo-image"
-import MainImage from "#/images/invests/main.jpeg"
 import { ProjectTeams } from "./_components/projectTeams"
+import { ProjectReports } from "./_components/projectReports"
+import { Pagination } from "@/shared/components"
 
 const TITLE = "Таунхаус Lisopark, Буча"
 const DESCRIPTION =
   "Це інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору."
-const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 
 const Project = () => {
   return (
@@ -49,6 +47,8 @@ const Project = () => {
         />
 
         <ProjectTeams />
+        <ProjectReports />
+        <Pagination currentPage={1} pageSize={10} totalCount={100} />
       </View>
     </ScrollView>
   )
