@@ -31,8 +31,6 @@ export const Account = () => {
     skip: pathName !== "/account"
   })
   const { data: userBuildingsData } = useGetUserBuildingsQuery()
-
-  console.log(userData);
   
   return (
     <ScrollView

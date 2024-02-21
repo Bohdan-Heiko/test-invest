@@ -8,9 +8,17 @@ interface IProps {
   totalCount: number
   currentPage: number
   pageSize: number
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
 }
 
-export const Pagination: FC<IProps> = ({ currentPage, pageSize = 25, totalCount }) => {
+export const Pagination: FC<IProps> = ({
+  currentPage,
+  pageSize = 25,
+  totalCount,
+  setCurrentPage
+}) => {
+  if (!totalCount || totalCount === 1) return
+
   const paginationRange = usePagination({
     pageSize,
     totalCount,
@@ -20,9 +28,13 @@ export const Pagination: FC<IProps> = ({ currentPage, pageSize = 25, totalCount 
 
   let lastPage = paginationRange && paginationRange[paginationRange.length - 1]
   return (
-    <View style={style.paginationContainer}>
+    <View style={[style.paginationContainer, {
+      justifyContent: totalCount / pageSize >= 5 ? 'space-between' : 'flex-start',
+      gap: totalCount / pageSize <= 5 ? 10 : 0
+    }]}>
       {/* ARRORW */}
       <Pressable
+        onPress={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
         style={({ pressed }) => [
           style.paginationItemContainer,
@@ -53,6 +65,7 @@ export const Pagination: FC<IProps> = ({ currentPage, pageSize = 25, totalCount 
         return (
           <Pressable
             key={pageNumber}
+            onPress={() => setCurrentPage(pageNumber as number)}
             style={({ pressed }) => [
               style.paginationItemContainer,
               pageNumber === currentPage && style.active,
@@ -78,6 +91,7 @@ export const Pagination: FC<IProps> = ({ currentPage, pageSize = 25, totalCount 
       {/* ARRORW */}
       <Pressable
         disabled={currentPage === lastPage}
+        onPress={() => setCurrentPage(currentPage + 1)}
         style={({ pressed }) => [
           style.paginationItemContainer,
           {
@@ -101,6 +115,7 @@ const style = StyleSheet.create({
     flex: 1,
     display: "flex",
     flexDirection: "row",
+    // gap: 11,
     justifyContent: "space-between"
   },
 

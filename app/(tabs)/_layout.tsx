@@ -26,16 +26,7 @@ export default function TabLayout() {
           )
         }}
       />
-      <Tabs.Screen
-        name="project"
-        options={{
-          title: "Проект",
-          // href: null,
-          tabBarIcon: ({ color }) => (
-            <VectorExpoIcons type="Octicons" name="home" color={color} />
-          )
-        }}
-      />
+
       <Tabs.Screen
         name="account"
         options={{

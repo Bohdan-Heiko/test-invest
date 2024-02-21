@@ -7,6 +7,7 @@ import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
 
 import { style } from "../_style"
+import { AllRoutes } from "expo-router"
 
 interface IProps {
   data: BuildingsResponse[] | undefined
@@ -29,7 +30,10 @@ export const Buildings: FC<IProps> = ({ data }) => {
               title={project.title}
               text={project.description}
               imageUri={project?.photos && project?.photos[0]?.contentUrl}
-              handlePress={() =>
+              handleItemPress={() =>
+                handlePushRoute(`/(project)/project/${project.id}` as AllRoutes)
+              }
+              handleInvestPress={() =>
                 handlePushRoute("/(tabs)/payment", {
                   id: project.id,
                   title: project.title,

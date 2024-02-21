@@ -9,8 +9,14 @@ export const buildingsApi = mainApi.injectEndpoints({
       query: () => ({
         url: "/api/public/buildings"
       })
+    }),
+    getOnePublicBuilding: builder.query<BuildingsResponse, string>({
+      query: (id) => ({
+        url: `/api/public/buildings/${id}`
+      })
     })
   })
 })
 
-export const { useGetAllPublicBuildingsQuery } = buildingsApi
+export const { useGetAllPublicBuildingsQuery, useGetOnePublicBuildingQuery } =
+  buildingsApi

@@ -17,9 +17,7 @@ export const YourAccount: FC<IProps> = ({ investments }) => {
   const { data: sumAccrualData } = useSumAccuralsProceentsQuery('', {
     skip: pathName !== '/account'
   })
-  console.log(investments, 'SUMM');
   
-
   return (
     <View style={style.yourAccountContainer}>
       <View style={style.yourAccountInfo}>
