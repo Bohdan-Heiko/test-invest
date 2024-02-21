@@ -6,7 +6,8 @@ export const style = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
   projectContainer: {
     gap: 20,

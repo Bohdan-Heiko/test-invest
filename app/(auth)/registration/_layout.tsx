@@ -6,8 +6,9 @@ export default function RegistrationLayout() {
     <Stack
       screenOptions={{
         headerShown: true,
+        headerShadowVisible: false,
         headerStyle: {
-          backgroundColor: "white"
+          backgroundColor: colors.white
         },
         headerTintColor: colors.mine_shaft,
         gestureEnabled: false,
@@ -15,7 +16,6 @@ export default function RegistrationLayout() {
           fontFamily: "Inter500"
         },
         headerTitle: "Реєстрація"
-
       }}
     />
   )

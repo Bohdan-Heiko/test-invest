@@ -51,7 +51,11 @@ export const Login = () => {
   }
 
   return (
-    <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={style.container}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never"
+    >
       <View style={style.loginContainer}>
         <Title style={style.title}>Вхід в аккаунт</Title>
         <Controller

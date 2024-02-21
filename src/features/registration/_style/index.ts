@@ -6,7 +6,8 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
 
   // Account section
