@@ -17,15 +17,23 @@ import { MyProjects } from "./_components/myProjects"
 import { PersonalInformation } from "./_components/personalInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
+import { usePathname } from "expo-router"
 
 export const Account = () => {
+  const pathName = usePathname()
   const { logoutUser } = useActions()
   const userData = useAppSelector((state) => state.user_data)
 
-  const { data: userAccrualsData } = useGetUserAccrualsQuery()
-  const { data: userInvestmentsData } = useGetUserInvestmentsQuery()
+  const { data: userAccrualsData } = useGetUserAccrualsQuery("", {
+    skip: pathName !== "/account"
+  })
+  const { data: userInvestmentsData } = useGetUserInvestmentsQuery("", {
+    skip: pathName !== "/account"
+  })
   const { data: userBuildingsData } = useGetUserBuildingsQuery()
 
+  console.log(userData);
+  
   return (
     <ScrollView
       overScrollMode="never"
@@ -34,7 +42,7 @@ export const Account = () => {
       style={{ backgroundColor: colors.white }}
     >
       <View style={style.mainContainer}>
-        <YourAccount investments={userData.investments} />
+        <YourAccount investments={userData.totalBalance} />
         <PersonalInformation data={userData} />
         {/* <RieltorInformation /> */}
         <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />

@@ -6,13 +6,19 @@ import { useSumAccuralsProceentsQuery } from "@/store/services/usersApi"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
+import { usePathname } from "expo-router"
 
 interface IProps {
   investments: string | undefined
 }
 
 export const YourAccount: FC<IProps> = ({ investments }) => {
-  const { data: sumAccrualData } = useSumAccuralsProceentsQuery()
+  const pathName =  usePathname()
+  const { data: sumAccrualData } = useSumAccuralsProceentsQuery('', {
+    skip: pathName !== '/account'
+  })
+  console.log(investments, 'SUMM');
+  
 
   return (
     <View style={style.yourAccountContainer}>
@@ -24,7 +30,7 @@ export const YourAccount: FC<IProps> = ({ investments }) => {
               +{sumAccrualData ?? 0}% з минулого кварталу
             </Paragraph>
             <Paragraph style={style.yourAccountInfoDataMoney}>
-              {investments ?? 0} <Text style={{ fontSize: 24 }}>USDT</Text>
+              {investments ?? 0} <Text style={{ fontSize: 24 }}>USD</Text>
             </Paragraph>
           </View>
 
