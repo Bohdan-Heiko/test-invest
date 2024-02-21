@@ -59,7 +59,11 @@ export const Registration = () => {
   }
 
   return (
-    <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={style.container}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never"
+    >
       <View style={style.loginContainer}>
         <Title style={style.title}>Реєстрація</Title>
         <Controller

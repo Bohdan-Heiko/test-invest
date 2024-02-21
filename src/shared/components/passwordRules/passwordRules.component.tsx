@@ -10,8 +10,6 @@ import {
 } from "@/utils/constants/regex"
 
 export const PasswordRules = ({ value }: { value: string | undefined }) => {
-  console.log(LATIN_CHARACTER_REGEX.test(value as string), "PASSworD")
-
   return (
     <View style={style.passwordRulesContainer}>
       <Title style={style.passwordRulesTitle}>Пароль повинен мати:</Title>

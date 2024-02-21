@@ -7,8 +7,9 @@ export default function LoginLayout() {
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: "white"
+          backgroundColor: colors.white
         },
+        headerShadowVisible: false,
         headerTintColor: colors.mine_shaft,
         gestureEnabled: false,
         headerTitleStyle: {

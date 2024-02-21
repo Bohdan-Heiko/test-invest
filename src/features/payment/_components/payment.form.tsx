@@ -1,17 +1,16 @@
-import { Pressable, ScrollView, View } from "react-native"
-import { useState } from "react"
+import { View } from "react-native"
 import { useLocalSearchParams, useNavigation } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
-import { OrganizationInfo } from "@/shared/components"
-import { Button, CheckBox, Input, ItemText, Paragraph, SVGIcon, Title } from "@/shared/ui"
+import { Button, CheckBox, Input, ItemText, SVGIcon, Title } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
 import { useCreateInvestmentsMutation } from "@/store/services/userOperationsApi"
 import { colors } from "@/utils/constants/colors"
+import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
 
-type SearchParams = { title: string; id: string }
+type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
   amount: string
   isCheckRules: boolean
@@ -73,11 +72,15 @@ export const PaymentForm = () => {
           />
           <View style={style.investInfoDescription}>
             <ItemText style={style.investInfoDescriptionText}>
-              Ціна за 1 кв. м. - 589$
+              Ціна за 1 кв. м. - {params.price ?? 0}$
             </ItemText>
             <ItemText
               style={style.investInfoDescriptionText}
-            >{`Завершення інвестування\n24.01.2025`}</ItemText>
+            >{`Завершення інвестування\n${
+              params.duration
+                ? datesHelpers.dateFormated(params.duration, "DD.MM.YYYY")
+                : ""
+            }`}</ItemText>
             <View style={style.investInfoDescriptionPaymentCard}>
               <ItemText>Оплата картами</ItemText>
               <SVGIcon name="Visa_Logo" width={25} height={16} />

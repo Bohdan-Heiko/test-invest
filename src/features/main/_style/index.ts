@@ -6,10 +6,12 @@ export const style = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
   projectContainer: {
-    gap: 20
+    gap: 20,
+    marginBottom: 15
   },
   projectImg: {
     width: "100%",
@@ -20,7 +22,7 @@ export const style = StyleSheet.create({
   },
   projectText: {
     fontSize: 28,
-    lineHeight: 42,
+    lineHeight: 38,
     textAlign: "left",
     color: colors.mine_shaft
   },

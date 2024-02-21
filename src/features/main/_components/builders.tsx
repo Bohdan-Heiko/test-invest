@@ -1,7 +1,6 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
 
-import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuidersResponse, TransformedData } from "@/types"
@@ -13,8 +12,6 @@ interface IProps {
 }
 
 export const Builders: FC<IProps> = ({ data }) => {
-  const { handlePushRoute } = useAuthContext()
-
   return (
     <View style={style.ourProjectsContainer}>
       <Title style={style.ourProjectTitle}>Наші забудовники</Title>
@@ -30,7 +27,6 @@ export const Builders: FC<IProps> = ({ data }) => {
               title={title}
               text={description}
               imageUri={photos.contentUrl}
-              handlePress={() => handlePushRoute("/(tabs)/payment")}
             />
           ))}
         </View>

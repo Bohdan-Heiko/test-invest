@@ -19,5 +19,5 @@ export const SVGIcon: React.FC<IProps> = ({
 }) => {
   const IconComponent = SVGIcons[name]
 
-  return <IconComponent width={width} height={height} stroke={color} />
+  return <IconComponent width={width} height={height} stroke={color} opacity={0.5} />
 }

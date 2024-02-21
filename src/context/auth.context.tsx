@@ -6,10 +6,9 @@ import { useAppSelector } from "@/store"
 import { useGetMeQuery } from "@/store/services/usersApi"
 
 export interface AuthContextValue {
-  handleReplaceRoute: (route: AllRoutes) => AllRoutes | undefined
   handlePushRoute: (
     route: AllRoutes | never,
-    data: Record<string, unknown>
+    data?: Record<string, unknown>
   ) => AllRoutes | undefined
 }
 
@@ -35,16 +34,9 @@ export const AuthProvider = (props: ProviderProps) => {
     skip: !isAuthenticated
   })
 
-  // const handleReplaceRoute = (route: AllRoutes): AllRoutes | undefined => {
-  //   if (route !== "/(tabs)/" && segments[0] === "(tabs)" && !isAuthenticated) {
-  //     return "/(auth)/signin"
-  //   }
-  //   return route
-  // }
-
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
     if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
-      return router.replace("/(auth)/signin")
+      return router.push("/(auth)/signin")
     }
     return router.push({
       pathname: route as AllRoutes,
@@ -62,7 +54,7 @@ export const AuthProvider = (props: ProviderProps) => {
   useEffect(() => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
-    } else if (pathName !== "/signin" && !isAuthenticated) {
+    } else if (segments[0] !== "(auth)" && !isAuthenticated) {
       router.replace("/(tabs)/")
     }
   }, [pathName, isAuthenticated])

@@ -1,5 +1,6 @@
 import {
-  KeyboardTypeOptions,
+  Platform,
+  Pressable,
   StyleSheet,
   TextInput,
   TextInputProps,
@@ -8,35 +9,35 @@ import {
 import React, { ReactElement } from "react"
 import { FieldError, FieldValues } from "react-hook-form"
 
-import { SVGIconNames } from "@/types"
+import { BarIconProps, IconType } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
-import { SVGIcon } from "../svgIcon/svgIcon.component"
+import { VectorExpoIcons } from "../icons/vectorExpoIcons"
 
 type ViewStyle = View["props"]["style"]
 
 interface IProps {
-  placeHolder?: string
   styles?: ViewStyle
   inputProps?: TextInputProps
-  iconName?: SVGIconNames | undefined
+  iconProps?: BarIconProps<IconType>
   children?: ReactElement | null
   isDotNeed?: boolean
   fields?: FieldValues
   error?: FieldError | undefined
   isTouchField?: boolean
-  keyboardType?: KeyboardTypeOptions | undefined
+  onPressIcon?: () => void
 }
 
 export const Input: React.FC<IProps> = ({
   error,
   styles,
   fields,
-  iconName,
   children,
   isTouchField,
   isDotNeed = true,
-  inputProps
+  inputProps,
+  iconProps,
+  onPressIcon
 }) => {
   return (
     <View
@@ -54,7 +55,11 @@ export const Input: React.FC<IProps> = ({
         {...fields}
         {...inputProps}
       />
-      {iconName && <SVGIcon name={iconName as SVGIconNames} />}
+      {iconProps && (
+        <Pressable onPress={onPressIcon}>
+          <VectorExpoIcons {...iconProps} />
+        </Pressable>
+      )}
       {children}
       {isDotNeed && (
         <View
@@ -91,7 +96,7 @@ const style = StyleSheet.create({
     flexShrink: 1,
     fontFamily: "Inter500",
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: Platform.OS === "android" ? 24 : 0,
     color: colors.tundora
   },
 
@@ -99,7 +104,6 @@ const style = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    // backgroundColor: "red"s
     marginLeft: 10
   }
 })

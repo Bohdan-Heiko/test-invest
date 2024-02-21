@@ -6,13 +6,15 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
 
   // Account section
   loginContainer: {
     borderWidth: 2,
     borderRadius: 10,
+    backgroundColor: colors.white,
     borderColor: colors.blue,
     paddingHorizontal: 10,
     paddingVertical: 20,
