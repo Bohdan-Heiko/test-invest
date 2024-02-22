@@ -39,7 +39,8 @@
     "no-trailing-spaces": "warn",
     "no-useless-escape": "warn",
     "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
-    "@typescript-eslint/ban-ts-comment": "warn"
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-explicit-any": "warn"
     // "no-console": "warn"
   },
   "overrides": [

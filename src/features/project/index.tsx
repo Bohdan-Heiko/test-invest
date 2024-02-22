@@ -16,11 +16,11 @@ import { style } from "./_style"
 const PAGE_SIZE = 5
 
 const Project = () => {
-  const { slug } = useLocalSearchParams()
+  const { slug: buildingId } = useLocalSearchParams()
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data: projectData } = useGetOnePublicBuildingQuery(slug as string, {
-    skip: !slug
+  const { data: projectData } = useGetOnePublicBuildingQuery(buildingId as string, {
+    skip: !buildingId
   })
 
   const currentBuildingReportsData = useMemo(() => {
@@ -71,7 +71,10 @@ const Project = () => {
           />
 
           <ProjectTeams data={projectData.team ?? null} />
-          <ProjectReports data={currentBuildingReportsData ?? null} />
+          <ProjectReports
+            data={currentBuildingReportsData ?? null}
+            buildingId={buildingId as string}
+          />
           <Pagination
             pageSize={PAGE_SIZE}
             currentPage={currentPage}

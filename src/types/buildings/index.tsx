@@ -39,3 +39,19 @@ export interface BuildingsResponse {
   updatedAt: string // Assuming updatedAt is a string representing a date
   buildingReports?: BuildingReport[]
 }
+
+export interface BuildingReportResponse {
+  id: number
+  building: Pick<BuildingReport, "id" | "title">
+  title: string
+  report: string
+  photos: Photos[]
+  createdAt: string
+  updatedAt: string
+  percent: number
+}
+
+export interface BuildingReportBody {
+  building: string | number
+  report: string | number
+}
