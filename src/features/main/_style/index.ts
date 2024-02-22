@@ -36,6 +36,12 @@ export const style = StyleSheet.create({
     paddingBottom: 37
   },
 
+  titleContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 5
+  },
+
   projectsContainer: {
     gap: 20,
     display: "flex",

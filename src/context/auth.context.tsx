@@ -57,9 +57,10 @@ export const AuthProvider = (props: ProviderProps) => {
   useEffect(() => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
-    } else if (segments[0] !== "(auth)" && !isAuthenticated) {
-      router.replace("/(tabs)/")
-    }
+    } 
+    // else if (segments[0] !== "(auth)" && !isAuthenticated) {
+    //   router.replace("/(tabs)/")
+    // }
   }, [pathName, isAuthenticated])
 
   return (
