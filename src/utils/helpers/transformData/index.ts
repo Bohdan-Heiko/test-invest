@@ -47,6 +47,17 @@ const helpers = {
     }
 
     return transorfmData
+  },
+
+  transformLocalSearchParams<T extends Array<string | number>>(
+    params: T
+  ): Record<string, string | number> {
+    return params.reduce((acc, cur, index, array) => {
+      if (index % 2 === 0) {
+        acc[cur as string] = array[index + 1] as string | number
+      }
+      return acc
+    }, {} as Record<string, string | number>)
   }
 }
 

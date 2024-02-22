@@ -1,6 +1,7 @@
-import { VectorExpoIcons } from "@/shared/ui"
-import { router } from "expo-router"
 import { Pressable } from "react-native"
+import { router } from "expo-router"
+
+import { VectorExpoIcons } from "@/shared/ui"
 
 export const BackButton = ({ size = 25 }: { size?: number }) => {
   return (
@@ -8,7 +9,8 @@ export const BackButton = ({ size = 25 }: { size?: number }) => {
       onPress={router.back}
       style={({ pressed }) => [
         {
-          opacity: pressed ? 0.6 : 1
+          opacity: pressed ? 0.6 : 1,
+          marginRight: 10
         }
       ]}
     >
