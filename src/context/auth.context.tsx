@@ -35,7 +35,8 @@ export const AuthProvider = (props: ProviderProps) => {
   })
 
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
-    const publicRoute = route.includes("project") || route.includes("report")
+    const publicRoute =
+      route.includes("project") || route.includes("report") || route.includes("payment")
 
     if (publicRoute) {
       router.push({
@@ -57,7 +58,7 @@ export const AuthProvider = (props: ProviderProps) => {
   useEffect(() => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
-    } 
+    }
     // else if (segments[0] !== "(auth)" && !isAuthenticated) {
     //   router.replace("/(tabs)/")
     // }
