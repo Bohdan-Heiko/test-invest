@@ -18,7 +18,6 @@ interface IProps {
 
 export const ProjectTeams: FC<IProps> = ({ data }) => {
   if (!data) return
-  // console.log(data, "data")
 
   return (
     <View style={style.teamsContainer}>
@@ -41,6 +40,7 @@ export const ProjectTeams: FC<IProps> = ({ data }) => {
           <View style={style.socialMainContainer}>
             {member?.facebook && (
               <Pressable
+                onPress={() => Linking.openURL(member.facebook ?? "")}
                 style={({ pressed }) => [
                   style.socialContainer,
                   {
@@ -59,6 +59,7 @@ export const ProjectTeams: FC<IProps> = ({ data }) => {
 
             {member?.telegram && (
               <Pressable
+                onPress={() => Linking.openURL(member.telegram ?? "")}
                 style={({ pressed }) => [
                   style.socialContainer,
                   {
@@ -77,6 +78,7 @@ export const ProjectTeams: FC<IProps> = ({ data }) => {
 
             {member?.linkedin && (
               <Pressable
+                onPress={() => Linking.openURL(member.linkedin ?? "")}
                 style={({ pressed }) => [
                   style.socialContainer,
                   {
