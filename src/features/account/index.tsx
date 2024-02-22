@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native"
-import { usePathname } from "expo-router"
+import { router, usePathname } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { OrganizationInfo } from "@/shared/components"
@@ -32,6 +32,11 @@ export const Account = () => {
   })
   const { data: userBuildingsData } = useGetUserBuildingsQuery()
 
+  const handleLogout = () => {
+    logoutUser()
+    router.replace('/(tabs)')
+  }
+
   return (
     <ScrollView
       overScrollMode="never"
@@ -46,7 +51,7 @@ export const Account = () => {
         <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
         <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
         <MyProjects projectsData={userBuildingsData} />
-        <Button onPress={logoutUser} title="Выход" />
+        <Button onPress={handleLogout} title="Выход" />
         <OrganizationInfo />
       </View>
     </ScrollView>

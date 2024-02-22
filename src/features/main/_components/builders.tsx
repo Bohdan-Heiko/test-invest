@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native"
+import { ActivityIndicator, ScrollView, View } from "react-native"
 import { FC } from "react"
 
 import { ProjectItem } from "@/shared/components"
@@ -6,6 +6,7 @@ import { Title } from "@/shared/ui"
 import { BuidersResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
+import { colors } from "@/utils/constants/colors"
 
 interface IProps {
   data: TransformedData<BuidersResponse> | undefined
@@ -14,7 +15,10 @@ interface IProps {
 export const Builders: FC<IProps> = ({ data }) => {
   return (
     <View style={style.ourProjectsContainer}>
-      <Title style={style.ourProjectTitle}>Наші забудовники</Title>
+      <View style={style.titleContainer}>
+        <Title style={style.ourProjectTitle}>Наші забудовники</Title>
+        {!data && <ActivityIndicator size={"small"} color={colors.blue} />}
+      </View>
       <ScrollView
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}
