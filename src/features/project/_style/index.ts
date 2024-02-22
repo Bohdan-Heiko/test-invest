@@ -166,5 +166,4 @@ export const style = StyleSheet.create({
     lineHeight: 21,
     color: colors.silver
   }
-
 })

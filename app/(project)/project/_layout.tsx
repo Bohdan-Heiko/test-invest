@@ -1,3 +1,5 @@
+import { BackButton } from "@/shared/components"
+import { VectorExpoIcons } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 import { Stack } from "expo-router"
 
@@ -15,6 +17,7 @@ export default function ProjectLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
+        headerLeft: () => <BackButton />,
         headerTitle: ""
       }}
     />

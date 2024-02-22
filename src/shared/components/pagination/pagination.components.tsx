@@ -1,8 +1,9 @@
+import { Pressable, StyleSheet, View } from "react-native"
+import { FC } from "react"
+
 import usePagination from "@/hooks/usePagination"
 import { ItemText, VectorExpoIcons } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
-import { FC } from "react"
-import { Pressable, StyleSheet, View } from "react-native"
 
 interface IProps {
   totalCount: number
@@ -26,12 +27,17 @@ export const Pagination: FC<IProps> = ({
     siblingCount: 1
   })
 
-  let lastPage = paginationRange && paginationRange[paginationRange.length - 1]
+  const lastPage = paginationRange && paginationRange[paginationRange.length - 1]
   return (
-    <View style={[style.paginationContainer, {
-      justifyContent: totalCount / pageSize >= 5 ? 'space-between' : 'flex-start',
-      gap: totalCount / pageSize <= 5 ? 10 : 0
-    }]}>
+    <View
+      style={[
+        style.paginationContainer,
+        {
+          justifyContent: totalCount / pageSize >= 5 ? "space-between" : "flex-start",
+          gap: totalCount / pageSize <= 5 ? 10 : 0
+        }
+      ]}
+    >
       {/* ARRORW */}
       <Pressable
         onPress={() => setCurrentPage(currentPage - 1)}

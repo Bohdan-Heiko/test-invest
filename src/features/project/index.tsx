@@ -1,17 +1,19 @@
-import { colors } from "@/utils/constants/colors"
-import { ScrollView, View } from "react-native"
-import { style } from "./_style"
-import { ProjectInformation } from "./_components/projectInformation"
-import { ProjectCards } from "./_components/projectCards"
-import { ProjectTeams } from "./_components/projectTeams"
-import { ProjectReports } from "./_components/projectReports"
-import { Pagination } from "@/shared/components"
-import { useLocalSearchParams } from "expo-router"
-import { useGetOnePublicBuildingQuery } from "@/store/services/buildingsApi"
-import { datesHelpers } from "@/utils/helpers/dates/dates"
+import { ActivityIndicator, ScrollView, View } from "react-native"
 import { useMemo, useState } from "react"
+import { useLocalSearchParams } from "expo-router"
 
-let PAGE_SIZE = 5
+import { Pagination } from "@/shared/components"
+import { useGetOnePublicBuildingQuery } from "@/store/services/buildingsApi"
+import { colors } from "@/utils/constants/colors"
+import { datesHelpers } from "@/utils/helpers/dates/dates"
+
+import { ProjectCards } from "./_components/projectCards"
+import { ProjectInformation } from "./_components/projectInformation"
+import { ProjectReports } from "./_components/projectReports"
+import { ProjectTeams } from "./_components/projectTeams"
+import { style } from "./_style"
+
+const PAGE_SIZE = 5
 
 const Project = () => {
   const { slug } = useLocalSearchParams()
@@ -26,7 +28,7 @@ const Project = () => {
     const firstPageIndex = (currentPage - 1) * PAGE_SIZE
     const lastPageIndex = firstPageIndex + PAGE_SIZE
     return projectData.buildingReports.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage])
+  }, [currentPage, projectData])
 
   return (
     <ScrollView
@@ -34,7 +36,9 @@ const Project = () => {
       showsVerticalScrollIndicator={false}
       style={{ backgroundColor: colors.white }}
     >
-      {projectData && (
+      {!projectData ? (
+        <ActivityIndicator size={"large"} color={colors.blue} />
+      ) : (
         <View style={style.mainContainer}>
           <ProjectCards data={projectData.photos} status={projectData.status} />
 

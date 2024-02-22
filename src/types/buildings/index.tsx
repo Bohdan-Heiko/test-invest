@@ -15,9 +15,9 @@ type Member = {
   name: string
   position: string
   description: string
-  telegram: string
-  linkedin: string
-  facebook: string
+  telegram?: string
+  linkedin?: string
+  facebook?: string
   contentUrl: {
     contentUrl: string
     file: string

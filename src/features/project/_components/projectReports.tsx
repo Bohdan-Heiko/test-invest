@@ -1,9 +1,11 @@
 import { View } from "react-native"
-import { style } from "../_style"
+import { FC } from "react"
+
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
-import { FC } from "react"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
+
+import { style } from "../_style"
 
 interface IProps {
   data: BuildingsResponse["buildingReports"] | null

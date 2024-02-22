@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
+import { AllRoutes } from "expo-router"
 
 import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
@@ -7,7 +8,6 @@ import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
 
 import { style } from "../_style"
-import { AllRoutes } from "expo-router"
 
 interface IProps {
   data: BuildingsResponse[] | undefined

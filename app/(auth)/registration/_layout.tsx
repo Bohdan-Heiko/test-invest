@@ -1,5 +1,6 @@
 import { Stack } from "expo-router"
 import Colors, { colors } from "@/utils/constants/colors"
+import { BackButton } from "@/shared/components"
 
 export default function RegistrationLayout() {
   return (
@@ -15,6 +16,7 @@ export default function RegistrationLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
+        headerLeft: () => <BackButton />,
         headerTitle: "Реєстрація"
       }}
     />

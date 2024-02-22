@@ -1,11 +1,12 @@
 import { ScrollView, View } from "react-native"
-import { style } from "../_style"
+import { FC } from "react"
 import { Image } from "expo-image"
-import MainImage from "#/images/invests/main.jpeg"
+
 import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
-import { FC } from "react"
 import { API_URL } from "@/utils/constants/constants"
+
+import { style } from "../_style"
 
 const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 

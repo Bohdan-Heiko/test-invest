@@ -1,3 +1,4 @@
+import { BackButton } from "@/shared/components"
 import { colors } from "@/utils/constants/colors"
 import { Stack } from "expo-router"
 
@@ -15,6 +16,7 @@ export default function LoginLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
+        headerLeft: () => <BackButton />,
         headerTitle: "Логін"
       }}
     />

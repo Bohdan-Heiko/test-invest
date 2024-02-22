@@ -1,11 +1,15 @@
-import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 import { Pressable, View } from "react-native"
-import { style } from "../_style"
-import { Image } from "expo-image"
-import { colors } from "@/utils/constants/colors"
-import { BuildingsResponse } from "@/types"
 import { FC } from "react"
+import { Image } from "expo-image"
+import * as Linking from "expo-linking"
+
+import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
+import { BuildingsResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 import { API_URL } from "@/utils/constants/constants"
+
+import { style } from "../_style"
+
 const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 
 interface IProps {
@@ -14,6 +18,8 @@ interface IProps {
 
 export const ProjectTeams: FC<IProps> = ({ data }) => {
   if (!data) return
+  // console.log(data, "data")
+
   return (
     <View style={style.teamsContainer}>
       <Title style={[style.teamsMainTitle, style.title]}>Команда</Title>
@@ -33,51 +39,59 @@ export const ProjectTeams: FC<IProps> = ({ data }) => {
           />
 
           <View style={style.socialMainContainer}>
-            <Pressable
-              style={({ pressed }) => [
-                style.socialContainer,
-                {
-                  opacity: pressed ? 0.8 : 1
-                }
-              ]}
-            >
-              <VectorExpoIcons
-                type="FontAwesome"
-                name="facebook"
-                size={17}
-                color={colors.white}
-              />
-            </Pressable>
-            <Pressable
-              style={({ pressed }) => [
-                style.socialContainer,
-                {
-                  opacity: pressed ? 0.8 : 1
-                }
-              ]}
-            >
-              <VectorExpoIcons
-                type="FontAwesome5"
-                name="telegram-plane"
-                size={17}
-                color={colors.white}
-              />
-            </Pressable>
-            <Pressable
-              style={({ pressed }) => [
-                style.socialContainer,
-                {
-                  opacity: pressed ? 0.8 : 1
-                }
-              ]}
-            >
-              <VectorExpoIcons
-                type="Entypo"
-                name="linkedin"
-                size={17}
-                color={colors.white}
-              />
-            </Pressable>
+            {member?.facebook && (
+              <Pressable
+                style={({ pressed }) => [
+                  style.socialContainer,
+                  {
+                    opacity: pressed ? 0.8 : 1
+                  }
+                ]}
+              >
+                <VectorExpoIcons
+                  type="FontAwesome"
+                  name="facebook"
+                  size={17}
+                  color={colors.white}
+                />
+              </Pressable>
+            )}
+
+            {member?.telegram && (
+              <Pressable
+                style={({ pressed }) => [
+                  style.socialContainer,
+                  {
+                    opacity: pressed ? 0.8 : 1
+                  }
+                ]}
+              >
+                <VectorExpoIcons
+                  type="FontAwesome5"
+                  name="telegram-plane"
+                  size={17}
+                  color={colors.white}
+                />
+              </Pressable>
+            )}
+
+            {member?.linkedin && (
+              <Pressable
+                style={({ pressed }) => [
+                  style.socialContainer,
+                  {
+                    opacity: pressed ? 0.8 : 1
+                  }
+                ]}
+              >
+                <VectorExpoIcons
+                  type="Entypo"
+                  name="linkedin"
+                  size={17}
+                  color={colors.white}
+                />
+              </Pressable>
+            )}
           </View>
           <Title style={style.title}>{member.name}</Title>
           <ItemText style={style.memberJobTitle}>{member.position}</ItemText>

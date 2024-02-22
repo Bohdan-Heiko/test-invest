@@ -1,4 +1,5 @@
 export * from "./organization/organization.component"
+export * from "./pagination/pagination.components"
 export * from "./passwordRules/passwordRules.component"
 export * from "./projectItem/projectItem.component"
-export * from "./pagination/pagination.components"
+export * from "./backButton/backButton.component"
