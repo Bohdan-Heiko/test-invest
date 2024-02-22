@@ -35,13 +35,16 @@ export const AuthProvider = (props: ProviderProps) => {
   })
 
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
-    if (route !== "/(tabs)" && segments[0] === "(tabs)" && !isAuthenticated) {
+    const publicRoute = route.includes("project") || route.includes("report")
+
+    if (publicRoute) {
+      router.push({
+        pathname: route as AllRoutes,
+        params: data
+      })
+    } else if (!publicRoute && !isAuthenticated) {
       return router.push("/(auth)/signin")
     }
-    return router.push({
-      pathname: route as AllRoutes,
-      params: data
-    })
   }
 
   useEffect(() => {
