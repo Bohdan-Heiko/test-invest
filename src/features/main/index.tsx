@@ -24,7 +24,7 @@ export const Main = () => {
   const { data: buildersData } = useGetAllPublicBuidersQuery("", {
     skip: path !== "/"
   })
-  
+
   return (
     <ScrollView
       overScrollMode="never"

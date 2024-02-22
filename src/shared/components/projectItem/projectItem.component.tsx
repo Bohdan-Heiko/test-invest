@@ -10,7 +10,8 @@ interface IProjectItemProps {
   text: string
   title: string
   imageUri?: string
-  handlePress?: () => AllRoutes | undefined
+  handleItemPress?: () => void
+  handleInvestPress?: () => AllRoutes | undefined
 }
 
 const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
@@ -19,10 +20,11 @@ export const ProjectItem: FC<IProjectItemProps> = ({
   text,
   title,
   imageUri,
-  handlePress
+  handleItemPress,
+  handleInvestPress
 }) => {
   return (
-    <View style={style.ourProjectItemContainer}>
+    <Pressable onPress={handleItemPress} style={style.ourProjectItemContainer}>
       <View style={style.ourProjectItem}>
         <Image
           style={style.ourProjectItemImage}
@@ -35,9 +37,9 @@ export const ProjectItem: FC<IProjectItemProps> = ({
       <View style={style.ourProjectItemInfoContainer}>
         <Title style={style.ourProjectItemInfoTitle}>{title}</Title>
         <Paragraph style={style.ourProjectItemInfoText}>{text}</Paragraph>
-        {handlePress && (
+        {handleInvestPress && (
           <Pressable
-            onPress={handlePress}
+            onPress={handleInvestPress}
             style={({ pressed }) => [
               {
                 backgroundColor: pressed ? "rgba(14, 163, 204, 0.2)" : "white",
@@ -50,7 +52,7 @@ export const ProjectItem: FC<IProjectItemProps> = ({
           </Pressable>
         )}
       </View>
-    </View>
+    </Pressable>
   )
 }
 

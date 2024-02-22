@@ -10,6 +10,19 @@ type Photos = {
   contentUrl: string
   file: string
 }
+
+type Member = {
+  name: string
+  position: string
+  description: string
+  telegram?: string
+  linkedin?: string
+  facebook?: string
+  contentUrl: {
+    contentUrl: string
+    file: string
+  }
+}
 export interface BuildingsResponse {
   id: number
   title: string
@@ -21,8 +34,8 @@ export interface BuildingsResponse {
   infrastructure: string
   safety: string
   photos?: Photos[]
-  team: string[]
+  team?: Member[]
   createdAt: string // Assuming createdAt is a string representing a date
   updatedAt: string // Assuming updatedAt is a string representing a date
-  buildingReports: BuildingReport[]
+  buildingReports?: BuildingReport[]
 }

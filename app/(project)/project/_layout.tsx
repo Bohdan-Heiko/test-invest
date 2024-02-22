@@ -1,8 +1,9 @@
 import { BackButton } from "@/shared/components"
+import { VectorExpoIcons } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 import { Stack } from "expo-router"
 
-export default function LoginLayout() {
+export default function ProjectLayout() {
   return (
     <Stack
       screenOptions={{
@@ -17,7 +18,7 @@ export default function LoginLayout() {
           fontFamily: "Inter500"
         },
         headerLeft: () => <BackButton />,
-        headerTitle: "Логін"
+        headerTitle: ""
       }}
     />
   )

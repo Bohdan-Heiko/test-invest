@@ -1,19 +1,33 @@
 import { View } from "react-native"
-import { style } from "../_style"
-import { Button, Devider, ItemText, Title } from "@/shared/ui"
+import { FC } from "react"
 
-export const ProjectReports = () => {
+import { Button, Devider, ItemText, Title } from "@/shared/ui"
+import { BuildingsResponse } from "@/types"
+import { datesHelpers } from "@/utils/helpers/dates/dates"
+
+import { style } from "../_style"
+
+interface IProps {
+  data: BuildingsResponse["buildingReports"] | null
+}
+
+export const ProjectReports: FC<IProps> = ({ data }) => {
+  if (!data) return
   return (
     <View style={style.reportsMainContainer}>
       <Title style={style.reportMainTitle}>Звіти</Title>
-      <View style={style.reports}>
-        <View style={style.reportContainer}>
-          <Title style={style.title}>Звіт про витрати на перший триместр будування</Title>
-          <ItemText style={style.reportDate}>12.10.2023</ItemText>
-          <Button title="Зберегти" />
-          <Devider />
+      {data?.map((report) => (
+        <View key={report.id} style={style.reports}>
+          <View style={style.reportContainer}>
+            <Title style={style.title}>{report.title}</Title>
+            <ItemText style={style.reportDate}>
+              {datesHelpers.dateFormated(report.createdAt, "DD.MM.YYYY")}
+            </ItemText>
+            <Button title="Зберегти" />
+            <Devider />
+          </View>
         </View>
-      </View>
+      ))}
     </View>
   )
 }

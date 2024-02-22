@@ -1,8 +1,10 @@
-import { ItemText, Paragraph, Title } from "@/shared/ui"
 import { Text, View } from "react-native"
-import { style } from "../_style"
-import { colors } from "@/utils/constants/colors"
 import { FC } from "react"
+
+import { ItemText, Paragraph, Title } from "@/shared/ui"
+import { colors } from "@/utils/constants/colors"
+
+import { style } from "../_style"
 
 interface IProps {
   title: string

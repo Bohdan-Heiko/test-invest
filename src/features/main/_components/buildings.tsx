@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
+import { AllRoutes } from "expo-router"
 
 import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
@@ -29,7 +30,10 @@ export const Buildings: FC<IProps> = ({ data }) => {
               title={project.title}
               text={project.description}
               imageUri={project?.photos && project?.photos[0]?.contentUrl}
-              handlePress={() =>
+              handleItemPress={() =>
+                handlePushRoute(`/(project)/project/${project.id}` as AllRoutes)
+              }
+              handleInvestPress={() =>
                 handlePushRoute("/(tabs)/payment", {
                   id: project.id,
                   title: project.title,

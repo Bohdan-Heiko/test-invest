@@ -1,4 +1,5 @@
 import { ScrollView, View } from "react-native"
+import { usePathname } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { OrganizationInfo } from "@/shared/components"
@@ -17,7 +18,6 @@ import { MyProjects } from "./_components/myProjects"
 import { PersonalInformation } from "./_components/personalInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
-import { usePathname } from "expo-router"
 
 export const Account = () => {
   const pathName = usePathname()
@@ -32,8 +32,6 @@ export const Account = () => {
   })
   const { data: userBuildingsData } = useGetUserBuildingsQuery()
 
-  console.log(userData);
-  
   return (
     <ScrollView
       overScrollMode="never"

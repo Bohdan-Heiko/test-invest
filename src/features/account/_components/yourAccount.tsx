@@ -1,24 +1,22 @@
 import { Text, View } from "react-native"
 import { FC } from "react"
+import { usePathname } from "expo-router"
 
 import { ButtonWithIcon, Paragraph, Title } from "@/shared/ui"
 import { useSumAccuralsProceentsQuery } from "@/store/services/usersApi"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { usePathname } from "expo-router"
 
 interface IProps {
   investments: string | undefined
 }
 
 export const YourAccount: FC<IProps> = ({ investments }) => {
-  const pathName =  usePathname()
-  const { data: sumAccrualData } = useSumAccuralsProceentsQuery('', {
-    skip: pathName !== '/account'
+  const pathName = usePathname()
+  const { data: sumAccrualData } = useSumAccuralsProceentsQuery("", {
+    skip: pathName !== "/account"
   })
-  console.log(investments, 'SUMM');
-  
 
   return (
     <View style={style.yourAccountContainer}>
