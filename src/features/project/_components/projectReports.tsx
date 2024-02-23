@@ -29,7 +29,7 @@ export const ProjectReports: FC<IProps> = ({ data, buildingId }) => {
               {datesHelpers.dateFormated(report.createdAt, "DD.MM.YYYY")}
             </ItemText>
             <Button
-              title="Зберегти"
+              title="Переглянути"
               onPress={() =>
                 handlePushRoute(
                   `/(report)/building/${buildingId}/report/${report.id}` as AllRoutes

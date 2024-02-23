@@ -1,5 +1,6 @@
 import { ActivityIndicator, ScrollView, View } from "react-native"
 import { useLocalSearchParams } from "expo-router"
+import * as Linking from "expo-linking"
 
 import { OrganizationInfo } from "@/shared/components"
 import { Button, ItemText, Title } from "@/shared/ui"
@@ -10,6 +11,7 @@ import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 import { ReportImages } from "./_components/reportImages"
 import { style } from "./_style"
+import { API_URL } from "@/utils/constants/constants"
 
 export const Report = () => {
   const params = useLocalSearchParams<any | unknown>()
@@ -42,7 +44,7 @@ export const Report = () => {
               </ItemText>
             </View>
             <ReportImages data={buldingReportData.photos} />
-            <Button title="Завантажити PDF" />
+            <Button title="Переглянути PDF" onPress={() => Linking.openURL(`${API_URL}${buldingReportData.report}`)} />
             <OrganizationInfo />
           </>
         )}
