@@ -228,6 +228,12 @@ export const style = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21
   },
+  accuralNoDataInfo: {
+    width: "100%",
+    fontSize: 20,
+    textAlign: "left",
+    color: colors.mine_shaft
+  },
   //ACCRUAL
 
   // MY PROJECTS

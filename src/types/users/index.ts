@@ -9,6 +9,7 @@ export interface UserDataResponse {
   isActive: boolean
   isAllowCryptoPayment: boolean
   isRealtor: boolean
+  inviteLink?: string
   name: string
   phone: string
   taxNumber: string
