@@ -5,19 +5,27 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
-import { OrganizationInfo } from "@/shared/components"
-import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
+import { ErrorMessage, OrganizationInfo } from "@/shared/components"
+import {
+  Button,
+  Input,
+  LinkRedirect,
+  Paragraph,
+  Title,
+  VectorExpoIcons
+} from "@/shared/ui"
 import { useSignInUserMutation } from "@/store/services/authInjectApi"
 import { LoginBody } from "@/types/registration"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
+import { colors } from "@/utils/constants/colors"
 
 export const Login = () => {
   const router = useRouter()
   const { loginUser } = useActions()
   const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(true)
-  const [signInUser] = useSignInUserMutation()
+  const [signInUser, { isError: isSignInError }] = useSignInUserMutation()
 
   const {
     control,
@@ -100,6 +108,7 @@ export const Login = () => {
             />
           )}
         />
+        {isSignInError && <ErrorMessage message="Неправильний логін або пароль!" />}
 
         {/* Specify functionality */}
 
