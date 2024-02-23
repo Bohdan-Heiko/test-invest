@@ -18,6 +18,7 @@ import { MyProjects } from "./_components/myProjects"
 import { PersonalInformation } from "./_components/personalInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
+import { RieltorInformation } from "./_components/rieltorInformation"
 
 export const Account = () => {
   const pathName = usePathname()
@@ -34,9 +35,9 @@ export const Account = () => {
 
   const handleLogout = () => {
     logoutUser()
-    router.replace('/(tabs)')
+    router.replace("/(tabs)")
   }
-
+  
   return (
     <ScrollView
       overScrollMode="never"
@@ -47,10 +48,14 @@ export const Account = () => {
       <View style={style.mainContainer}>
         <YourAccount investments={userData.totalBalance} />
         <PersonalInformation data={userData} />
-        {/* <RieltorInformation /> */}
+        {userData.isRealtor && <RieltorInformation inviteLink={userData.inviteLink} />}
         <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
-        <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
-        <MyProjects projectsData={userBuildingsData} />
+        {!userData.isRealtor && (
+          <>
+            <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
+            <MyProjects projectsData={userBuildingsData}  />
+          </>
+        )}
         <Button onPress={handleLogout} title="Выход" />
         <OrganizationInfo />
       </View>

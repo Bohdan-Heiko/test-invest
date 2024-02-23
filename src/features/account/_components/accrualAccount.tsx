@@ -22,29 +22,39 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
-      {accrualData?.data
-        .slice(0, showAll ? accrualData?.data.length : 3)
-        .map((accrual) => (
-          <View key={accrual.id} style={style.accuralItemsMainContainer}>
-            <View style={style.accuralItemContainer}>
-              <View style={style.accuralItemNameContainer}>
-                <Title style={style.accuralItemNameTitle}>{accrual.building.title}</Title>
-                <ItemText style={style.accuralItemNameText}>+{accrual.percent}%</ItemText>
+      {accrualData?.data && accrualData?.data.length ? (
+        accrualData?.data
+          .slice(0, showAll ? accrualData?.data.length : 3)
+          .map((accrual) => (
+            <View key={accrual.id} style={style.accuralItemsMainContainer}>
+              <View style={style.accuralItemContainer}>
+                <View style={style.accuralItemNameContainer}>
+                  <Title style={style.accuralItemNameTitle}>
+                    {accrual.building.title}
+                  </Title>
+                  <ItemText style={style.accuralItemNameText}>
+                    +{accrual.percent}%
+                  </ItemText>
+                </View>
+                <View style={[style.accuralItemNameContainer, { marginBottom: 10 }]}>
+                  <Title style={style.accuralItemNameText}>
+                    {datesHelpers.dateFormated(accrual.createdAt, "DD.MM.YYYY")}
+                  </Title>
+                  <ItemText style={style.accuralItemNamePayment}>
+                    {accrual.amount} USD
+                  </ItemText>
+                </View>
               </View>
-              <View style={[style.accuralItemNameContainer, { marginBottom: 10 }]}>
-                <Title style={style.accuralItemNameText}>
-                  {datesHelpers.dateFormated(accrual.createdAt, "DD.MM.YYYY")}
-                </Title>
-                <ItemText style={style.accuralItemNamePayment}>
-                  {accrual.amount} USD
-                </ItemText>
-              </View>
+              <Devider />
             </View>
-            <Devider />
-          </View>
-        ))}
+          ))
+      ) : (
+        <Title style={style.accuralNoDataInfo}>У вас ще немає нарахувань</Title>
+      )}
 
-      <Button title={showAll ? "Приховати" : "Дивитись всі"} onPress={handleShowAll} />
+      {accrualData?.data && accrualData?.data?.length > 0 && (
+        <Button title={showAll ? "Приховати" : "Дивитись всі"} onPress={handleShowAll} />
+      )}
     </View>
   )
 }
