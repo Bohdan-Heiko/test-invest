@@ -6,9 +6,9 @@ import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { colors } from "@/utils/constants/colors"
 
 interface IProps {
   data: BuildingsResponse[] | undefined

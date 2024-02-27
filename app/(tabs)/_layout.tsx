@@ -1,12 +1,9 @@
-import React from "react"
 import { Tabs } from "expo-router"
 
 import Colors from "@/utils/constants/colors"
-import { LoginNavbarButton, VectorExpoIcons } from "@/shared/ui"
-import { useAppSelector } from "@/store"
+import { VectorExpoIcons } from "@/shared/ui"
 
 export default function TabLayout() {
-  const { isAuthenticated } = useAppSelector((stat) => stat.bober_auth)
   return (
     <Tabs
       screenOptions={{
@@ -17,10 +14,9 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Головна",
-          // href: null,
+          lazy: true,
           headerShadowVisible: false,
           headerRightContainerStyle: { paddingHorizontal: 20 },
-          headerRight: () => !isAuthenticated && <LoginNavbarButton />,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Octicons" name="home" color={color} />
           )
@@ -32,7 +28,8 @@ export default function TabLayout() {
         options={{
           title: "Аккаунт",
           headerShadowVisible: false,
-          href: isAuthenticated ? "/account" : null,
+          lazy: true,
+          href: "/signin",
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Feather" name="user" color={color} />
           )

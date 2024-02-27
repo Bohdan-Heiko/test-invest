@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native"
-import { router, usePathname } from "expo-router"
+import { useLayoutEffect } from "react"
+import { usePathname, useRouter } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { OrganizationInfo } from "@/shared/components"
@@ -16,14 +17,17 @@ import { AccrualAccount } from "./_components/accrualAccount"
 import { InvestmentAccount } from "./_components/investmentsAccount"
 import { MyProjects } from "./_components/myProjects"
 import { PersonalInformation } from "./_components/personalInformation"
+import { RieltorInformation } from "./_components/rieltorInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
-import { RieltorInformation } from "./_components/rieltorInformation"
 
 export const Account = () => {
   const pathName = usePathname()
   const { logoutUser } = useActions()
   const userData = useAppSelector((state) => state.user_data)
+  const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
+
+  const router = useRouter()
 
   const { data: userAccrualsData } = useGetUserAccrualsQuery("", {
     skip: pathName !== "/account"
@@ -37,7 +41,13 @@ export const Account = () => {
     logoutUser()
     router.replace("/(tabs)")
   }
-  
+
+  useLayoutEffect(() => {
+    if (!isAuthenticated) {
+      return router.replace("/(auth)/signin")
+    }
+  }, [isAuthenticated])
+
   return (
     <ScrollView
       overScrollMode="never"
@@ -53,7 +63,7 @@ export const Account = () => {
         {!userData.isRealtor && (
           <>
             <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
-            <MyProjects projectsData={userBuildingsData}  />
+            <MyProjects projectsData={userBuildingsData} />
           </>
         )}
         <Button onPress={handleLogout} title="Выход" />

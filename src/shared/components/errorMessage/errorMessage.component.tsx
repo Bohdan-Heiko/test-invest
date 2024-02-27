@@ -1,14 +1,13 @@
+import { StyleSheet, View } from "react-native"
+
 import { Title, VectorExpoIcons } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
-import { StyleSheet, View } from "react-native"
 
 export const ErrorMessage = ({ message }: { message: string }) => {
   return (
     <View style={style.errorMessagContainer}>
       <VectorExpoIcons type={"AntDesign"} name="warning" color={colors.red} size={20} />
-      <Title style={style.message}>
-        {message}
-      </Title>
+      <Title style={style.message}>{message}</Title>
     </View>
   )
 }

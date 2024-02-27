@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect } from "react"
-import { AllRoutes, usePathname, useRouter, useSegments } from "expo-router"
+import { AllRoutes, usePathname, useRouter } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { useAppSelector } from "@/store"
@@ -21,7 +21,6 @@ interface ProviderProps {
 export const AuthProvider = (props: ProviderProps) => {
   const router = useRouter()
   const pathName = usePathname()
-  const segments = useSegments()
   const { setUserData } = useActions()
 
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
