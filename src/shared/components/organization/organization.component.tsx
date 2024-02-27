@@ -39,7 +39,7 @@ export const OrganizationInfo = () => {
 const style = StyleSheet.create({
   organizationContainer: {
     flex: 1,
-    paddingTop: 40,
+    paddingVertical: 40,
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
