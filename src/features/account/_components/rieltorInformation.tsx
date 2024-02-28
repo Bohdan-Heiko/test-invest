@@ -1,12 +1,12 @@
 import { Pressable, View } from "react-native"
+import { FC, useEffect, useState } from "react"
 import * as Clipboard from "expo-clipboard"
+import { usePathname } from "expo-router"
 
 import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { FC, useEffect, useState } from "react"
-import { usePathname } from "expo-router"
 
 interface IProps {
   inviteLink?: string

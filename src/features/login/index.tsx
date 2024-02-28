@@ -6,20 +6,12 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
 import { ErrorMessage, OrganizationInfo } from "@/shared/components"
-import {
-  Button,
-  Input,
-  LinkRedirect,
-  Paragraph,
-  Title,
-  VectorExpoIcons
-} from "@/shared/ui"
+import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { useSignInUserMutation } from "@/store/services/authInjectApi"
 import { LoginBody } from "@/types/registration"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { style } from "./_style"
-import { colors } from "@/utils/constants/colors"
 
 export const Login = () => {
   const router = useRouter()

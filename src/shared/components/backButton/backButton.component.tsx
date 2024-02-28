@@ -1,12 +1,12 @@
 import { Pressable } from "react-native"
-import { router } from "expo-router"
+import { AllRoutes, router } from "expo-router"
 
 import { VectorExpoIcons } from "@/shared/ui"
 
-export const BackButton = ({ size = 25 }: { size?: number }) => {
+export const BackButton = ({ size = 25, href }: { size?: number; href?: AllRoutes }) => {
   return (
     <Pressable
-      onPress={router.back}
+      onPress={() => (href ? router.push(href as never) : router.back())}
       style={({ pressed }) => [
         {
           opacity: pressed ? 0.6 : 1,

@@ -16,7 +16,7 @@ export default function LoginLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
-        headerLeft: () => <BackButton />,
+        headerLeft: () => <BackButton href="/(tabs)/" />,
         headerTitle: "Логін"
       }}
     />
