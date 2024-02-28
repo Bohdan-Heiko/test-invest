@@ -16,8 +16,8 @@ export default function ConfirmPaymentLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
-        headerLeft: () => <BackButton />,
-        headerTitle: "Оплата"
+        headerLeft: () => <></>,
+        headerTitle: ""
       }}
     />
   )

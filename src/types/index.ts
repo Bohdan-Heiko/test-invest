@@ -1,7 +1,7 @@
 export { BuidersResponse } from "./buiders"
 export { BuildingsResponse } from "./buildings"
 export { BarIconProps, IconType, SVGIconNames, VECTOR_ICONS_TYPE } from "./icons"
-export { TransactionBody, TransactionResponse } from "./investments"
+export { TransactionBody, TransactionResponse, CheckPaymentStatus, ConfirmPaymentResponse } from "./investments"
 export {
   LoginBody,
   LoginResponse,

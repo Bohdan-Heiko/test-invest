@@ -25,3 +25,25 @@ export interface TransactionResponse {
   updatedAt: string
   url: string
 }
+
+export interface CheckPaymentStatus {
+  status: "InProcessing" | "WaitingAuthComplete" | "Approved" | "Declined"
+  reason: string
+}
+
+export interface ConfirmPaymentResponse {
+  id: number
+  user: User
+  building: Building
+  uuid: string
+  amount: string
+  currency: string
+  authCode: string
+  card: string
+  token: string
+  status: string
+  reason: string
+  fee: string
+  system: string
+  comment: string
+}

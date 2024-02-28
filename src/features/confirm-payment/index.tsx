@@ -2,8 +2,34 @@ import { colors } from "@/utils/constants/colors"
 import { ScrollView, View } from "react-native"
 import { style } from "./_style"
 import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
+import { useState } from "react"
+import { useAuthContext } from "@/context/auth.context"
+import {
+  useConfirmPaymentMutation
+  // useGetPaymentByIdQuery
+} from "@/store/services/paymentsApi"
+import { useLocalSearchParams } from "expo-router"
+import { ErrorMessage } from "@/shared/components"
+
+type LocalParams = { uuid: string }
 
 export const ConfrimPayment = () => {
+  const { uuid } = useLocalSearchParams<LocalParams>()
+  const { handlePushRoute } = useAuthContext()
+  const [checkCondition, setCheckCondition] = useState<boolean>(false)
+
+  const [confirmPayment, { error }] = useConfirmPaymentMutation()
+  // const { data: paymentData } = useGetPaymentByIdQuery(uuid, {
+  //   skip: !uuid
+  // })
+
+  const handleConfirmPayment = async () => {
+    await confirmPayment({ uuid })
+      .unwrap()
+      .then(() => handlePushRoute("/(tabs)/account"))
+      .catch(console.log)
+  }
+
   return (
     <ScrollView
       overScrollMode="never"
@@ -14,15 +40,15 @@ export const ConfrimPayment = () => {
         <View style={style.confirmContainer}>
           <View>
             <Title style={style.confirmTitle}>Підтвердження платежу</Title>
-            <ItemText style={style.subTitle}>Дані клієнта</ItemText>
+            {/* <ItemText style={style.subTitle}>Дані клієнта</ItemText> */}
           </View>
 
-          <View style={style.userDataContainer}>
+          {/* <View style={style.userDataContainer}>
             <ItemText style={style.userInfo}>Кловський Іван Павлович</ItemText>
             <ItemText style={style.userInfo}>+38 071 238 45 12</ItemText>
             <ItemText style={style.userInfo}>klovskiyivan@gmail.com</ItemText>
             <ItemText style={style.userInfo}>1256798304</ItemText>
-          </View>
+          </View> */}
 
           <View style={style.descriptionContainer}>
             <View style={style.descriptionTitleContainer}>
@@ -60,15 +86,24 @@ export const ConfrimPayment = () => {
           </View>
           <View style={style.checkBoxCoantiner}>
             <CheckBox
-              value={true}
-              onPressHandler={() => {}}
+              value={checkCondition}
+              onPressHandler={() => setCheckCondition(!checkCondition)}
               iconSize={{ height: 23, width: 23 }}
             />
             <ItemText style={style.politicCheck}>
               Я прочитав і згоден з умовами публічної оферти
             </ItemText>
           </View>
-          <Button title="Далі" disabled />
+
+          {error && (
+            //@ts-ignore
+            <ErrorMessage message={error?.data?.message ?? ""} />
+          )}
+          <Button
+            title="Далі"
+            disabled={!checkCondition}
+            onPress={handleConfirmPayment}
+          />
         </View>
       </View>
     </ScrollView>
