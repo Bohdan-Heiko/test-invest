@@ -1,14 +1,15 @@
 import { Linking, View } from "react-native"
-import { useLocalSearchParams, useNavigation } from "expo-router"
+import { AllRoutes, useLocalSearchParams } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
+import { useAuthContext } from "@/context/auth.context"
 import { Button, CheckBox, Input, ItemText, SVGIcon, Title } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
+import { useCreatePaymentDepositMutation } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { useCreatePaymentDepositMutation } from "@/store/services/paymentsApi"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
@@ -19,7 +20,7 @@ type DefaultInvestValues = {
 const defaultValues: DefaultInvestValues = { amount: "", isCheckRules: false }
 
 export const PaymentForm = () => {
-  const navigate = useNavigation()
+  const { handlePushRoute } = useAuthContext()
   const params = useLocalSearchParams<SearchParams>()
 
   const [createPaymentDeposit] = useCreatePaymentDepositMutation()
@@ -42,9 +43,11 @@ export const PaymentForm = () => {
     const data = { building: { id: Number(params.id) }, amount: amount }
     await createPaymentDeposit(data)
       .unwrap()
-      .then((res) => Linking.openURL(res.url))
-      // .then(navigate.goBack)
-      // .then(() => reset())
+      .then((res) => {
+        Linking.openURL(res.url)
+        handlePushRoute(`/(statuses)/payment-status/${res.uuid}` as AllRoutes)
+      })
+      .then(() => reset())
       .catch(console.log)
   }
   return (

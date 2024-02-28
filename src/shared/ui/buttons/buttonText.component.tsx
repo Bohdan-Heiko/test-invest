@@ -20,7 +20,7 @@ export const Button: React.FC<IProps> = ({
   style
 }) => {
   const titleColor = useMemo(() => {
-    if (variant === "primary") return disabled ? colors.silver : colors.white
+    if (variant === "primary") return disabled ? colors.dove_graya : colors.white
     else if (variant === "secondary") return disabled ? colors.silver : colors.blue
   }, [variant, disabled])
 
