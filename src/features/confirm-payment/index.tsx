@@ -1,0 +1,76 @@
+import { colors } from "@/utils/constants/colors"
+import { ScrollView, View } from "react-native"
+import { style } from "./_style"
+import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
+
+export const ConfrimPayment = () => {
+  return (
+    <ScrollView
+      overScrollMode="never"
+      showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: colors.white }}
+    >
+      <View style={style.mainContainer}>
+        <View style={style.confirmContainer}>
+          <View>
+            <Title style={style.confirmTitle}>Підтвердження платежу</Title>
+            <ItemText style={style.subTitle}>Дані клієнта</ItemText>
+          </View>
+
+          <View style={style.userDataContainer}>
+            <ItemText style={style.userInfo}>Кловський Іван Павлович</ItemText>
+            <ItemText style={style.userInfo}>+38 071 238 45 12</ItemText>
+            <ItemText style={style.userInfo}>klovskiyivan@gmail.com</ItemText>
+            <ItemText style={style.userInfo}>1256798304</ItemText>
+          </View>
+
+          <View style={style.descriptionContainer}>
+            <View style={style.descriptionTitleContainer}>
+              <Title style={style.descriptionTitle}>Договір публічної оферти</Title>
+            </View>
+
+            <ScrollView
+              nestedScrollEnabled={true}
+              disableScrollViewPanResponder={true}
+              style={{ maxHeight: 300 }}
+            >
+              <View style={{ gap: 20 }}>
+                <Paragraph style={style.descriptionText}>
+                  Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
+                  фінансові ринки, то слід звернути увагу на галузь, яка допомагає
+                  інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні
+                  фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте
+                  фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то
+                  слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це
+                  інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні
+                  фонди, консультанти.
+                </Paragraph>
+                <Paragraph style={style.descriptionText}>
+                  Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
+                  фінансові ринки, то слід звернути увагу на галузь, яка допомагає
+                  інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні
+                  фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте
+                  фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то
+                  слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це
+                  інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні
+                  фонди, консультанти.
+                </Paragraph>
+              </View>
+            </ScrollView>
+          </View>
+          <View style={style.checkBoxCoantiner}>
+            <CheckBox
+              value={true}
+              onPressHandler={() => {}}
+              iconSize={{ height: 23, width: 23 }}
+            />
+            <ItemText style={style.politicCheck}>
+              Я прочитав і згоден з умовами публічної оферти
+            </ItemText>
+          </View>
+          <Button title="Далі" disabled />
+        </View>
+      </View>
+    </ScrollView>
+  )
+}
