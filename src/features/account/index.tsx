@@ -39,7 +39,7 @@ export const Account = () => {
 
   const handleLogout = () => {
     logoutUser()
-    router.replace("/(tabs)")
+    router.replace("/(tabs)/")
   }
 
   useLayoutEffect(() => {

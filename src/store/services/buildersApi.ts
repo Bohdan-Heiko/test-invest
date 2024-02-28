@@ -13,7 +13,7 @@ export const buildersApi = mainApi.injectEndpoints({
           Accept: "application/ld+json"
         }
       }),
-
+      keepUnusedDataFor: 60,
       transformResponse: (
         baseQueryReturnValue: HydraData<BuidersResponse>
       ): TransformedData<BuidersResponse> => {

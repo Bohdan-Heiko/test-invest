@@ -29,7 +29,7 @@ export default function TabLayout() {
           title: "Аккаунт",
           headerShadowVisible: false,
           lazy: true,
-          href: "/signin",
+          href: "/account",
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Feather" name="user" color={color} />
           )
