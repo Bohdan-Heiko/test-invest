@@ -1,14 +1,14 @@
-import { View } from "react-native"
+import { Linking, View } from "react-native"
 import { useLocalSearchParams, useNavigation } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import { Button, CheckBox, Input, ItemText, SVGIcon, Title } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
-import { useCreateInvestmentsMutation } from "@/store/services/userOperationsApi"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { useCreatePaymentDepositMutation } from "@/store/services/paymentsApi"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
@@ -22,7 +22,7 @@ export const PaymentForm = () => {
   const navigate = useNavigation()
   const params = useLocalSearchParams<SearchParams>()
 
-  const [createInvestments] = useCreateInvestmentsMutation()
+  const [createPaymentDeposit] = useCreatePaymentDepositMutation()
 
   const {
     control,
@@ -40,10 +40,11 @@ export const PaymentForm = () => {
     if (!params) return
 
     const data = { building: { id: Number(params.id) }, amount: amount }
-    await createInvestments(data)
+    await createPaymentDeposit(data)
       .unwrap()
-      .then(navigate.goBack)
-      .then(() => reset())
+      .then((res) => Linking.openURL(res.url))
+      // .then(navigate.goBack)
+      // .then(() => reset())
       .catch(console.log)
   }
   return (

@@ -17,9 +17,11 @@ export interface TransactionResponse {
   id: number
   user: User
   building: Building
+  uuid: string
+  currency: string
   amount: string
   comment: string
   createdAt: string
   updatedAt: string
-  status: string
+  url: string
 }

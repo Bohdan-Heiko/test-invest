@@ -52,6 +52,8 @@ export const usersOperationsApi = mainApi.injectEndpoints({
       providesTags: ["UserInvestments"]
     }),
 
+
+    // FAKE Paymeent
     createInvestments: builder.mutation<TransactionResponse, TransactionBody>({
       query: (body) => ({
         url: "/api/user/investments",
