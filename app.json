@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "bober-invest",
-    "slug": "bober-invest",
-    "version": "1.0.4",
+    "name": "Bober",
+    "slug": "Bober",
+    "version": "1.0.5",
+    "versionCode": 3,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -16,6 +17,7 @@
       "**/*"
     ],
     "ios": {
+      "icon": "./assets/images/ios-icon.png",
       "supportsTablet": true,
       "bundleIdentifier": "com.salerowsoftware.boberinvest"
     },
