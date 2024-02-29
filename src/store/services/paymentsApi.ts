@@ -20,7 +20,7 @@ export const paymentsApi = mainApi.injectEndpoints({
     }),
     checkPaymentStatus: builder.query<CheckPaymentStatus, string>({
       query: (uuid) => ({
-        url: `/api/public/payments/${uuid}/status`
+        url: `/api/public/payments/${uuid}`
       })
     }),
     confirmPayment: builder.mutation<ConfirmPaymentResponse, { uuid: string }>({

@@ -18,18 +18,18 @@ export const PaymentStatus = () => {
 
   const { data: paymentStatus, isError } = useCheckPaymentStatusQuery(uuid, {
     skip: !uuid,
-    pollingInterval: !successRef.current ? 500 : 0
+    pollingInterval: !successRef.current ? 2500 : 0
   })
 
   useEffect(() => {
-    if (paymentStatus?.reason === "Ok") {
+    if (paymentStatus?.reason === "Ok" || isError) {
       successRef.current = true
     }
-  }, [paymentStatus])
+  }, [paymentStatus, isError])
 
   return (
     <View style={style.mainContainer}>
-      {!paymentStatus?.status ? (
+      {!paymentStatus?.status && !isError ? (
         <ActivityIndicator size={"large"} color={colors.blue} />
       ) : (
         <View></View>
@@ -52,7 +52,9 @@ export const PaymentStatus = () => {
         title="Далі"
         variant="primary"
         disabled={!paymentStatus?.status}
-        onPress={() => handlePushRoute(`/confirm-payment/${uuid}` as AllRoutes)}
+        onPress={() =>
+          handlePushRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
+        }
       />
     </View>
   )

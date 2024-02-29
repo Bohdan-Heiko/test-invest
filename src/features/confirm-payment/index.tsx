@@ -5,18 +5,17 @@ import { useLocalSearchParams } from "expo-router"
 import { useAuthContext } from "@/context/auth.context"
 import { ErrorMessage, OrganizationInfo } from "@/shared/components"
 import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
-import {
-  useConfirmPaymentMutation
-  // useGetPaymentByIdQuery
-} from "@/store/services/paymentsApi"
+import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "./_style"
+import { CheckPaymentStatus } from "@/types"
 
 type LocalParams = { uuid: string }
 
 export const ConfrimPayment = () => {
-  const { uuid } = useLocalSearchParams<LocalParams>()
+  const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
+  const { name, email, card, phone } = paymentData as CheckPaymentStatus
   const { handlePushRoute } = useAuthContext()
   const [checkCondition, setCheckCondition] = useState<boolean>(false)
 
@@ -24,9 +23,6 @@ export const ConfrimPayment = () => {
     confirmPayment,
     { isError: isConfirmPaymentError, isLoading: isConfirmPaymentLoading }
   ] = useConfirmPaymentMutation()
-  // const { data: paymentData } = useGetPaymentByIdQuery(uuid, {
-  //   skip: !uuid
-  // })
 
   const handleConfirmPayment = async () => {
     await confirmPayment({ uuid })
@@ -45,15 +41,15 @@ export const ConfrimPayment = () => {
         <View style={style.confirmContainer}>
           <View>
             <Title style={style.confirmTitle}>Підтвердження платежу</Title>
-            {/* <ItemText style={style.subTitle}>Дані клієнта</ItemText> */}
+            <ItemText style={style.subTitle}>Дані клієнта</ItemText>
           </View>
 
-          {/* <View style={style.userDataContainer}>
-            <ItemText style={style.userInfo}>Кловський Іван Павлович</ItemText>
-            <ItemText style={style.userInfo}>+38 071 238 45 12</ItemText>
-            <ItemText style={style.userInfo}>klovskiyivan@gmail.com</ItemText>
-            <ItemText style={style.userInfo}>1256798304</ItemText>
-          </View> */}
+          <View style={style.userDataContainer}>
+            <ItemText style={style.userInfo}>{name}</ItemText>
+            <ItemText style={style.userInfo}>{phone}</ItemText>
+            <ItemText style={style.userInfo}>{email}</ItemText>
+            <ItemText style={style.userInfo}>{card}</ItemText>
+          </View>
 
           <View style={style.descriptionContainer}>
             <View style={style.descriptionTitleContainer}>

@@ -31,9 +31,9 @@ export const style = StyleSheet.create({
 
   userDataContainer: {
     display: "flex",
+    alignItems: 'flex-start',
     gap: 10,
     flexWrap: "wrap",
-    flexDirection: "row"
   },
 
   userInfo: {
