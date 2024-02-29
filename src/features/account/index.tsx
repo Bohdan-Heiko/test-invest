@@ -66,7 +66,7 @@ export const Account = () => {
             <MyProjects projectsData={userBuildingsData} />
           </>
         )}
-        <Button onPress={handleLogout} title="Выход" />
+        <Button onPress={handleLogout} title="Выход" isLoading={true} />
         <OrganizationInfo />
       </View>
     </ScrollView>

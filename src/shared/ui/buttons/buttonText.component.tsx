@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useMemo } from "react"
 
 import { colors } from "@/utils/constants/colors"
@@ -10,14 +10,16 @@ interface IProps {
   disabled?: boolean
   onPress?: () => void
   style?: ViewStyleProps
+  loading?: { isNeed: boolean; isLoading: boolean }
 }
 
 export const Button: React.FC<IProps> = ({
-  variant = "primary",
-  title = "",
-  disabled,
+  style,
   onPress,
-  style
+  disabled,
+  title = "",
+  variant = "primary",
+  loading = { isLoading: false, isNeed: false }
 }) => {
   const titleColor = useMemo(() => {
     if (variant === "primary") return disabled ? colors.dove_graya : colors.white
@@ -46,13 +48,18 @@ export const Button: React.FC<IProps> = ({
     <View style={[styles.container, style, { backgroundColor, borderColor }]}>
       <TouchableOpacity onPress={onPress} disabled={disabled} style={styles.touchable}>
         <Text
-          style={{
-            ...styles.title,
-            color: titleColor
-          }}
+          style={[styles.title, { color: titleColor, flex: loading?.isNeed ? 4 / 7 : 0 }]}
         >
           {title}
         </Text>
+        <View style={[styles.loadingContainer, { flex: loading?.isNeed ? 3 / 7 : 0 }]}>
+          {loading?.isLoading && (
+            <ActivityIndicator
+              size={"small"}
+              color={variant === "primary" ? colors.white : colors.blue}
+            />
+          )}
+        </View>
       </TouchableOpacity>
     </View>
   )
@@ -71,10 +78,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 14
+    paddingVertical: 14,
+    gap: 5
   },
   title: {
+    // backgroundColor: 'red',
     fontSize: 18,
-    fontWeight: "500"
+    fontWeight: "500",
+    // flex: 4 / 7,
+    textAlign: "right"
+  },
+  loadingContainer: {
+    // flex: 3 / 7,
+    alignItems: "flex-start"
   }
 })

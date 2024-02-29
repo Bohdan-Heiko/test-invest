@@ -1,12 +1,13 @@
 import { ActivityIndicator, StyleSheet, View } from "react-native"
-
-import { Button, Title, VectorExpoIcons } from "@/shared/ui"
-import { colors } from "@/utils/constants/colors"
-import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
-import { AllRoutes, useLocalSearchParams } from "expo-router"
-import { useAuthContext } from "@/context/auth.context"
-import { ErrorMessage } from "../errorMessage/errorMessage.component"
 import { useEffect, useRef } from "react"
+import { AllRoutes, useLocalSearchParams } from "expo-router"
+
+import { useAuthContext } from "@/context/auth.context"
+import { Button, Title, VectorExpoIcons } from "@/shared/ui"
+import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
+import { colors } from "@/utils/constants/colors"
+
+import { ErrorMessage } from "../errorMessage/errorMessage.component"
 
 type LocalParams = { uuid: string }
 
@@ -15,13 +16,9 @@ export const PaymentStatus = () => {
   const { handlePushRoute } = useAuthContext()
   const successRef = useRef<boolean>(false)
 
-  const {
-    data: paymentStatus,
-    isError,
-    isFetching
-  } = useCheckPaymentStatusQuery(uuid, {
+  const { data: paymentStatus, isError } = useCheckPaymentStatusQuery(uuid, {
     skip: !uuid,
-    pollingInterval: !successRef.current ? 2000 : 0
+    pollingInterval: !successRef.current ? 500 : 0
   })
 
   useEffect(() => {
@@ -32,7 +29,7 @@ export const PaymentStatus = () => {
 
   return (
     <View style={style.mainContainer}>
-      {isFetching ? (
+      {!paymentStatus?.status ? (
         <ActivityIndicator size={"large"} color={colors.blue} />
       ) : (
         <View></View>

@@ -23,7 +23,8 @@ export const PaymentForm = () => {
   const { handlePushRoute } = useAuthContext()
   const params = useLocalSearchParams<SearchParams>()
 
-  const [createPaymentDeposit] = useCreatePaymentDepositMutation()
+  const [createPaymentDeposit, { isLoading: isCreatePaymentLoading }] =
+    useCreatePaymentDepositMutation()
 
   const {
     control,
@@ -128,7 +129,11 @@ export const PaymentForm = () => {
           )}
         />
 
-        <Button title="Далі" onPress={handleSubmit(handleCreateInvestment)} />
+        <Button
+          title="Далі"
+          onPress={handleSubmit(handleCreateInvestment)}
+          loading={{ isNeed: true, isLoading: isCreatePaymentLoading }}
+        />
       </View>
     </View>
   )

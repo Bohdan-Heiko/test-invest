@@ -17,7 +17,8 @@ export const Login = () => {
   const router = useRouter()
   const { loginUser } = useActions()
   const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(true)
-  const [signInUser, { isError: isSignInError }] = useSignInUserMutation()
+  const [signInUser, { isError: isSignInError, isLoading: isSigninLoading }] =
+    useSignInUserMutation()
 
   const {
     control,
@@ -116,7 +117,12 @@ export const Login = () => {
           <LinkRedirect href="/(tabs)/registration">Забув пароль</LinkRedirect>
         </View> */}
 
-        <Button variant="primary" title="Далі" onPress={handleSubmit(handleLoginUser)} />
+        <Button
+          variant="primary"
+          title="Далі"
+          onPress={handleSubmit(handleLoginUser)}
+          loading={{ isNeed: true, isLoading: isSigninLoading }}
+        />
         {/* <Button variant="primary" title="Test logout" onPress={handleLogoutUser} /> */}
 
         {/* <Button

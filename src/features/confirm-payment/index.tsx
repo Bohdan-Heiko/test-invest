@@ -1,15 +1,17 @@
-import { colors } from "@/utils/constants/colors"
 import { ScrollView, View } from "react-native"
-import { style } from "./_style"
-import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import { useState } from "react"
+import { useLocalSearchParams } from "expo-router"
+
 import { useAuthContext } from "@/context/auth.context"
+import { ErrorMessage, OrganizationInfo } from "@/shared/components"
+import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import {
   useConfirmPaymentMutation
   // useGetPaymentByIdQuery
 } from "@/store/services/paymentsApi"
-import { useLocalSearchParams } from "expo-router"
-import { ErrorMessage } from "@/shared/components"
+import { colors } from "@/utils/constants/colors"
+
+import { style } from "./_style"
 
 type LocalParams = { uuid: string }
 
@@ -18,7 +20,10 @@ export const ConfrimPayment = () => {
   const { handlePushRoute } = useAuthContext()
   const [checkCondition, setCheckCondition] = useState<boolean>(false)
 
-  const [confirmPayment, { error }] = useConfirmPaymentMutation()
+  const [
+    confirmPayment,
+    { isError: isConfirmPaymentError, isLoading: isConfirmPaymentLoading }
+  ] = useConfirmPaymentMutation()
   // const { data: paymentData } = useGetPaymentByIdQuery(uuid, {
   //   skip: !uuid
   // })
@@ -95,16 +100,15 @@ export const ConfrimPayment = () => {
             </ItemText>
           </View>
 
-          {error && (
-            //@ts-ignore
-            <ErrorMessage message={error?.data?.message ?? ""} />
-          )}
+          {isConfirmPaymentError && <ErrorMessage message={"Щось пішло не так."} />}
           <Button
             title="Далі"
             disabled={!checkCondition}
             onPress={handleConfirmPayment}
+            loading={{ isNeed: true, isLoading: isConfirmPaymentLoading }}
           />
         </View>
+        <OrganizationInfo />
       </View>
     </ScrollView>
   )

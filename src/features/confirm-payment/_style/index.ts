@@ -1,5 +1,6 @@
-import { colors } from "@/utils/constants/colors"
 import { StyleSheet } from "react-native"
+
+import { colors } from "@/utils/constants/colors"
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -75,7 +76,7 @@ export const style = StyleSheet.create({
     textAlign: "left",
     color: colors.dove_graya
   },
-  
+
   checkBoxCoantiner: {
     display: "flex",
     flexDirection: "row",
