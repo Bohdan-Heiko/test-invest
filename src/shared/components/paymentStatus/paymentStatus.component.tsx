@@ -8,6 +8,7 @@ import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 
 import { ErrorMessage } from "../errorMessage/errorMessage.component"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 type LocalParams = { uuid: string }
 
@@ -65,7 +66,8 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingBottom: 20,
+    paddingTop: 40,
     display: "flex",
     justifyContent: "space-between"
   },

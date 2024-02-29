@@ -35,7 +35,7 @@ export const ConfrimPayment = () => {
     <ScrollView
       overScrollMode="never"
       showsVerticalScrollIndicator={false}
-      style={{ backgroundColor: colors.white }}
+      style={{ backgroundColor: colors.white, paddingTop:40 }}
     >
       <View style={style.mainContainer}>
         <View style={style.confirmContainer}>

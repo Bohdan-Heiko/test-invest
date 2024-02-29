@@ -5,7 +5,7 @@ export default function PaymentStatusLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerStyle: {
           backgroundColor: colors.white
         },

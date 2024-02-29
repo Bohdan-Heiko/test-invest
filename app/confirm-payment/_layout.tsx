@@ -6,7 +6,7 @@ export default function ConfirmPaymentLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerStyle: {
           backgroundColor: colors.white
         },
