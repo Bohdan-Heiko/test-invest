@@ -6,10 +6,10 @@ import { useAuthContext } from "@/context/auth.context"
 import { ErrorMessage, OrganizationInfo } from "@/shared/components"
 import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
+import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "./_style"
-import { CheckPaymentStatus } from "@/types"
 
 type LocalParams = { uuid: string }
 
@@ -35,7 +35,7 @@ export const ConfrimPayment = () => {
     <ScrollView
       overScrollMode="never"
       showsVerticalScrollIndicator={false}
-      style={{ backgroundColor: colors.white, paddingTop:40 }}
+      style={{ backgroundColor: colors.white, paddingTop: 40 }}
     >
       <View style={style.mainContainer}>
         <View style={style.confirmContainer}>

@@ -8,9 +8,18 @@ import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 
 import { ErrorMessage } from "../errorMessage/errorMessage.component"
-import { SafeAreaView } from "react-native-safe-area-context"
 
 type LocalParams = { uuid: string }
+
+const STATUSES_PAYMENT = {
+  Declined: { title: "Оплата не пройшла", url: `/(tabs)` as AllRoutes },
+  WaitingAuthComplete: {
+    title: "Ваші гроші успішно заблоковані",
+    url: `/confirm-payment/` as AllRoutes
+  },
+  InProcessing: { title: "", url: "" },
+  Approved: { title: "", url: "" }
+}
 
 export const PaymentStatus = () => {
   const { uuid } = useLocalSearchParams<LocalParams>()
@@ -19,11 +28,19 @@ export const PaymentStatus = () => {
 
   const { data: paymentStatus, isError } = useCheckPaymentStatusQuery(uuid, {
     skip: !uuid,
-    pollingInterval: !successRef.current ? 2500 : 0
+    pollingInterval: !successRef.current ? 500 : 0
   })
 
+  const handleReedirect = () => {
+    if (paymentStatus?.status !== "WaitingAuthComplete") {
+      handlePushRoute(`/(tabs)` as AllRoutes)
+    } else {
+      handlePushRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
+    }
+  }
+
   useEffect(() => {
-    if (paymentStatus?.reason === "Ok" || isError) {
+    if (paymentStatus?.status || isError) {
       successRef.current = true
     }
   }, [paymentStatus, isError])
@@ -37,12 +54,12 @@ export const PaymentStatus = () => {
       )}
       {!isError ? (
         <View style={style.titleContainer}>
-          {!paymentStatus?.status ? null : (
+          {paymentStatus?.status == "WaitingAuthComplete" ? (
             <VectorExpoIcons type="MaterialCommunityIcons" name="check" color="green" />
-          )}
+          ) : null}
           <Title style={style.title}>
-            {paymentStatus?.status == "WaitingAuthComplete"
-              ? "Ваші гроші успішно заблоковані"
+            {paymentStatus?.status
+              ? STATUSES_PAYMENT[paymentStatus?.status].title
               : "Перевіряемо статус оплати..."}
           </Title>
         </View>
@@ -53,9 +70,7 @@ export const PaymentStatus = () => {
         title="Далі"
         variant="primary"
         disabled={!paymentStatus?.status}
-        onPress={() =>
-          handlePushRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
-        }
+        onPress={handleReedirect}
       />
     </View>
   )

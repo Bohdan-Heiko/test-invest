@@ -22,7 +22,7 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsDat
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
-      {!!investmentsData?.data.length ? (
+      {investmentsData?.data.length ? (
         investmentsData?.data
           .slice(0, showAll ? investmentsData?.data.length : 3)
           .map((building) => (

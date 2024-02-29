@@ -21,7 +21,7 @@ export const MyProjects: FC<IProps> = ({ projectsData }) => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {!!projectsData?.data.length ? (
+          {projectsData?.data.length ? (
             projectsData?.data.map((project) => (
               <ProjectItem
                 key={project.id}

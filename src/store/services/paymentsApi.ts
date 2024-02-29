@@ -28,7 +28,8 @@ export const paymentsApi = mainApi.injectEndpoints({
         url: "/api/payments/deposit/confirm",
         method: "POST",
         body
-      })
+      }),
+      invalidatesTags: ["UserBuildings"]
     }),
     getPaymentById: builder.query<any, string>({
       query: (id) => ({

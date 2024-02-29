@@ -22,7 +22,7 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
-      {!!accrualData?.data.length ? (
+      {accrualData?.data.length ? (
         accrualData?.data
           .slice(0, showAll ? accrualData?.data.length : 3)
           .map((accrual) => (

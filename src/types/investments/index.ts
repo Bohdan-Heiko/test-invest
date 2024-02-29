@@ -29,11 +29,10 @@ export interface TransactionResponse {
 export interface CheckPaymentStatus {
   status: "InProcessing" | "WaitingAuthComplete" | "Approved" | "Declined" | null
   reason: string | null
-  card: string | null 
+  card: string | null
   email: string | null
   name: string | null
   phone: string | null
- 
 }
 
 export interface ConfirmPaymentResponse {

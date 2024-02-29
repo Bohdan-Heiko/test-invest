@@ -21,47 +21,46 @@ export interface UserDataResponse {
 }
 
 interface ActivatedBy {
-  accruals: string;
-  balance: string;
-  birthdate: string;
-  createdAt: string;
-  email: string;
-  id: number;
-  investments: string;
-  isActive: boolean;
-  isAllowCryptoPayment: boolean;
-  isRealtor: boolean;
-  name: string;
-  phone: string;
-  taxNumber: string;
-  totalBalance: string;
-  updatedAt: string;
-  uuid: string;
-  withdrawals: string;
+  accruals: string
+  balance: string
+  birthdate: string
+  createdAt: string
+  email: string
+  id: number
+  investments: string
+  isActive: boolean
+  isAllowCryptoPayment: boolean
+  isRealtor: boolean
+  name: string
+  phone: string
+  taxNumber: string
+  totalBalance: string
+  updatedAt: string
+  uuid: string
+  withdrawals: string
 }
 
 interface Realtor {
-  accruals: string;
-  activatedBy: ActivatedBy;
-  balance: string;
-  birthdate: string;
-  createdAt: string;
-  email: string;
-  id: number;
-  investments: string;
-  inviteLink: string;
-  isActive: boolean;
-  isAllowCryptoPayment: boolean;
-  isRealtor: boolean;
-  name: string;
-  phone: string;
-  taxNumber: string;
-  totalBalance: string;
-  updatedAt: string;
-  uuid: string;
-  withdrawals: string;
+  accruals: string
+  activatedBy: ActivatedBy
+  balance: string
+  birthdate: string
+  createdAt: string
+  email: string
+  id: number
+  investments: string
+  inviteLink: string
+  isActive: boolean
+  isAllowCryptoPayment: boolean
+  isRealtor: boolean
+  name: string
+  phone: string
+  taxNumber: string
+  totalBalance: string
+  updatedAt: string
+  uuid: string
+  withdrawals: string
 }
-
 
 /////////////
 interface User {
