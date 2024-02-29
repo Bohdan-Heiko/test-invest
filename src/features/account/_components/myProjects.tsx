@@ -2,7 +2,7 @@ import { ScrollView, View } from "react-native"
 import { FC } from "react"
 
 import { ProjectItem } from "@/shared/components"
-import { Title } from "@/shared/ui"
+import { ItemText, Title } from "@/shared/ui"
 import { BuildingsResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
@@ -21,14 +21,20 @@ export const MyProjects: FC<IProps> = ({ projectsData }) => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {projectsData?.data.map((project) => (
-            <ProjectItem
-              key={project.id}
-              text={project.description}
-              title={project.title}
-              imageUri={project.photos && project.photos[0].contentUrl}
-            />
-          ))}
+          {!!projectsData?.data.length ? (
+            projectsData?.data.map((project) => (
+              <ProjectItem
+                key={project.id}
+                text={project.description}
+                title={project.title}
+                imageUri={project.photos && project.photos[0].contentUrl}
+              />
+            ))
+          ) : (
+            <ItemText style={style.accuralItemNameTitle}>
+              У вас ще не інвестували в проекти
+            </ItemText>
+          )}
         </View>
       </ScrollView>
     </View>
