@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native"
+import { Pressable, ScrollView, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
@@ -35,7 +35,9 @@ export const Registration = () => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors, touchedFields, dirtyFields }
+    trigger,
+    getValues,
+    formState: { errors, dirtyFields }
   } = useForm({
     mode: "all",
     resolver: yupResolver(registrationSchema)
@@ -97,7 +99,7 @@ export const Registration = () => {
             <Input
               fields={{ ...field }}
               error={errors.birthdate}
-              isTouchField={!!touchedFields.birthdate}
+              isTouchField={!!getValues("birthdate")} // can't see the field touchedFields.birthdate in ios
               inputProps={{
                 placeholder: "Дата народження",
                 onPressIn: openDateModal,
@@ -117,7 +119,8 @@ export const Registration = () => {
             setValue(
               "birthdate",
               datesHelpers.dateFormated(date.toString(), "DD.MM.YYYY")
-            )
+            ),
+              trigger("birthdate")
             closeDateModal()
           }}
           onCancel={closeDateModal}

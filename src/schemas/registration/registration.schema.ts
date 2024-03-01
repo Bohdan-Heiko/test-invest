@@ -10,7 +10,7 @@ import {
 export const registrationSchema = yup.object({
   name: yup
     .string()
-    .min(2, "Nickname must be at least 1 character long")
+    .min(1, "Nickname must be at least 1 character long")
     .max(255, "Nickname can be at most 255 characters lon")
     .required("Nickname is required"),
   email: yup.string().email().required(),
