@@ -92,5 +92,5 @@ export const style = StyleSheet.create({
   },
   contentFormContainer: {
     width: "100%"
-  }
+  },
 })

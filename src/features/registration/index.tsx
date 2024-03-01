@@ -48,6 +48,8 @@ export const Registration = () => {
       .catch(console.log)
   }
 
+  
+
   return (
     <ScrollView
       style={style.container}

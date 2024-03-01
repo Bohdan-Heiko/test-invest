@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native"
+import { ScrollView} from "react-native"
 import { SplashScreen, usePathname } from "expo-router"
 
 import { OrganizationInfo } from "@/shared/components"
@@ -10,6 +10,7 @@ import { Buildings } from "./_components/buildings"
 import { CallBackForm } from "./_components/callBack"
 import { MainProjectBanner } from "./_components/mainProjectBanner"
 import { style } from "./_style"
+
 
 const TEXT1 =
   "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору."
@@ -24,6 +25,15 @@ export const Main = () => {
   const { data: buildersData } = useGetAllPublicBuidersQuery("", {
     skip: path !== "/"
   })
+
+  // const [selected, setSelected] = useState(undefined)
+  // const data = [
+  //   { label: "One", value: "1" },
+  //   { label: "Two", value: "2" },
+  //   { label: "Three", value: "3" },
+  //   { label: "Four", value: "4" },
+  //   { label: "Five", value: "5" }
+  // ]
 
   return (
     <ScrollView
