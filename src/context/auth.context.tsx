@@ -10,6 +10,10 @@ export interface AuthContextValue {
     route: AllRoutes | never,
     data?: Record<string, unknown>
   ) => AllRoutes | undefined
+  handleReplaceRoute: (
+    route: AllRoutes | never,
+    data?: Record<string, unknown>
+  ) => AllRoutes | undefined
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined)
