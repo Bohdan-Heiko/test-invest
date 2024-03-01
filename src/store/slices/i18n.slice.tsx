@@ -1,10 +1,8 @@
-// import { TAppLanguages } from "@/util/i18n";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { TLanguage } from "@/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-type TAppLanguages = "en_US" | "uk_UA"
-
-const initialState: { userLanguage: TAppLanguages | null; isOpen: boolean } = {
-  userLanguage: null,
+const initialState: { userLanguage: TLanguage | null; isOpen: boolean } = {
+  userLanguage: { label: "Uk", value: "uk_UA" },
   isOpen: false
 }
 
@@ -12,7 +10,7 @@ export const i18nSlice = createSlice({
   name: "i18n",
   initialState,
   reducers: {
-    setLanguage: (state, { payload }: PayloadAction<TAppLanguages>) => {
+    setLanguage: (state, { payload }: PayloadAction<TLanguage>) => {
       state.userLanguage = payload
     },
     setIsOpenLanguageDropDown: (state) => {

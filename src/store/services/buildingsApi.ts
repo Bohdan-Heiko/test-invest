@@ -8,12 +8,10 @@ export const buildingsApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllPublicBuildings: builder.query<BuildingsResponse[], void | string>({
       query: () => ({
-        url: "/api/public/buildings",
-        headers: {
-          "X-LOCALE": "en_US"
-        }
+        url: "/api/public/buildings"
       }),
-      keepUnusedDataFor: 60 * 5
+      keepUnusedDataFor: 60 * 5,
+      providesTags: ["UserPublicBuildings"]
     }),
     getOnePublicBuilding: builder.query<BuildingsResponse, string>({
       query: (id) => ({

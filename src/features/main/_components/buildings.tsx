@@ -12,15 +12,16 @@ import { style } from "../_style"
 
 interface IProps {
   data: BuildingsResponse[] | undefined
+  isLoading?: boolean
 }
 
-export const Buildings: FC<IProps> = ({ data }) => {
+export const Buildings: FC<IProps> = ({ data, isLoading }) => {
   const { handlePushRoute } = useAuthContext()
   return (
     <View style={style.ourProjectsContainer}>
       <View style={style.titleContainer}>
         <Title style={style.ourProjectTitle}>Наші проекти</Title>
-        {!data && <ActivityIndicator size={"small"} color={colors.blue} />}
+        {(isLoading || !data) && <ActivityIndicator size={"small"} color={colors.blue} />}
       </View>
       <ScrollView
         overScrollMode="never"

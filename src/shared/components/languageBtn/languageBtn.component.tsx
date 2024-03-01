@@ -1,10 +1,13 @@
-import { colors } from "@/utils/constants/colors"
-import { Title } from "@/shared/ui"
 import { Pressable, View } from "react-native"
+
 import useActions from "@/hooks/useActions"
+import { Title } from "@/shared/ui"
+import { useAppSelector } from "@/store"
+import { colors } from "@/utils/constants/colors"
 
 export const LanguageButton = () => {
   const { setIsOpenLanguageDropDown } = useActions()
+  const { userLanguage } = useAppSelector((state) => state.i18n)
   return (
     <Pressable
       onPress={() => setIsOpenLanguageDropDown()}
@@ -12,14 +15,13 @@ export const LanguageButton = () => {
     >
       <View
         style={{
-          // position: "relative",
           backgroundColor: colors.blue,
           borderRadius: 15,
           paddingHorizontal: 8,
           paddingVertical: 4
         }}
       >
-        <Title style={{ fontSize: 16, color: colors.white }}>Ua</Title>
+        <Title style={{ fontSize: 16, color: colors.white }}>{userLanguage?.label}</Title>
       </View>
     </Pressable>
   )

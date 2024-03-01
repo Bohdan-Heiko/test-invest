@@ -13,8 +13,10 @@ export const mainApi = createApi({
       const state: RootState = getState() as RootState
 
       const token = state.bober_auth.token
+      const locale = state.i18n.userLanguage?.value
 
       if (token) headers.set("Authorization", `Bearer ${token}`)
+      if (locale) headers.set("X-LOCALE", locale!)
 
       if (!headers.has("Ignore-Headers")) {
         if (!headers.has("Content-Type")) {
@@ -35,7 +37,8 @@ export const mainApi = createApi({
     "GetMeData",
     "UserBuildings",
     "UserAccruals",
-    "UserInvestments"
+    "UserInvestments",
+    "UserPublicBuildings"
   ],
   endpoints: () => ({})
 })

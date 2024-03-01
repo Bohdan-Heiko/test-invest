@@ -1,37 +1,37 @@
 import { FlatList, Modal, Text, TouchableOpacity, View } from "react-native"
-
-import React, { FC, ReactElement } from "react"
 import { StyleSheet } from "react-native"
-import { useAppSelector } from "@/store"
+import React, { FC, ReactElement } from "react"
+import { useDispatch } from "react-redux"
+
 import useActions from "@/hooks/useActions"
+import { useAppSelector } from "@/store"
+import { mainApi } from "@/store/services/mainApi"
+import { TLanguage } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 interface DropdownProps {
-  data: { label: string; value: string }[]
-  onSelect?: (item: {
-    label: string
-    value: string
-  }) => React.Dispatch<React.SetStateAction<undefined | { label: string; value: string }>>
-  // onSelect: (item: { label: string; value: string }) => void
+  data?: TLanguage[]
+  onSelect?: (language: TLanguage) => void
 }
 
-export const Dropdown: FC<DropdownProps> = ({ data, onSelect }) => {
+const LANGUAGE_DATA: TLanguage[] = [
+  { label: "Uk", value: "uk_UA" },
+  { label: "En", value: "en_US" }
+]
+
+export const Dropdown: FC<DropdownProps> = () => {
+  const dispatch = useDispatch()
+  const { setLanguage } = useActions()
   const { setIsOpenLanguageDropDown } = useActions()
   const { isOpen } = useAppSelector((state) => state.i18n)
 
-  const openDropdown = (): void => {
+  const onItemPress = (item: TLanguage): void => {
+    setLanguage(item)
     setIsOpenLanguageDropDown()
+    dispatch(mainApi.util.invalidateTags(["UserPublicBuildings"]))
   }
 
-  const onItemPress = (item: { label: string; value: string }): void => {
-    setIsOpenLanguageDropDown()
-  }
-
-  const renderItem = ({
-    item
-  }: {
-    item: { label: string; value: string }
-  }): ReactElement => (
+  const renderItem = ({ item }: { item: TLanguage }): ReactElement => (
     <TouchableOpacity style={style.item} onPress={() => onItemPress(item)}>
       <Text>{item.label}</Text>
     </TouchableOpacity>
@@ -48,7 +48,7 @@ export const Dropdown: FC<DropdownProps> = ({ data, onSelect }) => {
         >
           <View style={[style.dropdown]}>
             <FlatList
-              data={data}
+              data={LANGUAGE_DATA}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
             />

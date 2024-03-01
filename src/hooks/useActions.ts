@@ -2,9 +2,9 @@ import { useMemo } from "react"
 
 import { useAppDispatch } from "@/store"
 import { loginUser, logoutUser } from "@/store/slices/authSlice"
+import { setIsOpenLanguageDropDown, setLanguage } from "@/store/slices/i18n.slice"
 import { clearUserData, setUserData } from "@/store/slices/usersSlice"
 import { bindActionCreators } from "@reduxjs/toolkit"
-import { setLanguage, setIsOpenLanguageDropDown } from "@/store/slices/i18n.slice"
 
 const rootActions = {
   loginUser,

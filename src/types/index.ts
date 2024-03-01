@@ -7,6 +7,7 @@ export {
   TransactionBody,
   TransactionResponse
 } from "./investments"
+export { TLanguage } from "./language"
 export {
   LoginBody,
   LoginResponse,
