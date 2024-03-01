@@ -53,6 +53,15 @@ export const AuthProvider = (props: ProviderProps) => {
       return router.push("/(auth)/signin")
     }
   }
+  const handleReplaceRoute = (
+    route: AllRoutes,
+    data?: Record<string, string | string[]>
+  ) => {
+    router.replace({
+      pathname: route as AllRoutes,
+      params: data
+    })
+  }
 
   useEffect(() => {
     if (getMeData) {
@@ -74,7 +83,8 @@ export const AuthProvider = (props: ProviderProps) => {
     <AuthContext.Provider
       value={
         {
-          handlePushRoute
+          handlePushRoute,
+          handleReplaceRoute
         } as AuthContextValue
       }
     >

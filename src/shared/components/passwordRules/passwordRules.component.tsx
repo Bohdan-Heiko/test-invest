@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, View, Platform } from "react-native"
 
 import { Dot, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
@@ -81,12 +81,20 @@ const style = StyleSheet.create({
     width: "110%",
     flexGrow: 1,
     backgroundColor: colors.white,
-    shadowColor: "black",
-    shadowOpacity: 1,
-    shadowRadius: 20,
-    elevation: 10,
+    // shadowColor: "black",
+    // shadowOpacity: 1,
+    // shadowRadius: 20,
+    // elevation: 10,
     gap: 5,
-    zIndex: 100
+    zIndex: 100,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.5,
+    shadowOffset: {height: 3, width: 3},
+    elevation: Platform.OS === 'ios' ? 1 : 10
   },
 
   passwordRulesTitle: {

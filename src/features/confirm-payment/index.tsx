@@ -16,7 +16,7 @@ type LocalParams = { uuid: string }
 export const ConfrimPayment = () => {
   const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
   const { name, email, card, phone } = paymentData as CheckPaymentStatus
-  const { handlePushRoute } = useAuthContext()
+  const { handleReplaceRoute } = useAuthContext()
   const [checkCondition, setCheckCondition] = useState<boolean>(false)
 
   const [
@@ -27,7 +27,7 @@ export const ConfrimPayment = () => {
   const handleConfirmPayment = async () => {
     await confirmPayment({ uuid })
       .unwrap()
-      .then(() => handlePushRoute("/(tabs)/account"))
+      .then(() => handleReplaceRoute("/(tabs)/account"))
       .catch(console.log)
   }
 

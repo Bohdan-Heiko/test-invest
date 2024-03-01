@@ -23,7 +23,7 @@ const STATUSES_PAYMENT = {
 
 export const PaymentStatus = () => {
   const { uuid } = useLocalSearchParams<LocalParams>()
-  const { handlePushRoute } = useAuthContext()
+  const { handleReplaceRoute } = useAuthContext()
   const successRef = useRef<boolean>(false)
 
   const {
@@ -37,9 +37,9 @@ export const PaymentStatus = () => {
 
   const handleReedirect = () => {
     if (paymentStatus?.status !== "WaitingAuthComplete") {
-      handlePushRoute(`/(tabs)` as AllRoutes)
+      handleReplaceRoute("/(tabs)" as AllRoutes)
     } else {
-      handlePushRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
+      handleReplaceRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
     }
   }
 

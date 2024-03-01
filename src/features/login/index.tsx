@@ -1,4 +1,4 @@
-import { ScrollView, ToastAndroid, View } from "react-native"
+import { ScrollView, View } from "react-native"
 import { useState } from "react"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
@@ -38,17 +38,7 @@ export const Login = () => {
       .unwrap()
       .then(loginUser)
       .then(() => router.replace("/(tabs)"))
-      .catch(showToast)
-  }
-
-  // const handleLogoutUser = () => {
-  //   logoutUser()
-  //   router.navigate("/(tabs)/")
-  // }
-
-  // TEMPORARY FUNCTION
-  const showToast = () => {
-    ToastAndroid.show("Something wrong. Try again", ToastAndroid.SHORT)
+      .catch(console.log)
   }
 
   return (

@@ -47,7 +47,7 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsDat
             </View>
           ))
       ) : (
-        <ItemText style={style.accuralItemNameTitle}>У вас ще немає інвестицій</ItemText>
+        <ItemText style={style.accuralItemNameText}>У вас ще немає інвестицій</ItemText>
       )}
 
       {!!investmentsData?.data.length && (

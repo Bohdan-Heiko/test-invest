@@ -22,12 +22,11 @@ import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
 
 export const Account = () => {
+  const router = useRouter()
   const pathName = usePathname()
   const { logoutUser } = useActions()
   const userData = useAppSelector((state) => state.user_data)
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
-
-  const router = useRouter()
 
   const { data: userAccrualsData } = useGetUserAccrualsQuery("", {
     skip: pathName !== "/account"
@@ -57,7 +56,6 @@ export const Account = () => {
     >
       <View style={style.mainContainer}>
         <YourAccount investments={userData.totalBalance} />
-        <PersonalInformation data={userData} />
         {userData.isRealtor && <RieltorInformation inviteLink={userData.inviteLink} />}
         <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
         {!userData.isRealtor && (
@@ -66,6 +64,7 @@ export const Account = () => {
             <MyProjects projectsData={userBuildingsData} />
           </>
         )}
+        <PersonalInformation data={userData} />
         <Button onPress={handleLogout} title="Выход" />
         <OrganizationInfo />
       </View>

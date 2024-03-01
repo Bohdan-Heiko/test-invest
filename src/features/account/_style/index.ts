@@ -68,7 +68,7 @@ export const style = StyleSheet.create({
   },
   personalInfoTitle: {
     fontFamily: "Inter600",
-    fontSize: 30,
+    fontSize: 25,
     lineHeight: 45,
     textAlign: "left",
     color: colors.mine_shaft
@@ -79,7 +79,7 @@ export const style = StyleSheet.create({
     gap: 15
   },
   personalInfoContainerTitle: {
-    fontSize: 24,
+    fontSize: 23,
     lineHeight: 36,
     color: colors.mine_shaft
   },
@@ -144,7 +144,7 @@ export const style = StyleSheet.create({
     gap: 5
   },
   descriptionTitle: {
-    fontSize: 30,
+    fontSize: 25,
     lineHeight: 45,
     color: colors.mine_shaft
   },
@@ -195,7 +195,7 @@ export const style = StyleSheet.create({
     elevation: 4
   },
   accrualTitle: {
-    fontSize: 30,
+    fontSize: 25,
     lineHeight: 45,
     color: colors.mine_shaft
   },
@@ -215,12 +215,12 @@ export const style = StyleSheet.create({
     justifyContent: "space-between"
   },
   accuralItemNameTitle: {
-    fontSize: 20,
+    fontSize: 15,
     lineHeight: 30,
     color: colors.mine_shaft
   },
   accuralItemNameText: {
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 21,
     color: colors.silver
   },
@@ -241,12 +241,25 @@ export const style = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    gap: 20
+    gap: 20,
+    backgroundColor: colors.white,
+  
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 11,
+    shadowColor: "#777777",
+    shadowOpacity: 0.1,
+    elevation: 4
   },
   myProjectTitle: {
+
     fontSize: 24,
     lineHeight: 42,
-    color: colors.mine_shaft
+    color: colors.mine_shaft,
+    paddingTop: 20,
+    paddingHorizontal: 15,
+
   },
   projectsContainer: {
     gap: 20,
