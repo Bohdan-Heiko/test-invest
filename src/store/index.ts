@@ -8,17 +8,19 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { unauthenticatedMiddleware } from "./middlewares/unauthenticated"
 import { mainApi } from "./services/mainApi"
 import authSlice from "./slices/authSlice"
+import i18nSlice from "./slices/i18n.slice"
 import usersDataSlice from "./slices/usersSlice"
 
 const persistConfig = {
   key: "bober-invest",
   storage: AsyncStorage,
-  whitelist: [authSlice.name, usersDataSlice.name]
+  whitelist: [authSlice.name, usersDataSlice.name, i18nSlice.name]
 }
 
 const reducers = combineReducers({
   [mainApi.reducerPath]: mainApi.reducer,
   [authSlice.name]: authSlice.reducer,
+  [i18nSlice.name]: i18nSlice.reducer,
   [usersDataSlice.name]: usersDataSlice.reducer
 })
 

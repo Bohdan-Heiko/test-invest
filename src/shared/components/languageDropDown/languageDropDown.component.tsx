@@ -1,42 +1,30 @@
 import { FlatList, Modal, Text, TouchableOpacity, View } from "react-native"
 
-import React, { FC, ReactElement, useRef, useState } from "react"
-import { VectorExpoIcons } from "@/shared/ui"
+import React, { FC, ReactElement } from "react"
 import { StyleSheet } from "react-native"
-
-// import { colors } from "@/utils/constants/colors"
+import { useAppSelector } from "@/store"
+import useActions from "@/hooks/useActions"
+import { colors } from "@/utils/constants/colors"
 
 interface DropdownProps {
-  label: string
   data: { label: string; value: string }[]
-  onSelect: (item: { label: string; value: string }) => void
+  onSelect?: (item: {
+    label: string
+    value: string
+  }) => React.Dispatch<React.SetStateAction<undefined | { label: string; value: string }>>
+  // onSelect: (item: { label: string; value: string }) => void
 }
 
-const Dropdown: FC<DropdownProps> = ({ label, data, onSelect }) => {
-  const DropdownButton = useRef<TouchableOpacity>(null)
-  const [visible, setVisible] = useState(false)
-  const [selected, setSelected] = useState<{ label: string; value: string } | undefined>(
-    undefined
-  )
-  const [dropdownTop, setDropdownTop] = useState(0)
-
-  const toggleDropdown = (): void => {
-    visible ? setVisible(false) : openDropdown()
-  }
+export const Dropdown: FC<DropdownProps> = ({ data, onSelect }) => {
+  const { setIsOpenLanguageDropDown } = useActions()
+  const { isOpen } = useAppSelector((state) => state.i18n)
 
   const openDropdown = (): void => {
-    if (DropdownButton.current) {
-      DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
-        setDropdownTop(py + h)
-      })
-    }
-    setVisible(true)
+    setIsOpenLanguageDropDown()
   }
 
   const onItemPress = (item: { label: string; value: string }): void => {
-    setSelected(item)
-    onSelect(item)
-    setVisible(false)
+    setIsOpenLanguageDropDown()
   }
 
   const renderItem = ({
@@ -50,12 +38,15 @@ const Dropdown: FC<DropdownProps> = ({ label, data, onSelect }) => {
   )
 
   const renderDropdown = (): ReactElement | null => {
-    if (!visible) return null
+    if (!isOpen) return null
 
     return (
-      <Modal visible={visible} transparent animationType="none">
-        <TouchableOpacity style={style.overlay} onPress={() => setVisible(false)}>
-          <View style={[style.dropdown, { top: dropdownTop }]}>
+      <Modal visible={isOpen} transparent animationType="none">
+        <TouchableOpacity
+          style={style.overlay}
+          onPress={() => setIsOpenLanguageDropDown()}
+        >
+          <View style={[style.dropdown]}>
             <FlatList
               data={data}
               renderItem={renderItem}
@@ -67,40 +58,20 @@ const Dropdown: FC<DropdownProps> = ({ label, data, onSelect }) => {
     )
   }
 
-  return (
-    <>
-      <TouchableOpacity
-        ref={DropdownButton}
-        style={style.button}
-        onPress={toggleDropdown}
-      >
-        <Text style={style.buttonText}>{selected?.label || label}</Text>
-        <VectorExpoIcons name="caretdown" type={"AntDesign"} />
-      </TouchableOpacity>
-      {renderDropdown()}
-    </>
-  )
+  return <>{renderDropdown()}</>
 }
 
 export const style = StyleSheet.create({
-  button: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#efefef",
-    height: 50,
-    zIndex: 1
-  },
-  buttonText: {
-    flex: 1,
-    textAlign: "center"
-  },
-  icon: {
-    marginRight: 10
-  },
   dropdown: {
     position: "absolute",
+    top: 50,
+    right: 10,
+    borderWidth: 2,
+    borderColor: colors.blue,
+    borderRadius: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 5,
     backgroundColor: "#fff",
-    width: "100%",
     shadowColor: "#000000",
     shadowRadius: 4,
     shadowOffset: { height: 4, width: 0 },
@@ -112,7 +83,6 @@ export const style = StyleSheet.create({
   },
   item: {
     paddingHorizontal: 10,
-    paddingVertical: 10,
-    borderBottomWidth: 1
+    paddingVertical: 10
   }
 })
