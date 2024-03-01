@@ -10,14 +10,15 @@ import { style } from "../_style"
 
 interface IProps {
   data: TransformedData<BuidersResponse> | undefined
+  isLoading: boolean
 }
 
-export const Builders: FC<IProps> = ({ data }) => {
+export const Builders: FC<IProps> = ({ data, isLoading }) => {
   return (
     <View style={style.ourProjectsContainer}>
       <View style={style.titleContainer}>
         <Title style={style.ourProjectTitle}>Наші забудовники</Title>
-        {!data && <ActivityIndicator size={"small"} color={colors.blue} />}
+        {(isLoading || !data) && <ActivityIndicator size={"small"} color={colors.blue} />}
       </View>
       <ScrollView
         overScrollMode="never"

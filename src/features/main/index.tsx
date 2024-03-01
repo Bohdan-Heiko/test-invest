@@ -24,9 +24,10 @@ export const Main = () => {
       skip: path !== "/"
     })
 
-  const { data: buildersData } = useGetAllPublicBuidersQuery("", {
-    skip: path !== "/"
-  })
+  const { data: buildersData, isFetching: isBuildersLoading } =
+    useGetAllPublicBuidersQuery("", {
+      skip: path !== "/"
+    })
 
   return (
     <ScrollView
@@ -37,7 +38,7 @@ export const Main = () => {
       <Dropdown />
       <MainProjectBanner text={TEXT1} />
       <Buildings data={buildingsData} isLoading={isBuildingsDataLoading} />
-      <Builders data={buildersData} />
+      <Builders data={buildersData} isLoading={isBuildersLoading} />
 
       <CallBackForm />
       <OrganizationInfo />
