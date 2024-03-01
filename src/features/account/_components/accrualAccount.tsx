@@ -49,7 +49,7 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
             </View>
           ))
       ) : (
-        <Title style={style.accuralNoDataInfo}>У вас ще немає нарахувань</Title>
+        <Title style={style.accuralItemNameText}>У вас ще немає нарахувань</Title>
       )}
 
       {!!accrualData?.data?.length && (

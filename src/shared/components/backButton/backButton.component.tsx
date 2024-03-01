@@ -6,7 +6,7 @@ import { VectorExpoIcons } from "@/shared/ui"
 export const BackButton = ({ size = 25, href }: { size?: number; href?: AllRoutes }) => {
   return (
     <Pressable
-      onPress={() => (href ? router.push(href as never) : router.back())}
+      onPress={() => (href ? router.replace(href as never) : router.back())}
       style={({ pressed }) => [
         {
           opacity: pressed ? 0.6 : 1,

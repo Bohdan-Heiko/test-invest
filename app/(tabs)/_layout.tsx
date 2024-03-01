@@ -16,7 +16,6 @@ export default function TabLayout() {
           title: "Головна",
           lazy: true,
           headerShadowVisible: false,
-          // headerRightContainerStyle: { paddingHorizontal: 20 },
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Octicons" name="home" color={color} />
           )
