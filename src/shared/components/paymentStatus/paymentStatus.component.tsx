@@ -26,7 +26,11 @@ export const PaymentStatus = () => {
   const { handlePushRoute } = useAuthContext()
   const successRef = useRef<boolean>(false)
 
-  const { data: paymentStatus, isError } = useCheckPaymentStatusQuery(uuid, {
+  const {
+    data: paymentStatus,
+    isError,
+    error
+  } = useCheckPaymentStatusQuery(uuid, {
     skip: !uuid,
     pollingInterval: !successRef.current ? 500 : 0
   })
@@ -64,7 +68,10 @@ export const PaymentStatus = () => {
           </Title>
         </View>
       ) : (
-        <ErrorMessage message="Щось пішло не так!" />
+        <>
+          <ErrorMessage message="Щось пішло не так!" />
+          <ErrorMessage message={JSON.stringify(error)} />
+        </>
       )}
       <Button
         title="Далі"
