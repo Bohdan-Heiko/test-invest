@@ -11,7 +11,6 @@ export const usersApi = mainApi.injectEndpoints({
         url: "/api/users/me"
       }),
       providesTags: ["GetMeData"]
-      // extraOptions
     }),
 
     sumAccuralsProceents: builder.query<number | undefined, void | string>({

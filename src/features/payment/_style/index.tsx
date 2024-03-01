@@ -119,7 +119,6 @@ export const style = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 13
-    // flex: 1 / 4,
   },
   politicCheck: {
     textAlign: "left",

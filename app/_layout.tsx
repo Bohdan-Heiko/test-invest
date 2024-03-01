@@ -79,6 +79,8 @@ function RootLayoutNav() {
               <Stack.Screen name="(payment)/payment" options={{ headerShown: false }} />
               <Stack.Screen name="(project)/project" options={{ headerShown: false }} />
               <Stack.Screen name="(report)" options={{ headerShown: false }} />
+              <Stack.Screen name="(statuses)/payment-status" options={{ headerShown: false }} />
+              <Stack.Screen name="confirm-payment" options={{ headerShown: false }} />
             </Stack>
           </AuthProvider>
         </PersistGate>

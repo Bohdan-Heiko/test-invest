@@ -1,10 +1,11 @@
-import { View } from "react-native"
-import { useLocalSearchParams, useNavigation } from "expo-router"
+import { Linking, View } from "react-native"
+import { AllRoutes, useLocalSearchParams } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
+import { useAuthContext } from "@/context/auth.context"
 import { Button, CheckBox, Input, ItemText, SVGIcon, Title } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
-import { useCreateInvestmentsMutation } from "@/store/services/userOperationsApi"
+import { useCreatePaymentDepositMutation } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
@@ -19,10 +20,11 @@ type DefaultInvestValues = {
 const defaultValues: DefaultInvestValues = { amount: "", isCheckRules: false }
 
 export const PaymentForm = () => {
-  const navigate = useNavigation()
+  const { handlePushRoute } = useAuthContext()
   const params = useLocalSearchParams<SearchParams>()
 
-  const [createInvestments] = useCreateInvestmentsMutation()
+  const [createPaymentDeposit, { isLoading: isCreatePaymentLoading }] =
+    useCreatePaymentDepositMutation()
 
   const {
     control,
@@ -40,9 +42,12 @@ export const PaymentForm = () => {
     if (!params) return
 
     const data = { building: { id: Number(params.id) }, amount: amount }
-    await createInvestments(data)
+    await createPaymentDeposit(data)
       .unwrap()
-      .then(navigate.goBack)
+      .then((res) => {
+        Linking.openURL(res.url)
+        handlePushRoute(`/(statuses)/payment-status/${res.uuid}` as AllRoutes)
+      })
       .then(() => reset())
       .catch(console.log)
   }
@@ -124,7 +129,11 @@ export const PaymentForm = () => {
           )}
         />
 
-        <Button title="Далі" onPress={handleSubmit(handleCreateInvestment)} />
+        <Button
+          title="Далі"
+          onPress={handleSubmit(handleCreateInvestment)}
+          loading={{ isNeed: true, isLoading: isCreatePaymentLoading }}
+        />
       </View>
     </View>
   )

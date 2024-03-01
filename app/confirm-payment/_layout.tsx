@@ -2,11 +2,11 @@ import { BackButton } from "@/shared/components"
 import { colors } from "@/utils/constants/colors"
 import { Stack } from "expo-router"
 
-export default function ProjectLayout() {
+export default function ConfirmPaymentLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerStyle: {
           backgroundColor: colors.white
         },
@@ -16,7 +16,7 @@ export default function ProjectLayout() {
         headerTitleStyle: {
           fontFamily: "Inter500"
         },
-        headerLeft: () => <BackButton />,
+        headerLeft: () => <></>,
         headerTitle: ""
       }}
     />

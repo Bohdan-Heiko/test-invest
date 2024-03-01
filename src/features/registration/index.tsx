@@ -1,4 +1,4 @@
-import { ScrollView, ToastAndroid, View } from "react-native"
+import { ScrollView, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
@@ -16,7 +16,8 @@ import { style } from "./_style"
 
 export const Registration = () => {
   const router = useRouter()
-  const [registrationUser] = useRegistrationUserMutation()
+  const [registrationUser, { isLoading: isRegistrationLoading }] =
+    useRegistrationUserMutation()
 
   const {
     value: dateModalValue,
@@ -44,18 +45,7 @@ export const Registration = () => {
     await registrationUser(data)
       .unwrap()
       .then(() => router.replace("/(auth)/signin"))
-      .catch(showToast)
-  }
-
-  // TEMPORARY FUNCTION
-  const showToast = () => {
-    ToastAndroid.showWithGravityAndOffset(
-      "Something wrong. Try again",
-      ToastAndroid.LONG,
-      ToastAndroid.BOTTOM,
-      25,
-      50
-    )
+      .catch(console.log)
   }
 
   return (
@@ -205,7 +195,12 @@ export const Registration = () => {
           )}
         />
 
-        <Button variant="primary" title="Далі" onPress={handleSubmit(onSubmit)} />
+        <Button
+          variant="primary"
+          title="Далі"
+          onPress={handleSubmit(onSubmit)}
+          loading={{ isNeed: true, isLoading: isRegistrationLoading }}
+        />
         {/* <Button
           variant="secondary"
           title="Увійти через Дію"

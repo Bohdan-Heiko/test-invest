@@ -22,7 +22,7 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
   return (
     <View style={style.accrualContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
-      {accrualData?.data && accrualData?.data.length ? (
+      {accrualData?.data.length ? (
         accrualData?.data
           .slice(0, showAll ? accrualData?.data.length : 3)
           .map((accrual) => (
@@ -52,7 +52,7 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
         <Title style={style.accuralNoDataInfo}>У вас ще немає нарахувань</Title>
       )}
 
-      {accrualData?.data && accrualData?.data?.length > 0 && (
+      {!!accrualData?.data?.length && (
         <Button title={showAll ? "Приховати" : "Дивитись всі"} onPress={handleShowAll} />
       )}
     </View>

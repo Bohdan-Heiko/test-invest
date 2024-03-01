@@ -24,10 +24,14 @@ export const PersonalInformation: FC<IProps> = ({ data }) => {
         <ItemText style={style.personalInfoText}>{data?.birthdate ?? ""}</ItemText>
       </View>
 
-      <View style={style.yourRieltorContainer}>
-        <Title style={style.yourRieltorTitle}>Ваш рієлтор</Title>
-        {/* <ItemText style={style.yourRieltorInfo}>Петренко Григорій Александрович</ItemText> */}
-      </View>
+      {!data?.isRealtor && (
+        <View style={style.yourRieltorContainer}>
+          <Title style={style.yourRieltorTitle}>Ваш рієлтор</Title>
+          <ItemText style={style.yourRieltorInfo}>
+            {data?.realtor ? data.realtor.name : "У вас ще немає рієлтора"}
+          </ItemText>
+        </View>
+      )}
 
       <View style={style.functionsContainer}>
         <Title style={style.functionsTitle}>Функції</Title>

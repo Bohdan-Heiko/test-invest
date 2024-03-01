@@ -36,7 +36,11 @@ export const AuthProvider = (props: ProviderProps) => {
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
     const publicRoute = route.includes("project") || route.includes("report")
 
-    if ((publicRoute && isAuthenticated) || (publicRoute && !isAuthenticated)) {
+    if (
+      (publicRoute && isAuthenticated) ||
+      (publicRoute && !isAuthenticated) ||
+      isAuthenticated
+    ) {
       router.push({
         pathname: route as AllRoutes,
         params: data
