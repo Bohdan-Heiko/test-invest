@@ -1,5 +1,6 @@
 import { ActivityIndicator, ScrollView, View } from "react-native"
 import { FC } from "react"
+import { useTranslation } from "react-i18next"
 
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
@@ -14,10 +15,12 @@ interface IProps {
 }
 
 export const Builders: FC<IProps> = ({ data, isLoading }) => {
+  const { t } = useTranslation("main")
+
   return (
     <View style={style.ourProjectsContainer}>
       <View style={style.titleContainer}>
-        <Title style={style.ourProjectTitle}>Наші забудовники</Title>
+        <Title style={style.ourProjectTitle}>{t("Наші забудовники")}</Title>
         {(isLoading || !data) && <ActivityIndicator size={"small"} color={colors.blue} />}
       </View>
       <ScrollView
@@ -28,6 +31,7 @@ export const Builders: FC<IProps> = ({ data, isLoading }) => {
         <View style={style.projectsContainer}>
           {data?.data?.map(({ id, description, title, photos }) => (
             <ProjectItem
+              t={t}
               key={id}
               title={title}
               text={description}

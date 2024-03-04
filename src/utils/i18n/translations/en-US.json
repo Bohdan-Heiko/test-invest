@@ -1,6 +1,19 @@
 {
   "main": {
     "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору.": "Modern Heights is an innovative project that combines modern design, environmental sustainability and convenient location to create a beautiful living space.",
-    "aaa": "en"
+    "Наші проекти": "Our projects",
+    "Інвестувати": "Invest",
+    "Наші забудовники": "Our developers"
+  },
+  "headers": {
+    "Головна": "Main",
+    "Аккаунт": "Account"
+  },
+  "callBack": {
+    "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
+    "Залиште заявку на безкоштовний дзвінок, ми зв’яжемося з вами протягом 20 хвилин": "Leave a request for a free call, we will contact you within 20 minutes",
+    "Ім’я": "Name",
+    "Номер телефону": "Phone number",
+    "Замовити дзвінок": "Order a call"
   }
 }

@@ -1,5 +1,5 @@
-import { ScrollView, Text } from "react-native"
-import { SplashScreen } from "expo-router"
+import { ScrollView } from "react-native"
+import { useTranslation } from "react-i18next"
 
 import { Dropdown, OrganizationInfo } from "@/shared/components"
 import { useGetAllPublicBuidersQuery } from "@/store/services/buildersApi"
@@ -9,8 +9,6 @@ import { Builders } from "./_components/builders"
 import { Buildings } from "./_components/buildings"
 import { CallBackForm } from "./_components/callBack"
 import { MainProjectBanner } from "./_components/mainProjectBanner"
-import { useTranslation } from "react-i18next"
-
 import { style } from "./_style"
 
 const TEXT1 =

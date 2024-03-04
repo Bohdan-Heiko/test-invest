@@ -1,6 +1,7 @@
 import { FlatList, Modal, Text, TouchableOpacity, View } from "react-native"
 import { StyleSheet } from "react-native"
 import React, { FC, ReactElement } from "react"
+import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 
 import useActions from "@/hooks/useActions"
@@ -9,7 +10,6 @@ import { mainApi } from "@/store/services/mainApi"
 import { TLanguage } from "@/types"
 import { colors } from "@/utils/constants/colors"
 import { LANGUAGE_LABELS } from "@/utils/constants/language"
-import { useTranslation } from "react-i18next"
 
 interface DropdownProps {
   data?: TLanguage[]

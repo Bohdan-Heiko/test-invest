@@ -2,11 +2,13 @@ import { Pressable, StyleSheet, Text, View } from "react-native"
 import { FC } from "react"
 import { Image } from "expo-image"
 import { AllRoutes } from "expo-router"
+import { TFunction } from "i18next"
 
 import { Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 import { API_URL } from "@/utils/constants/constants"
 interface IProjectItemProps {
+  t: TFunction
   text: string
   title: string
   imageUri?: string
@@ -17,6 +19,7 @@ interface IProjectItemProps {
 const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 
 export const ProjectItem: FC<IProjectItemProps> = ({
+  t,
   text,
   title,
   imageUri,
@@ -48,7 +51,7 @@ export const ProjectItem: FC<IProjectItemProps> = ({
               }
             ]}
           >
-            <Text style={style.ourProjectItemInfoLink}>Інвестувати</Text>
+            <Text style={style.ourProjectItemInfoLink}>{t("Інвестувати")}</Text>
           </Pressable>
         )}
       </View>
