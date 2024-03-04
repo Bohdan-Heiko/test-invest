@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native"
 
 import { Paragraph, TextInfo, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
+import { APP_FONTS } from "@/utils/constants/fonts"
 
 export const OrganizationInfo = () => {
   return (
@@ -47,7 +48,7 @@ const style = StyleSheet.create({
     opacity: 1
   },
   mainTitle: {
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     color: colors.tundora,
     lineHeight: 31,
     marginBottom: 30
@@ -59,7 +60,7 @@ const style = StyleSheet.create({
     gap: 20
   },
   infoText: {
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     fontSize: 16,
     lineHeight: 24,
     color: colors.dove_graya

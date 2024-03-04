@@ -11,6 +11,7 @@ import { FieldError, FieldValues } from "react-hook-form"
 
 import { BarIconProps, IconType } from "@/types"
 import { colors } from "@/utils/constants/colors"
+import { APP_FONTS } from "@/utils/constants/fonts"
 
 import { VectorExpoIcons } from "../icons/vectorExpoIcons"
 
@@ -94,7 +95,7 @@ const style = StyleSheet.create({
   input: {
     flexGrow: 1,
     flexShrink: 1,
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     fontSize: 16,
     lineHeight: Platform.OS === "android" ? 24 : 0,
     color: colors.tundora

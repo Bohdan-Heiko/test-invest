@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native"
 import { FC } from "react"
 
 import { colors } from "@/utils/constants/colors"
+import { APP_FONTS } from "@/utils/constants/fonts"
 
 type TextProps = View["props"]["style"]
 
@@ -26,14 +27,14 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   textOne: {
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     fontSize: 18,
     lineHeight: 27,
     color: colors.blue,
     marginBottom: 8
   },
   textTwo: {
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     fontSize: 18,
     lineHeight: 27
   }

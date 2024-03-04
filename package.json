@@ -16,8 +16,6 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@expo-google-fonts/inter": "^0.2.3",
-    "@expo-google-fonts/kufam": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
     "@hookform/resolvers": "^3.3.4",
     "@react-native-async-storage/async-storage": "^1.21.0",
