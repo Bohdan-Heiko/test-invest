@@ -15,5 +15,14 @@
     "Ім’я": "Name",
     "Номер телефону": "Phone number",
     "Замовити дзвінок": "Order a call"
+  },
+  "organization": {
+    "Адреса": "Address:",
+    "м. Буча, вул. Т. Шевченка, 43, офіс 1": "Bucha, st. T. Shevchenko, 43, office 1",
+    "Телефон": "Phone:",
+    "Пошта": "Mail:",
+    "Години работи": "Hours of work:",
+    "Політика конфіденціальності": "Privacy Policy",
+    "Договір оферти": "Offer contract"
   }
 }
