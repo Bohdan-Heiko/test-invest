@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native"
+import { useTranslation } from "react-i18next"
 
 import { Dot, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
@@ -10,9 +11,11 @@ import {
 } from "@/utils/constants/regex"
 
 export const PasswordRules = ({ value }: { value: string | undefined }) => {
+  const { t } = useTranslation("passwordRules")
+
   return (
     <View style={style.passwordRulesContainer}>
-      <Title style={style.passwordRulesTitle}>Пароль повинен мати:</Title>
+      <Title style={style.passwordRulesTitle}>{t("Пароль повинен мати")}</Title>
       <View style={style.passwordRules}>
         <Dot
           style={{
@@ -22,7 +25,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
                 : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>тільки латинські літери</Paragraph>
+        <Paragraph style={style.rulesText}>{t("тільки латинські літери")}</Paragraph>
       </View>
       <View style={style.passwordRules}>
         <Dot
@@ -32,7 +35,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
               : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>від однієї цифри</Paragraph>
+        <Paragraph style={style.rulesText}>{t("від однієї цифри")}</Paragraph>
       </View>
       <View style={style.passwordRules}>
         <Dot
@@ -40,7 +43,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
             backgroundColor: value && value?.length >= 8 ? colors.green : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>від 8 символів</Paragraph>
+        <Paragraph style={style.rulesText}>{t("від 8 символів")}</Paragraph>
       </View>
       <View style={style.passwordRules}>
         <Dot
@@ -50,7 +53,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
               : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>від 1 букви з верхнім регістром</Paragraph>
+        <Paragraph style={style.rulesText}>{t("від 1 букви з верхнім регістром")}</Paragraph>
       </View>
       <View style={style.passwordRules}>
         <Dot
@@ -61,7 +64,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
                 : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>від 1 букви з нижнім регістром</Paragraph>
+        <Paragraph style={style.rulesText}>{t("від 1 букви з нижнім регістром")}</Paragraph>
       </View>
     </View>
   )

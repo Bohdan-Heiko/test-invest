@@ -2,6 +2,7 @@ import { ScrollView, ToastAndroid, View } from "react-native"
 import { useState } from "react"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
@@ -16,6 +17,8 @@ import { style } from "./_style"
 export const Login = () => {
   const router = useRouter()
   const { loginUser } = useActions()
+  const { t } = useTranslation("auth")
+
   const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(true)
   const [signInUser, { isError: isSignInError, isLoading: isSigninLoading }] =
     useSignInUserMutation()
@@ -58,7 +61,7 @@ export const Login = () => {
       overScrollMode="never"
     >
       <View style={style.loginContainer}>
-        <Title style={style.title}>Вхід в аккаунт</Title>
+        <Title style={style.title}>{t("Вхід в аккаунт")}</Title>
         <Controller
           name="email"
           control={control}
@@ -94,14 +97,14 @@ export const Login = () => {
               onPressIcon={() => setIsSecureTextEntry(!isSecureTextEntry)}
               inputProps={{
                 secureTextEntry: isSecureTextEntry,
-                placeholder: "Пароль",
+                placeholder: t("Пароль"),
                 keyboardType: "default",
                 onChangeText: field.onChange
               }}
             />
           )}
         />
-        {isSignInError && <ErrorMessage message="Неправильний логін або пароль!" />}
+        {isSignInError && <ErrorMessage message={t("Неправильний логін або пароль!")} />}
 
         {/* Specify functionality */}
 
@@ -119,7 +122,7 @@ export const Login = () => {
 
         <Button
           variant="primary"
-          title="Далі"
+          title={t("Далі")}
           onPress={handleSubmit(handleLoginUser)}
           loading={{ isNeed: true, isLoading: isSigninLoading }}
         />
@@ -131,8 +134,8 @@ export const Login = () => {
           style={{ marginBottom: 16 }}
         /> */}
         <View style={style.accountInfo}>
-          <Paragraph style={style.accountInfoText}>Не маєш аккаунту?</Paragraph>
-          <LinkRedirect href="/(auth)/registration">Зареєструйся</LinkRedirect>
+          <Paragraph style={style.accountInfoText}>{t("Не маєш аккаунту")}</Paragraph>
+          <LinkRedirect href="/(auth)/registration">{t("Зареєструйся")}</LinkRedirect>
         </View>
       </View>
 

@@ -7,7 +7,9 @@
   },
   "headers": {
     "Головна": "Main",
-    "Аккаунт": "Account"
+    "Аккаунт": "Account",
+    "Логін": "Login",
+    "Реєстрація": "Registration"
   },
   "callBack": {
     "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
@@ -24,5 +26,30 @@
     "Години работи": "Hours of work:",
     "Політика конфіденціальності": "Privacy Policy",
     "Договір оферти": "Offer contract"
+  },
+  "auth": {
+    "Вхід в аккаунт": "Login to the account",
+    "Пароль": "Password",
+    "Далі": "Further",
+    "Неправильний логін або пароль": "Incorrect login or password!",
+    "Не маєш аккаунту": "You don't have an account?",
+    "Зареєструйся": "Sign up",
+    "Реєстрація": "Registration",
+    "ПІБ": "Full name",
+    "ІПН": "Tax ID",
+    "Дата народження": "Date of birth",
+    "Номер телефону": "Phone number",
+    "Пошта": "Email",
+    "Повторіть пароль": "Repeat password",
+    "Вже маєш аккаунт": "Already have an account?",
+    "Увійти": "Log in"
+  },
+  "passwordRules": {
+    "Пароль повинен мати": "Password must have:",
+    "тільки латинські літери": "only Latin letters",
+    "від однієї цифри": "at least one digit",
+    "від 8 символів": "at least 8 characters",
+    "від 1 букви з верхнім регістром": "at least 1 uppercase letter",
+    "від 1 букви з нижнім регістром": "at least 1 lowercase letter"
   }
 }

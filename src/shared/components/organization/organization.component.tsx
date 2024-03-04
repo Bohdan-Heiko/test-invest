@@ -7,7 +7,6 @@ import { APP_FONTS } from "@/utils/constants/fonts"
 
 export const OrganizationInfo = () => {
   const { t } = useTranslation("organization")
-  console.log(t("Адреса:"))
 
   return (
     <View style={style.organizationContainer}>

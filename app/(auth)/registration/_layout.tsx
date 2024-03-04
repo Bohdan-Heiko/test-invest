@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next"
 import { Stack } from "expo-router"
-import Colors, { colors } from "@/utils/constants/colors"
+import { colors } from "@/utils/constants/colors"
 import { BackButton } from "@/shared/components"
 import { APP_FONTS } from "@/utils/constants/fonts"
 
 export default function RegistrationLayout() {
+  const { t } = useTranslation("headers")
+
   return (
     <Stack
       screenOptions={{
@@ -18,7 +21,7 @@ export default function RegistrationLayout() {
           fontFamily: APP_FONTS["Inter500"]
         },
         headerLeft: () => <BackButton />,
-        headerTitle: "Реєстрація"
+        headerTitle: t("Реєстрація")
       }}
     />
   )

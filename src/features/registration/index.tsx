@@ -2,6 +2,7 @@ import { ScrollView, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 
 import useBoolean from "@/hooks/useBoolean"
 import { registrationSchema } from "@/schemas/registration/registration.schema"
@@ -16,6 +17,8 @@ import { style } from "./_style"
 
 export const Registration = () => {
   const router = useRouter()
+  const { t } = useTranslation("auth")
+
   const [registrationUser, { isLoading: isRegistrationLoading }] =
     useRegistrationUserMutation()
 
@@ -55,7 +58,7 @@ export const Registration = () => {
       overScrollMode="never"
     >
       <View style={style.loginContainer}>
-        <Title style={style.title}>Реєстрація</Title>
+        <Title style={style.title}>{t("Реєстрація")}</Title>
         <Controller
           name="name"
           control={control}
@@ -65,7 +68,7 @@ export const Registration = () => {
               error={errors.name}
               isTouchField={!!dirtyFields.name}
               inputProps={{
-                placeholder: "ПІБ",
+                placeholder: t("ПІБ"),
                 keyboardType: "default",
                 onChangeText: field.onChange
               }}
@@ -82,7 +85,7 @@ export const Registration = () => {
               error={errors.taxNumber}
               isTouchField={!!dirtyFields.taxNumber}
               inputProps={{
-                placeholder: "ІПН",
+                placeholder: t("ІПН"),
                 maxLength: 10,
                 onChangeText: field.onChange
               }}
@@ -99,7 +102,7 @@ export const Registration = () => {
               error={errors.birthdate}
               isTouchField={!!touchedFields.birthdate}
               inputProps={{
-                placeholder: "Дата народження",
+                placeholder: t("Дата народження"),
                 onPressIn: openDateModal,
                 showSoftInputOnFocus: false,
                 cursorColor: "transparent"
@@ -132,7 +135,7 @@ export const Registration = () => {
               error={errors.phone}
               isTouchField={!!dirtyFields.phone}
               inputProps={{
-                placeholder: "Номер телефону",
+                placeholder: t("Номер телефону"),
                 onChangeText: field.onChange,
                 keyboardType: "numeric"
               }}
@@ -149,7 +152,7 @@ export const Registration = () => {
               error={errors.email}
               isTouchField={!!dirtyFields.email}
               inputProps={{
-                placeholder: "Пошта",
+                placeholder: t("Пошта"),
                 onChangeText: field.onChange
               }}
             />
@@ -165,7 +168,7 @@ export const Registration = () => {
               error={errors.password}
               isTouchField={!!dirtyFields.password}
               inputProps={{
-                placeholder: "Пароль",
+                placeholder: t("Пароль"),
                 secureTextEntry: true,
                 onPressIn: showPasswordRules,
                 onFocus: showPasswordRules,
@@ -187,7 +190,7 @@ export const Registration = () => {
               error={errors.passwordConfirm}
               isTouchField={!!dirtyFields.passwordConfirm}
               inputProps={{
-                placeholder: "Повторіть пароль",
+                placeholder: t("Повторіть пароль"),
                 secureTextEntry: true,
                 onChangeText: field.onChange
               }}
@@ -197,7 +200,7 @@ export const Registration = () => {
 
         <Button
           variant="primary"
-          title="Далі"
+          title={t("Далі")}
           onPress={handleSubmit(onSubmit)}
           loading={{ isNeed: true, isLoading: isRegistrationLoading }}
         />
@@ -207,8 +210,8 @@ export const Registration = () => {
           style={{ marginBottom: 16 }}
         /> */}
         <View style={style.accountInfo}>
-          <Paragraph style={style.accountInfoText}>Вже маєш аккаунт?</Paragraph>
-          <LinkRedirect href="/(auth)/signin">Увійти</LinkRedirect>
+          <Paragraph style={style.accountInfoText}>{t("Вже маєш аккаунт")}</Paragraph>
+          <LinkRedirect href="/(auth)/signin">{t("Увійти")}</LinkRedirect>
         </View>
       </View>
 
