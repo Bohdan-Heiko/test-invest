@@ -33,13 +33,12 @@ export const mainApi = createApi({
     }
   }),
   tagTypes: [
-    "LoginUser",
     "GetMeData",
     "UserBuildings",
     "UserAccruals",
     "UserInvestments",
     "UserPublicBuildings",
-    "UserPublicBuildings"
+    "UserPublicBuilers"
   ],
   endpoints: () => ({})
 })

@@ -90,7 +90,8 @@ const style = StyleSheet.create({
   ourProjectItemInfoTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.tundora
+    color: colors.tundora,
+    textAlign: 'left'
   },
   ourProjectItemInfoText: {
     fontSize: 16,

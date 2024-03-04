@@ -28,7 +28,13 @@ export const Dropdown: FC<DropdownProps> = () => {
   const onItemPress = (item: TLanguage): void => {
     setLanguage(item)
     setIsOpenLanguageDropDown()
-    dispatch(mainApi.util.invalidateTags(["UserPublicBuildings"]))
+    dispatch(
+      mainApi.util.invalidateTags([
+        "UserPublicBuildings",
+        "UserPublicBuilers",
+        "UserBuildings"
+      ])
+    )
   }
 
   const renderItem = ({ item }: { item: TLanguage }): ReactElement => (

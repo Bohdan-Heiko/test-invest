@@ -20,14 +20,10 @@ export const Main = () => {
   const path = usePathname()
 
   const { data: buildingsData, isFetching: isBuildingsDataLoading } =
-    useGetAllPublicBuildingsQuery("", {
-      skip: path !== "/"
-    })
+    useGetAllPublicBuildingsQuery()
 
   const { data: buildersData, isFetching: isBuildersLoading } =
-    useGetAllPublicBuidersQuery("", {
-      skip: path !== "/"
-    })
+    useGetAllPublicBuidersQuery()
 
   return (
     <ScrollView

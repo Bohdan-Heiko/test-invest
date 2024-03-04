@@ -246,11 +246,11 @@ export const style = StyleSheet.create({
   myProjectTitle: {
     fontSize: 24,
     lineHeight: 42,
-    color: colors.mine_shaft
+    color: colors.mine_shaft,
   },
   projectsContainer: {
     gap: 20,
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   }
 })
