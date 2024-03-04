@@ -1,5 +1,5 @@
 import { ScrollView } from "react-native"
-import { SplashScreen, usePathname } from "expo-router"
+import { SplashScreen } from "expo-router"
 
 import { Dropdown, OrganizationInfo } from "@/shared/components"
 import { useGetAllPublicBuidersQuery } from "@/store/services/buildersApi"
@@ -17,8 +17,6 @@ const TEXT1 =
 SplashScreen.preventAutoHideAsync()
 
 export const Main = () => {
-  const path = usePathname()
-
   const { data: buildingsData, isFetching: isBuildingsDataLoading } =
     useGetAllPublicBuildingsQuery()
 

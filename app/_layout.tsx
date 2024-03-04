@@ -18,6 +18,7 @@ import { PersistGate } from "redux-persist/integration/react"
 
 import store, { persistor } from "@/store"
 import { AuthProvider } from "@/context/auth.context"
+import initReactI18next from "@/utils/i18n"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -67,10 +68,17 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const onBeforeLiftHandler = async (store: any) => {
+    await initReactI18next(store)
+  }
+
   return (
     <ThemeProvider value={DefaultTheme}>
       <ReduxProvider store={store}>
-        <PersistGate persistor={persistor}>
+        <PersistGate
+          persistor={persistor}
+          onBeforeLift={async () => await onBeforeLiftHandler(store)}
+        >
           <AuthProvider>
             <Stack>
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -79,7 +87,10 @@ function RootLayoutNav() {
               <Stack.Screen name="(payment)/payment" options={{ headerShown: false }} />
               <Stack.Screen name="(project)/project" options={{ headerShown: false }} />
               <Stack.Screen name="(report)" options={{ headerShown: false }} />
-              <Stack.Screen name="(statuses)/payment-status" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="(statuses)/payment-status"
+                options={{ headerShown: false }}
+              />
               <Stack.Screen name="confirm-payment" options={{ headerShown: false }} />
             </Stack>
           </AuthProvider>

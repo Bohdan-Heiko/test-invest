@@ -21,7 +21,7 @@ export const buildersApi = mainApi.injectEndpoints({
           baseQueryReturnValue
         )
       },
-      providesTags: ['UserPublicBuildings']
+      providesTags: ["UserPublicBuildings"]
     })
   })
 })

@@ -4,6 +4,7 @@ import useActions from "@/hooks/useActions"
 import { Title } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { colors } from "@/utils/constants/colors"
+import { DEFAULT_LANGUAGE, LANGUAGE_LABELS } from "@/utils/constants/language"
 
 export const LanguageButton = () => {
   const { setIsOpenLanguageDropDown } = useActions()
@@ -21,7 +22,9 @@ export const LanguageButton = () => {
           paddingVertical: 4
         }}
       >
-        <Title style={{ fontSize: 16, color: colors.white }}>{userLanguage?.label}</Title>
+        <Title style={{ fontSize: 16, color: colors.white }}>
+          {LANGUAGE_LABELS[userLanguage ?? DEFAULT_LANGUAGE]}
+        </Title>
       </View>
     </Pressable>
   )

@@ -2,7 +2,8 @@ import { TLanguage } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialState: { userLanguage: TLanguage | null; isOpen: boolean } = {
-  userLanguage: { label: "Uk", value: "uk_UA" },
+  // userLanguage: { label: "Uk", value: "uk-UA" },
+  userLanguage: null,
   isOpen: false
 }
 

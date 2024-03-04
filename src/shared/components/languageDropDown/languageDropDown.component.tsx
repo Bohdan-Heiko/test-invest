@@ -8,19 +8,16 @@ import { useAppSelector } from "@/store"
 import { mainApi } from "@/store/services/mainApi"
 import { TLanguage } from "@/types"
 import { colors } from "@/utils/constants/colors"
+import { LANGUAGE_LABELS } from "@/utils/constants/language"
 
 interface DropdownProps {
   data?: TLanguage[]
   onSelect?: (language: TLanguage) => void
 }
 
-const LANGUAGE_DATA: TLanguage[] = [
-  { label: "Uk", value: "uk_UA" },
-  { label: "En", value: "en_US" }
-]
-
 export const Dropdown: FC<DropdownProps> = () => {
   const dispatch = useDispatch()
+
   const { setLanguage } = useActions()
   const { setIsOpenLanguageDropDown } = useActions()
   const { isOpen } = useAppSelector((state) => state.i18n)
@@ -38,9 +35,12 @@ export const Dropdown: FC<DropdownProps> = () => {
   }
 
   const renderItem = ({ item }: { item: TLanguage }): ReactElement => (
-    <TouchableOpacity style={style.item} onPress={() => onItemPress(item)}>
-      <Text>{item.label}</Text>
-    </TouchableOpacity>
+    console.log(LANGUAGE_LABELS[item]),
+    (
+      <TouchableOpacity style={style.item} onPress={() => onItemPress(item)}>
+        <Text>{LANGUAGE_LABELS[item]}</Text>
+      </TouchableOpacity>
+    )
   )
 
   const renderDropdown = (): ReactElement | null => {
@@ -54,7 +54,7 @@ export const Dropdown: FC<DropdownProps> = () => {
         >
           <View style={[style.dropdown]}>
             <FlatList
-              data={LANGUAGE_DATA}
+              data={["en-US", "uk-UA"]}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
             />
