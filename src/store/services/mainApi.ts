@@ -13,7 +13,7 @@ export const mainApi = createApi({
       const state: RootState = getState() as RootState
 
       const token = state.bober_auth.token
-      const locale = state.i18n.userLanguage?.value
+      const locale = state.i18n.userLanguage?.replace('-','_')
 
       if (token) headers.set("Authorization", `Bearer ${token}`)
       if (locale) headers.set("X-LOCALE", locale!)

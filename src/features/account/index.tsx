@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native"
+import { ScrollView, Text, View } from "react-native"
 import { useLayoutEffect } from "react"
 import { usePathname, useRouter } from "expo-router"
 

@@ -9,6 +9,7 @@ import { mainApi } from "@/store/services/mainApi"
 import { TLanguage } from "@/types"
 import { colors } from "@/utils/constants/colors"
 import { LANGUAGE_LABELS } from "@/utils/constants/language"
+import { useTranslation } from "react-i18next"
 
 interface DropdownProps {
   data?: TLanguage[]
@@ -17,6 +18,7 @@ interface DropdownProps {
 
 export const Dropdown: FC<DropdownProps> = () => {
   const dispatch = useDispatch()
+  const { i18n } = useTranslation()
 
   const { setLanguage } = useActions()
   const { setIsOpenLanguageDropDown } = useActions()
@@ -24,6 +26,7 @@ export const Dropdown: FC<DropdownProps> = () => {
 
   const onItemPress = (item: TLanguage): void => {
     setLanguage(item)
+    i18n.changeLanguage(item)
     setIsOpenLanguageDropDown()
     dispatch(
       mainApi.util.invalidateTags([
@@ -35,12 +38,9 @@ export const Dropdown: FC<DropdownProps> = () => {
   }
 
   const renderItem = ({ item }: { item: TLanguage }): ReactElement => (
-    console.log(LANGUAGE_LABELS[item]),
-    (
-      <TouchableOpacity style={style.item} onPress={() => onItemPress(item)}>
-        <Text>{LANGUAGE_LABELS[item]}</Text>
-      </TouchableOpacity>
-    )
+    <TouchableOpacity style={style.item} onPress={() => onItemPress(item)}>
+      <Text>{LANGUAGE_LABELS[item]}</Text>
+    </TouchableOpacity>
   )
 
   const renderDropdown = (): ReactElement | null => {

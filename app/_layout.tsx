@@ -24,46 +24,43 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
+  const onBeforeLiftHandler = async (store: any) => {
+    await initReactI18next(store)
+  }
+
   useEffect(() => {
     SplashScreen.hideAsync()
   }, [])
 
   return (
     <SafeAreaProvider>
-      <RootLayoutNav />
-    </SafeAreaProvider>
-  )
-}
-
-function RootLayoutNav() {
-  const onBeforeLiftHandler = async (store: any) => {
-    await initReactI18next(store)
-  }
-
-  return (
-    <ThemeProvider value={DefaultTheme}>
       <ReduxProvider store={store}>
         <PersistGate
           persistor={persistor}
           onBeforeLift={async () => await onBeforeLiftHandler(store)}
         >
-          <AuthProvider>
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="(auth)/registration" options={{ headerShown: false }} />
-              <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
-              <Stack.Screen name="(payment)/payment" options={{ headerShown: false }} />
-              <Stack.Screen name="(project)/project" options={{ headerShown: false }} />
-              <Stack.Screen name="(report)" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="(statuses)/payment-status"
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen name="confirm-payment" options={{ headerShown: false }} />
-            </Stack>
-          </AuthProvider>
+          <RootLayoutNav />
         </PersistGate>
       </ReduxProvider>
-    </ThemeProvider>
+    </SafeAreaProvider>
+  )
+}
+
+function RootLayoutNav() {
+  return (
+    <AuthProvider>
+      <ThemeProvider value={DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="(auth)/registration" />
+          <Stack.Screen name="(auth)/signin" />
+          <Stack.Screen name="(payment)/payment" />
+          <Stack.Screen name="(project)/project" />
+          <Stack.Screen name="(report)" />
+          <Stack.Screen name="(statuses)/payment-status" />
+          <Stack.Screen name="confirm-payment" />
+        </Stack>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
