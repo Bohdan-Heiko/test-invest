@@ -43,7 +43,8 @@
     "Пошта": "Email",
     "Повторіть пароль": "Repeat password",
     "Вже маєш аккаунт": "Already have an account?",
-    "Увійти": "Log in"
+    "Увійти": "Log in",
+    "Неможливо зареєструвати обліковий запис з такими даними": "It is impossible to register an account with this data"
   },
   "passwordRules": {
     "Пароль повинен мати": "Password must have:",

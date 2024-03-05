@@ -7,7 +7,9 @@ export const ErrorMessage = ({ message }: { message: string }) => {
   return (
     <View style={style.errorMessagContainer}>
       <VectorExpoIcons type={"AntDesign"} name="warning" color={colors.red} size={20} />
-      <Title style={style.message}>{message}</Title>
+      <View style={style.messageContainer}>
+        <Title style={style.message}>{message}</Title>
+      </View>
     </View>
   )
 }
@@ -18,13 +20,19 @@ const style = StyleSheet.create({
     display: "flex",
     marginBottom: 10,
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center"
+  },
+  messageContainer: {
+    flex: 1,
+    marginLeft: 5
   },
   message: {
     color: colors.red,
     fontSize: 15,
     lineHeight: 20,
-    paddingTop: 3
+    paddingTop: 3,
+    textAlign: "left"
   }
 })
