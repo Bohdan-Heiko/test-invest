@@ -94,5 +94,21 @@
     "У вас ще немає інвестицій": "You have no investments yet",
     "Ви ще не інвестували в проекти": "You haven't invested in any projects yet",
     "Вихід": "Logout"
+  },
+  "status": {
+    "Оплата не пройшла": "Payment failed",
+    "Ваші гроші успішно заблоковані": "Your money has been successfully blocked",
+    "Перевіряемо статус оплати": "Checking payment status...",
+    "Щось пішло не так": "Something went wrong!",
+    "Далі": "Next"
+  },
+  "confirmPayment": {
+    "Підтвердження платежу": "Payment confirmation",
+    "Дані клієнта": "Client data",
+    "Договір публічної оферти": "Public offer agreement",
+    "Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти.": "If you lack financial education and the desire to understand how financial markets work, then you should pay attention to the sector that helps invest money. These are investment companies and banks, investment funds, hedge funds, pension funds, consultants. If you lack financial education and the desire to understand how financial markets work, then you should pay attention to the sector that helps invest money. These are investment companies and banks, investment funds, hedge funds, pension funds, consultants.",
+    "Я прочитав і згоден з умовами публічної оферти": "I have read and agree to the terms of the public offer",
+    "Щось пішло не так": "Something went wrong.",
+    "Далі": "Next"
   }
 }

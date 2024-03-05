@@ -8,6 +8,7 @@ import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 
 import { ErrorMessage } from "../errorMessage/errorMessage.component"
+import { useTranslation } from "react-i18next"
 
 type LocalParams = { uuid: string }
 
@@ -22,6 +23,7 @@ const STATUSES_PAYMENT = {
 }
 
 export const PaymentStatus = () => {
+  const { t } = useTranslation("status")
   const { uuid } = useLocalSearchParams<LocalParams>()
   const { handleReplaceRoute } = useAuthContext()
   const successRef = useRef<boolean>(false)
@@ -63,18 +65,18 @@ export const PaymentStatus = () => {
           ) : null}
           <Title style={style.title}>
             {paymentStatus?.status
-              ? STATUSES_PAYMENT[paymentStatus?.status].title
-              : "Перевіряемо статус оплати..."}
+              ? t(STATUSES_PAYMENT[paymentStatus?.status].title)
+              : t("Перевіряемо статус оплати")}
           </Title>
         </View>
       ) : (
         <>
-          <ErrorMessage message="Щось пішло не так!" />
+          <ErrorMessage message={t("Щось пішло не так!")} />
           <ErrorMessage message={JSON.stringify(error)} />
         </>
       )}
       <Button
-        title="Далі"
+        title={t("Далі")}
         variant="primary"
         disabled={!paymentStatus?.status}
         onPress={handleReedirect}

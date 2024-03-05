@@ -204,7 +204,9 @@ export const Registration = () => {
         />
 
         {isRegistrationError && (
-          <ErrorMessage message={t("Неможливо зареєструвати обліковий запис з такими даними")} />
+          <ErrorMessage
+            message={t("Неможливо зареєструвати обліковий запис з такими даними")}
+          />
         )}
 
         <Button
