@@ -1,6 +1,7 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
 import { Image } from "expo-image"
+import { TFunction } from "i18next"
 
 import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
@@ -9,11 +10,18 @@ import { API_URL, blurhash } from "@/utils/constants/constants"
 import { style } from "../_style"
 
 interface IProps {
+  t: TFunction
   data?: BuildingsResponse["photos"]
   status?: BuildingsResponse["status"]
 }
 
-export const ProjectCards: FC<IProps> = ({ data, status }) => {
+const PROJECT_STATUS: Record<BuildingsResponse["status"], BuildingsResponse["status"]> = {
+  Completed: "Completed",
+  inWork: "inWork",
+  Cancelled: "Cancelled"
+}
+
+export const ProjectCards: FC<IProps> = ({ t, data, status }) => {
   return (
     <ScrollView
       overScrollMode="never"
@@ -33,7 +41,9 @@ export const ProjectCards: FC<IProps> = ({ data, status }) => {
               }}
             />
             <View style={style.projectItemTitleContainer}>
-              <Title style={style.projectItemTitleContainerTitle}>{status}</Title>
+              <Title style={style.projectItemTitleContainerTitle}>
+                {status && t(PROJECT_STATUS[status])}
+              </Title>
             </View>
           </View>
         ))}

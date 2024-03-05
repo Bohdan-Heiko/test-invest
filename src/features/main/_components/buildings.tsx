@@ -1,6 +1,7 @@
 import { ActivityIndicator, ScrollView, View } from "react-native"
 import { FC } from "react"
 import { AllRoutes } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
@@ -12,15 +13,18 @@ import { style } from "../_style"
 
 interface IProps {
   data: BuildingsResponse[] | undefined
+  isLoading?: boolean
 }
 
-export const Buildings: FC<IProps> = ({ data }) => {
+export const Buildings: FC<IProps> = ({ data, isLoading }) => {
   const { handlePushRoute } = useAuthContext()
+  const { t } = useTranslation("main")
+
   return (
     <View style={style.ourProjectsContainer}>
       <View style={style.titleContainer}>
-        <Title style={style.ourProjectTitle}>Наші проекти</Title>
-        {!data && <ActivityIndicator size={"small"} color={colors.blue} />}
+        <Title style={style.ourProjectTitle}>{t("Наші проекти")}</Title>
+        {(isLoading || !data) && <ActivityIndicator size={"small"} color={colors.blue} />}
       </View>
       <ScrollView
         overScrollMode="never"
@@ -30,6 +34,7 @@ export const Buildings: FC<IProps> = ({ data }) => {
         <View style={style.projectsContainer}>
           {data?.map((project) => (
             <ProjectItem
+              t={t}
               key={project.id}
               title={project.title}
               text={project.description}

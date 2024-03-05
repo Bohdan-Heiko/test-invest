@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native"
 
 import { colors } from "@/utils/constants/colors"
+import { APP_FONTS } from "@/utils/constants/fonts"
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -67,8 +68,8 @@ export const style = StyleSheet.create({
     elevation: 4
   },
   personalInfoTitle: {
-    fontFamily: "Inter600",
-    fontSize: 25,
+    fontFamily: APP_FONTS["Inter600"],
+    fontSize: 30,
     lineHeight: 45,
     textAlign: "left",
     color: colors.mine_shaft

@@ -1,6 +1,7 @@
 import { ScrollView, View } from "react-native"
 import { useLayoutEffect } from "react"
 import { usePathname, useRouter } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import useActions from "@/hooks/useActions"
 import { OrganizationInfo } from "@/shared/components"
@@ -25,6 +26,7 @@ export const Account = () => {
   const router = useRouter()
   const pathName = usePathname()
   const { logoutUser } = useActions()
+  const { t } = useTranslation("account")
   const userData = useAppSelector((state) => state.user_data)
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
 
@@ -55,17 +57,23 @@ export const Account = () => {
       style={{ backgroundColor: colors.white }}
     >
       <View style={style.mainContainer}>
-        <YourAccount investments={userData.totalBalance} />
-        {userData.isRealtor && <RieltorInformation inviteLink={userData.inviteLink} />}
-        <AccrualAccount title="Нарахування" accrualData={userAccrualsData} />
+        <YourAccount t={t} investments={userData.totalBalance} />
+        <PersonalInformation t={t} data={userData} />
+        {userData.isRealtor && (
+          <RieltorInformation t={t} inviteLink={userData.inviteLink} />
+        )}
+        <AccrualAccount t={t} title={t("Нарахування")} accrualData={userAccrualsData} />
         {!userData.isRealtor && (
           <>
-            <InvestmentAccount title="Інвестиції" investmentsData={userInvestmentsData} />
-            <MyProjects projectsData={userBuildingsData} />
+            <InvestmentAccount
+              t={t}
+              title={t("Інвестиції")}
+              investmentsData={userInvestmentsData}
+            />
+            <MyProjects t={t} projectsData={userBuildingsData} />
           </>
         )}
-        <PersonalInformation data={userData} />
-        <Button onPress={handleLogout} title="Выход" />
+        <Button onPress={handleLogout} title={t("Вихід")} />
         <OrganizationInfo />
       </View>
     </ScrollView>

@@ -12,5 +12,5 @@ module.exports = {
   bracketSpacing: true,
   bracketSameLine: false,
   semicolons: false,
-  parser: 'typescript'
+  parser: "typescript"
 }

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native"
 
 import { colors } from "@/utils/constants/colors"
+import { APP_FONTS } from "@/utils/constants/fonts"
 
 export const style = StyleSheet.create({
   container: {
@@ -38,7 +39,7 @@ export const style = StyleSheet.create({
   },
   chekTitle: {
     color: colors.tundora,
-    fontFamily: "Inter500",
+    fontFamily: APP_FONTS["Inter500"],
     lineHeight: 21,
     fontSize: 14
   },

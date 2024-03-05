@@ -1,5 +1,6 @@
 import { View } from "react-native"
 import { FC, useState } from "react"
+import { TFunction } from "i18next"
 
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
 import { TransformedData, UserAccrualsDataResponse } from "@/types"
@@ -8,11 +9,12 @@ import { datesHelpers } from "@/utils/helpers/dates/dates"
 import { style } from "../_style"
 
 interface IAccrualAccount {
+  t: TFunction
   title: string
   accrualData?: TransformedData<UserAccrualsDataResponse>
 }
 
-export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
+export const AccrualAccount: FC<IAccrualAccount> = ({ t, title, accrualData }) => {
   const [showAll, setShowAll] = useState<boolean>(false)
 
   const handleShowAll = () => {
@@ -29,7 +31,11 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
             <View key={accrual.id} style={style.accuralItemsMainContainer}>
               <View style={style.accuralItemContainer}>
                 <View style={style.accuralItemNameContainer}>
-                  <Title style={style.accuralItemNameTitle}>
+                  <Title
+                    style={[style.accuralItemNameTitle, { maxWidth: "88%" }]}
+                    ellipsizeMode="tail"
+                    numberOfLines={1}
+                  >
                     {accrual.building.title}
                   </Title>
                   <ItemText style={style.accuralItemNameText}>
@@ -49,11 +55,14 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ title, accrualData }) => {
             </View>
           ))
       ) : (
-        <Title style={style.accuralItemNameText}>У вас ще немає нарахувань</Title>
+        <Title style={style.accuralNoDataInfo}>{t("У вас ще немає нарахувань")}</Title>
       )}
 
       {!!accrualData?.data?.length && (
-        <Button title={showAll ? "Приховати" : "Дивитись всі"} onPress={handleShowAll} />
+        <Button
+          title={showAll ? t("Приховати") : t("Дивитись всі")}
+          onPress={handleShowAll}
+        />
       )}
     </View>
   )

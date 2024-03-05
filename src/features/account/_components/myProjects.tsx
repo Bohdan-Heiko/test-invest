@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native"
 import { FC } from "react"
+import { TFunction } from "i18next"
 
 import { ProjectItem } from "@/shared/components"
 import { ItemText, Title } from "@/shared/ui"
@@ -8,13 +9,14 @@ import { BuildingsResponse, TransformedData } from "@/types"
 import { style } from "../_style"
 
 interface IProps {
+  t: TFunction
   projectsData?: TransformedData<BuildingsResponse> | undefined
 }
 
-export const MyProjects: FC<IProps> = ({ projectsData }) => {
+export const MyProjects: FC<IProps> = ({ t, projectsData }) => {
   return (
     <View style={style.myProjectsContainer}>
-      <Title style={style.myProjectTitle}>Проекти</Title>
+      <Title style={style.myProjectTitle}>{t("Проекти, в які ви інвестуєте")}</Title>
       <ScrollView
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}
@@ -24,6 +26,7 @@ export const MyProjects: FC<IProps> = ({ projectsData }) => {
           {projectsData?.data.length ? (
             projectsData?.data.map((project) => (
               <ProjectItem
+                t={t}
                 key={project.id}
                 text={project.description}
                 title={project.title}
@@ -31,8 +34,8 @@ export const MyProjects: FC<IProps> = ({ projectsData }) => {
               />
             ))
           ) : (
-            <ItemText style={[style.accuralItemNameText, {paddingHorizontal: 15}]}>
-              Ви ще не інвестували в проекти
+            <ItemText style={style.accuralItemNameTitle}>
+              {t("Ви ще не інвестували в проекти")}
             </ItemText>
           )}
         </View>

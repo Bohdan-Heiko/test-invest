@@ -1,6 +1,5 @@
-import { Account } from '@/features/account';
+import { Account } from "@/features/account"
 
 export default function AccountScreen() {
   return <Account />
 }
-

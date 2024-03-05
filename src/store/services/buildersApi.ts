@@ -20,7 +20,8 @@ export const buildersApi = mainApi.injectEndpoints({
         return transformDataHelpers.transformJsonLdToJson<BuidersResponse>(
           baseQueryReturnValue
         )
-      }
+      },
+      providesTags: ["UserPublicBuildings"]
     })
   })
 })

@@ -66,7 +66,8 @@ export const style = StyleSheet.create({
   infoContainerTitle: {
     fontSize: 24,
     lineHeight: 36,
-    color: colors.mine_shaft
+    color: colors.mine_shaft,
+    textAlign: "left"
   },
   infoContainerDescription: {
     fontSize: 14,

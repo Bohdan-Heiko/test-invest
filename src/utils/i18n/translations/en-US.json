@@ -1,0 +1,97 @@
+{
+  "main": {
+    "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору.": "Modern Heights is an innovative project that combines modern design, environmental sustainability and convenient location to create a beautiful living space.",
+    "Наші проекти": "Our projects",
+    "Інвестувати": "Invest",
+    "Наші забудовники": "Our developers"
+  },
+  "headers": {
+    "Головна": "Main",
+    "Аккаунт": "Account",
+    "Логін": "Login",
+    "Реєстрація": "Registration",
+    "Повернутись назад": "Return back"
+  },
+  "callBack": {
+    "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
+    "Залиште заявку на безкоштовний дзвінок, ми зв’яжемося з вами протягом 20 хвилин": "Leave a request for a free call, we will contact you within 20 minutes",
+    "Ім’я": "Name",
+    "Номер телефону": "Phone number",
+    "Замовити дзвінок": "Order a call"
+  },
+  "organization": {
+    "Адреса": "Address:",
+    "м. Буча, вул. Т. Шевченка, 43, офіс 1": "Bucha, st. T. Shevchenko, 43, office 1",
+    "Телефон": "Phone:",
+    "Пошта": "Mail:",
+    "Години работи": "Hours of work:",
+    "Політика конфіденціальності": "Privacy Policy",
+    "Договір оферти": "Offer contract"
+  },
+  "auth": {
+    "Вхід в аккаунт": "Login to the account",
+    "Пароль": "Password",
+    "Далі": "Further",
+    "Неправильний логін або пароль": "Incorrect login or password!",
+    "Не маєш аккаунту": "You don't have an account?",
+    "Зареєструйся": "Sign up",
+    "Реєстрація": "Registration",
+    "ПІБ": "Full name",
+    "ІПН": "Tax ID",
+    "Дата народження": "Date of birth",
+    "Номер телефону": "Phone number",
+    "Пошта": "Email",
+    "Повторіть пароль": "Repeat password",
+    "Вже маєш аккаунт": "Already have an account?",
+    "Увійти": "Log in"
+  },
+  "passwordRules": {
+    "Пароль повинен мати": "Password must have:",
+    "тільки латинські літери": "only Latin letters",
+    "від однієї цифри": "at least one digit",
+    "від 8 символів": "at least 8 characters",
+    "від 1 букви з верхнім регістром": "at least 1 uppercase letter",
+    "від 1 букви з нижнім регістром": "at least 1 lowercase letter"
+  },
+  "project": {
+    "Completed": "Completed",
+    "inWork": "In progress",
+    "Cancelled": "Cancelled",
+    "Тривалість інвестування": "Investment duration",
+    "Ціна за 1 кв. м.": "Price per sq. m.",
+    "Місцезнаходження": "Location",
+    "Інфраструктура": "Infrastructure",
+    "Безпека та комфорт": "Safety and comfort",
+    "Команда": "Team",
+    "Звіти": "Reports",
+    "Переглянути": "View"
+  },
+  "report": {
+    "Звіт про початок будівництва": "Construction commencement report",
+    "Переглянути PDF": "View PDF"
+  },
+  "account": {
+    "Ваш рахунок": "Your account",
+    "з минулого кварталу": "from the previous quarter",
+    "Інвестувати": "Invest",
+    "Персональна інформація": "Personal information",
+    "Ваш рієлтор": "Your realtor",
+    "У вас ще немає рієлтора": "You don't have a realtor yet",
+    "Функції": "Functions",
+    "Змінити пароль": "Change password",
+    "Вивести кошти": "Withdraw funds",
+    "Нарахування": "Accruals",
+    "Інвестиції": "Investments",
+    "Посилання": "Links",
+    "Діліться посиланням, щоб ваші клієнти легко знайшли вас": "Share the link so your clients can easily find you",
+    "Реферальне посилання": "Referral link",
+    "Код для пошуку": "Search code",
+    "Проекти, в які ви інвестуєте": "Projects you invest in",
+    "У вас ще немає нарахувань": "You have no earnings yet",
+    "Приховати": "Hide",
+    "Дивитись всі": "View all",
+    "У вас ще немає інвестицій": "You have no investments yet",
+    "Ви ще не інвестували в проекти": "You haven't invested in any projects yet",
+    "Вихід": "Logout"
+  }
+}

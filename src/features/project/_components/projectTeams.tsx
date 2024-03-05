@@ -2,6 +2,7 @@ import { Pressable, View } from "react-native"
 import { FC } from "react"
 import { Image } from "expo-image"
 import * as Linking from "expo-linking"
+import { TFunction } from "i18next"
 
 import { ItemText, Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
@@ -13,15 +14,15 @@ import { style } from "../_style"
 const blurhash = "L6PZfSi_.AyE_3t7t7R**0o#DgR4"
 
 interface IProps {
+  t: TFunction
   data?: BuildingsResponse["team"] | null
 }
 
-export const ProjectTeams: FC<IProps> = ({ data }) => {
+export const ProjectTeams: FC<IProps> = ({ t, data }) => {
   if (!data) return
-
   return (
     <View style={style.teamsContainer}>
-      <Title style={[style.teamsMainTitle, style.title]}>Команда</Title>
+      <Title style={[style.teamsMainTitle, style.title]}>{t("Команда")}</Title>
 
       {data.map((member, idx) => (
         <View key={idx} style={style.memberContainer}>
@@ -31,7 +32,7 @@ export const ProjectTeams: FC<IProps> = ({ data }) => {
             placeholder={blurhash}
             style={style.projectItemImage}
             source={{
-              uri: member.contentUrl.contentUrl
+              uri: member?.contentUrl
                 ? `${API_URL}${member.contentUrl.contentUrl}`
                 : undefined
             }}
