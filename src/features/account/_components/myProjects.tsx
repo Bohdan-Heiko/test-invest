@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native"
+import { ActivityIndicator, Pressable, ScrollView, View } from "react-native"
 import { FC } from "react"
 import { TFunction } from "i18next"
 
@@ -7,16 +7,26 @@ import { ItemText, Title } from "@/shared/ui"
 import { BuildingsResponse, TransformedData } from "@/types"
 
 import { style } from "../_style"
+import { colors } from "@/utils/constants/colors"
+import { router } from "expo-router"
 
 interface IProps {
   t: TFunction
+  isLoading: boolean
   projectsData?: TransformedData<BuildingsResponse> | undefined
 }
 
-export const MyProjects: FC<IProps> = ({ t, projectsData }) => {
+export const MyProjects: FC<IProps> = ({ t, isLoading, projectsData }) => {
   return (
     <View style={style.myProjectsContainer}>
-      <Title style={style.myProjectTitle}>{t("Проекти")}</Title>
+      <View style={style.titleContainer}>
+        <Title style={style.myProjectTitle}>{t("Проекти")}</Title>
+        <ActivityIndicator
+          size={"small"}
+          color={colors.blue}
+          style={{ display: isLoading ? "flex" : "none" }}
+        />
+      </View>
       <ScrollView
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}
@@ -31,6 +41,7 @@ export const MyProjects: FC<IProps> = ({ t, projectsData }) => {
                 text={project.description}
                 title={project.title}
                 imageUri={project.photos && project.photos[0].contentUrl}
+                handleItemPress={() => router.push(`/(project)/project/${project.id}`)}
               />
             ))
           ) : (

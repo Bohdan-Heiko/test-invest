@@ -30,13 +30,16 @@ export const Account = () => {
   const userData = useAppSelector((state) => state.user_data)
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
 
-  const { data: userAccrualsData } = useGetUserAccrualsQuery("", {
-    skip: pathName !== "/account"
-  })
-  const { data: userInvestmentsData } = useGetUserInvestmentsQuery("", {
-    skip: pathName !== "/account"
-  })
-  const { data: userBuildingsData } = useGetUserBuildingsQuery()
+  const { data: userAccrualsData, isFetching: isUserAccrualLoading } =
+    useGetUserAccrualsQuery("", {
+      skip: pathName !== "/account"
+    })
+  const { data: userInvestmentsData, isFetching: isUserInvestmentsLoading } =
+    useGetUserInvestmentsQuery("", {
+      skip: pathName !== "/account"
+    })
+  const { data: userBuildingsData, isFetching: isUserBuildingsLoading } =
+    useGetUserBuildingsQuery()
 
   const handleLogout = () => {
     logoutUser()
@@ -61,15 +64,25 @@ export const Account = () => {
         {userData.isRealtor && (
           <RieltorInformation t={t} inviteLink={userData.inviteLink} />
         )}
-        <AccrualAccount t={t} title={t("Нарахування")} accrualData={userAccrualsData} />
+        <AccrualAccount
+          t={t}
+          title={t("Нарахування")}
+          isLoading={isUserAccrualLoading}
+          accrualData={userAccrualsData}
+        />
         {!userData.isRealtor && (
           <>
             <InvestmentAccount
               t={t}
               title={t("Інвестиції")}
+              isLoading={isUserInvestmentsLoading}
               investmentsData={userInvestmentsData}
             />
-            <MyProjects t={t} projectsData={userBuildingsData} />
+            <MyProjects
+              t={t}
+              projectsData={userBuildingsData}
+              isLoading={isUserBuildingsLoading}
+            />
           </>
         )}
         <PersonalInformation t={t} data={userData} />
