@@ -16,7 +16,7 @@ interface IProps {
 export const MyProjects: FC<IProps> = ({ t, projectsData }) => {
   return (
     <View style={style.myProjectsContainer}>
-      <Title style={style.myProjectTitle}>{t("Проекти, в які ви інвестуєте")}</Title>
+      <Title style={style.myProjectTitle}>{t("Проекти")}</Title>
       <ScrollView
         overScrollMode="never"
         showsHorizontalScrollIndicator={false}

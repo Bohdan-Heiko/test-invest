@@ -244,7 +244,7 @@ export const style = StyleSheet.create({
     alignItems: "flex-start",
     gap: 20,
     backgroundColor: colors.white,
-  
+
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
@@ -254,13 +254,11 @@ export const style = StyleSheet.create({
     elevation: 4
   },
   myProjectTitle: {
-
     fontSize: 24,
     lineHeight: 42,
     color: colors.mine_shaft,
     paddingTop: 20,
-    paddingHorizontal: 15,
-
+    paddingHorizontal: 15
   },
   projectsContainer: {
     gap: 20,

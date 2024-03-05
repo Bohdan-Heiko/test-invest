@@ -1,4 +1,4 @@
-import { StyleSheet, View, Platform } from "react-native"
+import { Platform, StyleSheet, View } from "react-native"
 import { useTranslation } from "react-i18next"
 
 import { Dot, Paragraph, Title } from "@/shared/ui"
@@ -100,8 +100,8 @@ const style = StyleSheet.create({
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
     shadowOpacity: 0.5,
-    shadowOffset: {height: 3, width: 3},
-    elevation: Platform.OS === 'ios' ? 1 : 10
+    shadowOffset: { height: 3, width: 3 },
+    elevation: Platform.OS === "ios" ? 1 : 10
   },
 
   passwordRulesTitle: {

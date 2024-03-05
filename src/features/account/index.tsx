@@ -58,7 +58,6 @@ export const Account = () => {
     >
       <View style={style.mainContainer}>
         <YourAccount t={t} investments={userData.totalBalance} />
-        <PersonalInformation t={t} data={userData} />
         {userData.isRealtor && (
           <RieltorInformation t={t} inviteLink={userData.inviteLink} />
         )}
@@ -73,6 +72,7 @@ export const Account = () => {
             <MyProjects t={t} projectsData={userBuildingsData} />
           </>
         )}
+        <PersonalInformation t={t} data={userData} />
         <Button onPress={handleLogout} title={t("Вихід")} />
         <OrganizationInfo />
       </View>
