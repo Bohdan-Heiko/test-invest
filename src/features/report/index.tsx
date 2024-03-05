@@ -1,6 +1,7 @@
 import { ActivityIndicator, ScrollView, View } from "react-native"
 import * as Linking from "expo-linking"
 import { useLocalSearchParams } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { OrganizationInfo } from "@/shared/components"
 import { Button, ItemText, Title } from "@/shared/ui"
@@ -14,6 +15,7 @@ import { ReportImages } from "./_components/reportImages"
 import { style } from "./_style"
 
 export const Report = () => {
+  const { t } = useTranslation("report")
   const params = useLocalSearchParams<any | unknown>()
   const { building, report } = transformDataHelpers.transformLocalSearchParams(
     params.reportId
@@ -38,14 +40,14 @@ export const Report = () => {
         ) : (
           <>
             <View style={style.titleContainer}>
-              <Title style={style.mainTitle}>Звіт про початок будівництва</Title>
+              <Title style={style.mainTitle}>{t("Звіт про початок будівництва")}</Title>
               <ItemText style={style.startedBuildingTime}>
                 {datesHelpers.dateFormated(buldingReportData.createdAt, "DD.MM.YYYY")}
               </ItemText>
             </View>
             <ReportImages data={buldingReportData.photos} />
             <Button
-              title="Переглянути PDF"
+              title={t("Переглянути PDF")}
               onPress={() => Linking.openURL(`${API_URL}${buldingReportData.report}`)}
             />
             <OrganizationInfo />

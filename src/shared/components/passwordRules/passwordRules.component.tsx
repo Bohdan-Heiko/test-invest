@@ -53,7 +53,9 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
               : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>{t("від 1 букви з верхнім регістром")}</Paragraph>
+        <Paragraph style={style.rulesText}>
+          {t("від 1 букви з верхнім регістром")}
+        </Paragraph>
       </View>
       <View style={style.passwordRules}>
         <Dot
@@ -64,7 +66,9 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
                 : colors.red
           }}
         />
-        <Paragraph style={style.rulesText}>{t("від 1 букви з нижнім регістром")}</Paragraph>
+        <Paragraph style={style.rulesText}>
+          {t("від 1 букви з нижнім регістром")}
+        </Paragraph>
       </View>
     </View>
   )

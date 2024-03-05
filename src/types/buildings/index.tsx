@@ -29,7 +29,7 @@ export interface BuildingsResponse {
   description: string
   duration: string // Assuming duration is a string representing a date
   price: number
-  status: "inWork" | "completed" | "cancelled" // Assuming status can be one of these values
+  status: "inWork" | "Completed" | "Cancelled" // Assuming status can be one of these values
   location: string
   infrastructure: string
   safety: string

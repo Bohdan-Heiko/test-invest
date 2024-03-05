@@ -9,7 +9,8 @@
     "Головна": "Main",
     "Аккаунт": "Account",
     "Логін": "Login",
-    "Реєстрація": "Registration"
+    "Реєстрація": "Registration",
+    "Повернутись назад": "Return back"
   },
   "callBack": {
     "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
@@ -51,5 +52,22 @@
     "від 8 символів": "at least 8 characters",
     "від 1 букви з верхнім регістром": "at least 1 uppercase letter",
     "від 1 букви з нижнім регістром": "at least 1 lowercase letter"
+  },
+  "project": {
+    "Completed": "Completed",
+    "inWork": "In progress",
+    "Cancelled": "Cancelled",
+    "Тривалість інвестування": "Investment duration",
+    "Ціна за 1 кв. м.": "Price per sq. m.",
+    "Місцезнаходження": "Location",
+    "Інфраструктура": "Infrastructure",
+    "Безпека та комфорт": "Safety and comfort",
+    "Команда": "Team",
+    "Звіти": "Reports",
+    "Переглянути": "View"
+  },
+  "report": {
+    "Звіт про початок будівництва": "Construction commencement report",
+    "Переглянути PDF": "View PDF"
   }
 }

@@ -1,6 +1,5 @@
-import { Registration } from '@/features/registration';
+import { Registration } from "@/features/registration"
 
 export default function RegistrationScreen() {
   return <Registration />
 }
-

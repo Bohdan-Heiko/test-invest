@@ -1,6 +1,7 @@
 import { ActivityIndicator, ScrollView, View } from "react-native"
 import { useMemo, useState } from "react"
 import { useLocalSearchParams } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { Pagination } from "@/shared/components"
 import { useGetOnePublicBuildingQuery } from "@/store/services/buildingsApi"
@@ -16,6 +17,7 @@ import { style } from "./_style"
 const PAGE_SIZE = 5
 
 const Project = () => {
+  const { t } = useTranslation("project")
   const { slug: buildingId } = useLocalSearchParams()
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -40,38 +42,38 @@ const Project = () => {
         <ActivityIndicator size={"large"} color={colors.blue} />
       ) : (
         <View style={style.mainContainer}>
-          <ProjectCards data={projectData.photos} status={projectData.status} />
+          <ProjectCards t={t} data={projectData.photos} status={projectData.status} />
 
           <ProjectInformation
             title={projectData.title}
             description={projectData.description}
             additionalInformation={[
               {
-                title: "Тривалість інвестування",
+                title: t("Тривалість інвестування"),
                 text: datesHelpers.dateFormated(projectData.duration, "DD.MM.YYYY")
               },
-              { title: "Ціна за 1 кв. м.", text: `${projectData.price}$` }
+              { title: t("Ціна за 1 кв. м."), text: `${projectData.price}$` }
             ]}
           />
           <ProjectInformation
-            title={"Місцезнаходження"}
+            title={t("Місцезнаходження")}
             description={projectData.location}
             titleStyle={style.title}
           />
           <ProjectInformation
-            title={"Інфраструктура"}
+            title={t("Інфраструктура")}
             description={projectData.infrastructure}
             titleStyle={style.title}
           />
 
           <ProjectInformation
-            title={"Безпека та комфорт"}
+            title={t("Безпека та комфорт")}
             description={projectData.safety}
             titleStyle={style.title}
           />
-
-          <ProjectTeams data={projectData.team ?? null} />
+          <ProjectTeams t={t} data={projectData.team ?? null} />
           <ProjectReports
+            t={t}
             data={currentBuildingReportsData ?? null}
             buildingId={buildingId as string}
           />
