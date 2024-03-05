@@ -1,4 +1,4 @@
-import { ConfrimPayment } from "@/features/confirm-payment"
+import ConfrimPayment from "@/features/confirm-payment"
 
 const ConfirmPaymentScreen = () => {
   return <ConfrimPayment />

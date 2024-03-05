@@ -10,7 +10,8 @@
     "Аккаунт": "Account",
     "Логін": "Login",
     "Реєстрація": "Registration",
-    "Повернутись назад": "Return back"
+    "Повернутись назад": "Return back",
+    "Оплата": "Payment"
   },
   "callBack": {
     "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
@@ -109,6 +110,17 @@
     "Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти.": "If you lack financial education and the desire to understand how financial markets work, then you should pay attention to the sector that helps invest money. These are investment companies and banks, investment funds, hedge funds, pension funds, consultants. If you lack financial education and the desire to understand how financial markets work, then you should pay attention to the sector that helps invest money. These are investment companies and banks, investment funds, hedge funds, pension funds, consultants.",
     "Я прочитав і згоден з умовами публічної оферти": "I have read and agree to the terms of the public offer",
     "Щось пішло не так": "Something went wrong.",
+    "Далі": "Next"
+  },
+  "payment": {
+    "Інвестування": "Investment",
+    "Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти та ін.": "If you lack financial education and the desire to understand how financial markets work, then you should pay attention to the sector that helps invest money. These are investment companies and banks, investment funds, hedge funds, pension funds, consultants and others.",
+    "Оплата": "Payment",
+    "Ціна за 1 кв. м.": "Price per 1 sq. m.",
+    "Завершення інвестування": "Investment completion",
+    "Оплата картами": "Payment by cards",
+    "Введіть суму": "Enter the amount",
+    "Ознайомлений з умовами використання": "I have read and agree to the terms of use",
     "Далі": "Next"
   }
 }

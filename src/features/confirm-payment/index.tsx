@@ -9,12 +9,13 @@ import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
 import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
 import { style } from "./_style"
 
 type LocalParams = { uuid: string }
 
-export const ConfrimPayment = () => {
+const ConfrimPayment = () => {
   const { t } = useTranslation("confirmPayment")
   const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
   const { name, email, card, phone } = paymentData as CheckPaymentStatus
@@ -103,3 +104,6 @@ export const ConfrimPayment = () => {
     </ScrollView>
   )
 }
+
+
+export default gestureHandlerRootHOC(ConfrimPayment)
