@@ -10,6 +10,7 @@ import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { TFunction } from "i18next"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
@@ -19,7 +20,7 @@ type DefaultInvestValues = {
 
 const defaultValues: DefaultInvestValues = { amount: "", isCheckRules: false }
 
-export const PaymentForm = () => {
+export const PaymentForm = ({ t }: { t: TFunction }) => {
   const { handlePushRoute } = useAuthContext()
   const params = useLocalSearchParams<SearchParams>()
 
@@ -54,7 +55,7 @@ export const PaymentForm = () => {
   return (
     <View style={style.paymentMainContainer}>
       <View style={style.titleContainer}>
-        <Title style={style.title}>Оплата</Title>
+        <Title style={style.title}>{t("Оплата")}</Title>
         <ItemText style={style.text}>{params.title}</ItemText>
       </View>
 
@@ -77,17 +78,17 @@ export const PaymentForm = () => {
           />
           <View style={style.investInfoDescription}>
             <ItemText style={style.investInfoDescriptionText}>
-              Ціна за 1 кв. м. - {params.price ?? 0}$
+              {t("Ціна за 1 кв. м.")} - {params.price ?? 0}$
             </ItemText>
-            <ItemText
-              style={style.investInfoDescriptionText}
-            >{`Завершення інвестування\n${
+            <ItemText style={style.investInfoDescriptionText}>{`${t(
+              "Завершення інвестування"
+            )}\n${
               params.duration
                 ? datesHelpers.dateFormated(params.duration, "DD.MM.YYYY")
                 : ""
             }`}</ItemText>
             <View style={style.investInfoDescriptionPaymentCard}>
-              <ItemText>Оплата картами</ItemText>
+              <ItemText>{t("Оплата картами")}</ItemText>
               <SVGIcon name="Visa_Logo" width={25} height={16} />
               <SVGIcon name="Visa_Name" width={37} height={24} />
             </View>
@@ -103,7 +104,7 @@ export const PaymentForm = () => {
               isDotNeed={false}
               error={errors.amount}
               inputProps={{
-                placeholder: "Введіть суму",
+                placeholder: t("Введіть суму"),
                 keyboardType: "decimal-pad",
                 onChangeText: field.onChange
               }}
@@ -123,14 +124,14 @@ export const PaymentForm = () => {
                 iconSize={{ height: 23, width: 23 }}
               />
               <ItemText style={style.politicCheck}>
-                Ознайомлений з умовами використання
+                {t("Ознайомлений з умовами використання")}
               </ItemText>
             </View>
           )}
         />
 
         <Button
-          title="Далі"
+          title={t("Далі")}
           onPress={handleSubmit(handleCreateInvestment)}
           loading={{ isNeed: true, isLoading: isCreatePaymentLoading }}
         />

@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
@@ -7,14 +7,21 @@ import { TransformedData, UserAccrualsDataResponse } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { colors } from "@/utils/constants/colors"
 
 interface IAccrualAccount {
   t: TFunction
   title: string
+  isLoading?: boolean
   accrualData?: TransformedData<UserAccrualsDataResponse>
 }
 
-export const AccrualAccount: FC<IAccrualAccount> = ({ t, title, accrualData }) => {
+export const AccrualAccount: FC<IAccrualAccount> = ({
+  t,
+  title,
+  accrualData,
+  isLoading
+}) => {
   const [showAll, setShowAll] = useState<boolean>(false)
 
   const handleShowAll = () => {
@@ -23,7 +30,14 @@ export const AccrualAccount: FC<IAccrualAccount> = ({ t, title, accrualData }) =
 
   return (
     <View style={style.accrualContainer}>
-      <Title style={style.accrualTitle}>{title}</Title>
+      <View style={style.titleContainer}>
+        <Title style={style.accrualTitle}>{title}</Title>
+        <ActivityIndicator
+          size={"small"}
+          color={colors.blue}
+          style={{ display: isLoading ? "flex" : "none" }}
+        />
+      </View>
       {accrualData?.data.length ? (
         accrualData?.data
           .slice(0, showAll ? accrualData?.data.length : 3)

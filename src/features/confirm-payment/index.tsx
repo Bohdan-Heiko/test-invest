@@ -1,6 +1,7 @@
 import { ScrollView, View } from "react-native"
 import { useState } from "react"
 import { useLocalSearchParams } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { useAuthContext } from "@/context/auth.context"
 import { ErrorMessage, OrganizationInfo } from "@/shared/components"
@@ -8,12 +9,14 @@ import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
 import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
 import { style } from "./_style"
 
 type LocalParams = { uuid: string }
 
-export const ConfrimPayment = () => {
+const ConfrimPayment = () => {
+  const { t } = useTranslation("confirmPayment")
   const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
   const { name, email, card, phone } = paymentData as CheckPaymentStatus
   const { handleReplaceRoute } = useAuthContext()
@@ -40,8 +43,8 @@ export const ConfrimPayment = () => {
       <View style={style.mainContainer}>
         <View style={style.confirmContainer}>
           <View>
-            <Title style={style.confirmTitle}>Підтвердження платежу</Title>
-            <ItemText style={style.subTitle}>Дані клієнта</ItemText>
+            <Title style={style.confirmTitle}>{t("Підтвердження платежу")}</Title>
+            <ItemText style={style.subTitle}>{t("Дані клієнта")}</ItemText>
           </View>
 
           <View style={style.userDataContainer}>
@@ -53,7 +56,9 @@ export const ConfrimPayment = () => {
 
           <View style={style.descriptionContainer}>
             <View style={style.descriptionTitleContainer}>
-              <Title style={style.descriptionTitle}>Договір публічної оферти</Title>
+              <Title style={style.descriptionTitle}>
+                {t("Договір публічної оферти")}
+              </Title>
             </View>
 
             <ScrollView
@@ -63,24 +68,14 @@ export const ConfrimPayment = () => {
             >
               <View style={{ gap: 20 }}>
                 <Paragraph style={style.descriptionText}>
-                  Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
-                  фінансові ринки, то слід звернути увагу на галузь, яка допомагає
-                  інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні
-                  фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте
-                  фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то
-                  слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це
-                  інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні
-                  фонди, консультанти.
+                  {t(
+                    `Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти.`
+                  )}
                 </Paragraph>
                 <Paragraph style={style.descriptionText}>
-                  Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
-                  фінансові ринки, то слід звернути увагу на галузь, яка допомагає
-                  інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні
-                  фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте
-                  фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то
-                  слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це
-                  інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні
-                  фонди, консультанти.
+                  {t(
+                    `Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти. Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти.`
+                  )}
                 </Paragraph>
               </View>
             </ScrollView>
@@ -92,13 +87,13 @@ export const ConfrimPayment = () => {
               iconSize={{ height: 23, width: 23 }}
             />
             <ItemText style={style.politicCheck}>
-              Я прочитав і згоден з умовами публічної оферти
+              {t("Я прочитав і згоден з умовами публічної оферти")}
             </ItemText>
           </View>
 
-          {isConfirmPaymentError && <ErrorMessage message={"Щось пішло не так."} />}
+          {isConfirmPaymentError && <ErrorMessage message={t("Щось пішло не так")} />}
           <Button
-            title="Далі"
+            title={t("Далі")}
             disabled={!checkCondition}
             onPress={handleConfirmPayment}
             loading={{ isNeed: true, isLoading: isConfirmPaymentLoading }}
@@ -109,3 +104,6 @@ export const ConfrimPayment = () => {
     </ScrollView>
   )
 }
+
+
+export default gestureHandlerRootHOC(ConfrimPayment)

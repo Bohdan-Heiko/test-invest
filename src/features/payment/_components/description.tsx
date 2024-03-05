@@ -4,14 +4,15 @@ import { useState } from "react"
 import { Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 
 import { style } from "../_style"
+import { TFunction } from "i18next"
 
-export const Descriptions = () => {
+export const Descriptions = ({ t }: { t: TFunction }) => {
   const [showDescription, setShowDescription] = useState<boolean>(true)
 
   return (
     <View style={style.descriptionContainer}>
       <View style={style.descriptionTitleContainer}>
-        <Title style={style.descriptionTitle}>Інвестування</Title>
+        <Title style={style.descriptionTitle}>{t("Інвестування")}</Title>
         <Pressable onPress={() => setShowDescription(!showDescription)}>
           <VectorExpoIcons
             type="SimpleLineIcons"
@@ -23,16 +24,14 @@ export const Descriptions = () => {
       {showDescription && (
         <>
           <Paragraph style={style.descriptionText}>
-            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
-            фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати
-            гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди,
-            пенсійні фонди, консультанти та ін.
+            {t(
+              "Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти та ін."
+            )}
           </Paragraph>
           <Paragraph style={style.descriptionText}>
-            Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють
-            фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати
-            гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди,
-            пенсійні фонди, консультанти та ін.
+            {t(
+              "Якщо ви не маєте фінансової освіти і бажання розбиратись, як працюють фінансові ринки, то слід звернути увагу на галузь, яка допомагає інвестувати гроші. Це інвестиційні компанії та банки, інвестиційні фонди, хедж фонди, пенсійні фонди, консультанти та ін."
+            )}
           </Paragraph>
         </>
       )}

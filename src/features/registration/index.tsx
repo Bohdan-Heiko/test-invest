@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 
 import useBoolean from "@/hooks/useBoolean"
 import { registrationSchema } from "@/schemas/registration/registration.schema"
-import { OrganizationInfo, PasswordRules } from "@/shared/components"
+import { ErrorMessage, OrganizationInfo, PasswordRules } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
 import { RegistrationBody } from "@/types"
@@ -19,8 +19,10 @@ export const Registration = () => {
   const router = useRouter()
   const { t } = useTranslation("auth")
 
-  const [registrationUser, { isLoading: isRegistrationLoading }] =
-    useRegistrationUserMutation()
+  const [
+    registrationUser,
+    { isLoading: isRegistrationLoading, isError: isRegistrationError }
+  ] = useRegistrationUserMutation()
 
   const {
     value: dateModalValue,
@@ -200,6 +202,12 @@ export const Registration = () => {
             />
           )}
         />
+
+        {isRegistrationError && (
+          <ErrorMessage
+            message={t("Неможливо зареєструвати обліковий запис з такими даними")}
+          />
+        )}
 
         <Button
           variant="primary"

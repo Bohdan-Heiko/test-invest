@@ -39,6 +39,7 @@ export const YourAccount: FC<IProps> = ({ t, investments }) => {
             title={t("Інвестувати")}
             variant="secondary"
             iconColor={colors.blue}
+            disabled
             style={{ paddingHorizontal: 20 }}
           />
         </View>

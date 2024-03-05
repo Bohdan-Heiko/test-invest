@@ -12,6 +12,13 @@ export const style = StyleSheet.create({
     gap: 20
   },
 
+  titleContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10
+  },
+
   //YOUR ACCOUNT
   yourAccountContainer: {
     width: "100%",
@@ -67,12 +74,19 @@ export const style = StyleSheet.create({
     shadowOpacity: 0.1,
     elevation: 4
   },
+  userNameContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
   personalInfoTitle: {
     fontFamily: APP_FONTS["Inter600"],
     fontSize: 30,
     lineHeight: 45,
     textAlign: "left",
-    color: colors.mine_shaft
+    color: colors.mine_shaft,
+    maxWidth: "88%"
   },
   personalInfoContainer: {
     display: "flex",
@@ -179,7 +193,6 @@ export const style = StyleSheet.create({
 
   //ACCRUAL
   accrualContainer: {
-    flex: 1,
     paddingVertical: 20,
     paddingHorizontal: 15,
     gap: 30,
@@ -243,8 +256,9 @@ export const style = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     gap: 20,
+    paddingTop: 20,
     backgroundColor: colors.white,
-  
+
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
@@ -254,13 +268,10 @@ export const style = StyleSheet.create({
     elevation: 4
   },
   myProjectTitle: {
-
     fontSize: 24,
     lineHeight: 42,
     color: colors.mine_shaft,
-    paddingTop: 20,
-    paddingHorizontal: 15,
-
+    paddingLeft: 15
   },
   projectsContainer: {
     gap: 20,

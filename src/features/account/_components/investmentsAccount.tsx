@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
@@ -7,16 +7,19 @@ import { TransformedData, UserInvestmentsDataResponse } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { colors } from "@/utils/constants/colors"
 
 interface InvestmentAccount {
   t: TFunction
   title: string
+  isLoading?: boolean
   investmentsData?: TransformedData<UserInvestmentsDataResponse>
 }
 
 export const InvestmentAccount: FC<InvestmentAccount> = ({
   t,
   title,
+  isLoading,
   investmentsData
 }) => {
   const [showAll, setShowAll] = useState<boolean>(false)
@@ -27,7 +30,14 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
 
   return (
     <View style={style.accrualContainer}>
+      <View style={style.titleContainer}>
       <Title style={style.accrualTitle}>{title}</Title>
+      <ActivityIndicator
+          size={"small"}
+          color={colors.blue}
+          style={{ display: isLoading ? "flex" : "none" }}
+        />
+      </View>
       {investmentsData?.data.length ? (
         investmentsData?.data
           .slice(0, showAll ? investmentsData?.data.length : 3)
