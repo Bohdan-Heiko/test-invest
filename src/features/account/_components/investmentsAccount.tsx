@@ -1,5 +1,6 @@
 import { View } from "react-native"
 import { FC, useState } from "react"
+import { TFunction } from "i18next"
 
 import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
 import { TransformedData, UserInvestmentsDataResponse } from "@/types"
@@ -8,11 +9,16 @@ import { datesHelpers } from "@/utils/helpers/dates/dates"
 import { style } from "../_style"
 
 interface InvestmentAccount {
+  t: TFunction
   title: string
   investmentsData?: TransformedData<UserInvestmentsDataResponse>
 }
 
-export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsData }) => {
+export const InvestmentAccount: FC<InvestmentAccount> = ({
+  t,
+  title,
+  investmentsData
+}) => {
   const [showAll, setShowAll] = useState<boolean>(false)
 
   const handleShowAll = () => {
@@ -29,7 +35,11 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsDat
             <View key={building.id} style={style.accuralItemsMainContainer}>
               <View style={style.accuralItemContainer}>
                 <View style={style.accuralItemNameContainer}>
-                  <Title style={style.accuralItemNameTitle}>
+                  <Title
+                    style={[style.accuralItemNameTitle, { maxWidth: "88%" }]}
+                    ellipsizeMode="tail"
+                    numberOfLines={1}
+                  >
                     {building.building.title}
                   </Title>
                   <VectorExpoIcons type={"Feather"} name="x" />
@@ -47,11 +57,16 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({ title, investmentsDat
             </View>
           ))
       ) : (
-        <ItemText style={style.accuralItemNameTitle}>У вас ще немає інвестицій</ItemText>
+        <ItemText style={style.accuralItemNameTitle}>
+          {t("У вас ще немає інвестицій")}
+        </ItemText>
       )}
 
       {!!investmentsData?.data.length && (
-        <Button title={showAll ? "Приховати" : "Дивитись всі"} onPress={handleShowAll} />
+        <Button
+          title={showAll ? t("Приховати") : t("Дивитись всі")}
+          onPress={handleShowAll}
+        />
       )}
     </View>
   )

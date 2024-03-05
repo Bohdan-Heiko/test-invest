@@ -1,4 +1,3 @@
-import { BackButton } from "@/shared/components"
 import { colors } from "@/utils/constants/colors"
 import { APP_FONTS } from "@/utils/constants/fonts"
 import { Stack } from "expo-router"

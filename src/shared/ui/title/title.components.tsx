@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     fontFamily: APP_FONTS["Inter500"],
     lineHeight: 29,
     color: colors.dove_graya,
-    textAlign: "center"
+    textAlign: "center",
+    flexWrap: "wrap"
   }
 })
