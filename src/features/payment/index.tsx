@@ -1,4 +1,5 @@
 import { ScrollView, View } from "react-native"
+import { useTranslation } from "react-i18next"
 
 import { OrganizationInfo } from "@/shared/components"
 import { colors } from "@/utils/constants/colors"
@@ -6,10 +7,9 @@ import { colors } from "@/utils/constants/colors"
 import { Descriptions } from "./_components/description"
 import { PaymentForm } from "./_components/payment.form"
 import { style } from "./_style"
-import { useTranslation } from "react-i18next"
 
 export const Payment = () => {
-  const {t} = useTranslation('payment')
+  const { t } = useTranslation("payment")
   return (
     <ScrollView
       overScrollMode="never"

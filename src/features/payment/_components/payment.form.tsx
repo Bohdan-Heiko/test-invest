@@ -1,5 +1,6 @@
 import { Linking, View } from "react-native"
 import { AllRoutes, useLocalSearchParams } from "expo-router"
+import { TFunction } from "i18next"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 import { useAuthContext } from "@/context/auth.context"
@@ -10,7 +11,6 @@ import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { TFunction } from "i18next"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {

@@ -1,4 +1,5 @@
 import { ScrollView, View } from "react-native"
+import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 import { useState } from "react"
 import { useLocalSearchParams } from "expo-router"
 import { useTranslation } from "react-i18next"
@@ -9,7 +10,6 @@ import { Button, CheckBox, ItemText, Paragraph, Title } from "@/shared/ui"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
 import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
 import { style } from "./_style"
 
@@ -104,6 +104,5 @@ const ConfrimPayment = () => {
     </ScrollView>
   )
 }
-
 
 export default gestureHandlerRootHOC(ConfrimPayment)

@@ -4,10 +4,10 @@ import { TFunction } from "i18next"
 
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
 import { TransformedData, UserAccrualsDataResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { colors } from "@/utils/constants/colors"
 
 interface IAccrualAccount {
   t: TFunction

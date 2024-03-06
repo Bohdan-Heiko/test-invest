@@ -98,17 +98,17 @@ export const Login = () => {
 
         {/* Specify functionality */}
 
-        {/* <View style={style.checkBoxContainer}>
+        <View style={style.checkBoxContainer}>
           <View style={style.checkBox}>
-            <CheckBox
+            {/* <CheckBox
               value={checked}
               onPressHandler={() => setChecked((prev) => !prev)}
               iconSize={{ height: 23, width: 23 }}
-            />
-            <Text style={style.chekTitle}>Запам’ятати пароль</Text>
+            /> */}
+            {/* <Text style={style.chekTitle}>Запам’ятати пароль</Text> */}
           </View>
-          <LinkRedirect href="/(tabs)/registration">Забув пароль</LinkRedirect>
-        </View> */}
+          <LinkRedirect href="/(auth)/recover-password">Забув пароль</LinkRedirect>
+        </View>
 
         <Button
           variant="primary"
@@ -116,7 +116,6 @@ export const Login = () => {
           onPress={handleSubmit(handleLoginUser)}
           loading={{ isNeed: true, isLoading: isSigninLoading }}
         />
-        {/* <Button variant="primary" title="Test logout" onPress={handleLogoutUser} /> */}
 
         {/* <Button
           variant="secondary"

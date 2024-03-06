@@ -2,8 +2,8 @@
   "expo": {
     "name": "Bober",
     "slug": "Bober",
-    "version": "1.0.5",
-    "versionCode": 3,
+    "version": "1.0.6",
+    "versionCode": 6,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",

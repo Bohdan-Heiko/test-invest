@@ -1,7 +1,7 @@
-import { TouchableWithoutFeedback, View, Animated } from "react-native"
+import { Animated, TouchableWithoutFeedback, View } from "react-native"
+import Collapsible from "react-native-collapsible"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
-import Collapsible from "react-native-collapsible"
 
 import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
 import { UserDataResponse } from "@/types"
@@ -79,7 +79,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
         <View style={style.functionsContainer}>
           <Title style={style.functionsTitle}>{t("Функції")}</Title>
           <LinkRedirect
-            href="/(tabs)/account"
+            href="/recover-password/"
             style={{ ...style.functionsLinks, color: colors.silver }}
           >
             {t("Змінити пароль")}

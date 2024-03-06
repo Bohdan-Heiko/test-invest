@@ -63,6 +63,7 @@ function RootLayoutNav() {
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="(auth)/registration" />
           <Stack.Screen name="(auth)/signin" />
+          <Stack.Screen name="(auth)/recover-password" />
           <Stack.Screen name="(payment)/payment" />
           <Stack.Screen name="(project)/project" />
           <Stack.Screen name="(report)" />

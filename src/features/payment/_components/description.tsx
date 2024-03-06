@@ -1,10 +1,10 @@
 import { Pressable, View } from "react-native"
 import { useState } from "react"
+import { TFunction } from "i18next"
 
 import { Paragraph, Title, VectorExpoIcons } from "@/shared/ui"
 
 import { style } from "../_style"
-import { TFunction } from "i18next"
 
 export const Descriptions = ({ t }: { t: TFunction }) => {
   const [showDescription, setShowDescription] = useState<boolean>(true)

@@ -1,14 +1,14 @@
-import { ActivityIndicator, Pressable, ScrollView, View } from "react-native"
+import { ActivityIndicator, ScrollView, View } from "react-native"
 import { FC } from "react"
+import { router } from "expo-router"
 import { TFunction } from "i18next"
 
 import { ProjectItem } from "@/shared/components"
 import { ItemText, Title } from "@/shared/ui"
 import { BuildingsResponse, TransformedData } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { colors } from "@/utils/constants/colors"
-import { router } from "expo-router"
 
 interface IProps {
   t: TFunction

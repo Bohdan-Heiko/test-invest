@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, View } from "react-native"
+import { ScrollView, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { useRouter } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
