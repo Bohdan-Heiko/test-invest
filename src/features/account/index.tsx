@@ -48,7 +48,7 @@ export const Account = () => {
 
   useLayoutEffect(() => {
     if (!isAuthenticated) {
-      return router.replace("/(auth)/signin")
+      return router.replace("/(public)/(auth)/signin")
     }
   }, [isAuthenticated])
 

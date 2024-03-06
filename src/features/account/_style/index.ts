@@ -124,7 +124,8 @@ export const style = StyleSheet.create({
   functionsContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15
+    gap: 15,
+    marginBottom: 20
   },
   functionsTitle: {
     fontSize: 24,
@@ -135,6 +136,14 @@ export const style = StyleSheet.create({
     fontSize: 20,
     lineHeight: 30
   },
+  languageContainer: {
+    lineHeight: 36,
+    color: colors.mine_shaft
+  },
+  languageTitle: {
+    fontSize: 20
+  },
+
   // PERSONAL INFO
 
   //RIELTOR ACCOUNT

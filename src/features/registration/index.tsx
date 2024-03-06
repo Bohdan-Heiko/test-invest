@@ -51,7 +51,7 @@ export const Registration = () => {
   const onSubmit: SubmitHandler<RegistrationBody> = async (data) => {
     await registrationUser(data)
       .unwrap()
-      .then(() => router.replace("/(auth)/signin"))
+      .then(() => router.replace("/(public)/(auth)/signin"))
       .catch(console.log)
   }
 
@@ -222,7 +222,7 @@ export const Registration = () => {
         /> */}
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>{t("Вже маєш аккаунт")}</Paragraph>
-          <LinkRedirect href="/(auth)/signin">{t("Увійти")}</LinkRedirect>
+          <LinkRedirect href="/(public)/(auth)/signin">{t("Увійти")}</LinkRedirect>
         </View>
       </View>
 

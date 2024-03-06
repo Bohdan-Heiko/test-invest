@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native"
 import { useTranslation } from "react-i18next"
 
-import { Dropdown, OrganizationInfo } from "@/shared/components"
+import { OrganizationInfo } from "@/shared/components"
 import { useGetAllPublicBuidersQuery } from "@/store/services/buildersApi"
 import { useGetAllPublicBuildingsQuery } from "@/store/services/buildingsApi"
 
@@ -31,7 +31,6 @@ export const Main = () => {
       showsVerticalScrollIndicator={false}
       style={style.mainContainer}
     >
-      <Dropdown />
       <MainProjectBanner text={t(TEXT1)} />
       <Buildings data={buildingsData} isLoading={isBuildingsDataLoading} />
       <Builders data={buildersData} isLoading={isBuildersLoading} />
