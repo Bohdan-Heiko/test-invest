@@ -1,6 +1,7 @@
 import { ActivityIndicator, StyleSheet, View } from "react-native"
 import { useEffect, useRef } from "react"
 import { AllRoutes, useLocalSearchParams } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { useAuthContext } from "@/context/auth.context"
 import { Button, Title, VectorExpoIcons } from "@/shared/ui"
@@ -8,7 +9,6 @@ import { useCheckPaymentStatusQuery } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 
 import { ErrorMessage } from "../errorMessage/errorMessage.component"
-import { useTranslation } from "react-i18next"
 
 type LocalParams = { uuid: string }
 

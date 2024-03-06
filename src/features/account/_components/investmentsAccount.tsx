@@ -4,10 +4,10 @@ import { TFunction } from "i18next"
 
 import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
 import { TransformedData, UserInvestmentsDataResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { colors } from "@/utils/constants/colors"
 
 interface InvestmentAccount {
   t: TFunction
@@ -31,8 +31,8 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
   return (
     <View style={style.accrualContainer}>
       <View style={style.titleContainer}>
-      <Title style={style.accrualTitle}>{title}</Title>
-      <ActivityIndicator
+        <Title style={style.accrualTitle}>{title}</Title>
+        <ActivityIndicator
           size={"small"}
           color={colors.blue}
           style={{ display: isLoading ? "flex" : "none" }}

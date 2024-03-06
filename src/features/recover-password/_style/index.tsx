@@ -25,5 +25,10 @@ export const style = StyleSheet.create({
   },
   recoverPasswordFormContainer: {
     gap: 10
+  },
+  recoverPasswordConfirmTitle: {
+    fontSize: 18,
+    lineHeight: 27,
+    color: colors.tundora
   }
 })

@@ -8,19 +8,30 @@ export const authApi = mainApi.injectEndpoints({
     registrationUser: builder.mutation<RegistrationResponse, RegistrationBody>({
       query: (body) => ({
         url: "/api/users/registration",
-        method: "post",
+        method: "POST",
         body
       })
     }),
     signInUser: builder.mutation<LoginResponse, LoginBody>({
       query: (body) => ({
         url: "/api/login",
-        method: "post",
+        method: "POST",
         body
       }),
       invalidatesTags: ["GetMeData"]
+    }),
+    forgotPassword: builder.mutation<{ message: string }, { email: string }>({
+      query: (body) => ({
+        url: "/api/users/forgot-password",
+        method: "POST",
+        body
+      })
     })
   })
 })
 
-export const { useRegistrationUserMutation, useSignInUserMutation } = authApi
+export const {
+  useRegistrationUserMutation,
+  useSignInUserMutation,
+  useForgotPasswordMutation
+} = authApi
