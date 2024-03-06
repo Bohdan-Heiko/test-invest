@@ -41,7 +41,9 @@ export const PaymentStatus = () => {
     if (paymentStatus?.status !== "WaitingAuthComplete") {
       handleReplaceRoute("/(tabs)" as AllRoutes)
     } else {
-      handleReplaceRoute(`/confirm-payment/${uuid}` as AllRoutes, { ...paymentStatus })
+      handleReplaceRoute(`(private)/confirm-payment/${uuid}` as AllRoutes, {
+        ...paymentStatus
+      })
     }
   }
 
