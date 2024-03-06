@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect } from "react"
-import { AllRoutes, usePathname, useRouter, useSegments } from "expo-router"
+import { AllRoutes, usePathname, useRouter } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { useAppSelector } from "@/store"
@@ -25,7 +25,6 @@ interface ProviderProps {
 export const AuthProvider = (props: ProviderProps) => {
   const router = useRouter()
   const pathName = usePathname()
-  const segments = useSegments()
   const { setUserData } = useActions()
 
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
@@ -40,15 +39,8 @@ export const AuthProvider = (props: ProviderProps) => {
 
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
     const publicRoute = route.includes("public")
-    // console.log(segments, '<---seg', route);
 
-    if (
-      // (publicRoute && isAuthenticated) ||
-      // (publicRoute && !isAuthenticated) ||
-      // isAuthenticated
-      publicRoute ||
-      isAuthenticated
-    ) {
+    if (publicRoute || isAuthenticated) {
       router.push({
         pathname: route as AllRoutes,
         params: data
@@ -78,9 +70,6 @@ export const AuthProvider = (props: ProviderProps) => {
     if (pathName && isAuthenticated) {
       refetchGetMeData()
     }
-    // else if (segments[0] !== "(auth)" && !isAuthenticated) {
-    //   router.replace("/(tabs)/")
-    // }
   }, [pathName, isAuthenticated])
 
   return (

@@ -41,7 +41,9 @@ export const MyProjects: FC<IProps> = ({ t, isLoading, projectsData }) => {
                 text={project.description}
                 title={project.title}
                 imageUri={project.photos && project.photos[0].contentUrl}
-                handleItemPress={() => router.push(`/(project)/project/${project.id}`)}
+                handleItemPress={() =>
+                  router.push(`../(public)/(project)/project/${project.id}`)
+                }
               />
             ))
           ) : (

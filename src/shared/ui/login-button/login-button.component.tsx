@@ -10,7 +10,7 @@ export const LoginNavbarButton = () => {
 
   return (
     <Pressable
-      onPress={() => router.push("/(auth)/signin")}
+      onPress={() => router.push("/(public)/(auth)/signin")}
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? "rgba(14, 163, 204, 0.5)" : colors.blue

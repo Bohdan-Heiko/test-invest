@@ -1,16 +1,16 @@
 import { ScrollView, View } from "react-native"
 import { useEffect, useState } from "react"
 import { router } from "expo-router"
+import { useTranslation } from "react-i18next"
 
 import { ErrorMessage, OrganizationInfo } from "@/shared/components"
 import { Button, Input, Paragraph, Title } from "@/shared/ui"
 import { useForgotPasswordMutation } from "@/store/services/authInjectApi"
 
 import { style } from "./_style"
-import { useTranslation } from "react-i18next"
 
 export const RecoverPassword = () => {
-  const {t} = useTranslation('recoverPassword')
+  const { t } = useTranslation("recoverPassword")
   const [email, setEmail] = useState<string | undefined>("")
 
   const [

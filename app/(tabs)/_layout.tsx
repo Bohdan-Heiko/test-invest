@@ -2,7 +2,6 @@ import { Tabs } from "expo-router"
 
 import Colors from "@/utils/constants/colors"
 import { VectorExpoIcons } from "@/shared/ui"
-import { LanguageButton } from "@/shared/components"
 import { useTranslation } from "react-i18next"
 
 export default function TabLayout() {
@@ -21,7 +20,6 @@ export default function TabLayout() {
           lazy: true,
           headerShadowVisible: false,
           headerRightContainerStyle: { paddingRight: 10 },
-          headerRight: () => <LanguageButton />,
           tabBarIcon: ({ color }) => (
             <VectorExpoIcons type="Octicons" name="home" color={color} />
           )

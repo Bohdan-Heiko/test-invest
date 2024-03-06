@@ -1,10 +1,15 @@
-import { Animated, TouchableWithoutFeedback, View } from "react-native"
+import { Animated, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import Collapsible from "react-native-collapsible"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
+import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
 
+import useActions from "@/hooks/useActions"
 import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
-import { UserDataResponse } from "@/types"
+import { useAppSelector } from "@/store"
+import { mainApi } from "@/store/services/mainApi"
+import { TLanguage, UserDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
@@ -15,8 +20,12 @@ interface IProps {
 }
 
 export const PersonalInformation: FC<IProps> = ({ t, data }) => {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
+  const dispatch = useDispatch()
+  const { i18n } = useTranslation()
+  const { setLanguage } = useActions()
+  const { userLanguage } = useAppSelector((state) => state.i18n)
 
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [rotationValue] = useState(new Animated.Value(0))
 
   const rotateIcon = () => {
@@ -38,6 +47,19 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
     inputRange: [0, 1],
     outputRange: ["0deg", "180deg"]
   })
+
+  const onSetLanguage = (item: TLanguage): void => {
+    setLanguage(item)
+    i18n.changeLanguage(item)
+
+    dispatch(
+      mainApi.util.invalidateTags([
+        "UserPublicBuildings",
+        "UserPublicBuilers",
+        "UserBuildings"
+      ])
+    )
+  }
 
   return (
     <View style={[style.personalInfoMainContainer]}>
@@ -78,18 +100,37 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
 
         <View style={style.functionsContainer}>
           <Title style={style.functionsTitle}>{t("Функції")}</Title>
-          <LinkRedirect
-            href="/recover-password/"
-            style={{ ...style.functionsLinks, color: colors.silver }}
-          >
+          <LinkRedirect href="/recover-password/" style={style.functionsLinks}>
             {t("Змінити пароль")}
           </LinkRedirect>
-          <LinkRedirect
-            href="/(tabs)/account"
-            style={{ ...style.functionsLinks, color: colors.silver }}
-          >
+          <LinkRedirect href="/(tabs)/account" style={style.functionsLinks}>
             {t("Вивести кошти")}
           </LinkRedirect>
+        </View>
+
+        <View style={{ display: "flex", alignItems: "flex-start", gap: 15 }}>
+          <Title style={style.languageContainer}>Мова</Title>
+
+          <TouchableOpacity onPress={() => onSetLanguage("uk-UA")}>
+            <ItemText
+              style={[
+                style.languageTitle,
+                { color: userLanguage === "uk-UA" ? colors.tundora : colors.dove_graya }
+              ]}
+            >
+              Українська
+            </ItemText>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => onSetLanguage("en-US")}>
+            <ItemText
+              style={[
+                style.languageTitle,
+                { color: userLanguage === "en-US" ? colors.tundora : colors.dove_graya }
+              ]}
+            >
+              English
+            </ItemText>
+          </TouchableOpacity>
         </View>
       </Collapsible>
     </View>
