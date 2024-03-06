@@ -47,7 +47,7 @@ export const PaymentForm = ({ t }: { t: TFunction }) => {
       .unwrap()
       .then((res) => {
         Linking.openURL(res.url)
-        handlePushRoute(`/(statuses)/payment-status/${res.uuid}` as AllRoutes)
+        handlePushRoute(`(private)/(statuses)/payment-status/${res.uuid}` as AllRoutes)
       })
       .then(() => reset())
       .catch(console.log)

@@ -40,10 +40,10 @@ export const Buildings: FC<IProps> = ({ data, isLoading }) => {
               text={project.description}
               imageUri={project?.photos && project?.photos[0]?.contentUrl}
               handleItemPress={() =>
-                handlePushRoute(`/(project)/project/${project.id}` as AllRoutes)
+                handlePushRoute(`(public)/(project)/project/${project.id}` as AllRoutes)
               }
               handleInvestPress={() =>
-                handlePushRoute("/(payment)/payment", {
+                handlePushRoute("/(private)/(payment)/payment", {
                   id: project.id,
                   title: project.title,
                   price: project.price,

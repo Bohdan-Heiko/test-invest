@@ -107,7 +107,9 @@ export const Login = () => {
             /> */}
             {/* <Text style={style.chekTitle}>Запам’ятати пароль</Text> */}
           </View>
-          <LinkRedirect href="/(auth)/recover-password">Забув пароль</LinkRedirect>
+          <LinkRedirect href="/(public)/(auth)/recover-password">
+            Забув пароль
+          </LinkRedirect>
         </View>
 
         <Button
@@ -124,7 +126,9 @@ export const Login = () => {
         /> */}
         <View style={style.accountInfo}>
           <Paragraph style={style.accountInfoText}>{t("Не маєш аккаунту")}</Paragraph>
-          <LinkRedirect href="/(auth)/registration">{t("Зареєструйся")}</LinkRedirect>
+          <LinkRedirect href="/(public)/(auth)/registration">
+            {t("Зареєструйся")}
+          </LinkRedirect>
         </View>
       </View>
 

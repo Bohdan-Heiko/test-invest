@@ -34,7 +34,7 @@ export const ProjectReports: FC<IProps> = ({ t, data, buildingId }) => {
               title={t("Переглянути")}
               onPress={() =>
                 handlePushRoute(
-                  `/(report)/building/${buildingId}/report/${report.id}` as AllRoutes
+                  `(public)/(report)/building/${buildingId}/report/${report.id}` as AllRoutes
                 )
               }
             />

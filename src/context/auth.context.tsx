@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect } from "react"
-import { AllRoutes, usePathname, useRouter } from "expo-router"
+import { AllRoutes, usePathname, useRouter, useSegments } from "expo-router"
 
 import useActions from "@/hooks/useActions"
 import { useAppSelector } from "@/store"
@@ -25,6 +25,7 @@ interface ProviderProps {
 export const AuthProvider = (props: ProviderProps) => {
   const router = useRouter()
   const pathName = usePathname()
+  const segments = useSegments()
   const { setUserData } = useActions()
 
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
@@ -38,11 +39,14 @@ export const AuthProvider = (props: ProviderProps) => {
   })
 
   const handlePushRoute = (route: AllRoutes, data: Record<string, string | string[]>) => {
-    const publicRoute = route.includes("project") || route.includes("report")
+    const publicRoute = route.includes("public")
+    // console.log(segments, '<---seg', route);
 
     if (
-      (publicRoute && isAuthenticated) ||
-      (publicRoute && !isAuthenticated) ||
+      // (publicRoute && isAuthenticated) ||
+      // (publicRoute && !isAuthenticated) ||
+      // isAuthenticated
+      publicRoute ||
       isAuthenticated
     ) {
       router.push({
@@ -50,7 +54,7 @@ export const AuthProvider = (props: ProviderProps) => {
         params: data
       })
     } else if (!publicRoute && !isAuthenticated) {
-      return router.push("/(auth)/signin")
+      return router.push("/(public)/(auth)/signin")
     }
   }
   const handleReplaceRoute = (
