@@ -7,8 +7,10 @@ import { Button, Input, Paragraph, Title } from "@/shared/ui"
 import { useForgotPasswordMutation } from "@/store/services/authInjectApi"
 
 import { style } from "./_style"
+import { useTranslation } from "react-i18next"
 
 export const RecoverPassword = () => {
+  const {t} = useTranslation('recoverPassword')
   const [email, setEmail] = useState<string | undefined>("")
 
   const [
@@ -42,13 +44,13 @@ export const RecoverPassword = () => {
     <ScrollView overScrollMode="never">
       <View style={style.mainContainer}>
         <View style={style.recoverPasswordContainer}>
-          <Title style={style.recoverPasswordTitle}>Відновлення паролю</Title>
+          <Title style={style.recoverPasswordTitle}>{t("Відновлення паролю")}</Title>
           <View style={style.recoverPasswordFormContainer}>
             {!isForgotPasswordSuccess && (
               <Input
                 isDotNeed={false}
                 inputProps={{
-                  placeholder: "Пошта",
+                  placeholder: t("Пошта"),
                   value: email,
                   onChangeText: (e) => setEmail(e)
                 }}
@@ -57,15 +59,15 @@ export const RecoverPassword = () => {
             )}
             {isForgotPasswordSuccess && (
               <Paragraph style={style.recoverPasswordConfirmTitle}>
-                На вказану вами пошту було відправлено лист з інструкцією
+                {t("На вказану вами пошту було відправлено лист з інструкцією")}
               </Paragraph>
             )}
 
-            {isForgotPasswordError && <ErrorMessage message="Щось пішло не так" />}
+            {isForgotPasswordError && <ErrorMessage message={t("Щось пішло не так")} />}
 
             <Button
               onPress={handleSendEmail}
-              title={isForgotPasswordSuccess ? "На головну" : "Скинути пароль"}
+              title={isForgotPasswordSuccess ? t("На головну") : t("Скинути пароль")}
               loading={{ isNeed: false, isLoading: isForgotPasswordLoading }}
             />
           </View>

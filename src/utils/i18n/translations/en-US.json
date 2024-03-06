@@ -122,5 +122,13 @@
     "Введіть суму": "Enter the amount",
     "Ознайомлений з умовами використання": "I have read and agree to the terms of use",
     "Далі": "Next"
+  },
+  "recoverPassword": {
+    "Відновлення паролю": "Password recovery",
+    "Пошта": "Email",
+    "На вказану вами пошту було відправлено лист з інструкцією": "An email with instructions has been sent to the email you provided",
+    "Щось пішло не так": "Something went wrong",
+    "На головну": "Go to homepage",
+    "Скинути пароль": "Reset password"
   }
 }
