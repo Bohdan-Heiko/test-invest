@@ -27,7 +27,7 @@ export const YourAccount: FC<IProps> = ({ t, investments }) => {
         <View style={style.yourAccountInfoData}>
           <View style={style.yourAccountInfoDataMoneyContainer}>
             <Paragraph style={style.yourAccountInfoDataProcent}>
-              +{sumAccrualData ?? 0}% {t("з минулого кварталу")}
+              +{sumAccrualData ?? 0} USD {t("з минулого кварталу")}
             </Paragraph>
             <Paragraph style={style.yourAccountInfoDataMoney}>
               {investments ?? 0} <Text style={{ fontSize: 24 }}>USD</Text>
