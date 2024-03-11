@@ -82,11 +82,11 @@ export const style = StyleSheet.create({
   },
   personalInfoTitle: {
     fontFamily: APP_FONTS["Inter600"],
-    fontSize: 30,
-    lineHeight: 45,
+    fontSize: 25,
+    lineHeight: 40,
     textAlign: "left",
     color: colors.mine_shaft,
-    maxWidth: "88%"
+    maxWidth: "89%"
   },
   personalInfoContainer: {
     display: "flex",

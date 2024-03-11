@@ -11,12 +11,13 @@ import { style } from "../_style"
 
 interface IProps {
   t: TFunction
+  realtorPercent?: number
   inviteLink?: string
 }
 
 type CopyType = "allLink" | "inviteLink"
 
-export const RieltorInformation: FC<IProps> = ({ t, inviteLink }) => {
+export const RieltorInformation: FC<IProps> = ({ t, inviteLink, realtorPercent }) => {
   const pathName = usePathname()
   const [copyType, setCopytype] = useState<CopyType | null>(null)
 
@@ -67,22 +68,21 @@ export const RieltorInformation: FC<IProps> = ({ t, inviteLink }) => {
               onPress={() => handleCopyText(inviteLink as string, "inviteLink")}
             >
               <VectorExpoIcons
-                type="Octicons"
-                name={copyType === "inviteLink" ? "check" : "copy"}
-                color={colors.blue}
                 size={18}
+                type="Octicons"
+                color={colors.blue}
+                name={copyType === "inviteLink" ? "check" : "copy"}
               />
             </Pressable>
           </View>
           <ItemText>{inviteLink}</ItemText>
         </View>
-        {/* <View style={style.infoLinksContainer}>
+        <View style={style.infoLinksContainer}>
           <View style={style.infoLinksTitleContainer}>
-            <Title style={style.infoLinksTitle}>Відсоток прибутку</Title>
-            <VectorExpoIcons type='Octicons' name="copy" color={colors.blue} sizes={18} />
+            <Title style={style.infoLinksTitle}>{t("Відсоток прибутку")}</Title>
           </View>
-          <ItemText>13%</ItemText>
-        </View> */}
+          <ItemText>{realtorPercent ?? 0}%</ItemText>
+        </View>
       </View>
     </View>
   )
