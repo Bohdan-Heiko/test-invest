@@ -2,29 +2,19 @@ import { Animated, TouchableOpacity, TouchableWithoutFeedback, View } from "reac
 import Collapsible from "react-native-collapsible"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
-import { useTranslation } from "react-i18next"
-import { useDispatch } from "react-redux"
 
-import useActions from "@/hooks/useActions"
 import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
-import { useAppSelector } from "@/store"
-import { mainApi } from "@/store/services/mainApi"
-import { TLanguage, UserDataResponse } from "@/types"
-import { colors } from "@/utils/constants/colors"
+import {  UserDataResponse } from "@/types"
 
 import { style } from "../_style"
 
 interface IProps {
   t: TFunction
+  openLanguage: () => void
   data: UserDataResponse | undefined
 }
 
-export const PersonalInformation: FC<IProps> = ({ t, data }) => {
-  const dispatch = useDispatch()
-  const { i18n } = useTranslation()
-  const { setLanguage } = useActions()
-  const { userLanguage } = useAppSelector((state) => state.i18n)
-
+export const PersonalInformation: FC<IProps> = ({ t, data, openLanguage }) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [rotationValue] = useState(new Animated.Value(0))
 
@@ -47,19 +37,6 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
     inputRange: [0, 1],
     outputRange: ["0deg", "180deg"]
   })
-
-  const onSetLanguage = (item: TLanguage): void => {
-    setLanguage(item)
-    i18n.changeLanguage(item)
-
-    dispatch(
-      mainApi.util.invalidateTags([
-        "UserPublicBuildings",
-        "UserPublicBuilers",
-        "UserBuildings"
-      ])
-    )
-  }
 
   return (
     <View style={[style.personalInfoMainContainer]}>
@@ -109,9 +86,11 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
         </View>
 
         <View style={{ display: "flex", alignItems: "flex-start", gap: 15 }}>
-          <Title style={style.languageContainer}>{t("Мова")}</Title>
+          <TouchableOpacity onPress={openLanguage}>
+            <Title style={style.languageContainer}>{t("Мова")}</Title>
+          </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => onSetLanguage("uk-UA")}>
+          {/* <TouchableOpacity onPress={() => onSetLanguage("uk-UA")}>
             <ItemText
               style={[
                 style.languageTitle,
@@ -130,7 +109,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
             >
               {t("Англійська")}
             </ItemText>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </Collapsible>
     </View>

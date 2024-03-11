@@ -138,7 +138,7 @@ export const style = StyleSheet.create({
   },
   languageContainer: {
     lineHeight: 36,
-    color: colors.mine_shaft
+    color: colors.blue
   },
   languageTitle: {
     fontSize: 20
