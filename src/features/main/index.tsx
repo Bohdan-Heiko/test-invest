@@ -14,8 +14,6 @@ import { style } from "./_style"
 const TEXT1 =
   "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору."
 
-// SplashScreen.preventAutoHideAsync()
-
 export const Main = () => {
   const { t } = useTranslation("main")
 
