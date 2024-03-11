@@ -18,8 +18,6 @@ interface CustomBottomSheetProps {
 const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) => {
   const initialSnapPoints = useMemo(() => ["10%"], [])
   const insets = useSafeAreaInsets();
-console.log(insets, 'insets');
-
 
   const renderBackdrop = useCallback(
     (props: any) => (
