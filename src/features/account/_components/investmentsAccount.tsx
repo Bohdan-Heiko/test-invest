@@ -67,7 +67,7 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
             </View>
           ))
       ) : (
-        <ItemText style={style.accuralItemNameTitle}>
+        <ItemText style={[style.accuralNoDataInfo]}>
           {t("У вас ще немає інвестицій")}
         </ItemText>
       )}

@@ -253,9 +253,9 @@ export const style = StyleSheet.create({
   },
   accuralNoDataInfo: {
     width: "100%",
-    fontSize: 20,
+    fontSize: 15,
     textAlign: "left",
-    color: colors.mine_shaft
+    color: colors.silver
   },
   //ACCRUAL
 
