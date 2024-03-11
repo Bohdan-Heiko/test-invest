@@ -1,16 +1,25 @@
 import { forwardRef, useCallback, useMemo, useRef } from "react"
 import { StyleSheet, View, Text, Button } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
-import BottomSheet, { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet"
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetView
+} from "@gorhom/bottom-sheet"
+import { colors } from "@/utils/constants/colors"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-export type Ref = BottomSheetModal
+export type Ref = BottomSheet
 
 interface CustomBottomSheetProps {
-  children: JSX.Element
+  children?: JSX.Element
 }
 
 const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) => {
-  const snapPoints = useMemo(() => ["50%", "75%"], [])
+  const initialSnapPoints = useMemo(() => ["10%"], [])
+  const insets = useSafeAreaInsets();
+console.log(insets, 'insets');
+
 
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -21,52 +30,25 @@ const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) =
   )
 
   return (
-    <BottomSheetModal ref={ref} index={0} snapPoints={snapPoints}>
-      <View style={styles.contentContainer}>
-        <Text style={styles.containerHeadline}>Bottom Modal 😎</Text>
-      </View>
-    </BottomSheetModal>
+    <BottomSheet
+      ref={ref}
+      index={-1}
+      snapPoints={initialSnapPoints}
+      enableDynamicSizing={true}
+      enablePanDownToClose={true}
+      topInset={insets.top}
+      handleIndicatorStyle={{ backgroundColor: colors.silver }}
+      backgroundStyle={{ backgroundColor: colors.white }}
+      backdropComponent={renderBackdrop}
+    >
+      <BottomSheetView style={{ paddingHorizontal: 20 }}>
+        {props.children}
+      </BottomSheetView>
+    </BottomSheet>
   )
 })
 
 export default CustomBottomSheet
-
-{
-  /* <GestureHandlerRootView style={{ flex: 1 }}>
-<BottomSheetModal ref={ref} index={0} snapPoints={snapPoints}>
-  <View style={styles.contentContainer}>
-    <Text style={styles.containerHeadline}>Bottom Modal 😎</Text>
-  </View>
-</BottomSheetModal>
-</GestureHandlerRootView> */
-}
-
-// <GestureHandlerRootView style={{ flex: 1 }}>
-//       <BottomSheetModal ref={ref} index={0} snapPoints={snapPoints}>
-//         <View style={styles.contentContainer}>
-//           <Text style={styles.containerHeadline}>Bottom Modal 😎</Text>
-//         </View>
-//       </BottomSheetModal>
-{
-  /* <View style={styles.container}>
-        <BottomSheet
-          ref={ref}
-          index={0}
-          snapPoints={snapPoints}
-          enablePanDownToClose={true}
-          handleIndicatorStyle={{ backgroundColor: "#fff" }}
-          backgroundStyle={{ backgroundColor: "#1d0f4e" }}
-          backdropComponent={renderBackdrop}
-        >
-          {props.children}
-          <View style={styles.contentContainer}>
-            <Text style={styles.containerHeadline}>Awesome Bottom Sheet 🎉</Text>
-            <Button title="Close" />
-          </View>
-        </BottomSheet>
-      </View> */
-}
-// </GestureHandlerRootView>
 
 const styles = StyleSheet.create({
   container: {

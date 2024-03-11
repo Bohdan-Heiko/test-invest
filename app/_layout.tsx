@@ -61,29 +61,31 @@ function RootLayoutNav() {
   return (
     <AuthProvider>
       <BottomSheetModalProvider>
-        <ThemeProvider value={DefaultTheme}>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="(public)/(auth)/registration" />
-            <Stack.Screen name="(public)/(auth)/signin" />
-            <Stack.Screen name="(public)/(auth)/recover-password" />
-            <Stack.Screen name="(private)/(payment)/payment" />
-            <Stack.Screen name="(public)/(project)/project" />
-            <Stack.Screen name="(public)/(report)" />
-            <Stack.Screen
-              name="(private)/(statuses)/payment-status"
-              options={{
-                gestureEnabled: false
-              }}
-            />
-            <Stack.Screen
-              name="(private)/confirm-payment"
-              options={{
-                gestureEnabled: false
-              }}
-            />
-          </Stack>
-        </ThemeProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <ThemeProvider value={DefaultTheme}>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="(public)/(auth)/registration" />
+              <Stack.Screen name="(public)/(auth)/signin" />
+              <Stack.Screen name="(public)/(auth)/recover-password" />
+              <Stack.Screen name="(private)/(payment)/payment" />
+              <Stack.Screen name="(public)/(project)/project" />
+              <Stack.Screen name="(public)/(report)" />
+              <Stack.Screen
+                name="(private)/(statuses)/payment-status"
+                options={{
+                  gestureEnabled: false
+                }}
+              />
+              <Stack.Screen
+                name="(private)/confirm-payment"
+                options={{
+                  gestureEnabled: false
+                }}
+              />
+            </Stack>
+          </ThemeProvider>
+        </GestureHandlerRootView>
       </BottomSheetModalProvider>
     </AuthProvider>
   )
