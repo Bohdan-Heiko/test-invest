@@ -108,7 +108,7 @@ export const Login = () => {
             {/* <Text style={style.chekTitle}>Запам’ятати пароль</Text> */}
           </View>
           <LinkRedirect href="/(public)/(auth)/recover-password">
-            Забув пароль
+            {t("Забув пароль")}
           </LinkRedirect>
         </View>
 

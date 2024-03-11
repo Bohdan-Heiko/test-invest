@@ -109,7 +109,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
         </View>
 
         <View style={{ display: "flex", alignItems: "flex-start", gap: 15 }}>
-          <Title style={style.languageContainer}>Мова</Title>
+          <Title style={style.languageContainer}>{t("Мова")}</Title>
 
           <TouchableOpacity onPress={() => onSetLanguage("uk-UA")}>
             <ItemText
@@ -118,7 +118,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
                 { color: userLanguage === "uk-UA" ? colors.tundora : colors.dove_graya }
               ]}
             >
-              Українська
+              {t("Українська")}
             </ItemText>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => onSetLanguage("en-US")}>
@@ -128,7 +128,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
                 { color: userLanguage === "en-US" ? colors.tundora : colors.dove_graya }
               ]}
             >
-              English
+              {t("Англійська")}
             </ItemText>
           </TouchableOpacity>
         </View>
