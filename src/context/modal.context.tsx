@@ -45,9 +45,8 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
 }
 
 export const useModalContext = () => {
-  const { openedModal, modalData, openModal, updateModalData, closeModal } = useContext(
-    ModalsContext
-  ) as IModalContext
+  const { openedModal, modalData, openModal, updateModalData, closeModal } =
+    useContext(ModalsContext)
 
   return { openedModal, modalData, openModal, updateModalData, closeModal }
 }

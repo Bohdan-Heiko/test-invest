@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from "react-native"
+import { ActivityIndicator, TouchableOpacity, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
@@ -8,6 +8,7 @@ import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { useModalContext } from "@/context/modal.context"
 
 interface InvestmentAccount {
   t: TFunction
@@ -23,6 +24,7 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
   investmentsData
 }) => {
   const [showAll, setShowAll] = useState<boolean>(false)
+  const { openModal } = useModalContext()
 
   const handleShowAll = () => {
     setShowAll(!showAll)
@@ -52,7 +54,9 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
                   >
                     {building.building.title}
                   </Title>
-                  <VectorExpoIcons type={"Feather"} name="x" />
+                  <TouchableOpacity onPress={() => openModal('invest-modal')}>
+                    <VectorExpoIcons type={"Feather"} name="x" />
+                  </TouchableOpacity>
                 </View>
                 <View style={[style.accuralItemNameContainer, { marginBottom: 10 }]}>
                   <Title style={style.accuralItemNameText}>

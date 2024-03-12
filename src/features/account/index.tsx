@@ -22,7 +22,6 @@ import { RieltorInformation } from "./_components/rieltorInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
 import { useModalContext } from "@/context/modal.context"
-import { IModalContext } from "@/types"
 
 export const Account = () => {
   const router = useRouter()
@@ -31,7 +30,7 @@ export const Account = () => {
   const { t } = useTranslation("account")
 
   const { openModal } = useModalContext()
-  
+
   const userData = useAppSelector((state) => state.user_data)
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
 
