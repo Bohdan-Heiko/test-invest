@@ -20,3 +20,5 @@ export {
   UserDataResponse,
   UserInvestmentsDataResponse
 } from "./users"
+
+export { ModalTypes,  IModalContext, ModalData } from "./modals"
