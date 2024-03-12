@@ -39,18 +39,6 @@ export default function TabLayout() {
         }}
       />
 
-      <Tabs.Screen
-        name="bottom"
-        options={{
-          title: 'Bottom',
-          headerShadowVisible: false,
-          lazy: true,
-          href: "/bottom",
-          tabBarIcon: ({ color }) => (
-            <VectorExpoIcons type="Feather" name="user" color={color} />
-          )
-        }}
-      />
     </Tabs>
   )
 }

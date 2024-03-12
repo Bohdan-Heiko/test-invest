@@ -63,15 +63,15 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 20,
     paddingVertical: 15,
-    gap: 20,
     backgroundColor: colors.white,
+    shadowOffset: { height: 1, width: 1 },
 
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     elevation: 4
   },
   userNameContainer: {
@@ -91,7 +91,8 @@ export const style = StyleSheet.create({
   personalInfoContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15
+    paddingVertical: 15,
+    gap: 10
   },
   personalInfoContainerTitle: {
     fontSize: 23,
@@ -107,7 +108,8 @@ export const style = StyleSheet.create({
   yourRieltorContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15
+    gap: 10,
+    paddingVertical: 10
   },
   yourRieltorTitle: {
     fontSize: 24,
@@ -124,8 +126,8 @@ export const style = StyleSheet.create({
   functionsContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 15,
-    marginBottom: 20
+    gap: 10,
+    paddingVertical: 10
   },
   functionsTitle: {
     fontSize: 24,
@@ -138,7 +140,7 @@ export const style = StyleSheet.create({
   },
   languageContainer: {
     lineHeight: 36,
-    color: colors.blue
+    color: colors.mine_shaft
   },
   languageTitle: {
     fontSize: 20
@@ -153,13 +155,14 @@ export const style = StyleSheet.create({
     paddingVertical: 15,
     gap: 15,
     backgroundColor: colors.white,
+    shadowOffset: { height: 1, width: 1 },
 
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     elevation: 4
   },
   descriptionContainer: {
@@ -208,13 +211,14 @@ export const style = StyleSheet.create({
     display: "flex",
     alignItems: "flex-start",
     backgroundColor: colors.white,
+    shadowOffset: { height: 1, width: 1 },
 
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     elevation: 4
   },
   accrualTitle: {
@@ -265,7 +269,8 @@ export const style = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     gap: 20,
-    paddingTop: 20,
+    // paddingTop: 20,
+    paddingVertical: 20,
     backgroundColor: colors.white,
 
     borderTopLeftRadius: 10,
@@ -273,7 +278,8 @@ export const style = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
-    shadowOpacity: 0.1,
+    shadowOffset: { height: 1, width: 1 },
+    shadowOpacity: 0.2,
     elevation: 4
   },
   myProjectTitle: {
