@@ -98,7 +98,8 @@
     "Дивитись всі": "View all",
     "У вас ще немає інвестицій": "You have no investments yet",
     "Ви ще не інвестували в проекти": "You haven't invested in any projects yet",
-    "Вихід": "Logout"
+    "Вихід": "Logout",
+    "Відсоток прибутку": "Percentage of profit"
   },
   "status": {
     "Оплата не пройшла": "Payment failed",
