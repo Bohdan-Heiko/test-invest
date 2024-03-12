@@ -1,5 +1,5 @@
-import { ScrollView, View } from "react-native"
-import { useLayoutEffect } from "react"
+import { ScrollView, StyleSheet, View } from "react-native"
+import { useLayoutEffect, useState } from "react"
 import { usePathname, useRouter } from "expo-router"
 import { useTranslation } from "react-i18next"
 
@@ -21,6 +21,8 @@ import { PersonalInformation } from "./_components/personalInformation"
 import { RieltorInformation } from "./_components/rieltorInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { style } from "./_style"
+import { useModalContext } from "@/context/modal.context"
+import { IModalContext } from "@/types"
 
 export const Account = () => {
   const router = useRouter()
@@ -28,6 +30,8 @@ export const Account = () => {
   const { logoutUser } = useActions()
   const { t } = useTranslation("account")
 
+  const { openModal } = useModalContext()
+  
   const userData = useAppSelector((state) => state.user_data)
   const { isAuthenticated } = useAppSelector((state) => state.bober_auth)
 

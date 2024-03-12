@@ -14,6 +14,7 @@ import { AuthProvider } from "@/context/auth.context"
 import initReactI18next from "@/utils/i18n"
 import { useFonts } from "expo-font"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { ModalsProvider } from "@/context/modal.context"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -62,29 +63,31 @@ function RootLayoutNav() {
     <AuthProvider>
       <BottomSheetModalProvider>
         <GestureHandlerRootView style={{ flex: 1 }}>
-          <ThemeProvider value={DefaultTheme}>
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="(tabs)" />
-              <Stack.Screen name="(public)/(auth)/registration" />
-              <Stack.Screen name="(public)/(auth)/signin" />
-              <Stack.Screen name="(public)/(auth)/recover-password" />
-              <Stack.Screen name="(private)/(payment)/payment" />
-              <Stack.Screen name="(public)/(project)/project" />
-              <Stack.Screen name="(public)/(report)" />
-              <Stack.Screen
-                name="(private)/(statuses)/payment-status"
-                options={{
-                  gestureEnabled: false
-                }}
-              />
-              <Stack.Screen
-                name="(private)/confirm-payment"
-                options={{
-                  gestureEnabled: false
-                }}
-              />
-            </Stack>
-          </ThemeProvider>
+          <ModalsProvider>
+            <ThemeProvider value={DefaultTheme}>
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(tabs)" />
+                <Stack.Screen name="(public)/(auth)/registration" />
+                <Stack.Screen name="(public)/(auth)/signin" />
+                <Stack.Screen name="(public)/(auth)/recover-password" />
+                <Stack.Screen name="(private)/(payment)/payment" />
+                <Stack.Screen name="(public)/(project)/project" />
+                <Stack.Screen name="(public)/(report)" />
+                <Stack.Screen
+                  name="(private)/(statuses)/payment-status"
+                  options={{
+                    gestureEnabled: false
+                  }}
+                />
+                <Stack.Screen
+                  name="(private)/confirm-payment"
+                  options={{
+                    gestureEnabled: false
+                  }}
+                />
+              </Stack>
+            </ThemeProvider>
+          </ModalsProvider>
         </GestureHandlerRootView>
       </BottomSheetModalProvider>
     </AuthProvider>
