@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 
 import useActions from "@/hooks/useActions"
 import { loginSchema } from "@/schemas/registration/registration.schema"
-import { ErrorMessage, OrganizationInfo } from "@/shared/components"
+import { ErrorMessage } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { useSignInUserMutation } from "@/store/services/authInjectApi"
 import { LoginBody } from "@/types/registration"
@@ -131,8 +131,6 @@ export const Login = () => {
           </LinkRedirect>
         </View>
       </View>
-
-      <OrganizationInfo />
     </ScrollView>
   )
 }

@@ -2,17 +2,17 @@ import { Animated, TouchableOpacity, TouchableWithoutFeedback, View } from "reac
 import Collapsible from "react-native-collapsible"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
+import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
 
+import useActions from "@/hooks/useActions"
 import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
+import { useAppSelector } from "@/store"
+import { mainApi } from "@/store/services/mainApi"
 import { TLanguage, UserDataResponse } from "@/types"
+import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { useDispatch } from "react-redux"
-import useActions from "@/hooks/useActions"
-import { useTranslation } from "react-i18next"
-import { mainApi } from "@/store/services/mainApi"
-import { colors } from "@/utils/constants/colors"
-import { useAppSelector } from "@/store"
 
 interface IProps {
   t: TFunction

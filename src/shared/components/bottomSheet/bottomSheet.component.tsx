@@ -1,7 +1,8 @@
-import { forwardRef, useCallback, useMemo } from "react"
-import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet"
-import { colors } from "@/utils/constants/colors"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { forwardRef, useCallback, useMemo } from "react"
+
+import { colors } from "@/utils/constants/colors"
+import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet"
 
 export type Ref = BottomSheet
 

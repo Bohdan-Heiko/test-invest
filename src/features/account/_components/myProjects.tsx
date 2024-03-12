@@ -47,7 +47,7 @@ export const MyProjects: FC<IProps> = ({ t, isLoading, projectsData }) => {
               />
             ))
           ) : (
-            <ItemText style={[style.accuralNoDataInfo, {marginLeft: 20}]}>
+            <ItemText style={[style.accuralNoDataInfo, { marginLeft: 20 }]}>
               {t("Ви ще не інвестували в проекти")}
             </ItemText>
           )}

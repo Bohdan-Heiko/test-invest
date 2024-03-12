@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 
 import useBoolean from "@/hooks/useBoolean"
 import { registrationSchema } from "@/schemas/registration/registration.schema"
-import { ErrorMessage, OrganizationInfo, PasswordRules } from "@/shared/components"
+import { ErrorMessage, PasswordRules } from "@/shared/components"
 import { Button, Input, LinkRedirect, Paragraph, Title } from "@/shared/ui"
 import { useRegistrationUserMutation } from "@/store/services/authInjectApi"
 import { RegistrationBody } from "@/types"
@@ -225,8 +225,6 @@ export const Registration = () => {
           <LinkRedirect href="/(public)/(auth)/signin">{t("Увійти")}</LinkRedirect>
         </View>
       </View>
-
-      <OrganizationInfo />
     </ScrollView>
   )
 }
