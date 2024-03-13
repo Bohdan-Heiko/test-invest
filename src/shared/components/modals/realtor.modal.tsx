@@ -105,7 +105,6 @@ const style = StyleSheet.create({
     gap: 10
   },
   btn: {
-    // maxWidth: "40%",
     marginBottom: 0
   }
 })
