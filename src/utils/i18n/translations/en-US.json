@@ -144,6 +144,9 @@
     "Додати рієлтора": "Add Realtor",
     "Код вашого рієлтора": "Your Realtor Code",
     "Пошук": "Search",
-    "Ваш рієлтор": "Your Realtor"
+    "Ваш рієлтор": "Your Realtor",
+    "Ріелтора з таким кодом не знайдено": "Realtor with this code not found",
+    "Ввести інший код": "Enter another code",
+    "Вийти": "Cancel"
   }
 }

@@ -10,7 +10,6 @@ import { ModalConfig } from "./config.modal"
 
 interface Props {
   t: TFunction
-  modalVisible: boolean
   modalData: RealtorModalData
   onClose: () => void
 }
@@ -25,7 +24,7 @@ function isHasLoading(inputState: InputState): inputState is { isLoading?: boole
   return inputState !== undefined && "isLoading" in inputState && !!inputState.isLoading
 }
 
-export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData }) => {
+export const RealtorModal: FC<Props> = ({ t, onClose, modalData }) => {
   const [value, setValue] = useState<string>("")
   const [inputState, setInputState] = useState<InputState | undefined>(undefined)
 
@@ -43,7 +42,7 @@ export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData })
   }
 
   return (
-    <ModalConfig modalVisible={modalVisible}>
+    <ModalConfig modalVisible={true}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={style.mainContainer}>
           <View style={style.contentContainer}>

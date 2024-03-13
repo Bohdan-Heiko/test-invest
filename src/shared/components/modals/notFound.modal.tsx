@@ -2,7 +2,7 @@ import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
 import { FC } from "react"
 import { TFunction } from "i18next"
 
-import { Button, Paragraph, Title } from "@/shared/ui"
+import { Button, Title } from "@/shared/ui"
 import { ConfrimModalData } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
@@ -14,40 +14,25 @@ interface Props {
   modalData: ConfrimModalData
 }
 
-export const ConfirmModal: FC<Props> = ({ t, onClose, modalData }) => {
+export const NotFoundModal: FC<Props> = ({ t, onClose, modalData }) => {
   return (
     <ModalConfig modalVisible={true}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={style.mainContainer}>
           <View style={style.contentContainer}>
             <View style={style.titleContainer}>
-              <Title style={style.title}>{t(modalData?.data.title)}</Title>
-              {modalData.data.subTitle && (
-                <Paragraph
-                  style={[
-                    style.paragraph,
-                    {
-                      textAlign:
-                        modalData.data.subTitle?.split(" ").length! <= 4
-                          ? "center"
-                          : "auto"
-                    }
-                  ]}
-                >
-                  {t(modalData.data.subTitle!)}
-                </Paragraph>
-              )}
+              <Title style={style.title}>{t("Ріелтора з таким кодом не знайдено")}</Title>
             </View>
             <View style={style.btnContainer}>
               <Button
-                title={t("Так")}
                 style={style.btn}
+                title={t("Ввести інший код")}
                 onPress={modalData.data.handlePress}
               />
               <Button
                 onPress={onClose}
-                title={t("Ні")}
-                style={style.btn}
+                title={t("Вийти")}
+                style={[style.btn, { maxWidth: "30%" }]}
                 variant="secondary"
               />
             </View>
@@ -93,7 +78,7 @@ const style = StyleSheet.create({
     gap: 10
   },
   btn: {
-    maxWidth: "40%",
+    maxWidth: "70%",
     marginBottom: 0
   }
 })

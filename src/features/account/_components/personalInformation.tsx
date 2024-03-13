@@ -11,6 +11,7 @@ import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { mainApi } from "@/store/services/mainApi"
 import { useLazyFindUserRealtorQuery } from "@/store/services/userOperationsApi"
+import { useChangeUserDataMutation } from "@/store/services/usersApi"
 import { TLanguage, UserDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
@@ -24,14 +25,32 @@ interface IProps {
 export const PersonalInformation: FC<IProps> = ({ t, data }) => {
   const dispatch = useDispatch()
   const { setLanguage } = useActions()
-  const { openModal } = useModalContext()
+  const { openModal, closeModal } = useModalContext()
   const { i18n } = useTranslation("account")
   const { userLanguage } = useAppSelector((state) => state.i18n)
+  const { id: userID } = useAppSelector((state) => state.user_data)
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [rotationValue] = useState(new Animated.Value(0))
 
   const [findUserRealtor] = useLazyFindUserRealtorQuery()
+  const [changeUserData] = useChangeUserDataMutation()
+
+  const handleChangeUserData = async (realtorID: number) => {
+    const data = {
+      id: userID,
+      realtor: { id: realtorID }
+    }
+
+    await changeUserData(data).unwrap().then(closeModal).catch(console.log)
+  }
+
+  const openRealtorModal = () => {
+    openModal({
+      type: "realtor-modal",
+      data: { findRealtor: onFindRealtor }
+    })
+  }
 
   const onFindRealtor = async (link: string) => {
     await findUserRealtor(link)
@@ -39,10 +58,21 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
       .then((res) => {
         openModal({
           type: "confirm-modal",
-          data: { title: "Ви впевнені?", subTitle: `${res.name}?` }
+          data: {
+            title: "Ваш рієлтор",
+            subTitle: `${res.name}?`,
+            handlePress: () => handleChangeUserData(res.id)
+          }
         })
       })
-      .catch(console.log)
+      .catch(() => {
+        openModal({
+          type: "reltor-notFound",
+          data: {
+            handlePress: openRealtorModal
+          }
+        })
+      })
   }
 
   const rotateIcon = () => {
@@ -113,14 +143,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
               {data?.realtor ? data.realtor.name : t("У вас ще немає рієлтора")}
             </ItemText>
             {!data?.realtor && (
-              <TouchableOpacity
-                onPress={() =>
-                  openModal({
-                    type: "realtor-modal",
-                    data: { findRealtor: onFindRealtor }
-                  })
-                }
-              >
+              <TouchableOpacity onPress={openRealtorModal}>
                 <ItemText style={[style.languageTitle, { color: colors.blue }]}>
                   {t("Додати ріелтора")}
                 </ItemText>
