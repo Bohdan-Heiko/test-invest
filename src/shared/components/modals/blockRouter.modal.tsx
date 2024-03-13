@@ -1,33 +1,37 @@
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-import { IModalContext } from "@/types"
+import { ConfrimModalData, IModalContext, RealtorModalData } from "@/types"
 
-import { InvestModal } from "./invest.modal"
+import { ConfirmModal } from "./confirm.modal"
 import { RealtorModal } from "./realtor.modal"
 
-type Props = Pick<IModalContext, "openedModal" | "modalData" | "closeModal">
+type Props = Pick<IModalContext, "modalData" | "closeModal">
 
-export const ModalBlockRouter: FC<Props> = ({ modalData, closeModal, openedModal }) => {
+export const ModalBlockRouter: FC<Props> = ({ modalData, closeModal }) => {
   const { t } = useTranslation()
   return (
     <>
-      {
-        {
-          "no-modal": <></>,
-          "realtor-modal": (
-            <RealtorModal
-              t={t}
-              onClose={closeModal}
-              modalVisible={!!openedModal}
-              modalData={modalData}
-            />
-          ),
-          "invest-modal": (
-            <InvestModal t={t} onClose={closeModal} modalVisible={!!openedModal} />
-          )
-        }[openedModal]
-      }
+      {modalData?.type
+        ? {
+            "realtor-modal": (
+              <RealtorModal
+                t={t}
+                onClose={closeModal}
+                modalVisible={true}
+                modalData={modalData as RealtorModalData}
+              />
+            ),
+            "confirm-modal": (
+              <ConfirmModal
+                t={t}
+                onClose={closeModal}
+                modalVisible={true}
+                modalData={modalData as ConfrimModalData}
+              />
+            )
+          }[modalData?.type]
+        : null}
     </>
   )
 }

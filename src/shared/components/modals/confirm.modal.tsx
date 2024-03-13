@@ -6,25 +6,46 @@ import { Button, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 
 import { ModalConfig } from "./config.modal"
+import { IModalContext, ConfrimModalData } from "@/types"
 
 interface Props {
   t: TFunction
   modalVisible: boolean
   onClose: () => void
+  modalData: ConfrimModalData
 }
 
-export const InvestModal: FC<Props> = ({ t, modalVisible, onClose }) => {
+function isConfirmModalData(
+  data: IModalContext["modalData"],
+  type: "title" | "subTitle"
+): data is ConfrimModalData {
+  return type in data
+}
+
+export const ConfirmModal: FC<Props> = ({ t, modalVisible, onClose, modalData }) => {
   return (
     <ModalConfig modalVisible={modalVisible}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={style.mainContainer}>
           <View style={style.contentContainer}>
-            <Title style={style.title}>{t("Ви впевнені")}</Title>
-            <Paragraph style={style.paragraph}>
-              {t(
-                "У разі скасування інвестиції усі нараховані відсотки анулюються, а сума інвестиції розблокується для виводу"
+            <View style={style.titleContainer}>
+              <Title style={style.title}>{t(modalData?.data.title)}</Title>
+              {isConfirmModalData(modalData, "subTitle") && (
+                <Paragraph
+                  style={[
+                    style.paragraph,
+                    {
+                      textAlign:
+                        modalData.data.subTitle?.split(" ").length! <= 4
+                          ? "center"
+                          : "auto"
+                    }
+                  ]}
+                >
+                  {t(modalData.data.subTitle ?? "")}
+                </Paragraph>
               )}
-            </Paragraph>
+            </View>
             <View style={style.btnContainer}>
               <Button
                 onPress={() => console.log("log")}
@@ -60,13 +81,17 @@ const style = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10
   },
+  titleContainer: {
+    paddingVertical: 15,
+    gap: 10
+  },
   title: {
     color: colors.mine_shaft
   },
   paragraph: {
     color: colors.mine_shaft,
     fontSize: 20,
-    textAlign: "auto"
+    textAlign: "center"
   },
   btnContainer: {
     display: "flex",

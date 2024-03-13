@@ -5,12 +5,24 @@ import { IModalContext, ModalData, ModalTypes } from "@/types"
 
 export const ModalsContext = createContext({} as IModalContext)
 
-export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
-  const [openedModal, setOpenedModal] = useState<ModalTypes>("no-modal")
-  const [modalData, setModalData] = useState<any>()
+// interface RealtorModal {
+//   type: "reltor"
+//   data: { a: number; b: number }
+// }
 
-  const openModal = (type: ModalTypes, data: ModalData) => {
-    setOpenedModal(type)
+// interface ConfirmModal {
+//   type: "confirm"
+//   data: { a: string; uuid: number }
+// }
+
+// type newModalData = RealtorModal | ConfirmModal
+
+export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
+  // const [openedModal, setOpenedModal] = useState<ModalTypes>("no-modal")
+  const [modalData, setModalData] = useState<ModalData | null>(null)
+
+  const openModal = (data: ModalData) => {
+    // setOpenedModal(type)
     setModalData(data)
   }
 
@@ -19,26 +31,24 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const closeModal = () => {
-    setOpenedModal("no-modal")
-    setModalData("")
+    // setOpenedModal("no-modal")
+    setModalData(null)
   }
 
   const value = useMemo(() => {
     return {
-      openedModal,
       modalData,
       openModal,
       closeModal,
       updateModalData
     }
-  }, [modalData, openedModal]) as IModalContext
+  }, [modalData]) as IModalContext
 
   return (
     <ModalsContext.Provider value={value}>
       {children}
       <ModalBlockRouter
-        openedModal={openedModal}
-        modalData={modalData}
+        modalData={modalData!}
         closeModal={closeModal}
       />
     </ModalsContext.Provider>
@@ -46,8 +56,7 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
 }
 
 export const useModalContext = () => {
-  const { openedModal, modalData, openModal, updateModalData, closeModal } =
-    useContext(ModalsContext)
+  const { modalData, openModal, updateModalData, closeModal } = useContext(ModalsContext)
 
-  return { openedModal, modalData, openModal, updateModalData, closeModal }
+  return { modalData, openModal, updateModalData, closeModal }
 }

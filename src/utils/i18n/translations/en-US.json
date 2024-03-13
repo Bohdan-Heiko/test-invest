@@ -137,7 +137,7 @@
     "Скинути пароль": "Reset password"
   },
   "modal": {
-    "Ви впевнені": "Are you sure?",
+    "Ви впевнені?": "Are you sure?",
     "У разі скасування інвестиції усі нараховані відсотки анулюються, а сума інвестиції розблокується для виводу": "In case of cancellation of the investment, all accrued interest is canceled and the investment amount is unlocked for withdrawal.",
     "Так": "Yes",
     "Ні": "No",

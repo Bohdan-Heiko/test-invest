@@ -34,7 +34,15 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
   const [findUserRealtor] = useLazyFindUserRealtorQuery()
 
   const onFindRealtor = async (link: string) => {
-    await findUserRealtor(link).unwrap().then(console.log).catch(console.log)
+    await findUserRealtor(link)
+      .unwrap()
+      .then((res) => {
+        openModal({
+          type: "confirm-modal",
+          data: { title: "Ви впевнені?", subTitle: `${res.name}?` }
+        })
+      })
+      .catch(console.log)
   }
 
   const rotateIcon = () => {
@@ -106,7 +114,12 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
             </ItemText>
             {!data?.realtor && (
               <TouchableOpacity
-                onPress={() => openModal("realtor-modal", { findRealtor: onFindRealtor })}
+                onPress={() =>
+                  openModal({
+                    type: "realtor-modal",
+                    data: { findRealtor: onFindRealtor }
+                  })
+                }
               >
                 <ItemText style={[style.languageTitle, { color: colors.blue }]}>
                   {t("Додати ріелтора")}

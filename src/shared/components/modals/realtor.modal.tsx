@@ -3,7 +3,7 @@ import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
 import { Button, Input, Title } from "@/shared/ui"
-import { IModalContext } from "@/types"
+import { RealtorModalData } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { ModalConfig } from "./config.modal"
@@ -11,18 +11,18 @@ import { ModalConfig } from "./config.modal"
 interface Props {
   t: TFunction
   modalVisible: boolean
-  modalData: IModalContext["modalData"]
+  modalData: RealtorModalData
   onClose: () => void
 }
 
 type InputState = { isError?: boolean } | { isLoading?: boolean }
 
-function hasError(inputState: InputState): inputState is { isError?: boolean } {
-  return inputState !== undefined && "isError" in inputState
+function isHasError(inputState: InputState): inputState is { isError?: boolean } {
+  return inputState !== undefined && "isError" in inputState && !!inputState.isError
 }
 
-function hasLoading(inputState: InputState): inputState is { isLoading?: boolean } {
-  return inputState !== undefined && "isLoading" in inputState
+function isHasLoading(inputState: InputState): inputState is { isLoading?: boolean } {
+  return inputState !== undefined && "isLoading" in inputState && !!inputState.isLoading
 }
 
 export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData }) => {
@@ -33,7 +33,7 @@ export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData })
     if (!value) return setInputState({ isError: true })
     else {
       setInputState({ isLoading: true })
-      modalData.findRealtor(value)
+      modalData.data.findRealtor(value)
     }
   }
 
@@ -51,7 +51,7 @@ export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData })
             <View style={{ gap: 5 }}>
               <Input
                 isDotNeed={false}
-                error={hasError(inputState!)}
+                error={isHasError(inputState!)}
                 inputProps={{
                   placeholder: "Код вашого рієлтора",
                   autoFocus: true,
@@ -62,7 +62,7 @@ export const RealtorModal: FC<Props> = ({ t, modalVisible, onClose, modalData })
 
               <Button
                 onPress={handleFindRieltor}
-                loading={{ isLoading: hasLoading(inputState!), isNeed: true }}
+                loading={{ isLoading: isHasLoading(inputState!), isNeed: true }}
                 title={t("Пошук")}
                 style={style.btn}
               />
