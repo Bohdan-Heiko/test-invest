@@ -99,7 +99,10 @@
     "У вас ще немає інвестицій": "You have no investments yet",
     "Ви ще не інвестували в проекти": "You haven't invested in any projects yet",
     "Вихід": "Logout",
-    "Відсоток прибутку": "Percentage of profit"
+    "Відсоток прибутку": "Percentage of profit",
+    "Ви впевнені, що хочете вийти?": "Are you sure you want to exit?",
+    "Так": "Yes",
+    "Ні": "No"
   },
   "status": {
     "Оплата не пройшла": "Payment failed",
