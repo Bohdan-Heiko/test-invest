@@ -1,4 +1,4 @@
-export type ModalTypes = "no-modal" | "invest-modal" | string
+export type ModalTypes = "no-modal" | "invest-modal" | ""
 
 export type ModalData = {
   show: boolean

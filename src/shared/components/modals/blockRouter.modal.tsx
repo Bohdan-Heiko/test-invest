@@ -1,7 +1,9 @@
-import { IModalContext } from "@/types"
-import { InvestModal } from "./invest.modal"
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
+
+import { IModalContext } from "@/types"
+
+import { InvestModal } from "./invest.modal"
 
 type Props = Pick<IModalContext, "openedModal" | "modalData" | "closeModal">
 

@@ -1,10 +1,10 @@
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
+import { FC } from "react"
+import { TFunction } from "i18next"
 
 import { Button, Paragraph, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 
-import { FC } from "react"
-import { TFunction } from "i18next"
 import { ModalConfig } from "./config.modal"
 
 interface Props {

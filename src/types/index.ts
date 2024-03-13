@@ -8,6 +8,7 @@ export {
   TransactionResponse
 } from "./investments"
 export { TLanguage } from "./language"
+export { IModalContext, ModalData, ModalTypes } from "./modals"
 export {
   LoginBody,
   LoginResponse,
@@ -20,5 +21,3 @@ export {
   UserDataResponse,
   UserInvestmentsDataResponse
 } from "./users"
-
-export { ModalTypes,  IModalContext, ModalData } from "./modals"

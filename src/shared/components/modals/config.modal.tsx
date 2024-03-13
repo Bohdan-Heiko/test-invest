@@ -1,5 +1,5 @@
-import { FC } from "react"
 import Modal from "react-native-modal"
+import { FC } from "react"
 
 interface Props {
   modalVisible: boolean

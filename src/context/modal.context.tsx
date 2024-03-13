@@ -1,6 +1,7 @@
+import { createContext, useContext, useMemo, useState } from "react"
+
 import { ModalBlockRouter } from "@/shared/components"
 import { IModalContext, ModalData, ModalTypes } from "@/types"
-import { createContext, useContext, useMemo, useState } from "react"
 
 export const ModalsContext = createContext({} as IModalContext)
 
