@@ -1,4 +1,6 @@
 import {
+  FeedbackBody,
+  FeedbackResponse,
   HydraData,
   RealtorData,
   TransformedData,
@@ -55,7 +57,15 @@ export const usersOperationsApi = mainApi.injectEndpoints({
 
     findUserRealtor: builder.query<RealtorData, string>({
       query: (link) => ({
-        url: `api/users/link/${link}`
+        url: `/api/users/link/${link}`
+      })
+    }),
+
+    createFeedBack: builder.mutation<FeedbackResponse, FeedbackBody>({
+      query: (body) => ({
+        url: `api/public/feedback`,
+        method: "POST",
+        body
       })
     }),
 
@@ -75,5 +85,6 @@ export const {
   useGetUserAccrualsQuery,
   useGetUserInvestmentsQuery,
   useLazyFindUserRealtorQuery,
+  useCreateFeedBackMutation,
   useCreateInvestmentsMutation
 } = usersOperationsApi
