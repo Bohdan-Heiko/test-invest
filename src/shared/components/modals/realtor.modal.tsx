@@ -52,7 +52,7 @@ export const RealtorModal: FC<Props> = ({ t, onClose, modalData }) => {
                 isDotNeed={false}
                 error={isHasError(inputState!)}
                 inputProps={{
-                  placeholder: "Код вашого рієлтора",
+                  placeholder: t("Код вашого рієлтора"),
                   autoFocus: true,
                   value,
                   onChangeText: handleChangeValue

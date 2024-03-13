@@ -32,7 +32,7 @@ export const NotFoundModal: FC<Props> = ({ t, onClose, modalData }) => {
               <Button
                 onPress={onClose}
                 title={t("Вийти")}
-                style={[style.btn, { maxWidth: "30%" }]}
+                style={[style.btn, { maxWidth: "35%" }]}
                 variant="secondary"
               />
             </View>
@@ -78,7 +78,7 @@ const style = StyleSheet.create({
     gap: 10
   },
   btn: {
-    maxWidth: "70%",
+    maxWidth: "65%",
     marginBottom: 0
   }
 })

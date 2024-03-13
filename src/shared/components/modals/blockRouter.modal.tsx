@@ -10,7 +10,7 @@ import { RealtorModal } from "./realtor.modal"
 type Props = Pick<IModalContext, "modalData" | "closeModal">
 
 export const ModalBlockRouter: FC<Props> = ({ modalData, closeModal }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('modal')
   return (
     <>
       {modalData?.type

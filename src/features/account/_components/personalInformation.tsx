@@ -145,7 +145,7 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
             {!data?.realtor && (
               <TouchableOpacity onPress={openRealtorModal}>
                 <ItemText style={[style.languageTitle, { color: colors.blue }]}>
-                  {t("Додати ріелтора")}
+                  {t("Додати")}
                 </ItemText>
               </TouchableOpacity>
             )}
