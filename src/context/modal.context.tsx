@@ -1,15 +1,14 @@
-import { ModalBlockRouter } from "@/shared/components"
-import { IModalContext, ModalData, ModalTypes } from "@/types"
 import { createContext, useContext, useMemo, useState } from "react"
+
+import { ModalBlockRouter } from "@/shared/components"
+import { IModalContext, ModalData } from "@/types"
 
 export const ModalsContext = createContext({} as IModalContext)
 
 export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
-  const [openedModal, setOpenedModal] = useState<ModalTypes>("no-modal")
-  const [modalData, setModalData] = useState<any>()
+  const [modalData, setModalData] = useState<ModalData | null>(null)
 
-  const openModal = (type: ModalTypes, data: ModalData) => {
-    setOpenedModal(type)
+  const openModal = (data: ModalData) => {
     setModalData(data)
   }
 
@@ -18,35 +17,28 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const closeModal = () => {
-    setOpenedModal("")
-    setModalData("")
+    setModalData(null)
   }
 
   const value = useMemo(() => {
     return {
-      openedModal,
       modalData,
       openModal,
       closeModal,
       updateModalData
     }
-  }, [modalData, openedModal]) as IModalContext
+  }, [modalData]) as IModalContext
 
   return (
     <ModalsContext.Provider value={value}>
       {children}
-      <ModalBlockRouter
-        openedModal={openedModal}
-        modalData={modalData}
-        closeModal={closeModal}
-      />
+      <ModalBlockRouter modalData={modalData!} closeModal={closeModal} />
     </ModalsContext.Provider>
   )
 }
 
 export const useModalContext = () => {
-  const { openedModal, modalData, openModal, updateModalData, closeModal } =
-    useContext(ModalsContext)
+  const { modalData, openModal, updateModalData, closeModal } = useContext(ModalsContext)
 
-  return { openedModal, modalData, openModal, updateModalData, closeModal }
+  return { modalData, openModal, updateModalData, closeModal }
 }

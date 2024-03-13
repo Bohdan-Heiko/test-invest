@@ -292,5 +292,16 @@ export const style = StyleSheet.create({
     gap: 20,
     display: "flex",
     flexDirection: "row"
+  },
+
+  //BOTTOM SHEET
+
+  bottomContainer: {
+    paddingBottom: 20
+  },
+  bottomTitle: {
+    fontSize: 23,
+    marginBottom: 20,
+    color: colors.mine_shaft
   }
 })

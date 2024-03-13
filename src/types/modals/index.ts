@@ -1,14 +1,37 @@
-export type ModalTypes = "no-modal" | "invest-modal" | string
+export type ModalTypes =
+  | "no-modal"
+  | "confirm-modal"
+  | "realtor-modal"
+  | "reltor-notFound"
 
-export type ModalData = {
-  show: boolean
-  data: any
+export type RealtorModalData = {
+  type: "realtor-modal"
+  data: {
+    findRealtor: (link: string) => void
+  }
 }
 
+export type ConfrimModalData = {
+  type: "confirm-modal"
+  data: {
+    title: string
+    subTitle?: string
+    handlePress?: () => void
+  }
+}
+
+export type RealtorNotFoundModal = {
+  type: "reltor-notFound"
+  data: {
+    handlePress?: () => void
+  }
+}
+
+export type ModalData = RealtorModalData | ConfrimModalData | RealtorNotFoundModal
+
 export interface IModalContext {
-  openedModal: ModalTypes
-  modalData: any
-  openModal: (type: ModalTypes, modalData?: Record<string, any>) => void
-  updateModalData: (data: any) => void
+  modalData: ModalData
+  openModal: (data: ModalData) => void
+  updateModalData: (data: ModalData) => void
   closeModal: () => void
 }

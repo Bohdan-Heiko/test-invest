@@ -9,6 +9,13 @@ export {
 } from "./investments"
 export { TLanguage } from "./language"
 export {
+  ConfrimModalData,
+  IModalContext,
+  ModalData,
+  ModalTypes,
+  RealtorModalData
+} from "./modals"
+export {
   LoginBody,
   LoginResponse,
   RegistrationBody,
@@ -16,9 +23,8 @@ export {
 } from "./registration"
 export { HydraData, TransformedData } from "./transformData"
 export {
+  RealtorData,
   UserAccrualsDataResponse,
   UserDataResponse,
   UserInvestmentsDataResponse
 } from "./users"
-
-export { ModalTypes,  IModalContext, ModalData } from "./modals"

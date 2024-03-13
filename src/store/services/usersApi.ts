@@ -1,4 +1,10 @@
-import { BuildingsResponse, HydraData, TransformedData, UserDataResponse } from "@/types"
+import {
+  BuildingsResponse,
+  HydraData,
+  RealtorData,
+  TransformedData,
+  UserDataResponse
+} from "@/types"
 import { transformDataHelpers } from "@/utils/helpers/transformData"
 
 import { mainApi } from "./mainApi"
@@ -37,9 +43,25 @@ export const usersApi = mainApi.injectEndpoints({
         )
       },
       providesTags: ["UserBuildings"]
+    }),
+
+    changeUserData: builder.mutation<
+      RealtorData,
+      { id: number; realtor: { id: number } }
+    >({
+      query: (body) => ({
+        url: `api/users/${body.id}`,
+        body,
+        method: "PATCH"
+      }),
+      invalidatesTags: ["GetMeData"]
     })
   })
 })
 
-export const { useGetMeQuery, useSumAccuralsProceentsQuery, useGetUserBuildingsQuery } =
-  usersApi
+export const {
+  useGetMeQuery,
+  useSumAccuralsProceentsQuery,
+  useGetUserBuildingsQuery,
+  useChangeUserDataMutation
+} = usersApi

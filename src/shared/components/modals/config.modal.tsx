@@ -1,5 +1,5 @@
-import { FC } from "react"
 import Modal from "react-native-modal"
+import { FC } from "react"
 
 interface Props {
   modalVisible: boolean
@@ -10,6 +10,7 @@ export const ModalConfig: FC<Props> = ({ modalVisible, children }) => {
   return (
     <Modal
       isVisible={modalVisible}
+      avoidKeyboard={true}
       animationIn="fadeIn"
       animationOut="slideOutDown"
       animationOutTiming={0}

@@ -1,5 +1,6 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { forwardRef, useCallback, useMemo } from "react"
+import { Portal } from "react-native-portalize"
 
 import { colors } from "@/utils/constants/colors"
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet"
@@ -11,7 +12,7 @@ interface CustomBottomSheetProps {
 }
 
 const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) => {
-  const initialSnapPoints = useMemo(() => ["10%"], [])
+  const initialSnapPoints = useMemo(() => ["15%"], [])
   const insets = useSafeAreaInsets()
 
   const renderBackdrop = useCallback(
@@ -23,21 +24,23 @@ const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) =
   )
 
   return (
-    <BottomSheet
-      ref={ref}
-      index={-1}
-      snapPoints={initialSnapPoints}
-      enableDynamicSizing={true}
-      enablePanDownToClose={true}
-      topInset={insets.top}
-      handleIndicatorStyle={{ backgroundColor: colors.silver }}
-      backgroundStyle={{ backgroundColor: colors.white }}
-      backdropComponent={renderBackdrop}
-    >
-      <BottomSheetView style={{ paddingHorizontal: 20 }}>
-        {props.children}
-      </BottomSheetView>
-    </BottomSheet>
+    <Portal>
+      <BottomSheet
+        ref={ref}
+        index={-1}
+        snapPoints={initialSnapPoints}
+        enableDynamicSizing={true}
+        enablePanDownToClose={true}
+        topInset={insets.top}
+        handleIndicatorStyle={{ backgroundColor: colors.silver }}
+        backgroundStyle={{ backgroundColor: colors.white }}
+        backdropComponent={renderBackdrop}
+      >
+        <BottomSheetView style={{ paddingHorizontal: 20 }}>
+          {props.children}
+        </BottomSheetView>
+      </BottomSheet>
+    </Portal>
   )
 })
 

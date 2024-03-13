@@ -2,13 +2,13 @@ import { ActivityIndicator, TouchableOpacity, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
+import { useModalContext } from "@/context/modal.context"
 import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
 import { TransformedData, UserInvestmentsDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { useModalContext } from "@/context/modal.context"
 
 interface InvestmentAccount {
   t: TFunction
@@ -54,7 +54,7 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
                   >
                     {building.building.title}
                   </Title>
-                  <TouchableOpacity onPress={() => openModal('invest-modal')}>
+                  <TouchableOpacity onPress={() => openModal("invest-modal")}>
                     <VectorExpoIcons type={"Feather"} name="x" />
                   </TouchableOpacity>
                 </View>

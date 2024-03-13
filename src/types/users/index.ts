@@ -10,7 +10,7 @@ export interface UserDataResponse {
   isAllowCryptoPayment: boolean
   isRealtor: boolean
   realtorPercent?: number
-  realtor?: Realtor
+  realtor?: RealtorData
   inviteLink?: string
   name: string
   phone: string
@@ -41,7 +41,7 @@ interface ActivatedBy {
   withdrawals: string
 }
 
-interface Realtor {
+export interface RealtorData {
   accruals: string
   activatedBy: ActivatedBy
   balance: string

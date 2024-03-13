@@ -1,35 +1,48 @@
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
-
-import { Button, Paragraph, Title } from "@/shared/ui"
-import { colors } from "@/utils/constants/colors"
-
 import { FC } from "react"
 import { TFunction } from "i18next"
+
+import { Button, Paragraph, Title } from "@/shared/ui"
+import { ConfrimModalData } from "@/types"
+import { colors } from "@/utils/constants/colors"
+
 import { ModalConfig } from "./config.modal"
 
 interface Props {
   t: TFunction
-  modalVisible: boolean
   onClose: () => void
+  modalData: ConfrimModalData
 }
 
-export const InvestModal: FC<Props> = ({ t, modalVisible, onClose }) => {
+export const ConfirmModal: FC<Props> = ({ t, onClose, modalData }) => {
   return (
-    <ModalConfig modalVisible={modalVisible}>
+    <ModalConfig modalVisible={true}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={style.mainContainer}>
           <View style={style.contentContainer}>
-            <Title style={style.title}>{t("Ви впевнені")}</Title>
-            <Paragraph style={style.paragraph}>
-              {t(
-                "У разі скасування інвестиції усі нараховані відсотки анулюються, а сума інвестиції розблокується для виводу"
+            <View style={style.titleContainer}>
+              <Title style={style.title}>{t(modalData?.data.title)}</Title>
+              {modalData.data.subTitle && (
+                <Paragraph
+                  style={[
+                    style.paragraph,
+                    {
+                      textAlign:
+                        modalData.data.subTitle?.split(" ").length! <= 4
+                          ? "center"
+                          : "auto"
+                    }
+                  ]}
+                >
+                  {t(modalData.data.subTitle!)}
+                </Paragraph>
               )}
-            </Paragraph>
+            </View>
             <View style={style.btnContainer}>
               <Button
-                onPress={() => console.log("log")}
                 title={t("Так")}
                 style={style.btn}
+                onPress={modalData.data.handlePress}
               />
               <Button
                 onPress={onClose}
@@ -60,13 +73,17 @@ const style = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10
   },
+  titleContainer: {
+    paddingVertical: 15,
+    gap: 10
+  },
   title: {
     color: colors.mine_shaft
   },
   paragraph: {
     color: colors.mine_shaft,
     fontSize: 20,
-    textAlign: "auto"
+    textAlign: "center"
   },
   btnContainer: {
     display: "flex",

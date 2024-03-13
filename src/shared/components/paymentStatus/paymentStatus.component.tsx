@@ -37,8 +37,7 @@ export const PaymentStatus = () => {
     pollingInterval: !successRef.current ? 500 : 0
   })
 
-  console.log(paymentStatus);
-  
+  console.log(paymentStatus)
 
   const handleReedirect = () => {
     if (paymentStatus?.status !== "WaitingAuthComplete") {

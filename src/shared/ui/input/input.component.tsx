@@ -24,7 +24,7 @@ interface IProps {
   children?: ReactElement | null
   isDotNeed?: boolean
   fields?: FieldValues
-  error?: FieldError | undefined
+  error?: FieldError | boolean | undefined
   isTouchField?: boolean
   onPressIcon?: () => void
 }

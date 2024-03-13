@@ -1,5 +1,6 @@
 import {
   HydraData,
+  RealtorData,
   TransformedData,
   UserAccrualsDataResponse,
   UserInvestmentsDataResponse
@@ -52,6 +53,12 @@ export const usersOperationsApi = mainApi.injectEndpoints({
       providesTags: ["UserInvestments"]
     }),
 
+    findUserRealtor: builder.query<RealtorData, string>({
+      query: (link) => ({
+        url: `api/users/link/${link}`
+      })
+    }),
+
     // FAKE Paymeent
     createInvestments: builder.mutation<TransactionResponse, TransactionBody>({
       query: (body) => ({
@@ -67,5 +74,6 @@ export const usersOperationsApi = mainApi.injectEndpoints({
 export const {
   useGetUserAccrualsQuery,
   useGetUserInvestmentsQuery,
+  useLazyFindUserRealtorQuery,
   useCreateInvestmentsMutation
 } = usersOperationsApi
