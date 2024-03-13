@@ -28,3 +28,5 @@ export {
   UserDataResponse,
   UserInvestmentsDataResponse
 } from "./users"
+
+export { FeedbackBody, FeedbackResponse } from "./feedBack"

@@ -49,9 +49,7 @@ export const Input: React.FC<IProps> = ({
       ]}
     >
       <TextInput
-        style={{
-          ...style.input
-        }}
+        style={style.input}
         placeholderTextColor={colors.silver}
         {...fields}
         {...inputProps}
@@ -82,6 +80,7 @@ const style = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: 'space-between',
     flexGrow: 1,
     paddingHorizontal: 16,
     paddingVertical: 13,
