@@ -10,6 +10,7 @@ export const ModalConfig: FC<Props> = ({ modalVisible, children }) => {
   return (
     <Modal
       isVisible={modalVisible}
+      avoidKeyboard={true}
       animationIn="fadeIn"
       animationOut="slideOutDown"
       animationOutTiming={0}

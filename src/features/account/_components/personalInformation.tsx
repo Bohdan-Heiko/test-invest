@@ -5,10 +5,12 @@ import { TFunction } from "i18next"
 import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 
+import { useModalContext } from "@/context/modal.context"
 import useActions from "@/hooks/useActions"
 import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { mainApi } from "@/store/services/mainApi"
+import { useLazyFindUserRealtorQuery } from "@/store/services/userOperationsApi"
 import { TLanguage, UserDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
@@ -22,11 +24,18 @@ interface IProps {
 export const PersonalInformation: FC<IProps> = ({ t, data }) => {
   const dispatch = useDispatch()
   const { setLanguage } = useActions()
+  const { openModal } = useModalContext()
   const { i18n } = useTranslation("account")
-
   const { userLanguage } = useAppSelector((state) => state.i18n)
+
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [rotationValue] = useState(new Animated.Value(0))
+
+  const [findUserRealtor] = useLazyFindUserRealtorQuery()
+
+  const onFindRealtor = async (link: string) => {
+    await findUserRealtor(link).unwrap().then(console.log).catch(console.log)
+  }
 
   const rotateIcon = () => {
     const initialValue = isCollapsed ? 0 : 1
@@ -95,6 +104,15 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
             <ItemText style={style.yourRieltorInfo}>
               {data?.realtor ? data.realtor.name : t("У вас ще немає рієлтора")}
             </ItemText>
+            {!data?.realtor && (
+              <TouchableOpacity
+                onPress={() => openModal("realtor-modal", { findRealtor: onFindRealtor })}
+              >
+                <ItemText style={[style.languageTitle, { color: colors.blue }]}>
+                  {t("Додати ріелтора")}
+                </ItemText>
+              </TouchableOpacity>
+            )}
           </View>
         )}
 

@@ -17,6 +17,7 @@ export {
 } from "./registration"
 export { HydraData, TransformedData } from "./transformData"
 export {
+  RealtorData,
   UserAccrualsDataResponse,
   UserDataResponse,
   UserInvestmentsDataResponse

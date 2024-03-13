@@ -19,7 +19,7 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const closeModal = () => {
-    setOpenedModal("")
+    setOpenedModal("no-modal")
     setModalData("")
   }
 

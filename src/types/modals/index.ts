@@ -1,14 +1,15 @@
-export type ModalTypes = "no-modal" | "invest-modal" | ""
+export type ModalTypes = "no-modal" | "invest-modal" | "realtor-modal"
 
-export type ModalData = {
-  show: boolean
-  data: any
+type RealtorModalData = {
+  findRealtor: (link: string) => void
 }
+
+export type ModalData = RealtorModalData
 
 export interface IModalContext {
   openedModal: ModalTypes
-  modalData: any
-  openModal: (type: ModalTypes, modalData?: Record<string, any>) => void
+  modalData: ModalData
+  openModal: (type: ModalTypes, modalData?: ModalData) => void
   updateModalData: (data: any) => void
   closeModal: () => void
 }

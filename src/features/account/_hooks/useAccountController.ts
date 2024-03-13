@@ -1,7 +1,6 @@
 import { useLayoutEffect } from "react"
 import { usePathname, useRouter } from "expo-router"
 
-import useActions from "@/hooks/useActions"
 import { useAppSelector } from "@/store"
 import {
   useGetUserAccrualsQuery,
