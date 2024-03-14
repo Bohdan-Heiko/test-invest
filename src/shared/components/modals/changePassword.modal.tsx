@@ -128,8 +128,8 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
               <Button
                 onPress={handleSubmit(handleChangePasswrod)}
                 disabled={isChangePasswordLoading}
-                loading={{isLoading: true, isNeed: false}}
-                title={t("Збе")}
+                loading={{ isLoading: isChangePasswordLoading }}
+                title={t("Зберегти")}
                 style={style.btn}
               />
             </View>
