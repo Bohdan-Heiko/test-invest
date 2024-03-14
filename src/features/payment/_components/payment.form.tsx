@@ -11,6 +11,7 @@ import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
+import { useAppSelector } from "@/store"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
@@ -21,6 +22,7 @@ type DefaultInvestValues = {
 const defaultValues: DefaultInvestValues = { amount: "", isCheckRules: false }
 
 export const PaymentForm = ({ t }: { t: TFunction }) => {
+  const { isAllowCryptoPayment } = useAppSelector((state) => state.user_data)
   const { handlePushRoute } = useAuthContext()
   const params = useLocalSearchParams<SearchParams>()
 
@@ -60,15 +62,17 @@ export const PaymentForm = ({ t }: { t: TFunction }) => {
       </View>
 
       <View style={style.paymentContainer}>
-        <View style={style.paymentMethodsContainer}>
-          <View style={style.paymentMethod}>
-            <SVGIcon name="Visa_Logo" width={40} height={25} />
-            <SVGIcon name="Visa_Name" width={55} height={15} />
+        {isAllowCryptoPayment ? (
+          <View style={style.paymentMethodsContainer}>
+            <View style={style.paymentMethod}>
+              <SVGIcon name="Visa_Logo" width={40} height={25} opacity={1} />
+              <SVGIcon name="Visa_Name" width={55} height={15} opacity={1} />
+            </View>
+            <View style={[style.paymentMethod, { justifyContent: "center" }]}>
+              <SVGIcon name="Tether_Usdt" width={36} height={36} opacity={1} />
+            </View>
           </View>
-          <View style={[style.paymentMethod, { justifyContent: "center" }]}>
-            <SVGIcon name="Tether_Usdt" width={36} height={36} />
-          </View>
-        </View>
+        ) : null}
         <View style={style.investInfoContainer}>
           <VectorExpoIcons
             type="MaterialIcons"
