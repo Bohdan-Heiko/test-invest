@@ -1,17 +1,17 @@
 import { ImageBackground, View } from "react-native"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as yup from "yup"
 
 import { Button, Input, Paragraph, Title } from "@/shared/ui"
+import { useCreateFeedBackMutation } from "@/store/services/userOperationsApi"
+import { FeedbackBody } from "@/types"
+import { colors } from "@/utils/constants/colors"
+import { yupResolver } from "@hookform/resolvers/yup"
 
 import FormBackgroundImage from "#/images/other/form-question-background.jpeg"
 
 import { style } from "../_style"
-import { useCreateFeedBackMutation } from "@/store/services/userOperationsApi"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { FeedbackBody } from "@/types"
-import { colors } from "@/utils/constants/colors"
-import { yupResolver } from "@hookform/resolvers/yup"
 
 const registrationSchema = yup.object({
   name: yup
@@ -51,7 +51,10 @@ export const CallBackForm = () => {
         <View
           style={[
             style.contentContainer,
-            { alignItems: isCreateFeedbackSuccess ? "center" : "flex-start", justifyContent: 'center' }
+            {
+              alignItems: isCreateFeedbackSuccess ? "center" : "flex-start",
+              justifyContent: "center"
+            }
           ]}
         >
           <Title style={style.contentTitle}>
@@ -65,7 +68,7 @@ export const CallBackForm = () => {
               {
                 fontSize: isCreateFeedbackSuccess ? 20 : 14,
                 color: isCreateFeedbackSuccess ? colors.white : colors.silver,
-                textAlign: isCreateFeedbackSuccess ? 'center' : 'left'
+                textAlign: isCreateFeedbackSuccess ? "center" : "left"
               }
             ]}
           >

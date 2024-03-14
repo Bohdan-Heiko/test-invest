@@ -1,5 +1,6 @@
 export { BuidersResponse } from "./buiders"
 export { BuildingsResponse } from "./buildings"
+export { FeedbackBody, FeedbackResponse } from "./feedBack"
 export { BarIconProps, IconType, SVGIconNames, VECTOR_ICONS_TYPE } from "./icons"
 export {
   CheckPaymentStatus,
@@ -9,11 +10,13 @@ export {
 } from "./investments"
 export { TLanguage } from "./language"
 export {
+  ChangePasswordModalData,
   ConfrimModalData,
   IModalContext,
   ModalData,
   ModalTypes,
-  RealtorModalData
+  RealtorModalData,
+  SuccessModalData
 } from "./modals"
 export {
   LoginBody,
@@ -28,5 +31,3 @@ export {
   UserDataResponse,
   UserInvestmentsDataResponse
 } from "./users"
-
-export { FeedbackBody, FeedbackResponse } from "./feedBack"

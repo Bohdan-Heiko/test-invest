@@ -154,9 +154,11 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
 
         <View style={style.functionsContainer}>
           <Title style={style.functionsTitle}>{t("Функції")}</Title>
-          <LinkRedirect href="/recover-password/" style={style.functionsLinks}>
-            {t("Змінити пароль")}
-          </LinkRedirect>
+          <TouchableOpacity onPress={() => openModal({ type: "changePassword-modal" })}>
+            <ItemText style={[style.languageTitle, { color: colors.blue }]}>
+              {t("Змінити пароль")}
+            </ItemText>
+          </TouchableOpacity>
           <LinkRedirect href="/(tabs)/account" style={style.functionsLinks}>
             {t("Вивести кошти")}
           </LinkRedirect>

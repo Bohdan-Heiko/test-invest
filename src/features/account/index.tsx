@@ -1,12 +1,15 @@
 import { ScrollView, View } from "react-native"
+import { useRef } from "react"
 import { useRouter } from "expo-router"
 import { useTranslation } from "react-i18next"
 
 import useActions from "@/hooks/useActions"
 import { OrganizationInfo } from "@/shared/components"
+import CustomBottomSheet from "@/shared/components/bottomSheet/bottomSheet.component"
 import { Button, Title } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { colors } from "@/utils/constants/colors"
+import BottomSheet from "@gorhom/bottom-sheet"
 
 import { AccrualAccount } from "./_components/accrualAccount"
 import { InvestmentAccount } from "./_components/investmentsAccount"
@@ -16,9 +19,6 @@ import { RieltorInformation } from "./_components/rieltorInformation"
 import { YourAccount } from "./_components/yourAccount"
 import { useAccontController } from "./_hooks/useAccountController"
 import { style } from "./_style"
-import CustomBottomSheet from "@/shared/components/bottomSheet/bottomSheet.component"
-import { useRef } from "react"
-import BottomSheet from "@gorhom/bottom-sheet"
 
 export const Account = () => {
   const router = useRouter()
