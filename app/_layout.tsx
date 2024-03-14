@@ -16,6 +16,7 @@ import { useFonts } from "expo-font"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { ModalsProvider } from "@/context/modal.context"
 import { Host } from "react-native-portalize"
+import { StatusBar } from "react-native"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -52,6 +53,7 @@ export default function RootLayout() {
           persistor={persistor}
           onBeforeLift={async () => await onBeforeLiftHandler(store)}
         >
+          <StatusBar animated={true} barStyle={"dark-content"} />
           <RootLayoutNav />
         </PersistGate>
       </ReduxProvider>

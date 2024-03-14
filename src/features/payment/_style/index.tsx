@@ -15,14 +15,16 @@ export const style = StyleSheet.create({
   descriptionContainer: {
     display: "flex",
     alignItems: "flex-start",
-    gap: 10,
+
+    shadowOffset: { height: 1, width: 1 },
+
     backgroundColor: colors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 11,
     shadowColor: "#777777",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     elevation: 4,
     paddingHorizontal: 20,
     paddingVertical: 20
@@ -38,6 +40,10 @@ export const style = StyleSheet.create({
     fontSize: 24,
     lineHeight: 36,
     color: colors.tundora
+  },
+  textContainer: {
+    paddingTop: 10,
+    gap: 10
   },
   descriptionText: {
     fontSize: 14,
