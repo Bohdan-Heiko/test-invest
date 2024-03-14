@@ -30,7 +30,6 @@ export const Main = () => {
       showsVerticalScrollIndicator={false}
       style={style.mainContainer}
     >
-      <Link href={'../(private)/confirm-payment'}>Confirm</Link>
       <MainProjectBanner text={t(TEXT1)} />
       <Buildings data={buildingsData} isLoading={isBuildingsDataLoading} />
       <Builders data={buildersData} isLoading={isBuildersLoading} />
