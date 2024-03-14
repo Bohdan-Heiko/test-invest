@@ -14,6 +14,7 @@ export const ModalConfig: FC<Props> = ({ modalVisible, children }) => {
       animationIn="fadeIn"
       animationOut="slideOutDown"
       animationOutTiming={0}
+      coverScreen={true}
       backdropTransitionOutTiming={0}
     >
       {children}

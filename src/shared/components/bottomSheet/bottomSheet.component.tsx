@@ -1,6 +1,6 @@
+import { Portal } from "react-native-portalize"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { forwardRef, useCallback, useMemo } from "react"
-import { Portal } from "react-native-portalize"
 
 import { colors } from "@/utils/constants/colors"
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet"

@@ -32,7 +32,11 @@ export const ModalsProvider = ({ children }: { children: JSX.Element }) => {
   return (
     <ModalsContext.Provider value={value}>
       {children}
-      <ModalBlockRouter modalData={modalData!} closeModal={closeModal} />
+      <ModalBlockRouter
+        openModal={openModal}
+        modalData={modalData!}
+        closeModal={closeModal}
+      />
     </ModalsContext.Provider>
   )
 }

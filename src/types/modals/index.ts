@@ -3,12 +3,18 @@ export type ModalTypes =
   | "confirm-modal"
   | "realtor-modal"
   | "reltor-notFound"
+  | "changePassword-modal"
+  | "success-modal"
 
 export type RealtorModalData = {
   type: "realtor-modal"
   data: {
     findRealtor: (link: string) => void
   }
+}
+
+export type ChangePasswordModalData = {
+  type: "changePassword-modal"
 }
 
 export type ConfrimModalData = {
@@ -27,7 +33,19 @@ export type RealtorNotFoundModal = {
   }
 }
 
-export type ModalData = RealtorModalData | ConfrimModalData | RealtorNotFoundModal
+export type SuccessModalData = {
+  type: "success-modal"
+  data: {
+    title: string
+  }
+}
+
+export type ModalData =
+  | RealtorModalData
+  | ConfrimModalData
+  | RealtorNotFoundModal
+  | ChangePasswordModalData
+  | SuccessModalData
 
 export interface IModalContext {
   modalData: ModalData

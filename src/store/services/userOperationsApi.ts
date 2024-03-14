@@ -63,8 +63,16 @@ export const usersOperationsApi = mainApi.injectEndpoints({
 
     createFeedBack: builder.mutation<FeedbackResponse, FeedbackBody>({
       query: (body) => ({
-        url: `api/public/feedback`,
+        url: `/api/public/feedback`,
         method: "POST",
+        body
+      })
+    }),
+
+    changePassword: builder.mutation<void, { password: string; newPassword: string }>({
+      query: (body) => ({
+        url: `/api/users/change-password`,
+        method: "PATCH",
         body
       })
     }),
@@ -86,5 +94,6 @@ export const {
   useGetUserInvestmentsQuery,
   useLazyFindUserRealtorQuery,
   useCreateFeedBackMutation,
+  useChangePasswordMutation,
   useCreateInvestmentsMutation
 } = usersOperationsApi

@@ -151,6 +151,12 @@
     "Ваш рієлтор": "Your Realtor",
     "Ріелтора з таким кодом не знайдено": "Realtor with this code not found",
     "Ввести інший код": "Enter another code",
-    "Вийти": "Cancel"
+    "Вийти": "Cancel",
+    "Зміна паролю": "Change password",
+    "Старий пароль": "Old password",
+    "Новий пароль": "New password",
+    "Зберегти": "Save",
+    "Пароль успішно змінено": "Password changed successfully",
+    "Закрити": "Close"
   }
 }
