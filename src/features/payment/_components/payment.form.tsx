@@ -6,12 +6,12 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useAuthContext } from "@/context/auth.context"
 import { Button, CheckBox, Input, ItemText, SVGIcon, Title } from "@/shared/ui"
 import { VectorExpoIcons } from "@/shared/ui/icons/vectorExpoIcons"
+import { useAppSelector } from "@/store"
 import { useCreatePaymentDepositMutation } from "@/store/services/paymentsApi"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
-import { useAppSelector } from "@/store"
 
 type SearchParams = { title: string; id: string; price?: string; duration?: string }
 type DefaultInvestValues = {
