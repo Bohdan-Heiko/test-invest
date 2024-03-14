@@ -31,13 +31,10 @@ export const PaymentStatus = () => {
   const {
     data: paymentStatus,
     isError,
-    error
   } = useCheckPaymentStatusQuery(uuid, {
     skip: !uuid,
     pollingInterval: !successRef.current ? 500 : 0
   })
-
-  console.log(paymentStatus)
 
   const handleReedirect = () => {
     if (paymentStatus?.status !== "WaitingAuthComplete") {
@@ -74,10 +71,7 @@ export const PaymentStatus = () => {
           </Title>
         </View>
       ) : (
-        <>
-          <ErrorMessage message={t("Щось пішло не так!")} />
-          <ErrorMessage message={JSON.stringify(error)} />
-        </>
+        <ErrorMessage message={t("Щось пішло не так!")} />
       )}
       <Button
         title={t("Далі")}
