@@ -61,7 +61,7 @@ export const style = StyleSheet.create({
   descriptionTitleContainer: {
     width: "100%",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between"
   },
