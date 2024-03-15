@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 
@@ -40,42 +40,38 @@ export const RealtorModal: FC<Props> = ({ t, onClose, modalData }) => {
     setInputState({ isError: false })
     setValue(value)
   }
-
   return (
-    <ModalConfig modalVisible={true}>
-      <TouchableWithoutFeedback onPress={onClose}>
-        <View style={style.mainContainer}>
-          <View style={style.contentContainer}>
-            <Title style={style.title}>{t("Додати рієлтора")}</Title>
-            <View style={{ gap: 5 }}>
-              <Input
-                isDotNeed={false}
-                error={isHasError(inputState!)}
-                inputProps={{
-                  placeholder: t("Код вашого рієлтора"),
-                  autoFocus: true,
-                  value,
-                  onChangeText: handleChangeValue
-                }}
-              />
+    <ModalConfig onClose={onClose} modalVisible={true}>
+      <View style={style.mainContainer}>
+        <View style={style.contentContainer}>
+          <Title style={style.title}>{t("Додати рієлтора")}</Title>
+          <View style={{ gap: 5 }}>
+            <Input
+              isDotNeed={false}
+              error={isHasError(inputState!)}
+              inputProps={{
+                placeholder: t("Код вашого рієлтора"),
+                autoFocus: true,
+                value,
+                onChangeText: handleChangeValue
+              }}
+            />
 
-              <Button
-                onPress={handleFindRieltor}
-                loading={{ isLoading: isHasLoading(inputState!), isNeed: true }}
-                title={t("Пошук")}
-                style={style.btn}
-              />
-            </View>
+            <Button
+              onPress={handleFindRieltor}
+              loading={{ isLoading: isHasLoading(inputState!), isNeed: true }}
+              title={t("Пошук")}
+              style={style.btn}
+            />
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </ModalConfig>
   )
 }
 
 const style = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     display: "flex",
     justifyContent: "center"
   },

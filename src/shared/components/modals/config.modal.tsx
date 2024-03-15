@@ -4,9 +4,10 @@ import { FC } from "react"
 interface Props {
   modalVisible: boolean
   children: JSX.Element
+  onClose: () => void
 }
 
-export const ModalConfig: FC<Props> = ({ modalVisible, children }) => {
+export const ModalConfig: FC<Props> = ({ modalVisible, onClose, children }) => {
   return (
     <Modal
       isVisible={modalVisible}
@@ -16,6 +17,7 @@ export const ModalConfig: FC<Props> = ({ modalVisible, children }) => {
       animationOutTiming={0}
       coverScreen={true}
       backdropTransitionOutTiming={0}
+      onBackdropPress={onClose}
     >
       {children}
     </Modal>

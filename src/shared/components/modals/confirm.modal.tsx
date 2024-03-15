@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FC } from "react"
 import { TFunction } from "i18next"
 
@@ -16,51 +16,46 @@ interface Props {
 
 export const ConfirmModal: FC<Props> = ({ t, onClose, modalData }) => {
   return (
-    <ModalConfig modalVisible={true}>
-      <TouchableWithoutFeedback onPress={onClose}>
-        <View style={style.mainContainer}>
-          <View style={style.contentContainer}>
-            <View style={style.titleContainer}>
-              <Title style={style.title}>{t(modalData?.data.title)}</Title>
-              {modalData.data.subTitle && (
-                <Paragraph
-                  style={[
-                    style.paragraph,
-                    {
-                      textAlign:
-                        modalData.data.subTitle?.split(" ").length! <= 4
-                          ? "center"
-                          : "auto"
-                    }
-                  ]}
-                >
-                  {t(modalData.data.subTitle!)}
-                </Paragraph>
-              )}
-            </View>
-            <View style={style.btnContainer}>
-              <Button
-                title={t("Так")}
-                style={style.btn}
-                onPress={modalData.data.handlePress}
-              />
-              <Button
-                onPress={onClose}
-                title={t("Ні")}
-                style={style.btn}
-                variant="secondary"
-              />
-            </View>
+    <ModalConfig onClose={onClose} modalVisible={true}>
+      <View style={style.mainContainer}>
+        <View style={style.contentContainer}>
+          <View style={style.titleContainer}>
+            <Title style={style.title}>{t(modalData?.data.title)}</Title>
+            {modalData.data.subTitle && (
+              <Paragraph
+                style={[
+                  style.paragraph,
+                  {
+                    textAlign:
+                      modalData.data.subTitle?.split(" ").length! <= 4 ? "center" : "auto"
+                  }
+                ]}
+              >
+                {t(modalData.data.subTitle!)}
+              </Paragraph>
+            )}
+          </View>
+          <View style={style.btnContainer}>
+            <Button
+              title={t("Так")}
+              style={style.btn}
+              onPress={modalData.data.handlePress}
+            />
+            <Button
+              onPress={onClose}
+              title={t("Ні")}
+              style={style.btn}
+              variant="secondary"
+            />
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </ModalConfig>
   )
 }
 
 const style = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     display: "flex",
     justifyContent: "center"
   },
