@@ -83,7 +83,7 @@ export const Account = () => {
             </>
           )}
           <PersonalInformation t={t} data={userData} />
-          <Button onPress={handleOpenPress} title={t("Вихід")} variant="secondary" />
+          <Button onPress={handleOpenPress} title={t("Вийти")} variant="secondary" />
           <OrganizationInfo />
         </View>
       </ScrollView>
