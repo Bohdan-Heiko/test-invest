@@ -103,7 +103,8 @@
     "Ви впевнені, що хочете вийти?": "Are you sure you want to exit?",
     "Так": "Yes",
     "Ні": "No",
-    "Додати": "Add"
+    "Додати": "Add",
+    "У разі скасування інвестиції усі нараховані відсотки анулюються, а сума інвестиції розблокується для виводу.": "In case of cancellation of the investment, all accrued interest is canceled and the investment amount is unlocked for withdrawal.    "
   },
   "status": {
     "Оплата не пройшла": "Payment failed",
@@ -150,7 +151,10 @@
     "Новий пароль": "New password",
     "Зберегти": "Save",
     "Пароль успішно змінено": "Password changed successfully",
-    "Закрити": "Close"
+    "Закрити": "Close",
+    "Скасування інвестиції пройшло успішно": "Cancellation of investment was successful",
+    "Кошти будуть доступні до виводу після перевірки нашими спеціалістами": "Funds will be available for withdrawal after verification by our specialists",
+    "Під час скасування інвестицій сталась помилка:(": "An error occurred while canceling the investment:("
   },
   "confirmPayment": {
     "Підтвердження платежу": "Payment confirmation",

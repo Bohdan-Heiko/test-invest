@@ -14,19 +14,19 @@ import {
   Title,
   VectorExpoIcons
 } from "@/shared/ui"
+import { useAppSelector } from "@/store"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
 import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "./_style"
-import { useAppSelector } from "@/store"
 
 type LocalParams = { uuid: string }
 
 const ConfrimPayment = () => {
   const { t } = useTranslation("confirmPayment")
   const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
-  const {taxNumber} = useAppSelector(state => state.user_data)
+  const { taxNumber } = useAppSelector((state) => state.user_data)
   const { name, email, card, phone } = paymentData as CheckPaymentStatus
   const { handleReplaceRoute } = useAuthContext()
   const [checkCondition, setCheckCondition] = useState<boolean>(false)

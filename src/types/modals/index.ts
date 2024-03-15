@@ -37,6 +37,7 @@ export type SuccessModalData = {
   type: "success-modal"
   data: {
     title: string
+    subTitle?: string
   }
 }
 

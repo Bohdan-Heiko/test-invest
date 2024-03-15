@@ -97,5 +97,5 @@ export interface UserInvestmentsDataResponse {
   comment: string
   createdAt: string
   updatedAt: string
-  status: string
+  status: "Pending" | "Confirmed"
 }
