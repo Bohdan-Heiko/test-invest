@@ -92,7 +92,7 @@ export const CallBackForm = () => {
                     inputProps={{
                       placeholder: t("Ім’я"),
                       maxLength: 10,
-                      style: { color: colors.white },
+                      style: { color: colors.white, flex: 1 },
                       onChangeText: field.onChange
                     }}
                   />
@@ -111,7 +111,7 @@ export const CallBackForm = () => {
                       placeholder: t("Номер телефону"),
                       maxLength: 10,
                       keyboardType: "number-pad",
-                      style: { color: colors.white },
+                      style: { color: colors.white, flex: 1 },
                       onChangeText: field.onChange
                     }}
                   />
