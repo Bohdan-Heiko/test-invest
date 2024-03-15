@@ -55,6 +55,17 @@ export const usersOperationsApi = mainApi.injectEndpoints({
       providesTags: ["UserInvestments"]
     }),
 
+    confirmCancellationInvestment: builder.mutation<UserInvestmentsDataResponse, number>({
+      query: (id) => ({
+        url: `/api/investments/${id}/confirm`,
+        method: "PATCH",
+        body: {
+          comment: "Invest"
+        }
+      }),
+      invalidatesTags: ["UserInvestments"]
+    }),
+
     findUserRealtor: builder.query<RealtorData, string>({
       query: (link) => ({
         url: `/api/users/link/${link}`
@@ -92,6 +103,7 @@ export const usersOperationsApi = mainApi.injectEndpoints({
 export const {
   useGetUserAccrualsQuery,
   useGetUserInvestmentsQuery,
+  useConfirmCancellationInvestmentMutation,
   useLazyFindUserRealtorQuery,
   useCreateFeedBackMutation,
   useChangePasswordMutation,

@@ -2,7 +2,7 @@ import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
 import { FC } from "react"
 import { TFunction } from "i18next"
 
-import { Button, Title } from "@/shared/ui"
+import { Button, Paragraph, Title } from "@/shared/ui"
 import { SuccessModalData } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
@@ -22,6 +22,21 @@ export const SuccessModal: FC<Props> = ({ modalData, onClose, t }) => {
           <View style={style.contentContainer}>
             <View style={style.titleContainer}>
               <Title style={style.title}>{t(modalData.data.title)}</Title>
+              {modalData.data.subTitle && (
+                <Paragraph
+                  style={[
+                    style.paragraph,
+                    {
+                      textAlign:
+                        modalData.data.subTitle?.split(" ").length! <= 4
+                          ? "center"
+                          : "auto"
+                    }
+                  ]}
+                >
+                  {t(modalData.data.subTitle!)}
+                </Paragraph>
+              )}
             </View>
             <View style={style.btnContainer}>
               <Button

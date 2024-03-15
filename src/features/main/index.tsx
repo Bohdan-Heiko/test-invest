@@ -10,7 +10,6 @@ import { Buildings } from "./_components/buildings"
 import { CallBackForm } from "./_components/callBack"
 import { MainProjectBanner } from "./_components/mainProjectBanner"
 import { style } from "./_style"
-import { Link } from "expo-router"
 
 const TEXT1 =
   "Модерн Хайтс - інноваційний проєкт, що об'єднує сучасний дизайн, екологічну стійкість та зручне місцерозташування задля створення прекрасного життєвого простору."

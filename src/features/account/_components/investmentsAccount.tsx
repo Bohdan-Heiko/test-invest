@@ -4,8 +4,14 @@ import { TFunction } from "i18next"
 
 import { useModalContext } from "@/context/modal.context"
 import { Button, Devider, ItemText, Title, VectorExpoIcons } from "@/shared/ui"
+import { useConfirmCancellationInvestmentMutation } from "@/store/services/userOperationsApi"
 import { TransformedData, UserInvestmentsDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
+import {
+  CONFIRM_MODDAL_TEXT,
+  REJECT_CANCEL_INVEST_TEXT,
+  SUCCES_CANCEL_INVEST_TEXT
+} from "@/utils/constants/constants"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
@@ -25,6 +31,30 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
 }) => {
   const [showAll, setShowAll] = useState<boolean>(false)
   const { openModal } = useModalContext()
+
+  const [confirmCancellationInvestment] = useConfirmCancellationInvestmentMutation()
+
+  const onConfirmCancellationInvestment = async (id: number) => {
+    await confirmCancellationInvestment(id)
+      .unwrap()
+      .then(() => {
+        openModal({
+          type: "success-modal",
+          data: {
+            title: t(SUCCES_CANCEL_INVEST_TEXT.title),
+            subTitle: t(SUCCES_CANCEL_INVEST_TEXT.subTitle)
+          }
+        })
+      })
+      .catch(() => {
+        openModal({
+          type: "success-modal",
+          data: {
+            title: t(REJECT_CANCEL_INVEST_TEXT.title)
+          }
+        })
+      })
+  }
 
   const handleShowAll = () => {
     setShowAll(!showAll)
@@ -54,9 +84,23 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
                   >
                     {building.building.title}
                   </Title>
-                  <TouchableOpacity onPress={() => openModal("invest-modal")}>
-                    <VectorExpoIcons type={"Feather"} name="x" />
-                  </TouchableOpacity>
+                  {building.status === "Pending" && (
+                    <TouchableOpacity
+                      onPress={() =>
+                        openModal({
+                          type: "confirm-modal",
+                          data: {
+                            handlePress: () =>
+                              onConfirmCancellationInvestment(building.id),
+                            title: "Ви впевнені?",
+                            subTitle: t(CONFIRM_MODDAL_TEXT)
+                          }
+                        })
+                      }
+                    >
+                      <VectorExpoIcons type={"Feather"} name="x" />
+                    </TouchableOpacity>
+                  )}
                 </View>
                 <View style={[style.accuralItemNameContainer, { marginBottom: 10 }]}>
                   <Title style={style.accuralItemNameText}>
