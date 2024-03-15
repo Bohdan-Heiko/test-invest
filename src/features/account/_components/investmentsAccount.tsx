@@ -17,6 +17,7 @@ interface InvestmentAccount {
   investmentsData?: TransformedData<UserInvestmentsDataResponse>
 }
 
+
 export const InvestmentAccount: FC<InvestmentAccount> = ({
   t,
   title,
@@ -54,7 +55,19 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
                   >
                     {building.building.title}
                   </Title>
-                  <TouchableOpacity onPress={() => openModal("invest-modal")}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      openModal({
+                        type: "confirm-modal",
+                        data: {
+                          handlePress: () => {},
+                          title: "Ви впевнені?",
+                          subTitle:
+                            "У разі скасування інвестиції усі нараховані відсотки анулюються, а сума інвестиції розблокується для виводу."
+                        }
+                      })
+                    }
+                  >
                     <VectorExpoIcons type={"Feather"} name="x" />
                   </TouchableOpacity>
                 </View>
