@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableWithoutFeedback, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FC } from "react"
 import { TFunction } from "i18next"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
@@ -73,76 +73,73 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
   }
 
   return (
-    <ModalConfig modalVisible={true}>
-      <TouchableWithoutFeedback onPress={onClose}>
-        <View style={style.mainContainer}>
-          <View style={style.contentContainer}>
-            <Title style={style.title}>{t("Зміна паролю")}</Title>
-            <View style={{ gap: 5 }}>
-              <Controller
-                name="password"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    fields={{ ...field }}
-                    error={errors.password}
-                    isTouchField={!!dirtyFields.password}
-                    inputProps={{
-                      placeholder: t("Старий пароль"),
-                      secureTextEntry: true,
-                      onChangeText: field.onChange
-                    }}
-                  />
-                )}
-              />
+    <ModalConfig onClose={onClose} modalVisible={true}>
+      <View style={style.mainContainer}>
+        <View style={style.contentContainer}>
+          <Title style={style.title}>{t("Зміна паролю")}</Title>
+          <View style={{ gap: 5 }}>
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  fields={{ ...field }}
+                  error={errors.password}
+                  isTouchField={!!dirtyFields.password}
+                  inputProps={{
+                    placeholder: t("Старий пароль"),
+                    secureTextEntry: true,
+                    onChangeText: field.onChange
+                  }}
+                />
+              )}
+            />
 
-              <Controller
-                name="newPassword"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    fields={{ ...field }}
-                    error={errors.newPassword}
-                    isTouchField={!!dirtyFields.newPassword}
-                    inputProps={{
-                      placeholder: t("Новий пароль"),
-                      secureTextEntry: true,
-                      onFocus: showPasswordRules,
-                      onBlur: hideShowPasswordRules,
-                      onChangeText: field.onChange
-                    }}
-                  >
-                    {passwordRulesValue?.value ? (
-                      <PasswordRules value={field?.value} />
-                    ) : null}
-                  </Input>
-                )}
-              />
+            <Controller
+              name="newPassword"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  fields={{ ...field }}
+                  error={errors.newPassword}
+                  isTouchField={!!dirtyFields.newPassword}
+                  inputProps={{
+                    placeholder: t("Новий пароль"),
+                    secureTextEntry: true,
+                    onFocus: showPasswordRules,
+                    onBlur: hideShowPasswordRules,
+                    onChangeText: field.onChange
+                  }}
+                >
+                  {passwordRulesValue?.value ? (
+                    <PasswordRules value={field?.value} />
+                  ) : null}
+                </Input>
+              )}
+            />
 
-              {isChangePasswordError ? (
-                <View style={style.errorContainer}>
-                  <ErrorMessage message={t("Щось пішло не так!")} />
-                </View>
-              ) : null}
+            {isChangePasswordError ? (
+              <View style={style.errorContainer}>
+                <ErrorMessage message={t("Щось пішло не так!")} />
+              </View>
+            ) : null}
 
-              <Button
-                onPress={handleSubmit(handleChangePasswrod)}
-                disabled={isChangePasswordLoading}
-                loading={{ isLoading: isChangePasswordLoading }}
-                title={t("Зберегти")}
-                style={style.btn}
-              />
-            </View>
+            <Button
+              onPress={handleSubmit(handleChangePasswrod)}
+              disabled={isChangePasswordLoading}
+              loading={{ isLoading: isChangePasswordLoading }}
+              title={t("Зберегти")}
+              style={style.btn}
+            />
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </ModalConfig>
   )
 }
 
 const style = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     display: "flex",
     justifyContent: "center"
   },
