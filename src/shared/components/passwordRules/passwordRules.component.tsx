@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, View } from "react-native"
+import { Platform, Pressable, StyleSheet, View } from "react-native"
 import { useTranslation } from "react-i18next"
 
 import { Dot, Paragraph, Title } from "@/shared/ui"
@@ -10,11 +10,17 @@ import {
   UPPERCASE_CHARACTER_REGEX
 } from "@/utils/constants/regex"
 
-export const PasswordRules = ({ value }: { value: string | undefined }) => {
+export const PasswordRules = ({
+  value,
+  onClose
+}: {
+  value: string | undefined
+  onClose?: () => void
+}) => {
   const { t } = useTranslation("passwordRules")
 
   return (
-    <View style={style.passwordRulesContainer}>
+    <Pressable onPress={onClose} style={style.passwordRulesContainer}>
       <Title style={style.passwordRulesTitle}>{t("Пароль повинен мати")}</Title>
       <View style={style.passwordRules}>
         <Dot
@@ -70,7 +76,7 @@ export const PasswordRules = ({ value }: { value: string | undefined }) => {
           {t("від 1 букви з нижнім регістром")}
         </Paragraph>
       </View>
-    </View>
+    </Pressable>
   )
 }
 
