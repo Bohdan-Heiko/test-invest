@@ -1,4 +1,11 @@
-import { StyleSheet, TextInput, View } from "react-native"
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
+} from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
@@ -135,7 +142,7 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
                   onPressIcon={() => onChangeSecurPasswords("newPassword")}
                 >
                   {passwordRulesValue?.value ? (
-                    <PasswordRules value={field?.value} />
+                    <PasswordRules onClose={hideShowPasswordRules} value={field?.value} />
                   ) : null}
                 </Input>
               )}
