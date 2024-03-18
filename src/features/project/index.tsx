@@ -24,9 +24,12 @@ const Project = () => {
   const { slug: buildingId } = useLocalSearchParams()
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data: projectData } = useGetOnePublicBuildingQuery(buildingId as string, {
-    skip: !buildingId
-  })
+  const { data: projectData, error } = useGetOnePublicBuildingQuery(
+    buildingId as string,
+    {
+      skip: !buildingId
+    }
+  )
 
   const { data: projectBuildingReport } = useGetBuildingPrivateReportQuery(
     projectData?.id as number,
@@ -40,7 +43,7 @@ const Project = () => {
     const firstPageIndex = (currentPage - 1) * PAGE_SIZE
     const lastPageIndex = firstPageIndex + PAGE_SIZE
     return projectBuildingReport?.data.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, projectData])
+  }, [currentPage, projectBuildingReport])
 
   return (
     <ScrollView
@@ -82,6 +85,7 @@ const Project = () => {
             titleStyle={style.title}
           />
           <ProjectTeams t={t} data={projectData.team} />
+
           {currentBuildingReportsData && (
             <ProjectReports
               t={t}
@@ -89,6 +93,7 @@ const Project = () => {
               buildingId={buildingId as string}
             />
           )}
+
           <Pagination
             pageSize={PAGE_SIZE}
             currentPage={currentPage}

@@ -6,7 +6,8 @@ import {
 } from "@/types/buildings"
 
 import { mainApi } from "./mainApi"
-import { transformDataHelpers } from "@/utils/helpers/transformData"
+import { BuildingSchema } from "@/schemas/building/building.schema"
+import { validatedResponseHelpers } from "@/utils/helpers/validatedResponse"
 
 export const buildingsApi = mainApi.injectEndpoints({
   overrideExisting: true,
@@ -15,7 +16,6 @@ export const buildingsApi = mainApi.injectEndpoints({
       query: () => ({
         url: "/api/public/buildings"
       }),
-      // keepUnusedDataFor: 60 * 5,
       keepUnusedDataFor: 0,
       providesTags: ["UserPublicBuildings"]
     }),
@@ -24,6 +24,16 @@ export const buildingsApi = mainApi.injectEndpoints({
       query: (id) => ({
         url: `/api/public/buildings/${id}`
       })
+      // transformResponse: (baseQueryReturnValue: BuildingsResponse) => {
+      //   try {
+      //     return buildingsResponseSchema.validateSync(baseQueryReturnValue, {
+      //       strict: true,
+      //       abortEarly: false
+      //     })
+      //   } catch (error) {
+      //     throw new Error(JSON.stringify(error))
+      //   }
+      // }
     }),
 
     getBuildingPrivateReport: builder.query<TransformedData<BuildingReport>, number>({
@@ -36,15 +46,16 @@ export const buildingsApi = mainApi.injectEndpoints({
       transformResponse: (
         baseQueryReturnValue: HydraData<BuildingReport>
       ): TransformedData<BuildingReport> => {
-        return transformDataHelpers.transformJsonLdToJson<BuildingReport>(
-          baseQueryReturnValue
+        return validatedResponseHelpers.validateHydraResponse(
+          baseQueryReturnValue,
+          BuildingSchema
         )
       }
     }),
 
     getBuildingReport: builder.query<BuildingReportResponse, BuildingReportBody>({
       query: ({ building, report }) => ({
-        url: `/api/public/buildings/${building}/reports/${report}`
+        url: `/api/buildings/${building}/reports/${report}`
       })
     })
   })

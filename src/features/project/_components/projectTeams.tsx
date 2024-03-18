@@ -33,7 +33,7 @@ export const ProjectTeams: FC<IProps> = ({ t, data }) => {
             style={style.projectItemImage}
             source={{
               uri: member?.contentUrl
-                ? `${API_URL}${member.contentUrl.contentUrl}`
+                ? `${API_URL}${member.contentUrl?.contentUrl}`
                 : undefined
             }}
           />
