@@ -12,6 +12,7 @@ interface IProjectItemProps {
   text: string
   title: string
   imageUri?: string
+  isRealtor?: boolean
   handleItemPress?: () => void
   handleInvestPress?: () => AllRoutes | undefined
 }
@@ -23,6 +24,7 @@ export const ProjectItem: FC<IProjectItemProps> = ({
   text,
   title,
   imageUri,
+  isRealtor,
   handleItemPress,
   handleInvestPress
 }) => {
@@ -51,7 +53,9 @@ export const ProjectItem: FC<IProjectItemProps> = ({
               }
             ]}
           >
-            <Text style={style.ourProjectItemInfoLink}>{t("Інвестувати")}</Text>
+            {!isRealtor && (
+              <Text style={style.ourProjectItemInfoLink}>{t("Інвестувати")}</Text>
+            )}
           </Pressable>
         )}
       </View>

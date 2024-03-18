@@ -10,6 +10,7 @@ import { BuildingsResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
+import { useAppSelector } from "@/store"
 
 interface IProps {
   data: BuildingsResponse[] | undefined
@@ -18,6 +19,7 @@ interface IProps {
 
 export const Buildings: FC<IProps> = ({ data, isLoading }) => {
   const { handlePushRoute } = useAuthContext()
+  const { isRealtor } = useAppSelector((state) => state.user_data)
   const { t } = useTranslation("main")
 
   return (
@@ -36,6 +38,7 @@ export const Buildings: FC<IProps> = ({ data, isLoading }) => {
             <ProjectItem
               t={t}
               key={project.id}
+              isRealtor={isRealtor}
               title={project.title}
               text={project.description}
               imageUri={project?.photos && project?.photos[0]?.contentUrl}
