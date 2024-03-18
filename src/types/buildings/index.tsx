@@ -1,4 +1,4 @@
-interface BuildingReport {
+export interface BuildingReport {
   id: number
   title: string
   report: string
@@ -37,7 +37,7 @@ export interface BuildingsResponse {
   team?: Member[]
   createdAt: string // Assuming createdAt is a string representing a date
   updatedAt: string // Assuming updatedAt is a string representing a date
-  buildingReports?: BuildingReport[]
+  // buildingReports?: BuildingReport[]
 }
 
 export interface BuildingReportResponse {

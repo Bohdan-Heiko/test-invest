@@ -14,7 +14,9 @@
     "Оплата": "Payment"
   },
   "callBack": {
+    "Дякуємо": "Thank you",
     "Хочете стати інвестором, але є питання?": "Want to become an investor, but have questions?",
+    "Ваша заявка опрацьовується": "Your request is being processed.",
     "Залиште заявку на безкоштовний дзвінок, ми зв’яжемося з вами протягом 20 хвилин": "Leave a request for a free call, we will contact you within 20 minutes",
     "Ім’я": "Name",
     "Номер телефону": "Phone",
@@ -93,7 +95,7 @@
     "Реферальне посилання": "Referral link",
     "Код для пошуку": "Search code",
     "Проекти": "Projects",
-    "У вас ще немає нарахувань": "You have no earnings yet",
+    "У вас ще немає нарахувань": "You don't have any accruals yet",
     "Приховати": "Hide",
     "Дивитись всі": "See all",
     "У вас ще немає інвестицій": "You have no investments yet",

@@ -4,7 +4,10 @@ import { useLocalSearchParams } from "expo-router"
 import { useTranslation } from "react-i18next"
 
 import { Pagination } from "@/shared/components"
-import { useGetOnePublicBuildingQuery } from "@/store/services/buildingsApi"
+import {
+  useGetBuildingPrivateReportQuery,
+  useGetOnePublicBuildingQuery
+} from "@/store/services/buildingsApi"
 import { colors } from "@/utils/constants/colors"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
@@ -25,11 +28,18 @@ const Project = () => {
     skip: !buildingId
   })
 
+  const { data: projectBuildingReport } = useGetBuildingPrivateReportQuery(
+    projectData?.id as number,
+    {
+      skip: !projectData
+    }
+  )
+
   const currentBuildingReportsData = useMemo(() => {
-    if (!projectData?.buildingReports) return
+    if (!projectBuildingReport?.data) return
     const firstPageIndex = (currentPage - 1) * PAGE_SIZE
     const lastPageIndex = firstPageIndex + PAGE_SIZE
-    return projectData.buildingReports.slice(firstPageIndex, lastPageIndex)
+    return projectBuildingReport?.data.slice(firstPageIndex, lastPageIndex)
   }, [currentPage, projectData])
 
   return (
@@ -71,17 +81,19 @@ const Project = () => {
             description={projectData.safety}
             titleStyle={style.title}
           />
-          <ProjectTeams t={t} data={projectData.team ?? null} />
-          <ProjectReports
-            t={t}
-            data={currentBuildingReportsData ?? null}
-            buildingId={buildingId as string}
-          />
+          <ProjectTeams t={t} data={projectData.team} />
+          {currentBuildingReportsData && (
+            <ProjectReports
+              t={t}
+              data={currentBuildingReportsData}
+              buildingId={buildingId as string}
+            />
+          )}
           <Pagination
             pageSize={PAGE_SIZE}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            totalCount={projectData.buildingReports?.length ?? 0}
+            totalCount={projectBuildingReport?.data?.length ?? 0}
           />
         </View>
       )}

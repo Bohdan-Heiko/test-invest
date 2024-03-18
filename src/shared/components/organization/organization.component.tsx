@@ -32,7 +32,7 @@ export const OrganizationInfo = () => {
         style={{ marginBottom: 30 }}
       />
       <View style={style.infoContainer}>
-        <Paragraph style={style.infoText}>© BuchaProInvest, 2024</Paragraph>
+        <Paragraph style={style.infoText}>© Bober, 2024</Paragraph>
         <Paragraph style={style.infoText}>{t("Політика конфіденціальності")}</Paragraph>
         <Paragraph style={style.infoText}>{t("Договір оферти")}</Paragraph>
       </View>

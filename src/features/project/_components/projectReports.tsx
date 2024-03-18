@@ -5,14 +5,14 @@ import { TFunction } from "i18next"
 
 import { useAuthContext } from "@/context/auth.context"
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
-import { BuildingsResponse } from "@/types"
+import { BuildingReport, BuildingsResponse } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
 
 interface IProps {
   t: TFunction
-  data: BuildingsResponse["buildingReports"] | null
+  data: BuildingReport[]
   buildingId: string
 }
 
