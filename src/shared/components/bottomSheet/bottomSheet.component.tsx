@@ -17,8 +17,7 @@ const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>((props, ref) =
 
   const renderBackdrop = useCallback(
     (props: any) => (
-      console.log(props),
-      (<BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />)
+      <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />
     ),
     []
   )

@@ -1,5 +1,5 @@
-import { StyleSheet, View } from "react-native"
-import { FC } from "react"
+import { StyleSheet, TextInput, View } from "react-native"
+import { FC, useState } from "react"
 import { TFunction } from "i18next"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import * as yup from "yup"
@@ -41,8 +41,13 @@ export const resetPasswordSchema = yup.object({
 })
 
 type FormData = yup.InferType<typeof resetPasswordSchema>
+type PasswordsType = "password" | "newPassword"
 
 export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
+  const [isSecureTextEntry, setIsSecureTextEntry] = useState<
+    Record<PasswordsType, boolean>
+  >({ password: true, newPassword: true })
+
   const {
     value: passwordRulesValue,
     setTrue: showPasswordRules,
@@ -72,6 +77,10 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
       .catch(console.log)
   }
 
+  const onChangeSecurPasswords = (type: PasswordsType) => {
+    setIsSecureTextEntry((prev) => ({ ...prev, [type]: !isSecureTextEntry[type] }))
+  }
+
   return (
     <ModalConfig onClose={onClose} modalVisible={true}>
       <View style={style.mainContainer}>
@@ -85,12 +94,19 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
                 <Input
                   fields={{ ...field }}
                   error={errors.password}
+                  iconProps={{
+                    type: "Octicons",
+                    name: isSecureTextEntry.password ? "eye-closed" : "eye",
+                    size: 25,
+                    style: { opacity: 0.5 }
+                  }}
                   isTouchField={!!dirtyFields.password}
                   inputProps={{
                     placeholder: t("Старий пароль"),
-                    secureTextEntry: true,
-                    onChangeText: field.onChange
+                    secureTextEntry: isSecureTextEntry.password,
+                    onChangeText: (e) => console.log(e)
                   }}
+                  onPressIcon={() => onChangeSecurPasswords("password")}
                 />
               )}
             />
@@ -103,13 +119,20 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
                   fields={{ ...field }}
                   error={errors.newPassword}
                   isTouchField={!!dirtyFields.newPassword}
+                  iconProps={{
+                    type: "Octicons",
+                    name: isSecureTextEntry.newPassword ? "eye-closed" : "eye",
+                    size: 25,
+                    style: { opacity: 0.5 }
+                  }}
                   inputProps={{
                     placeholder: t("Новий пароль"),
-                    secureTextEntry: true,
                     onFocus: showPasswordRules,
                     onBlur: hideShowPasswordRules,
-                    onChangeText: field.onChange
+                    onChangeText: field.onChange,
+                    secureTextEntry: isSecureTextEntry.newPassword
                   }}
+                  onPressIcon={() => onChangeSecurPasswords("newPassword")}
                 >
                   {passwordRulesValue?.value ? (
                     <PasswordRules value={field?.value} />

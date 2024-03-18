@@ -5,7 +5,7 @@ import { TFunction } from "i18next"
 
 import { useAuthContext } from "@/context/auth.context"
 import { Button, Devider, ItemText, Title } from "@/shared/ui"
-import { BuildingReport, BuildingsResponse } from "@/types"
+import { BuildingReport } from "@/types"
 import { datesHelpers } from "@/utils/helpers/dates/dates"
 
 import { style } from "../_style"
