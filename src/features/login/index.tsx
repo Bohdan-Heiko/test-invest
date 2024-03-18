@@ -94,7 +94,7 @@ export const Login = () => {
             />
           )}
         />
-        {isSignInError && <ErrorMessage message={t("Неправильний логін або пароль!")} />}
+        {isSignInError && <ErrorMessage message={t("Неправильний логін або пароль")} />}
 
         {/* Specify functionality */}
 
