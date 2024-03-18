@@ -104,7 +104,7 @@ export const ChangePassword: FC<Props> = ({ t, onClose, openModal }) => {
                   inputProps={{
                     placeholder: t("Старий пароль"),
                     secureTextEntry: isSecureTextEntry.password,
-                    onChangeText: (e) => console.log(e)
+                    onChangeText: field.onChange
                   }}
                   onPressIcon={() => onChangeSecurPasswords("password")}
                 />
