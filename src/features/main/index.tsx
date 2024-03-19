@@ -17,11 +17,8 @@ const TEXT1 =
 export const Main = () => {
   const { t } = useTranslation("main")
 
-  const {
-    data: buildingsData,
-    isFetching: isBuildingsDataLoading,
-    error
-  } = useGetAllPublicBuildingsQuery()
+  const { data: buildingsData, isFetching: isBuildingsDataLoading } =
+    useGetAllPublicBuildingsQuery()
 
   const { data: buildersData, isFetching: isBuildersLoading } =
     useGetAllPublicBuidersQuery()
