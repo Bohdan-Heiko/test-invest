@@ -5,6 +5,8 @@ import { Paragraph, TextInfo, Title } from "@/shared/ui"
 import { colors } from "@/utils/constants/colors"
 import { APP_FONTS } from "@/utils/constants/fonts"
 
+const FULL_YEAR = new Date().getFullYear()
+
 export const OrganizationInfo = () => {
   const { t } = useTranslation("organization")
 
@@ -32,7 +34,7 @@ export const OrganizationInfo = () => {
         style={{ marginBottom: 30 }}
       />
       <View style={style.infoContainer}>
-        <Paragraph style={style.infoText}>© Bober, 2024</Paragraph>
+        <Paragraph style={style.infoText}>© Bober, {FULL_YEAR}</Paragraph>
         <Paragraph style={style.infoText}>{t("Політика конфіденціальності")}</Paragraph>
         <Paragraph style={style.infoText}>{t("Договір оферти")}</Paragraph>
       </View>
