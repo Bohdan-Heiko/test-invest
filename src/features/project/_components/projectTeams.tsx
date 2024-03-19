@@ -32,9 +32,10 @@ export const ProjectTeams: FC<IProps> = ({ t, data }) => {
             placeholder={blurhash}
             style={style.projectItemImage}
             source={{
-              uri: member?.contentUrl
-                ? `${API_URL}${member.contentUrl?.contentUrl}`
-                : undefined
+              uri:
+                member?.contentUrl && member?.contentUrl instanceof Object
+                  ? `${API_URL}${member.contentUrl?.contentUrl}`
+                  : undefined
             }}
           />
 

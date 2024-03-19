@@ -6,7 +6,10 @@ import {
 } from "@/types/buildings"
 
 import { mainApi } from "./mainApi"
-import { BuildingSchema } from "@/schemas/building/building.schema"
+import {
+  BuildingSchema,
+  buildingsResponseSchema
+} from "@/schemas/building/building.schema"
 import { validatedResponseHelpers } from "@/utils/helpers/validatedResponse"
 
 export const buildingsApi = mainApi.injectEndpoints({
@@ -23,17 +26,13 @@ export const buildingsApi = mainApi.injectEndpoints({
     getOnePublicBuilding: builder.query<BuildingsResponse, string>({
       query: (id) => ({
         url: `/api/public/buildings/${id}`
-      })
-      // transformResponse: (baseQueryReturnValue: BuildingsResponse) => {
-      //   try {
-      //     return buildingsResponseSchema.validateSync(baseQueryReturnValue, {
-      //       strict: true,
-      //       abortEarly: false
-      //     })
-      //   } catch (error) {
-      //     throw new Error(JSON.stringify(error))
-      //   }
-      // }
+      }),
+      transformResponse: (baseQueryReturnValue: BuildingsResponse) => {
+        return validatedResponseHelpers.validdateObjectOrArrayResponse(
+          baseQueryReturnValue,
+          buildingsResponseSchema
+        )
+      }
     }),
 
     getBuildingPrivateReport: builder.query<TransformedData<BuildingReport>, number>({

@@ -17,16 +17,13 @@ const memberSchema = yup.object().shape({
   telegram: yup.string(),
   linkedin: yup.string(),
   facebook: yup.string(),
-  // contentUrl: yup.lazy((value) =>
-  //   typeof value !== "object"
-  //     ? yup.string().required()
-  //     : yup.object().shape({
-  //         contentUrl: yup.string().required()
-  //       })
-  // )
-  contentUrl: yup.object().shape({
-    contentUrl: yup.string().required()
-  })
+  contentUrl: yup.lazy((value) =>
+    typeof value !== "object"
+      ? yup.string()
+      : yup.object().shape({
+          contentUrl: yup.string()
+        })
+  )
 })
 
 const photosSchema = yup.array().of(

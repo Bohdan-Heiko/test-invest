@@ -22,6 +22,30 @@ const helpers = {
     } catch (error) {
       throw new Error(JSON.stringify(error))
     }
+  },
+
+  validdateObjectOrArrayResponse<T extends yup.AnyObject>(
+    data: T,
+    schema: yup.ObjectSchema<T>
+  ) {
+    try {
+      if (Array.isArray(data)) {
+        data.forEach((item) => {
+          schema.validateSync(item, {
+            strict: true,
+            abortEarly: false
+          })
+        })
+
+        return data
+      }
+      return schema.validateSync(data, {
+        strict: true,
+        abortEarly: false
+      })
+    } catch (error) {
+      throw new Error(JSON.stringify(error))
+    }
   }
 }
 
