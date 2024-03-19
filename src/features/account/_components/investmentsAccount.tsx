@@ -41,6 +41,8 @@ export const InvestmentAccount: FC<InvestmentAccount> = ({
         openModal({
           type: "success-modal",
           data: {
+            btnTitle: "Ok",
+            btnVariant: "primary",
             title: t(SUCCES_CANCEL_INVEST_TEXT.title),
             subTitle: t(SUCCES_CANCEL_INVEST_TEXT.subTitle)
           }

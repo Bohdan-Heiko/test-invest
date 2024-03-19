@@ -37,10 +37,10 @@ export const SuccessModal: FC<Props> = ({ modalData, onClose, t }) => {
           </View>
           <View style={style.btnContainer}>
             <Button
-              onPress={onClose}
-              title={t("Закрити")}
               style={style.btn}
-              variant="secondary"
+              onPress={onClose}
+              title={t(modalData.data.btnTitle ?? "Закрити")}
+              variant={modalData.data?.btnVariant ?? "secondary"}
             />
           </View>
         </View>

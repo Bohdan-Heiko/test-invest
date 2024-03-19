@@ -38,6 +38,8 @@ export type SuccessModalData = {
   data: {
     title: string
     subTitle?: string
+    btnTitle?: string
+    btnVariant?: "secondary" | "primary"
   }
 }
 

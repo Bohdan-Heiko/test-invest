@@ -24,12 +24,9 @@ const Project = () => {
   const { slug: buildingId } = useLocalSearchParams()
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data: projectData, error } = useGetOnePublicBuildingQuery(
-    buildingId as string,
-    {
-      skip: !buildingId
-    }
-  )
+  const { data: projectData } = useGetOnePublicBuildingQuery(buildingId as string, {
+    skip: !buildingId
+  })
 
   const { data: projectBuildingReport } = useGetBuildingPrivateReportQuery(
     projectData?.id as number,
