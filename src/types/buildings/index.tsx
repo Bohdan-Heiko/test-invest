@@ -1,8 +1,9 @@
+import * as yup from "yup"
+
 import {
   BuildingSchema,
   buildingsResponseSchema
 } from "@/schemas/building/building.schema"
-import * as yup from "yup"
 
 export type BuildingReport = yup.InferType<typeof BuildingSchema>
 export type BuildingsResponse = yup.InferType<typeof buildingsResponseSchema>

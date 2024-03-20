@@ -1,4 +1,5 @@
 import { UserInvestmentsDataResponse } from "@/types"
+
 import { mainApi } from "./mainApi"
 
 export const withdrawalsApi = mainApi.injectEndpoints({

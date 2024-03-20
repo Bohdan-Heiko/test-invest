@@ -1,13 +1,13 @@
 import { StyleSheet, View } from "react-native"
-import { FC, useState } from "react"
+import { FC } from "react"
 import { TFunction } from "i18next"
+import { Controller, useForm } from "react-hook-form"
 
 import { Button, Input, Paragraph, Title } from "@/shared/ui"
-import { RealtorModalData, WithdrawalModalData } from "@/types"
+import { WithdrawalModalData } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { ModalConfig } from "./config.modal"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
 interface Props {
   t: TFunction

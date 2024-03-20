@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-import { ConfrimModalData, IModalContext } from "@/types"
+import { IModalContext } from "@/types"
 
 import { ChangePassword } from "./changePassword.modal"
 import { ConfirmModal } from "./confirm.modal"

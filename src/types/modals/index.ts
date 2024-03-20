@@ -32,7 +32,7 @@ export type ConfrimModalData = {
   data: {
     title: string
     subTitle?: string
-    handlePress?: (amount: string) => Promise<void>
+    handlePress?: (amount?: string) => Promise<void> | void
   }
 }
 

@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View
-} from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FC, useState } from "react"
 import { TFunction } from "i18next"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
