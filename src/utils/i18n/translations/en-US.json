@@ -156,7 +156,15 @@
     "Закрити": "Close",
     "Скасування інвестиції пройшло успішно": "Cancellation of investment was successful",
     "Кошти будуть доступні до виводу після перевірки нашими спеціалістами": "Funds will be available for withdrawal after verification by our specialists",
-    "Під час скасування інвестицій сталась помилка:(": "An error occurred while canceling the investment:("
+    "Під час скасування інвестицій сталась помилка:(": "An error occurred while canceling the investment:(",
+    "Виведення грошей": "Withdraw funds",
+    "withdrawalSubTitle": "Minimum withdrawal amount: {{minWithdrawaMeaning}} USD. Available amount: {{availableWithdrawal}} USD",
+    "Відправити": "Send",
+    "Сума USD": "Amount USD",
+    "Виведення грошей пройшло успішно!": "Withdrawal was successful!",
+    "Кошти будуть зараховані вам найближчим часом": "Funds will be credited to you shortly",
+    "Ok": "Ok",
+    "Щось пішло не так": "Something was wrong"
   },
   "confirmPayment": {
     "Підтвердження платежу": "Payment confirmation",

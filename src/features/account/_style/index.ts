@@ -143,7 +143,8 @@ export const style = StyleSheet.create({
     color: colors.mine_shaft
   },
   languageTitle: {
-    fontSize: 20
+    fontSize: 20,
+    lineHeight: 30
   },
 
   // PERSONAL INFO

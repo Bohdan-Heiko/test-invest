@@ -27,7 +27,10 @@ export const SuccessModal: FC<Props> = ({ modalData, onClose, t }) => {
                   style.paragraph,
                   {
                     textAlign:
-                      modalData.data.subTitle?.split(" ").length! <= 4 ? "center" : "auto"
+                      modalData.data.palcingText ||
+                      modalData.data.subTitle?.split(" ").length! <= 4
+                        ? "center"
+                        : "auto"
                   }
                 ]}
               >

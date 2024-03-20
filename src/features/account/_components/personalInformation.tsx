@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 
 import { useModalContext } from "@/context/modal.context"
 import useActions from "@/hooks/useActions"
-import { ItemText, LinkRedirect, Title, VectorExpoIcons } from "@/shared/ui"
+import { ItemText, Title, VectorExpoIcons } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { mainApi } from "@/store/services/mainApi"
 import { useLazyFindUserRealtorQuery } from "@/store/services/userOperationsApi"
@@ -16,6 +16,10 @@ import { TLanguage, UserDataResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
+import {
+  useCreateWithdrawalMutation,
+  useLazyGetMinWithdrawalMeaningQuery
+} from "@/store/services/withdrawalsApi"
 
 interface IProps {
   t: TFunction
@@ -28,13 +32,63 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
   const { openModal, closeModal } = useModalContext()
   const { i18n } = useTranslation("account")
   const { userLanguage } = useAppSelector((state) => state.i18n)
-  const { id: userID } = useAppSelector((state) => state.user_data)
+  const { id: userID, balance } = useAppSelector((state) => state.user_data)
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [rotationValue] = useState(new Animated.Value(0))
 
   const [findUserRealtor] = useLazyFindUserRealtorQuery()
   const [changeUserData] = useChangeUserDataMutation()
+  const [createWithdrawal] = useCreateWithdrawalMutation()
+  const [getMinWithdrawalMeaning] = useLazyGetMinWithdrawalMeaningQuery()
+
+  const handleCreateWithdrawal = async (amount: string) => {
+    await createWithdrawal({ amount })
+      .unwrap()
+      .then(() =>
+        openModal({
+          type: "success-modal",
+          data: {
+            title: "Виведення грошей пройшло успішно!",
+            subTitle: "Кошти будуть зараховані вам найближчим часом",
+            btnTitle: "Ok",
+            btnVariant: "primary",
+            palcingText: "center"
+          }
+        })
+      )
+      .catch(() =>
+        openModal({
+          type: "success-modal",
+          data: {
+            title: "Щось пішло не так"
+          }
+        })
+      )
+  }
+
+  const handleGetMinWithdrawalMeaning = async () => {
+    await getMinWithdrawalMeaning()
+      .unwrap()
+      .then((res) => {
+        openModal({
+          type: "withdrawal-modal",
+          data: {
+            value: res.value,
+            balance,
+            handlePress: ({ value }) => handleCreateWithdrawal(value)
+          }
+        })
+      })
+      .catch(() =>
+        openModal({
+          type: "success-modal",
+          data: {
+            title: "Щось пішло не так"
+          }
+        })
+      )
+  }
 
   const handleChangeUserData = async (realtorID: number) => {
     const data = {
@@ -154,14 +208,18 @@ export const PersonalInformation: FC<IProps> = ({ t, data }) => {
 
         <View style={style.functionsContainer}>
           <Title style={style.functionsTitle}>{t("Функції")}</Title>
+
           <TouchableOpacity onPress={() => openModal({ type: "changePassword-modal" })}>
             <ItemText style={[style.languageTitle, { color: colors.blue }]}>
               {t("Змінити пароль")}
             </ItemText>
           </TouchableOpacity>
-          <LinkRedirect href="/(tabs)/account" style={style.functionsLinks}>
-            {t("Вивести кошти")}
-          </LinkRedirect>
+
+          <TouchableOpacity onPressOut={handleGetMinWithdrawalMeaning}>
+            <ItemText style={[style.languageTitle, { color: colors.blue }]}>
+              {t("Вивести кошти")}
+            </ItemText>
+          </TouchableOpacity>
         </View>
 
         <View style={{ display: "flex", alignItems: "flex-start", gap: 15 }}>

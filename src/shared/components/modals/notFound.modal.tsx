@@ -3,7 +3,7 @@ import { FC } from "react"
 import { TFunction } from "i18next"
 
 import { Button, Title } from "@/shared/ui"
-import { ConfrimModalData } from "@/types"
+import { RealtorNotFoundModal } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { ModalConfig } from "./config.modal"
@@ -11,7 +11,7 @@ import { ModalConfig } from "./config.modal"
 interface Props {
   t: TFunction
   onClose: () => void
-  modalData: ConfrimModalData
+  modalData: RealtorNotFoundModal
 }
 
 export const NotFoundModal: FC<Props> = ({ t, onClose, modalData }) => {

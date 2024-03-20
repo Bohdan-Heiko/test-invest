@@ -38,7 +38,8 @@ export const mainApi = createApi({
     "UserAccruals",
     "UserInvestments",
     "UserPublicBuildings",
-    "UserPublicBuilers"
+    "UserPublicBuilers",
+    "MinWithdrawalMeaning"
   ],
   endpoints: () => ({})
 })
