@@ -67,7 +67,6 @@ const style = StyleSheet.create({
   ourProjectItemContainer: {
     gap: 20,
     maxWidth: 280,
-    maxHeight: 530,
     display: "flex",
     flexDirection: "column"
   },

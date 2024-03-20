@@ -4,7 +4,7 @@ import { AllRoutes } from "expo-router"
 import { useTranslation } from "react-i18next"
 
 import { useAuthContext } from "@/context/auth.context"
-import { ProjectItem } from "@/shared/components"
+import { BuildingSkeleton, ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuildingsResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
@@ -26,7 +26,7 @@ export const Buildings: FC<IProps> = ({ data, isLoading }) => {
     <View style={style.ourProjectsContainer}>
       <View style={style.titleContainer}>
         <Title style={style.ourProjectTitle}>{t("Наші проекти")}</Title>
-        {(isLoading || !data) && <ActivityIndicator size={"small"} color={colors.blue} />}
+        {isLoading && <ActivityIndicator size={"small"} color={colors.blue} />}
       </View>
       <ScrollView
         overScrollMode="never"
@@ -34,27 +34,33 @@ export const Buildings: FC<IProps> = ({ data, isLoading }) => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {data?.map((project) => (
-            <ProjectItem
-              t={t}
-              key={project.id}
-              isRealtor={isRealtor}
-              title={project.title}
-              text={project.description}
-              imageUri={project?.photos && project?.photos[0]?.contentUrl}
-              handleItemPress={() =>
-                handlePushRoute(`(public)/(project)/project/${project.id}` as AllRoutes)
-              }
-              handleInvestPress={() =>
-                handlePushRoute("/(private)/(payment)/payment", {
-                  id: project.id,
-                  title: project.title,
-                  price: project.price,
-                  duration: project.duration
-                })
-              }
-            />
-          ))}
+          {isLoading
+            ? Array.from([1, 2]).map((i) => <BuildingSkeleton key={i} />)
+            : data?.map((project) => {
+                return (
+                  <ProjectItem
+                    t={t}
+                    key={project.id}
+                    isRealtor={isRealtor}
+                    title={project.title}
+                    text={project.description}
+                    imageUri={project?.photos && project?.photos[0]?.contentUrl}
+                    handleItemPress={() =>
+                      handlePushRoute(
+                        `(public)/(project)/project/${project.id}` as AllRoutes
+                      )
+                    }
+                    handleInvestPress={() =>
+                      handlePushRoute("/(private)/(payment)/payment", {
+                        id: project.id,
+                        title: project.title,
+                        price: project.price,
+                        duration: project.duration
+                      })
+                    }
+                  />
+                )
+              })}
         </View>
       </ScrollView>
     </View>

@@ -2,7 +2,7 @@ import { ActivityIndicator, ScrollView, View } from "react-native"
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-import { ProjectItem } from "@/shared/components"
+import { BuildingSkeleton, ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
 import { BuidersResponse, TransformedData } from "@/types"
 import { colors } from "@/utils/constants/colors"
@@ -29,15 +29,17 @@ export const Builders: FC<IProps> = ({ data, isLoading }) => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {data?.data?.map(({ id, description, title, photos }) => (
-            <ProjectItem
-              t={t}
-              key={id}
-              title={title}
-              text={description}
-              imageUri={photos.contentUrl}
-            />
-          ))}
+          {isLoading
+            ? Array.from([1, 2]).map((i) => <BuildingSkeleton key={i} />)
+            : data?.data?.map(({ id, description, title, photos }) => (
+                <ProjectItem
+                  t={t}
+                  key={id}
+                  title={title}
+                  text={description}
+                  imageUri={photos.contentUrl}
+                />
+              ))}
         </View>
       </ScrollView>
     </View>
