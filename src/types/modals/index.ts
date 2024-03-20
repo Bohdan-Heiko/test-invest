@@ -5,11 +5,21 @@ export type ModalTypes =
   | "reltor-notFound"
   | "changePassword-modal"
   | "success-modal"
+  | "withdrawal-modal"
 
 export type RealtorModalData = {
   type: "realtor-modal"
   data: {
     findRealtor: (link: string) => void
+  }
+}
+
+export type WithdrawalModalData = {
+  type: "withdrawal-modal"
+  data: {
+    value?: string
+    balance?: string
+    handlePress: ({ value }: { value: string }) => void
   }
 }
 
@@ -22,7 +32,7 @@ export type ConfrimModalData = {
   data: {
     title: string
     subTitle?: string
-    handlePress?: () => void
+    handlePress?: (amount?: string) => Promise<void> | void
   }
 }
 
@@ -39,6 +49,7 @@ export type SuccessModalData = {
     title: string
     subTitle?: string
     btnTitle?: string
+    palcingText?: "center" | "left" | "rigth"
     btnVariant?: "secondary" | "primary"
   }
 }
@@ -49,6 +60,7 @@ export type ModalData =
   | RealtorNotFoundModal
   | ChangePasswordModalData
   | SuccessModalData
+  | WithdrawalModalData
 
 export interface IModalContext {
   modalData: ModalData

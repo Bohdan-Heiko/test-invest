@@ -6,11 +6,11 @@ import { useTranslation } from "react-i18next"
 import { useAuthContext } from "@/context/auth.context"
 import { ProjectItem } from "@/shared/components"
 import { Title } from "@/shared/ui"
+import { useAppSelector } from "@/store"
 import { BuildingsResponse } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "../_style"
-import { useAppSelector } from "@/store"
 
 interface IProps {
   data: BuildingsResponse[] | undefined

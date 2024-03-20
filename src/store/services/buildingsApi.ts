@@ -1,16 +1,16 @@
+import {
+  BuildingSchema,
+  buildingsResponseSchema
+} from "@/schemas/building/building.schema"
 import { BuildingsResponse, HydraData, TransformedData } from "@/types"
 import {
   BuildingReport,
   BuildingReportBody,
   BuildingReportResponse
 } from "@/types/buildings"
+import { validatedResponseHelpers } from "@/utils/helpers/validatedResponse"
 
 import { mainApi } from "./mainApi"
-import {
-  BuildingSchema,
-  buildingsResponseSchema
-} from "@/schemas/building/building.schema"
-import { validatedResponseHelpers } from "@/utils/helpers/validatedResponse"
 
 export const buildingsApi = mainApi.injectEndpoints({
   overrideExisting: true,
