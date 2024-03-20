@@ -29,7 +29,7 @@ export const Main = () => {
       showsVerticalScrollIndicator={false}
       style={style.mainContainer}
     >
-      <MainProjectBanner text={t(TEXT1)} />
+      {/* <MainProjectBanner text={t(TEXT1)} /> */}
       <Buildings data={buildingsData} isLoading={isBuildingsDataLoading} />
       <Builders data={buildersData} isLoading={isBuildersLoading} />
 
