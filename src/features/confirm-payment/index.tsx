@@ -16,7 +16,6 @@ import {
 } from "@/shared/ui"
 import { useAppSelector } from "@/store"
 import { useConfirmPaymentMutation } from "@/store/services/paymentsApi"
-import { CheckPaymentStatus } from "@/types"
 import { colors } from "@/utils/constants/colors"
 
 import { style } from "./_style"
@@ -25,9 +24,10 @@ type LocalParams = { uuid: string }
 
 const ConfrimPayment = () => {
   const { t } = useTranslation("confirmPayment")
-  const { uuid, ...paymentData } = useLocalSearchParams<LocalParams>()
-  const { taxNumber } = useAppSelector((state) => state.user_data)
-  const { name, email, card, phone } = paymentData as CheckPaymentStatus
+  const { uuid } = useLocalSearchParams<LocalParams>()
+  const { taxNumber, name, phone, email, birthdate } = useAppSelector(
+    (state) => state.user_data
+  )
   const { handleReplaceRoute } = useAuthContext()
   const [checkCondition, setCheckCondition] = useState<boolean>(false)
 
@@ -60,7 +60,8 @@ const ConfrimPayment = () => {
             <ItemText style={style.userInfo}>{name}</ItemText>
             <ItemText style={style.userInfo}>{phone}</ItemText>
             <ItemText style={style.userInfo}>{email}</ItemText>
-            <ItemText style={style.userInfo}>{card}</ItemText>
+            <ItemText style={style.userInfo}>{taxNumber}</ItemText>
+            <ItemText style={style.userInfo}>{birthdate}</ItemText>
           </View>
 
           <View style={style.descriptionContainer}>
@@ -349,7 +350,6 @@ const ConfrimPayment = () => {
               iconSize={{ height: 23, width: 23 }}
             />
             <ItemText style={style.politicCheck}>
-              {/* {t("Я прочитав і згоден з умовами публічної оферти")} */}
               {t("offerConfirm", {
                 name: name,
                 taxNumber: taxNumber
@@ -358,10 +358,11 @@ const ConfrimPayment = () => {
           </View>
 
           {isConfirmPaymentError && <ErrorMessage message={t("Щось пішло не так")} />}
+
           <Button
             title={t("Далі")}
-            disabled={!checkCondition}
             onPress={handleConfirmPayment}
+            disabled={!checkCondition || isConfirmPaymentLoading}
             loading={{ isNeed: true, isLoading: isConfirmPaymentLoading }}
           />
         </View>

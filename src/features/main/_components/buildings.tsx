@@ -34,7 +34,7 @@ export const Buildings: FC<IProps> = ({ data, isLoading }) => {
         horizontal={true}
       >
         <View style={style.projectsContainer}>
-          {isLoading
+          {!isLoading
             ? Array.from([1, 2]).map((i) => <BuildingSkeleton key={i} />)
             : data?.map((project) => {
                 return (
