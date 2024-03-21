@@ -1,4 +1,4 @@
-import ContentLoader, { Rect, Circle, Instagram } from "react-content-loader/native"
+import ContentLoader, { Rect, Circle } from "react-content-loader/native"
 
 export const BuildingSkeleton = () => {
   return (
@@ -8,7 +8,7 @@ export const BuildingSkeleton = () => {
       height={530}
       viewBox="0 0 300 530"
       backgroundColor="#f3f3f3"
-      foregroundColor="#ecebeb"
+      foregroundColor="#e7e3e3d9"
     >
       <Circle cx="815" cy="67" r="8" />
       <Rect x="587" y="36" rx="5" ry="5" width="220" height="10" />

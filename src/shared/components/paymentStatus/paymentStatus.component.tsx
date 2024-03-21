@@ -13,10 +13,10 @@ import { ErrorMessage } from "../errorMessage/errorMessage.component"
 type LocalParams = { uuid: string }
 
 const STATUSES_PAYMENT = {
-  Declined: { title: "Оплата не пройшла", url: `/(tabs)` as AllRoutes },
+  Declined: { title: "Оплата не пройшла", url: `/(tabs)` },
   WaitingAuthComplete: {
     title: "Ваші гроші успішно заблоковані",
-    url: `/confirm-payment/` as AllRoutes
+    url: `/confirm-payment/`
   },
   InProcessing: { title: "", url: "" },
   Approved: { title: "", url: "" }
@@ -37,9 +37,7 @@ export const PaymentStatus = () => {
     if (paymentStatus?.status !== "WaitingAuthComplete") {
       handleReplaceRoute("/(tabs)" as AllRoutes)
     } else {
-      handleReplaceRoute(`(private)/confirm-payment/${uuid}` as AllRoutes, {
-        ...paymentStatus
-      })
+      handleReplaceRoute(`(private)/confirm-payment/${uuid}` as AllRoutes)
     }
   }
 
